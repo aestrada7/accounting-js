@@ -1,0 +1,14 @@
+node_modules
+bower_components
+build
+/app/vendor
+
+.DS_Store
+.tscache
+/.idea/*
+*.tmp.txt
+*.sublime-project
+*.sublime-workspace
+
+!/.idea/codeStyleSettings.xml
+npm-debug.log
