@@ -5,27 +5,19 @@
     <link rel="stylesheet" type="text/css" href="./vendor/foundation/foundation.css" />
   </head>
   <body>
-    <h1>Accounting JS</h1>
-    <div class="row collapse">
-      <div class="columns small-6 medium-3">
-        One
-      </div>
-      <div class="columns small-6 medium-3">
-        Two
-      </div>
-      <div class="columns small-6 medium-3">
-        Three
-      </div>
-      <div class="columns small-6 medium-3">
-        Four
-      </div>
-    </div>
-    <div class="row">
-      <div class="columns small-centered right">
-        <button class="secondary" onclick="console.log('Cancelled');">Cancel</button>
-        <button onclick="console.log('Ok');">Ok</button>
-      </div>
-    </div>
+    <nav class="top-bar fixed" data-topbar role="navigation">
+      <section class="top-bar-section">
+        <ul class="left">
+          <li class="has-dropdown">
+            <a href="#">File</a>
+            <ul class="dropdown">
+              <li><a href="#">Open</a></li>
+              <li><a href="#">Exit</a></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </nav>
     <script type="text/javascript" src="./vendor/jquery/jquery.js"></script>
     <script type="text/javascript" src="./vendor/foundation/foundation.js"></script>
   </body>
