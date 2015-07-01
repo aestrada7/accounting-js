@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 
     watch: {
       css: {
-        files: ['app/styles/*.scss'],
+        files: ['features/**/*.scss', 'app/styles/*.scss'],
         tasks: ['sass'],
         options: {
           spawn: false
@@ -14,9 +14,6 @@ module.exports = function(grunt) {
 
     sass: {
       build: {
-        options: {
-          noCache: true
-        },
         files: [
           {
             expand: true,
@@ -56,11 +53,11 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-bower-task');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-http-server');
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('update', ['clean', 'bower']);
