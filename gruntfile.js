@@ -50,7 +50,8 @@ module.exports = function(grunt) {
         root: './app',
         port: 8010,
         host: '0.0.0.0',
-        runInBackground: true
+        runInBackground: true,
+        logFn: function(req, res, error) {}
       }
     }
   });
