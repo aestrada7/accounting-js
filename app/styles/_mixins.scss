@@ -1,0 +1,14 @@
+@mixin ellipsis {
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap !important;
+  word-wrap: normal !important;
+}
+
+@mixin translate2D($x, $y) {
+  -ms-tranform: translate($x, $y);
+  -webkit-transform: translate($x, $y);
+  transform: translate($x, $y);
+}

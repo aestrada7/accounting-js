@@ -4,7 +4,6 @@
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="./build/styles/accounting-js.css" />
-    <link rel="stylesheet" type="text/css" href="./vendor/foundation/foundation.css" />
   </head>
   <body ng-app="accountingJS">
     <nav class="top-bar fixed" data-topbar role="navigation">
@@ -21,10 +20,10 @@
         </ul>
       </section>
     </nav>
-    <div ui-view></div>
+    <div class="main-content" ui-view></div>
     <!--All these will be modified by requireJS-->
     <script type="text/javascript" src="./vendor/jquery/jquery.js"></script>
-    <script type="text/javascript" src="./vendor/foundation/foundation.js"></script>
+    <script type="text/javascript" src="./vendor/foundation/js/foundation.js"></script>
     <script type="text/javascript" src="./vendor/angular/angular.js"></script>
     <script type="text/javascript" src="./vendor/angular-ui-router/angular-ui-router.js"></script>
     <script type="text/javascript" src="./app.js"></script>

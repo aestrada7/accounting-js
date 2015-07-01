@@ -1,3 +1,10 @@
-h1 {
-	font-family: 'Georgia' !important;
-}
+@import "variables";  // App defined variables
+@import "mixins";     // App defined mixins
+@import "../vendor/foundation/scss/foundation"; // Foundation
+
+// Main definitions
+@import "components/main";
+
+/* -- Features -- */
+// About page
+@import "../features/about/about";
