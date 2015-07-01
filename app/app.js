@@ -1,9 +1,13 @@
 var accountingJS = angular.module('accountingJS', ['ui.router']);
 
-accountingJS.config(function($stateProvider, $urlRouterProvider) {
-	//$urlRouterProvider.otherwise('/404');
+accountingJS.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+	$urlRouterProvider.otherwise('/404');
+	$locationProvider.html5Mode(true);
 
-	$stateProvider.state('about', {
+	$stateProvider.state('home', {
+		url: '/',
+		template: '<p>Main!</p>'
+	}).state('about', {
 		url: '/about',
 		templateUrl: 'features/about/about.html',
 		controller: 'AboutController'
@@ -13,6 +17,7 @@ accountingJS.config(function($stateProvider, $urlRouterProvider) {
 	})
 });
 
+//This will be moved to its own file eventually
 accountingJS.controller('AboutController', function($scope) {
 	$scope.message = "About Message";
 });
