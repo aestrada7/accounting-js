@@ -23,7 +23,7 @@ module.exports = function(grunt) {
             cwd: 'app',
             src: ['features/**/*.scss', 'styles/*.scss'],
             ext: '.css',
-            dest: 'build'
+            dest: 'app/build'
           }
         ]
       }
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
     clean: {
       bower: ['bower_components'],
       vendor: ['app/vendor'],
-      develop: ['build']
+      develop: ['app/build']
     },
 
     bower: {
@@ -43,6 +43,15 @@ module.exports = function(grunt) {
           layout: 'byComponent'
         }
       }
+    },
+
+    'http-server': {
+      'dev': {
+        root: './app',
+        port: 8010,
+        host: '0.0.0.0',
+        runInBackground: true
+      }
     }
   });
 
@@ -50,7 +59,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-bower-task');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-http-server');
+  grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('update', ['clean', 'bower']);
-  grunt.registerTask('develop', ['sass', 'watch']);
+  grunt.registerTask('develop', ['http-server:dev', 'sass', 'watch']);
 };

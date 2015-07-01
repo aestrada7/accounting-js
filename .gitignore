@@ -1,6 +1,6 @@
 node_modules
 bower_components
-build
+/app/build
 /app/vendor
 
 .DS_Store

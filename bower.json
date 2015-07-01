@@ -5,7 +5,9 @@
     "Tony Estrada <aestrada7@outlook.com>"
   ],
   "dependencies": {
+  	"angular": "1.3.14",
+  	"angular-ui-router": "ssh://git@stash.bbpd.io/shared/angular-ui-router.git#6961baa0365e03899c962fb3e9b544729402e037",
     "foundation": "~5.5.2",
-    "angular-latest": "~1.4.1"
+    "requirejs": "2.1.14"
   }
 }
