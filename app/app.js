@@ -27,7 +27,6 @@ app.run(['$rootScope', function($rootScope) {
   });
 }]);
 
-//This will be moved to its own file eventually
 app.controller('AboutController', function($scope) {
-	$scope.message = "About Message";
+  $scope.message = "About Message";
 });
