@@ -1,6 +1,6 @@
-var accountingJS = angular.module('accountingJS', ['ui.router']);
+var app = angular.module('accountingJS', ['ui.router']);
 
-accountingJS.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 	$urlRouterProvider.otherwise('/404');
 	$locationProvider.html5Mode(true);
 
@@ -17,7 +17,17 @@ accountingJS.config(function($stateProvider, $urlRouterProvider, $locationProvid
 	})
 });
 
+app.run(['$rootScope', function($rootScope) {
+  $rootScope.$on('$stateChangeError', function(event, toState, fromState) {
+  	console.log("error");
+  	console.log(toState);
+  });
+  $rootScope.$on('$stateChangeSuccess', function(event, toState, fromState) {
+  	console.log(toState);
+  });
+}]);
+
 //This will be moved to its own file eventually
-accountingJS.controller('AboutController', function($scope) {
+app.controller('AboutController', function($scope) {
 	$scope.message = "About Message";
 });
