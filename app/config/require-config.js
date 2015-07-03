@@ -1,7 +1,7 @@
 require.config({
   baseUrl: './',
   paths: {
-    'app': 'app',
+    'xapp': 'app',
     'angular': 'vendor/angular/angular',
     'angular-ui-router': 'vendor/angular-ui-router/angular-ui-router',
     'foundation': 'vendor/foundation/js/foundation',
