@@ -1,6 +1,6 @@
-var app = angular.module('accountingJS', ['ui.router']);
+var app = angular.module('accountingJS', ['ui.router', 'xc.indexedDB']);
 
-app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $indexedDBProvider) {
 	$urlRouterProvider.otherwise('/404');
 	$locationProvider.html5Mode(true);
 
