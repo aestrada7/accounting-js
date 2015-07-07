@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 
     watch: {
       css: {
-        files: ['features/**/*.scss', 'app/styles/*.scss'],
+        files: ['app/features/**/*.scss', 'app/styles/*.scss'],
         tasks: ['sass'],
         options: {
           spawn: false

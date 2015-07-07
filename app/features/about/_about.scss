@@ -2,4 +2,20 @@
 	h1 {
 		color: $text-color-medium;
 	}
+
+	.component-list {
+		color: #0077cc;
+
+		.component-node {
+			color: #cc0000;
+		}
+
+		.component-JS {
+			color: #330000;
+		}
+
+		.component-other {
+			color: #333300;
+		}
+	}
 }

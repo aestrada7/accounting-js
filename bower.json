@@ -1,12 +1,12 @@
 {
   "name": "accounting-js",
-  "version": "0.0.1",
+  "version": "0.0.02",
   "authors": [
     "Tony Estrada <aestrada7@outlook.com>"
   ],
   "dependencies": {
-  	"angular": "1.3.14",
-  	"angular-ui-router": "ssh://git@stash.bbpd.io/shared/angular-ui-router.git#6961baa0365e03899c962fb3e9b544729402e037",
+    "angular": "1.3.14",
+    "angular-ui-router": "ssh://git@stash.bbpd.io/shared/angular-ui-router.git#6961baa0365e03899c962fb3e9b544729402e037",
     "foundation": "~5.5.2",
     "requirejs": "2.1.14"
   },
