@@ -50,16 +50,29 @@ module.exports = function(grunt) {
         runInBackground: true,
         logFn: function(req, res, error) {}
       }
+    },
+
+    express: {
+      options: {
+        port: 8011,
+        bases: ['app']
+      },
+      server: {
+        hostname: 'localhost'
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-bower-task');
+  grunt.loadNpmTasks('grunt-connect-rewrite');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-express');
   grunt.loadNpmTasks('grunt-http-server');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('update', ['clean', 'bower']);
   grunt.registerTask('develop', ['http-server:dev', 'sass', 'watch']);
+  grunt.registerTask('develop-new', ['express', 'sass', 'watch']);
 };

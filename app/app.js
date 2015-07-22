@@ -2,10 +2,10 @@ var app = angular.module('accountingJS', ['ui.router', 'xc.indexedDB']);
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $indexedDBProvider) {
 	$urlRouterProvider.otherwise('/404');
-	$locationProvider.html5Mode(true);
+	//$locationProvider.html5Mode(true); - Needs a Servr Rewrite, won't be added right now
 
 	$stateProvider.state('home', {
-		url: '/',
+		url: '', //Needs to be an "/" if using HTML5 mode
 		template: '<p>Main!</p>'
 	}).state('about', {
 		url: '/about',
