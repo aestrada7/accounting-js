@@ -53,5 +53,22 @@ app.controller('AboutController', function($scope) {
 
 //This will also be moved into its own file
 app.controller('PlaygroundController', function($scope) {
+  $scope.items = [{
+    name: 'Hi', id: '1'
+  }];
 
+  $scope.addingLeftItem = false;
+
+  $scope.onAddItemClicked = function() {
+    $scope.addingLeftItem = true;
+  }
+
+  $scope.onCancelAddItemClicked = function() {
+    $scope.addingLeftItem = false;
+  }
+
+  $scope.onConfirmAddItemClicked = function() {
+    $scope.addingLeftItem = false;
+    $scope.items.push({name: 'whatever', id: 2});
+  }
 });

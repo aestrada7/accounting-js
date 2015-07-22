@@ -2,4 +2,27 @@
   .row {
     max-width: initial;
   }
+
+  .item-list {
+    list-style: none;
+
+    .identifier {
+      color: $text-color-medium;
+
+      &:before {
+        content: "(";
+      }
+
+      &:after {
+        content: ")";
+      }
+    }
+  }
+
+  .new-item {
+    .new-item-controls {
+      margin-top: rem-calc(-16);
+      text-align: $opposite-direction;
+    }
+  }
 }
