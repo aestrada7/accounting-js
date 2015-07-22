@@ -7,12 +7,14 @@
         <li ng-repeat="item in items">
           <span class="identifier">{{item.id}}</span>
           <span>{{item.name}}</span><br>
-          <button class="tiny" aria-label="Delete"><i class="fi-trash"></i> Delete</button>
+          <button class="tiny" ng-click="onDeleteItemClicked(item.id)" aria-label="Delete">
+            <i class="fi-trash"></i> Delete
+          </button>
           <button class="tiny" aria-label="Edit"><i class="fi-pencil"></i> Edit</button>
         </li>
       </ul>
       <div class="new-item" ng-if="addingLeftItem">
-        <input type="text" placeholder="Enter the text..."></input>
+        <input id="new-item-left" type="text" placeholder="Enter the text..."></input>
         <div class="new-item-controls">
           <button class="tiny" aria-label="Cancel" ng-click="onCancelAddItemClicked()"><i class="fi-x"></i> Cancel</button>
           <button class="tiny" aria-label="OK" ng-click="onConfirmAddItemClicked()"><i class="fi-check"></i> OK</button>

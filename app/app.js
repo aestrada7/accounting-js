@@ -1,6 +1,7 @@
 var app = angular.module('accountingJS', ['ui.router', 'xc.indexedDB']);
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $indexedDBProvider) {
+  //Routing
   $urlRouterProvider.otherwise('/404');
   //$locationProvider.html5Mode(true); //Needs a URL Rewrite, won't be added right now
 
@@ -22,6 +23,12 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $inde
     url: '/404',
     templateUrl: 'features/404/404.html',
     pageTitle: "404 Error"
+  });
+
+  //DB Schema
+  $indexedDBProvider.connection('accountingDB').upgradeDatabase(1, function(event, db, tx) {
+    var objStore = db.createObjectStore('playground-items', {keyPath: 'id'});
+    objStore.createIndex('name_idx', 'name', {unique: false});
   });
 });
 
@@ -52,10 +59,9 @@ app.controller('AboutController', function($scope) {
 });
 
 //This will also be moved into its own file
-app.controller('PlaygroundController', function($scope) {
-  $scope.items = [{
-    name: 'Hi', id: '1'
-  }];
+app.controller('PlaygroundController', function($scope, $indexedDB) {
+  var OBJECT_STORE_NAME = 'playground-items';
+  var myObjectStore = $indexedDB.objectStore(OBJECT_STORE_NAME);
 
   $scope.addingLeftItem = false;
 
@@ -69,6 +75,22 @@ app.controller('PlaygroundController', function($scope) {
 
   $scope.onConfirmAddItemClicked = function() {
     $scope.addingLeftItem = false;
-    $scope.items.push({name: 'whatever', id: 2});
+    myObjectStore.insert({ "id": Math.random(), "name": $('#new-item-left').val() }).then(function(e) {
+      invalidateList();
+    });
   }
+
+  $scope.onDeleteItemClicked = function(id) {
+    myObjectStore.delete(id).then(function(e) {
+      invalidateList();
+    });
+  }
+
+  invalidateList = function() {
+    myObjectStore.getAll().then(function(results) {
+      $scope.items = results;
+    });
+  }
+
+  invalidateList();
 });
