@@ -3,6 +3,10 @@ body {
   background-color: $background-light;
 }
 
+h1 {
+  color: $text-color-medium;
+}
+
 .main-content {
   padding: rem-calc(10);
 }

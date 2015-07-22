@@ -1,3 +1,6 @@
+//Overriden configuration
+$fi-path: "../../vendor/foundation-icon-fonts";
+
 // Text colors
 $text-color: #222222;
 $text-color-medium: #666666;
@@ -9,7 +12,8 @@ $font-size-small: 12px;
 $font-size-normal: 14px;
 $font-size-medium: 16px;
 $font-size-large: 18px;
-$font-size-extra-large: 24px;
+$font-size-xlarge: 24px;
+$font-size-xxlarge: 36px;
 
 // Font weights
 $weight-light: 300;

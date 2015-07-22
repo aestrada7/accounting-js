@@ -1,10 +1,14 @@
 @import "variables";  // App defined variables
 @import "mixins";     // App defined mixins
 @import "../vendor/foundation/scss/foundation"; // Foundation
+@import "../vendor/foundation-icon-fonts/foundation-icons"; //Foundation Icons
 
 // Main definitions
 @import "components/main";
+@import "components/icons";
 
 /* -- Features -- */
 // About page
 @import "../features/about/about";
+// Playground page
+@import "../features/playground/playground";
