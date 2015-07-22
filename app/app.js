@@ -66,6 +66,7 @@ app.controller('PlaygroundController', function($scope, $indexedDB) {
   $scope.addingLeftItem = false;
 
   $scope.onAddItemClicked = function() {
+    $('#new-item-left').val("");
     $scope.addingLeftItem = true;
   }
 
@@ -77,6 +78,13 @@ app.controller('PlaygroundController', function($scope, $indexedDB) {
     $scope.addingLeftItem = false;
     myObjectStore.insert({ "id": Math.random(), "name": $('#new-item-left').val() }).then(function(e) {
       invalidateList();
+    });
+  }
+
+  $scope.onEditItemClicked = function(id) {
+    myObjectStore.find(id).then(function(result) {
+      $scope.addingLeftItem = true;
+      $('#new-item-left').val(result.name);
     });
   }
 

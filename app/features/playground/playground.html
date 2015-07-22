@@ -6,14 +6,20 @@
       <ul class="item-list">
         <li ng-repeat="item in items">
           <span class="identifier">{{item.id}}</span>
-          <span>{{item.name}}</span><br>
-          <button class="tiny" ng-click="onDeleteItemClicked(item.id)" aria-label="Delete">
-            <i class="fi-trash"></i> Delete
-          </button>
-          <button class="tiny" aria-label="Edit"><i class="fi-pencil"></i> Edit</button>
+          <span class="item-value">{{item.name}}</span>
+          <div class="item-controls">
+            <button class="tiny" ng-click="onDeleteItemClicked(item.id)" aria-label="Delete">
+              <i class="fi-trash"></i>
+              Delete
+            </button>
+            <button class="tiny" ng-click="onEditItemClicked(item.id)" aria-label="Edit">
+              <i class="fi-pencil"></i>
+              Edit
+            </button>
+          </div>
         </li>
       </ul>
-      <div class="new-item" ng-if="addingLeftItem">
+      <div class="new-item" ng-show="addingLeftItem">
         <input id="new-item-left" type="text" placeholder="Enter the text..."></input>
         <div class="new-item-controls">
           <button class="tiny" aria-label="Cancel" ng-click="onCancelAddItemClicked()"><i class="fi-x"></i> Cancel</button>
@@ -26,9 +32,17 @@
       <ul class="item-list">
         <li ng-repeat="item in items2">
           <span class="identifier">{{item.id}}</span>
-          <span>{{item.name}}</span><br>
-          <button class="tiny" aria-label="Delete"><i class="fi-trash"></i> Delete</button>
-          <button class="tiny" aria-label="Edit"><i class="fi-pencil"></i> Edit</button>
+          <span class="item-value">{{item.name}}</span>
+          <div class="item-controls">
+            <button class="tiny" ng-click="onDeleteItemClicked(item.id)" aria-label="Delete">
+              <i class="fi-trash"></i>
+              Delete
+            </button>
+            <button class="tiny" ng-click="onEditItemClicked(item.id)" aria-label="Edit">
+              <i class="fi-pencil"></i>
+              Edit
+            </button>
+          </div>
         </li>
       </ul>
       <button class="right" aria-label="New"><i class="fi-plus"></i> New</button>
