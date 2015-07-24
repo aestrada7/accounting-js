@@ -7,21 +7,21 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $inde
   $stateProvider.state('home', {
     url: '/', //Needs to be an "/" if using HTML5 mode
     template: '<p>Main!</p>',
-    pageTitle: 'Main'
+    pageTitle: translate('features.main.title')
   }).state('about', {
     url: '/about',
     templateUrl: 'features/about/about.html',
     controller: 'AboutController',
-    pageTitle: 'About'
+    pageTitle: translate('features.about.title')
   }).state('playground', {
     url: '/playground',
     templateUrl: 'features/playground/playground.html',
     controller: 'PlaygroundController',
-    pageTitle: 'Playground'
+    pageTitle: translate('features.playground.title')
   }).state('404', {
     url: '/404',
     templateUrl: 'features/404/404.html',
-    pageTitle: "404 Error"
+    pageTitle: translate('features.404.title')
   });
 });
 

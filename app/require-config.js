@@ -6,6 +6,12 @@ require.config({
     "angular": "./vendor/angular/angular",
     "angular-ui-router": "./vendor/angular-ui-router/angular-ui-router",
     "indexeddb": "./vendor/angularjs-indexedDB/indexeddb",
-    "app": "./app"
+    "app": "./app",
+    "lang": "./lang"
+  },
+  shim: {
+    "lang": {
+      deps: ["jquery"]
+    }
   }
 });
