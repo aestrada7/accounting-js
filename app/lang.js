@@ -8,7 +8,7 @@ serializeKey = function(obj, key) {
   for(var i = 0; i < arr.length; i++) {
     obj = obj[arr[i]];
   }
-  return obj;
+  return obj || key;
 }
 
 lang = {
@@ -28,7 +28,8 @@ lang = {
         },
         "playground": {
           "title": "Playground",
-          "pageText": "Save and load data in here"
+          "pageText": "Save and load data in here",
+          "newPlaceholder": "Enter new data here..."
         },
         "about": {
           "title": "About",
@@ -59,7 +60,8 @@ lang = {
         },
         "playground": {
           "title": "Sala de juego",
-          "pageText": "Carga y guarda datos aquí"
+          "pageText": "Carga y guarda datos aquí",
+          "newPlaceholder": "Ingresa un nuevo dato aquí..."
         },
         "about": {
           "title": "Acerca de",

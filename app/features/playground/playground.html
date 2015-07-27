@@ -7,30 +7,30 @@
         <li ng-repeat="item in items">
           <span class="identifier">{{item.id}}</span>
           <span>{{item.name}}</span><br>
-          <button class="tiny" ng-click="onDeleteItemClicked(item.id)" aria-label="global.delete">
+          <button class="tiny" ng-click="onDeleteItemClicked(item.id)" ax-translate-attrs="{'aria-label': 'global.delete'}">
             <i class="fi-trash"></i>
             <span ax-translate>global.delete</span>
           </button>
-          <button class="tiny" aria-label="global.edit">
+          <button class="tiny" ax-translate-attrs="{'aria-label': 'global.edit'}">
             <i class="fi-pencil"></i>
             <span ax-translate>global.edit</span>
           </button>
         </li>
       </ul>
       <div class="new-item" ng-if="addingLeftItem">
-        <input id="new-item-left" type="text" placeholder="Enter the text..."></input>
+        <input id="new-item-left" type="text" ax-translate-attrs="{'placeholder': 'features.playground.newPlaceholder', 'aria-label': 'features.playground.newPlaceholder'}"></input>
         <div class="new-item-controls">
-          <button class="tiny" aria-label="Cancel" ng-click="onCancelAddItemClicked()">
+          <button class="tiny" ng-click="onCancelAddItemClicked()" ax-translate-attrs="{'aria-label': 'global.cancel'}">
             <i class="fi-x"></i>
             <span ax-translate>global.cancel</span>
           </button>
-          <button class="tiny" aria-label="OK" ng-click="onConfirmAddItemClicked()">
+          <button class="tiny" ng-click="onConfirmAddItemClicked()" ax-translate-attrs="{'aria-label': 'global.ok'}">
             <i class="fi-check"></i>
             <span ax-translate>global.ok</span>
           </button>
         </div>
       </div>
-      <button class="right" aria-label="New" ng-click="onAddItemClicked()">
+      <button class="right" ng-click="onAddItemClicked()" ax-translate-attrs="{'aria-label': 'global.new'}">
         <i class="fi-plus"></i>
         <span ax-translate>global.new</span>
       </button>
@@ -40,18 +40,18 @@
         <li ng-repeat="item in items2">
           <span class="identifier">{{item.id}}</span>
           <span>{{item.name}}</span><br>
-          <button class="tiny" ng-click="onDeleteItemClicked(item.id)" aria-label="global.delete">
+          <button class="tiny" ng-click="onDeleteItemClicked(item.id)" ax-translate-attrs="{'aria-label': 'global.delete'}">
             <i class="fi-trash"></i>
             <span ax-translate>global.delete</span>
           </button>
-          <button class="tiny" aria-label="global.edit">
+          <button class="tiny" ax-translate-attrs="{'aria-label': 'global.edit'}">
             <i class="fi-pencil"></i>
             <span ax-translate>global.edit</span>
           </button>
         </li>
         </li>
       </ul>
-      <button class="right" aria-label="New" ng-click="onAddItemClicked()">
+      <button class="right" ng-click="onAddItemClicked()" ax-translate-attrs="{'aria-label': 'global.new'}">
         <i class="fi-plus"></i>
         <span ax-translate>global.new</span>
       </button>
