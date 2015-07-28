@@ -37,7 +37,7 @@ app.run(['$rootScope', function($rootScope) {
 }]);
 
 //This will be moved to its own file eventually
-app.controller('AboutController', function($scope) {
+app.controller('AboutController', ["$scope", function($scope) {
   $scope.components = [{ name: 'node.js', kind: 'JS' },
                        { name: 'Angular.js', kind: 'JS' },
                        { name: 'nw.js', kind: 'JS' },
@@ -49,10 +49,10 @@ app.controller('AboutController', function($scope) {
                        { name: 'Grunt', kind: 'node' },
                        { name: 'Git', kind: 'other'}];
   $scope.message = "About Message";
-});
+}]);
 
 //This will also be moved into its own file
-app.controller('PlaygroundController', function($scope) {
+app.controller('PlaygroundController', ["$scope", function($scope) {
   $scope.items = [{
     name: 'Hi', id: '1'
   }];
@@ -71,4 +71,4 @@ app.controller('PlaygroundController', function($scope) {
     $scope.addingLeftItem = false;
     $scope.items.push({name: 'whatever', id: 2});
   }
-});
+}]);
