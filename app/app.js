@@ -8,21 +8,21 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $inde
   $stateProvider.state('home', {
     url: '/', //Needs to be an "/" if using HTML5 mode
     template: '<p>Main!</p>',
-    pageTitle: 'Main'
+    pageTitle: translate('features.main.title')
   }).state('about', {
     url: '/about',
     templateUrl: 'features/about/about.html',
     controller: 'AboutController',
-    pageTitle: 'About'
+    pageTitle: translate('features.about.title')
   }).state('playground', {
     url: '/playground',
     templateUrl: 'features/playground/playground.html',
     controller: 'PlaygroundController',
-    pageTitle: 'Playground'
+    pageTitle: translate('features.playground.title')
   }).state('404', {
     url: '/404',
     templateUrl: 'features/404/404.html',
-    pageTitle: "404 Error"
+    pageTitle: translate('features.404.title')
   });
 
   //DB Schema
@@ -44,7 +44,7 @@ app.run(['$rootScope', function($rootScope) {
 }]);
 
 //This will be moved to its own file eventually
-app.controller('AboutController', function($scope) {
+app.controller('AboutController', ["$scope", function($scope) {
   $scope.components = [{ name: 'node.js', kind: 'JS' },
                        { name: 'Angular.js', kind: 'JS' },
                        { name: 'nw.js', kind: 'JS' },
@@ -56,10 +56,10 @@ app.controller('AboutController', function($scope) {
                        { name: 'Grunt', kind: 'node' },
                        { name: 'Git', kind: 'other'}];
   $scope.message = "About Message";
-});
+}]);
 
 //This will also be moved into its own file
-app.controller('PlaygroundController', function($scope, $indexedDB) {
+app.controller('PlaygroundController', ["$scope", "$indexedDB", function($scope, $indexedDB) {
   var OBJECT_STORE_NAME = 'playground-items';
   var myObjectStore = $indexedDB.objectStore(OBJECT_STORE_NAME);
 
@@ -101,4 +101,4 @@ app.controller('PlaygroundController', function($scope, $indexedDB) {
   }
 
   invalidateList();
-});
+}]);

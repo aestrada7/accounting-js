@@ -10,12 +10,12 @@
       <section class="top-bar-section">
         <ul class="left">
           <li class="has-dropdown">
-            <a href="#">File</a>
+            <a href="#" ax-translate>global.file</a>
             <ul class="dropdown">
-              <li><a ui-sref="home">Main</a></li>
-              <li><a ui-sref="playground">Playground</a></li>
-              <li><a ui-sref="about">About</a></li>
-              <li><a href="#">Exit</a></li>
+              <li><a ui-sref="home" ax-translate>features.main.title</a></li>
+              <li><a ui-sref="playground" ax-translate>features.playground.title</a></li>
+              <li><a ui-sref="about" ax-translate>features.about.title</a></li>
+              <li><a href="#" ax-translate>features.exit.title</a></li>
             </ul>
           </li>
         </ul>
@@ -23,15 +23,20 @@
     </nav>
     <div class="main-content" ui-view></div>
     <!--All these will be modified by requireJS-->
-    <script type="text/javascript" src="./vendor/jquery/jquery.js"></script>
-    <script type="text/javascript" src="./vendor/modernizr/modernizr.js"></script>
-    <script type="text/javascript" src="./vendor/foundation/js/foundation.js"></script>
-    <script type="text/javascript" src="./vendor/angular/angular.js"></script>
-    <script type="text/javascript" src="./vendor/angular-ui-router/angular-ui-router.js"></script>
-    <script type="text/javascript" src="./vendor/angularjs-indexedDB/indexeddb.js"></script>
-    <script type="text/javascript" src="./app.js"></script>
+    <script src="./vendor/jquery/jquery.js"></script>
+    <script src="./vendor/angular/angular.js"></script>
+    <script src="./vendor/angular-ui-router/angular-ui-router.js"></script>
+    <script src="./vendor/angularjs-indexedDB/indexeddb.js"></script>
+    <script src="./vendor/requirejs/require.js"></script>
+    <script src="./require-config.js"></script>
+    <script src="./lang.js"></script>
+    <script src="./app.js"></script>
+    <script src="./directives/translate/translate.js"></script>
+    <script src="./directives/translate-attrs/translate-attrs.js"></script>
     <script>
-      $(document).foundation();
+      require(["jquery", "modernizr", "foundation"], function() {
+        $(document).foundation();
+      })
     </script>
   </body>
 </html>
