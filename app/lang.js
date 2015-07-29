@@ -1,16 +1,3 @@
-locale = 'en'; //change this later on
-translate = function(key) {
-  return serializeKey(lang['lang'][locale], key);
-}
-
-serializeKey = function(obj, key) {
-  var arr = key.split(".");
-  for(var i = 0; i < arr.length; i++) {
-    obj = obj[arr[i]];
-  }
-  return obj || key;
-}
-
 lang = {
   "lang": {
     "en": {

@@ -1,4 +1,4 @@
-app.directive('axTranslateAttrs', ['$compile', '$q', function($compile, $q) {
+app.directive('axTranslateAttrs', ['$compile', '$q', 'translateService', function($compile, $q, translateService) {
   return {
     restrict: 'A',
     link: function(scope, element, attrs) {
@@ -6,7 +6,7 @@ app.directive('axTranslateAttrs', ['$compile', '$q', function($compile, $q) {
       var transitionObj = {};
 
       angular.forEach(translateAttrs, function(value, key) {
-        transitionObj[key] = translate(value);
+        transitionObj[key] = translateService.translate(value);
       });
 
       $q.all(transitionObj).then(function(translatedAttrs) {
