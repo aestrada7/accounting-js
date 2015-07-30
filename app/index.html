@@ -12,7 +12,7 @@
           <li class="has-dropdown">
             <a href="#" ax-translate>global.file</a>
             <ul class="dropdown">
-              <li><a ui-sref="home" ax-translate>features.main.title</a></li>
+              <li><a ui-sref="home" ax-translate>features.home.title</a></li>
               <li><a ui-sref="playground" ax-translate>features.playground.title</a></li>
               <li><a ui-sref="about" ax-translate>features.about.title</a></li>
               <li><a href="#" ax-translate>features.exit.title</a></li>
@@ -31,8 +31,12 @@
     <script src="./require-config.js"></script>
     <script src="./lang.js"></script>
     <script src="./app.js"></script>
+    <script src="./services/translate-service.js"></script>
+    <script src="./services/localize-service.js"></script>
     <script src="./directives/translate/translate.js"></script>
     <script src="./directives/translate-attrs/translate-attrs.js"></script>
+    <script src="./features/about/about.js"></script>
+    <script src="./features/playground/playground.js"></script>
     <script>
       require(["jquery", "modernizr", "foundation"], function() {
         $(document).foundation();
