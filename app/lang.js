@@ -10,8 +10,8 @@ lang = {
         "new": "New"
       },
       "features": {
-        "main": {
-          "title": "Main"
+        "home": {
+          "title": "Home"
         },
         "playground": {
           "title": "Playground",
@@ -42,7 +42,7 @@ lang = {
         "new": "Agregar"
       },
       "features": {
-        "main": {
+        "home": {
           "title": "Inicio"
         },
         "playground": {

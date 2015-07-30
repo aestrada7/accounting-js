@@ -6,8 +6,8 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $inde
 
   $stateProvider.state('home', {
     url: '/', //Needs to be an "/" if using HTML5 mode
-    templateUrl: 'features/main/main.html',
-    pageTitle: 'features.main.title'
+    templateUrl: 'features/home/home.html',
+    pageTitle: 'features.home.title'
   }).state('about', {
     url: '/about',
     templateUrl: 'features/about/about.html',
