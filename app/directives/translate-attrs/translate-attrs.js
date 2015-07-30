@@ -1,19 +1,23 @@
-app.directive('axTranslateAttrs', ['$compile', '$q', 'translateService', function($compile, $q, translateService) {
-  return {
-    restrict: 'A',
-    link: function(scope, element, attrs) {
-      var translateAttrs = scope.$root.$eval(element.attr("ax-translate-attrs"));
-      var transitionObj = {};
+app.directive('axTranslateAttrs', 
+  ['$compile', '$q', 'translateService', 
 
-      angular.forEach(translateAttrs, function(value, key) {
-        transitionObj[key] = translateService.translate(value);
-      });
+  function($compile, $q, translateService) {
+    return {
+      restrict: 'A',
+      link: function(scope, element, attrs) {
+        var translateAttrs = scope.$root.$eval(element.attr("ax-translate-attrs"));
+        var transitionObj = {};
 
-      $q.all(transitionObj).then(function(translatedAttrs) {
-        element.attr(translatedAttrs);
-      });
+        angular.forEach(translateAttrs, function(value, key) {
+          transitionObj[key] = translateService.translate(value);
+        });
 
-      $compile(element.contents())(scope);
+        $q.all(transitionObj).then(function(translatedAttrs) {
+          element.attr(translatedAttrs);
+        });
+
+        $compile(element.contents())(scope);
+      }
     }
-  }
-}]);
+  }]
+);

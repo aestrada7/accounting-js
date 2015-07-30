@@ -6,7 +6,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $inde
 
   $stateProvider.state('home', {
     url: '/', //Needs to be an "/" if using HTML5 mode
-    template: '<p>Main!</p>',
+    templateUrl: 'features/main/main.html',
     pageTitle: 'features.main.title'
   }).state('about', {
     url: '/about',
@@ -25,19 +25,23 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $inde
   });
 });
 
-app.run(['$rootScope', 'translateService', function($rootScope, translateService) {
-  $rootScope.$on('$stateChangeError', function(event, toState, fromState) {
-    console.log("error");
-    console.log(toState);
-  });
-  $rootScope.$on('$stateChangeSuccess', function(event, toState, fromState) {
-    $rootScope.index = Object.create(null);
-    $rootScope.index.title = translateService.translate(toState.pageTitle);
-  });
-}]);
+app.run(['$rootScope', 'translateService', 
+
+  function($rootScope, translateService) {
+    $rootScope.$on('$stateChangeError', function(event, toState, fromState) {
+      console.log("error");
+      console.log(toState);
+    });
+    $rootScope.$on('$stateChangeSuccess', function(event, toState, fromState) {
+      $rootScope.index = Object.create(null);
+      $rootScope.index.title = translateService.translate(toState.pageTitle);
+    });
+  }]
+
+);
 
 //This will be moved to its own file eventually
-app.controller('AboutController', ["$scope", function($scope) {
+app.controller('AboutController', ['$scope', function($scope) {
   $scope.components = [{ name: 'node.js', kind: 'JS' },
                        { name: 'Angular.js', kind: 'JS' },
                        { name: 'nw.js', kind: 'JS' },
@@ -52,7 +56,7 @@ app.controller('AboutController', ["$scope", function($scope) {
 }]);
 
 //This will also be moved into its own file
-app.controller('PlaygroundController', ["$scope", function($scope) {
+app.controller('PlaygroundController', ['$scope', function($scope) {
   $scope.items = [{
     name: 'Hi', id: '1'
   }];
