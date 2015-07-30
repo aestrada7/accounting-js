@@ -2,7 +2,7 @@
   <h1 ax-translate>features.playground.title</h1>
   <span ax-translate>features.playground.pageText</span>
   <div class="row">
-    <div class="columns small-6 panel">
+    <div class="columns small-centered small-6 panel clearfix">
       <ul class="item-list">
         <li ng-repeat="item in items">
           <span class="identifier">{{item.id}}</span>
@@ -30,31 +30,16 @@
           </button>
         </div>
       </div>
-      <button class="right" ng-click="onAddItemClicked()" ax-translate-attrs="{'aria-label': 'global.new'}">
-        <i class="fi-plus"></i>
-        <span ax-translate>global.new</span>
-      </button>
-    </div>
-    <div class="columns small-6 panel">
-      <ul class="item-list">
-        <li ng-repeat="item in items2">
-          <span class="identifier">{{item.id}}</span>
-          <span>{{item.name}}</span><br>
-          <button class="tiny" ng-click="onDeleteItemClicked(item.id)" ax-translate-attrs="{'aria-label': 'global.delete'}">
-            <i class="fi-trash"></i>
-            <span ax-translate>global.delete</span>
-          </button>
-          <button class="tiny" ax-translate-attrs="{'aria-label': 'global.edit'}">
-            <i class="fi-pencil"></i>
-            <span ax-translate>global.edit</span>
-          </button>
-        </li>
-        </li>
-      </ul>
-      <button class="right" ng-click="onAddItemClicked()" ax-translate-attrs="{'aria-label': 'global.new'}">
-        <i class="fi-plus"></i>
-        <span ax-translate>global.new</span>
-      </button>
+      <div class="right">
+        <button ng-click="onClearClicked()" ax-translate-attrs="{'aria-label': 'global.clear'}">
+          <i class="fi-prohibited"></i>
+          <span ax-translate>global.clear</span>
+        </button>
+        <button ng-click="onAddItemClicked()" ax-translate-attrs="{'aria-label': 'global.new'}">
+          <i class="fi-plus"></i>
+          <span ax-translate>global.new</span>
+        </button>
+      </div>
     </div>
   </div>
 </div>

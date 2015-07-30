@@ -1,14 +1,14 @@
 app.controller('PlaygroundController', 
-  ['$scope', '$indexedDB', 
+  ['$scope', '$indexedDB', '$window',
 
-  function($scope, $indexedDB) {
+  function($scope, $indexedDB, $window) {
     var OBJECT_STORE_NAME = 'playground-items';
     var myObjectStore = $indexedDB.objectStore(OBJECT_STORE_NAME);
 
     $scope.addingLeftItem = false;
 
     $scope.onAddItemClicked = function() {
-      $('#new-item-left').val("");
+      $('#new-item-left').val('');
       $scope.addingLeftItem = true;
     }
 
@@ -16,9 +16,14 @@ app.controller('PlaygroundController',
       $scope.addingLeftItem = false;
     }
 
+    $scope.onClearClicked = function() {
+      indexedDB.deleteDatabase('accountingDB');
+      $window.location.reload();
+    }
+
     $scope.onConfirmAddItemClicked = function() {
       $scope.addingLeftItem = false;
-      myObjectStore.insert({ "id": Math.random(), "name": $('#new-item-left').val() }).then(function(e) {
+      myObjectStore.insert({ 'name': $('#new-item-left').val() }).then(function(e) {
         invalidateList();
       });
     }

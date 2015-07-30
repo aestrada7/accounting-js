@@ -7,7 +7,8 @@ lang = {
         "delete": "Delete",
         "cancel": "Cancel",
         "ok": "Ok",
-        "new": "New"
+        "new": "New",
+        "clear": "Clear"
       },
       "features": {
         "home": {
@@ -39,7 +40,8 @@ lang = {
         "delete": "Eliminar",
         "cancel": "Cancelar",
         "ok": "Aceptar",
-        "new": "Agregar"
+        "new": "Agregar",
+        "clear": "Limpiar"
       },
       "features": {
         "home": {

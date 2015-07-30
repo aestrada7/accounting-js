@@ -32,9 +32,9 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 //This will be moved to its own file eventually
 app.config(['$indexedDBProvider', 
   function($indexedDBProvider) {
-    $indexedDBProvider.connection('accountingDB').upgradeDatabase(1, function(event, db, tx) {
+    $indexedDBProvider.connection('accountingDB').upgradeDatabase(1, function(event, db, transaction) {
       //Playground
-      var objStore = db.createObjectStore('playground-items', {keyPath: 'id'});
+      var objStore = db.createObjectStore('playground-items', {keyPath: 'id', autoIncrement: true});
       objStore.createIndex('name_idx', 'name', {unique: false});
     });
   }]
