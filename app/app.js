@@ -1,5 +1,4 @@
 var app = angular.module('accountingJS', ['ui.router', 'xc.indexedDB']);
-var db = new SQL.Database();
 
 //Routing
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 
@@ -33,8 +32,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 //This will be moved to its own file eventually
 app.config(['$indexedDBProvider', 
   function($indexedDBProvider) {
-    db.run("CREATE TABLE PlaygroundItems(id integer, name text)");
-    console.log(db.exec("SELECT * FROM PlaygroundItems"));
     $indexedDBProvider.connection('accountingDB').upgradeDatabase(1, function(event, db, transaction) {
       //Playground
       var objStore = db.createObjectStore('playground-items', {keyPath: 'id', autoIncrement: true});
