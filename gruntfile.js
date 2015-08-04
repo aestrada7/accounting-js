@@ -60,19 +60,36 @@ module.exports = function(grunt) {
       server: {
         hostname: 'localhost'
       }
+    },
+
+    shell: {
+      'npm': {
+        command: 'npm install'
+      }
+    },
+
+    copy: {
+      main: {
+        src: 'node_modules/sql.js/js/*',
+        dest: 'app/vendor/sqljs/',
+        flatten: true,
+        filter: 'isFile',
+        expand: true
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-bower-task');
   grunt.loadNpmTasks('grunt-connect-rewrite');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-express');
   grunt.loadNpmTasks('grunt-http-server');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-shell');
 
-  grunt.registerTask('update', ['clean', 'bower']);
+  grunt.registerTask('update', ['shell:npm', 'clean', 'bower', 'copy']);
   grunt.registerTask('develop', ['http-server:dev', 'sass', 'watch']);
   grunt.registerTask('develop-new', ['express', 'sass', 'watch']);
 };

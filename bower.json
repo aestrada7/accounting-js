@@ -20,7 +20,7 @@
     },
     "foundation-icon-fonts": {
       "svgs": "svgs",
-      "": "*foundation*"      
+      "": "*foundation*"
     }
   }
 }
