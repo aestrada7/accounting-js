@@ -24,8 +24,8 @@ lang = {
           "subtitle": "About AccountingJS",
           "pageText": "Windows x64 app built using the following technologies"
         },
-        "exit": {
-          "title": "Exit"
+        "quit": {
+          "title": "Quit"
         },
         "404": {
           "title": "Not Found",
@@ -57,7 +57,7 @@ lang = {
           "subtitle": "Acerca de AccountingJS",
           "pageText": "Aplicación Windows x64 creada utilizando las siguientes tecnologías"
         },
-        "exit": {
+        "quit": {
           "title": "Salir"
         },
         "404": {

@@ -1,7 +1,6 @@
 <html ng-app="accountingJS">
   <head>
     <title ng-bind="index.title"></title>
-    <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="./build/styles/accounting-js.css" />
   </head>
@@ -12,10 +11,10 @@
           <li class="has-dropdown">
             <a href="#" ax-translate>global.file</a>
             <ul class="dropdown">
-              <li><a ui-sref="home" ax-translate>features.home.title</a></li>
-              <li><a ui-sref="playground" ax-translate>features.playground.title</a></li>
-              <li><a ui-sref="about" ax-translate>features.about.title</a></li>
-              <li><a href="#" ax-translate>features.exit.title</a></li>
+              <li><a id="home-link" ui-sref="home" ax-translate>features.home.title</a></li>
+              <li><a id="playground-link" ui-sref="playground" ax-translate>features.playground.title</a></li>
+              <li><a id="about-link" ui-sref="about" ax-translate>features.about.title</a></li>
+              <li><a id="quit-link" href="#" ax-translate>features.quit.title</a></li>
             </ul>
           </li>
         </ul>
@@ -29,7 +28,7 @@
     <script src="./vendor/angular/angular.js"></script>
     <script src="./vendor/angular-ui-router/angular-ui-router.js"></script>
     <script src="./vendor/angularjs-indexedDB/indexeddb.js"></script>
-    <script src="./vendor/sqljs/sql.js"></script>
+    <!--<script src="./vendor/sqljs/sql.js"></script>-->
     <script src="./lang.js"></script>
     <script src="./app.js"></script>
     <script src="./components/services/translate-service.js"></script>
