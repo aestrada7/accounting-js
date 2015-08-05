@@ -1,7 +1,7 @@
 app.controller('PlaygroundController', 
-  ['$scope', '$indexedDB', '$window',
+  ['$scope', '$q', '$window',
 
-  function($scope, $indexedDB, $window) {
+  function($scope, $q, $window) {
     $scope.addingLeftItem = false;
 
     $scope.onAddItemClicked = function() {
@@ -14,7 +14,6 @@ app.controller('PlaygroundController',
     }
 
     $scope.onClearClicked = function() {
-      indexedDB.deleteDatabase('accountingDB');
       $window.location.reload();
     }
 
@@ -26,12 +25,10 @@ app.controller('PlaygroundController',
     }
 
     $scope.onEditItemClicked = function(id) {
-      playgroundDB.find({ _id: id }, function(err, result) {
-        if(result) {
-          $('#new-item-left').val(result[0].name);
-          $scope.addingLeftItem = true;
-          $scope.$apply();
-        }
+      $scope.addingLeftItem = true;
+      $scope.$apply();
+      fetchData({ _id: id }).then(function(result) {
+        $('#new-item-left').val(result[0].name);
       });
     }
 
@@ -41,10 +38,17 @@ app.controller('PlaygroundController',
       });
     }
 
+    fetchData = function(args) {
+      var defer = $q.defer();
+      playgroundDB.find(args, function(err, results) {
+        defer.resolve(results);
+      });
+      return defer.promise;
+    }
+
     invalidateList = function() {
-      playgroundDB.find({}, function(err, results) {
+      fetchData({}).then(function(results) {
         $scope.items = results;
-        $scope.$apply();
       });
     }
 
