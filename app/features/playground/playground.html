@@ -5,13 +5,13 @@
     <div class="columns small-centered small-6 panel clearfix">
       <ul class="item-list">
         <li ng-repeat="item in items">
-          <span class="identifier">{{item.id}}</span>
+          <span class="identifier">{{item._id}}</span>
           <span>{{item.name}}</span><br>
-          <button class="tiny" ng-click="onDeleteItemClicked(item.id)" ax-translate-attrs="{'aria-label': 'global.delete'}">
+          <button class="tiny" ng-click="onDeleteItemClicked(item._id)" ax-translate-attrs="{'aria-label': 'global.delete'}">
             <i class="fi-trash"></i>
             <span ax-translate>global.delete</span>
           </button>
-          <button class="tiny" ax-translate-attrs="{'aria-label': 'global.edit'}">
+          <button class="tiny" ng-click="onEditItemClicked(item._id)" ax-translate-attrs="{'aria-label': 'global.edit'}">
             <i class="fi-pencil"></i>
             <span ax-translate>global.edit</span>
           </button>
