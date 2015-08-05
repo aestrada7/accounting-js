@@ -72,6 +72,9 @@ module.exports = function(grunt) {
           failOnError: false
         }
       },
+      'nw': {
+        command: '"node_modules/.bin/nw" accounting-js'
+      }
     },
 
     copy: {
@@ -96,6 +99,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('update', ['shell:git-pull', 'shell:npm', 'clean', 'bower', 'copy']);
-  grunt.registerTask('develop', ['http-server:dev', 'sass', 'watch']);
+  grunt.registerTask('develop', ['http-server:dev', 'sass', 'shell:nw', 'watch']);
   grunt.registerTask('develop-new', ['express', 'sass', 'watch']);
 };
