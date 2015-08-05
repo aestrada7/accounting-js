@@ -52,53 +52,7 @@ app.run(['$rootScope', 'translateService',
       $rootScope.index.title = translateService.translate(toState.pageTitle);
     });
 
-    //nw.js toolbar
-    try {
-      var gui = require('nw.gui');
-      var win = gui.Window.get();
-      var menu = new gui.Menu({ type: "menubar" });
-
-      menu.append(new gui.MenuItem({
-        label: translateService.translate($('#home-link').html()),
-        click: function() {
-          $('#home-link').click();
-          $('body').click();
-        },
-        key: "h",
-        modifiers: "alt"
-      }));
-
-      menu.append(new gui.MenuItem({
-        label: translateService.translate($('#about-link').html()),
-        click: function() {
-          $('#about-link').click();
-          $('body').click();
-        },
-        key: "a",
-        modifiers: "alt"
-      }));
-
-      menu.append(new gui.MenuItem({
-        label: translateService.translate($('#playground-link').html()),
-        click: function() {
-          $('#playground-link').click();
-          $('body').click();
-        },
-        key: "p",
-        modifiers: "alt"
-      }));
-
-      menu.append(new gui.MenuItem({
-        label: translateService.translate($('#quit-link').html()),
-        click: function() {
-          gui.App.quit();
-        },
-        key: "q",
-        modifiers: "ctrl"
-      }));
-
-      win.menu = menu;
-    } catch(e) {}
+    nwStartUp(translateService);
   }]
 
 );
