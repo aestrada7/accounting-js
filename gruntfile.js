@@ -70,8 +70,8 @@ module.exports = function(grunt) {
 
     copy: {
       main: {
-        src: 'node_modules/sql.js/js/*',
-        dest: 'app/vendor/sqljs/',
+        src: 'node_modules/nedb/browser-version/out/*',
+        dest: 'app/vendor/nedb/',
         flatten: true,
         filter: 'isFile',
         expand: true
