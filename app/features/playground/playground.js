@@ -26,12 +26,13 @@ app.controller('PlaygroundController',
     }
 
     $scope.onEditItemClicked = function(id) {
-      /*
-      myObjectStore.find(id).then(function(result) {
-        $scope.addingLeftItem = true;
-        $('#new-item-left').val(result.name);
+      playgroundDB.find({ _id: id }, function(err, result) {
+        if(result) {
+          $('#new-item-left').val(result[0].name);
+          $scope.addingLeftItem = true;
+          $scope.$apply();
+        }
       });
-      */
     }
 
     $scope.onDeleteItemClicked = function(id) {
@@ -43,7 +44,7 @@ app.controller('PlaygroundController',
     invalidateList = function() {
       playgroundDB.find({}, function(err, results) {
         $scope.items = results;
-        $scope.apply();
+        $scope.$apply();
       });
     }
 

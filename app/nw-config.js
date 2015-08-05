@@ -53,12 +53,29 @@ nwStartUp = function(translateService) {
       modifiers: 'alt'
     }));
 
-    menu.append(new gui.MenuItem({
+    //Dev menu
+    var devMenu = new gui.Menu();
+    devMenu.append(new gui.MenuItem({
+      label: 'Refresh',
+      click: function() {
+        win.reloadDev();
+      },
+      key: 'f5'
+    }));
+
+    devMenu.append(new gui.MenuItem({
       label: 'Dev Tools',
       click: function() {
         win.showDevTools();
       },
       key: 'f12'
+    }));
+
+    menu.append(new gui.MenuItem({
+      label: 'Dev',
+      submenu: devMenu,
+      key: 'd',
+      modifiers: 'alt'
     }));
 
     win.menu = menu;
