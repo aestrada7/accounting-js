@@ -65,6 +65,15 @@ module.exports = function(grunt) {
     shell: {
       'npm': {
         command: 'npm install'
+      },
+      'git-pull': {
+        command: 'git pull --ff-only --all -p',
+        options: {
+          failOnError: false
+        }
+      },
+      'nw': {
+        command: '"node_modules/.bin/nw" accounting-js'
       }
     },
 
@@ -89,7 +98,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-shell');
 
-  grunt.registerTask('update', ['shell:npm', 'clean', 'bower', 'copy']);
-  grunt.registerTask('develop', ['http-server:dev', 'sass', 'watch']);
+  grunt.registerTask('update', ['shell:git-pull', 'shell:npm', 'clean', 'bower', 'copy']);
+  grunt.registerTask('develop', ['http-server:dev', 'sass', 'shell:nw', 'watch']);
   grunt.registerTask('develop-new', ['express', 'sass', 'watch']);
 };

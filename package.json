@@ -1,7 +1,10 @@
 {
   "name": "accounting-js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "app/index.html",
+  "window": {
+    "toolbar": false
+  },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-bower-task": "^0.4.0",
