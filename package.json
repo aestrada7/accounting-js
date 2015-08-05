@@ -12,7 +12,9 @@
     "grunt-express": "^1.4.1",
     "grunt-http-server": "1.4.0",
     "grunt-sass": "1.0.0",
-    "grunt-shell": "0.7.0",
-    "sql.js": "0.2.21"
+    "grunt-shell": "0.7.0"
+  },
+  "dependencies": {
+    "nedb": "^1.1.2"
   }
 }
