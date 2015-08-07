@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="./build/styles/accounting-js.css" />
   </head>
   <body>
-    <nav class="top-bar fixed" data-topbar role="navigation">
+    <nav class="top-bar fixed hide" data-topbar role="navigation">
       <section class="top-bar-section">
         <ul class="left">
           <li class="has-dropdown">
@@ -19,6 +19,8 @@
           </li>
         </ul>
       </section>
+      <input id="file-export-dialog" type="file" accept=".zip" nwsaveas>
+      <input id="file-import-dialog" type="file" accept=".zip">
     </nav>
     <div class="main-content" ui-view></div>
     <!--All these will be modified by requireJS-->

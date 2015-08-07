@@ -8,7 +8,10 @@ lang = {
         "cancel": "Cancel",
         "ok": "Ok",
         "new": "New",
-        "clear": "Clear"
+        "clear": "Clear",
+        "export": "Export",
+        "import": "Import",
+        "tools": "Tools"
       },
       "features": {
         "home": {
@@ -41,7 +44,10 @@ lang = {
         "cancel": "Cancelar",
         "ok": "Aceptar",
         "new": "Agregar",
-        "clear": "Limpiar"
+        "clear": "Limpiar",
+        "export": "Exportar",
+        "import": "Importar",
+        "tools": "Herramientas"
       },
       "features": {
         "home": {
