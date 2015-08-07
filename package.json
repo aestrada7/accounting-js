@@ -12,8 +12,8 @@
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-express": "^1.4.1",
     "grunt-http-server": "1.4.0",
+    "grunt-parallel": "^0.4.1",
     "grunt-sass": "1.0.0",
     "grunt-shell": "0.7.0"
   },

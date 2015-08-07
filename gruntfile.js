@@ -52,16 +52,6 @@ module.exports = function(grunt) {
       }
     },
 
-    express: {
-      options: {
-        port: 8011,
-        bases: ['app']
-      },
-      server: {
-        hostname: 'localhost'
-      }
-    },
-
     shell: {
       'npm': {
         command: 'npm install'
@@ -85,6 +75,18 @@ module.exports = function(grunt) {
         filter: 'isFile',
         expand: true
       }
+    },
+
+    parallel: {
+      watchers: {
+        tasks: [{
+          grunt: true,
+          args: ['shell:nw']
+        }, {
+          stream: true,
+          args: ['watch']
+        }]
+      }
     }
   });
 
@@ -93,12 +95,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-express');
   grunt.loadNpmTasks('grunt-http-server');
+  grunt.loadNpmTasks('grunt-parallel');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('update', ['shell:git-pull', 'shell:npm', 'clean', 'bower', 'copy']);
-  grunt.registerTask('develop', ['http-server:dev', 'sass', 'shell:nw', 'watch']);
-  grunt.registerTask('develop-new', ['express', 'sass', 'watch']);
+  grunt.registerTask('develop', ['http-server:dev', 'sass', 'parallel:watchers']);
 };

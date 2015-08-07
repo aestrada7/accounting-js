@@ -9,6 +9,8 @@
 * `npm install`
 * `grunt update`
 * `grunt develop`
-* Use nw.exe to open the package
+* nw.exe will load automatically
 
-This app uses nw.js, grunt update installs all bower components.
+This app uses nw.js, grunt update fetches the branches from git, installs all bower components, installs npm packages.
+
+Sit back, relax. Let grunt update and grunt develop do all the heavy lifting.
