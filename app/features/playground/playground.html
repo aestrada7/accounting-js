@@ -18,13 +18,15 @@
             </button>
           </div>
           <div ng-if="item._id === editingItem">
-            <input id="edit-item-{{item._id}}" type="text" ax-translate-attrs="{'placeholder': 'features.playground.newPlaceholder', 'aria-label': 'features.playground.newPlaceholder'}" value="{{item.name}}"></input>
+            <input id="edit-item-{{item._id}}" type="text" value="{{item.name}}" 
+                   ax-translate-attrs="{'placeholder': 'features.playground.newPlaceholder', 'aria-label': 'features.playground.newPlaceholder'}"
+                   ax-key-handler="{'enter': '.edit-pg-save-button', 'esc': '.edit-pg-cancel-button'}"></input>
             <div class="edit-item-controls">
-              <button class="tiny" ng-click="onCancelEditItemClicked()" ax-translate-attrs="{'aria-label': 'global.cancel'}">
+              <button class="edit-pg-cancel-button tiny" ng-click="onCancelEditItemClicked()" ax-translate-attrs="{'aria-label': 'global.cancel'}">
                 <i class="fi-x"></i>
                 <span ax-translate>global.cancel</span>
               </button>
-              <button class="tiny" ng-click="onSaveItemClicked()" ax-translate-attrs="{'aria-label': 'global.save'}">
+              <button class="edit-pg-save-button tiny" ng-click="onSaveItemClicked()" ax-translate-attrs="{'aria-label': 'global.save'}">
                 <i class="fi-check"></i>
                 <span ax-translate>global.save</span>
               </button>
@@ -33,13 +35,14 @@
         </li>
       </ul>
       <div class="new-item" ng-if="addingItem">
-        <input id="new-item" type="text" ax-translate-attrs="{'placeholder': 'features.playground.newPlaceholder', 'aria-label': 'features.playground.newPlaceholder'}"></input>
+        <input id="new-item" type="text" ax-translate-attrs="{'placeholder': 'features.playground.newPlaceholder', 'aria-label': 'features.playground.newPlaceholder'}"
+               ax-key-handler="{'enter': '.new-pg-save-button', 'esc': '.new-pg-cancel-button'}"></input>
         <div class="new-item-controls">
-          <button class="tiny" ng-click="onCancelAddItemClicked()" ax-translate-attrs="{'aria-label': 'global.cancel'}">
+          <button class="new-pg-cancel-button tiny" ng-click="onCancelAddItemClicked()" ax-translate-attrs="{'aria-label': 'global.cancel'}">
             <i class="fi-x"></i>
             <span ax-translate>global.cancel</span>
           </button>
-          <button class="tiny" ng-click="onConfirmAddItemClicked()" ax-translate-attrs="{'aria-label': 'global.ok'}">
+          <button class="new-pg-save-button tiny" ng-click="onConfirmAddItemClicked()" ax-translate-attrs="{'aria-label': 'global.ok'}">
             <i class="fi-check"></i>
             <span ax-translate>global.ok</span>
           </button>

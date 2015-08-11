@@ -1,13 +1,16 @@
 app.controller('PlaygroundController', 
-  ['$scope', '$q', '$window',
+  ['$scope', '$q', '$window', '$timeout',
 
-  function($scope, $q, $window) {
+  function($scope, $q, $window, $timeout) {
     $scope.addingItem = false;
     $scope.editingItem = -1; //Id of the item being edited
 
     $scope.onAddItemClicked = function() {
       $('#new-item').val('');
       $scope.addingItem = true;
+      $timeout(function() {
+        angular.element('#new-item').focus();
+      });
     }
 
     $scope.onCancelAddItemClicked = function() {
@@ -27,9 +30,8 @@ app.controller('PlaygroundController',
 
     $scope.onEditItemClicked = function(id) {
       $scope.editingItem = id;
-      $scope.$apply();
-      fetchData({ _id: id }).then(function(result) {
-        $('#new-item').val(result[0].name);
+      $timeout(function() {
+        angular.element('#edit-item-' + $scope.editingItem).focus();
       });
     }
 
