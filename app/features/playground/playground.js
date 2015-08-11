@@ -2,15 +2,16 @@ app.controller('PlaygroundController',
   ['$scope', '$q', '$window',
 
   function($scope, $q, $window) {
-    $scope.addingLeftItem = false;
+    $scope.addingItem = false;
+    $scope.editingItem = -1; //Id of the item being edited
 
     $scope.onAddItemClicked = function() {
-      $('#new-item-left').val('');
-      $scope.addingLeftItem = true;
+      $('#new-item').val('');
+      $scope.addingItem = true;
     }
 
     $scope.onCancelAddItemClicked = function() {
-      $scope.addingLeftItem = false;
+      $scope.addingItem = false;
     }
 
     $scope.onClearClicked = function() {
@@ -18,22 +19,34 @@ app.controller('PlaygroundController',
     }
 
     $scope.onConfirmAddItemClicked = function() {
-      $scope.addingLeftItem = false;
-      playgroundDB.insert({ 'name': $('#new-item-left').val() }, function(err, newItem) {
+      $scope.addingItem = false;
+      playgroundDB.insert({ 'name': $('#new-item').val() }, function(err, newItem) {
         invalidateList();
       });
     }
 
     $scope.onEditItemClicked = function(id) {
-      $scope.addingLeftItem = true;
+      $scope.editingItem = id;
       $scope.$apply();
       fetchData({ _id: id }).then(function(result) {
-        $('#new-item-left').val(result[0].name);
+        $('#new-item').val(result[0].name);
       });
     }
 
     $scope.onDeleteItemClicked = function(id) {
       playgroundDB.remove({ _id: id }, function(err, totalRemoved) {
+        invalidateList();
+      });
+    }
+
+    $scope.onCancelEditItemClicked = function() {
+      $scope.editingItem = -1;
+    }
+
+    $scope.onSaveItemClicked = function() {
+      var value = $('#edit-item-' + $scope.editingItem).val();
+      playgroundDB.update({ _id: $scope.editingItem }, { $set: { 'name': value }}, { multi: false }, function (err, numReplaced) {
+        $scope.editingItem = -1;
         invalidateList();
       });
     }

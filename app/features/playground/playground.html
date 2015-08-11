@@ -5,20 +5,35 @@
     <div class="columns small-centered small-12 medium-8 large-6 panel clearfix">
       <ul class="item-list">
         <li ng-repeat="item in items">
-          <span class="identifier">{{item._id}}</span>
-          <span>{{item.name}}</span><br>
-          <button class="tiny" ng-click="onDeleteItemClicked(item._id)" ax-translate-attrs="{'aria-label': 'global.delete'}">
-            <i class="fi-trash"></i>
-            <span ax-translate>global.delete</span>
-          </button>
-          <button class="tiny" ng-click="onEditItemClicked(item._id)" ax-translate-attrs="{'aria-label': 'global.edit'}">
-            <i class="fi-pencil"></i>
-            <span ax-translate>global.edit</span>
-          </button>
+          <div ng-if="item._id !== editingItem">
+            <span class="identifier">{{item._id}}</span>
+            <span>{{item.name}}</span><br>
+            <button class="tiny" ng-click="onDeleteItemClicked(item._id)" ax-translate-attrs="{'aria-label': 'global.delete'}">
+              <i class="fi-trash"></i>
+              <span ax-translate>global.delete</span>
+            </button>
+            <button class="tiny" ng-click="onEditItemClicked(item._id)" ax-translate-attrs="{'aria-label': 'global.edit'}">
+              <i class="fi-pencil"></i>
+              <span ax-translate>global.edit</span>
+            </button>
+          </div>
+          <div ng-if="item._id === editingItem">
+            <input id="edit-item-{{item._id}}" type="text" ax-translate-attrs="{'placeholder': 'features.playground.newPlaceholder', 'aria-label': 'features.playground.newPlaceholder'}" value="{{item.name}}"></input>
+            <div class="edit-item-controls">
+              <button class="tiny" ng-click="onCancelEditItemClicked()" ax-translate-attrs="{'aria-label': 'global.cancel'}">
+                <i class="fi-x"></i>
+                <span ax-translate>global.cancel</span>
+              </button>
+              <button class="tiny" ng-click="onSaveItemClicked()" ax-translate-attrs="{'aria-label': 'global.save'}">
+                <i class="fi-check"></i>
+                <span ax-translate>global.save</span>
+              </button>
+            </div>
+          </div>
         </li>
       </ul>
-      <div class="new-item" ng-if="addingLeftItem">
-        <input id="new-item-left" type="text" ax-translate-attrs="{'placeholder': 'features.playground.newPlaceholder', 'aria-label': 'features.playground.newPlaceholder'}"></input>
+      <div class="new-item" ng-if="addingItem">
+        <input id="new-item" type="text" ax-translate-attrs="{'placeholder': 'features.playground.newPlaceholder', 'aria-label': 'features.playground.newPlaceholder'}"></input>
         <div class="new-item-controls">
           <button class="tiny" ng-click="onCancelAddItemClicked()" ax-translate-attrs="{'aria-label': 'global.cancel'}">
             <i class="fi-x"></i>
