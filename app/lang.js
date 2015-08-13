@@ -35,6 +35,15 @@ lang = {
           "title": "Not Found",
           "pageText": "File not found"
         }
+      },
+      "components": {
+        "import-export": {
+          "export-success": "Database exported successfully.",
+          "import-success": "Database imported successfully and ready to be used.",
+          "export-error": "An error occurred during database export, please contact your administrator.",
+          "import-error": "An error occurred during database import, please contact your administrator.",
+          "file-corrupted": "This file is corrupted and couldn't be loaded, please contact your administrator."
+        }
       }
     },
     "es": {
@@ -71,6 +80,15 @@ lang = {
         "404": {
           "title": "No Encontrado",
           "pageText": "Archivo no encontrado"
+        }
+      },
+      "components": {
+        "import-export": {
+          "export-success": "La base de datos fue exportada correctamente.",
+          "import-success": "La base de datos fue importada correctamente y está lista para ser utilizada.",
+          "export-error": "Sucedió un error al exportar la base de datos, por favor contacta a tu administrador.",
+          "import-error": "Sucedió un error al importar la base de datos, por favor contacta a tu administrador.",
+          "file-corrupted": "Este archivo está corrupto y no puede ser cargada, por favor contacta a tu administrador."
         }
       }
     }

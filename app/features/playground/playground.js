@@ -1,7 +1,7 @@
 app.controller('PlaygroundController', 
-  ['$scope', '$q', '$window', '$timeout',
+  ['$scope', '$q', '$window', '$timeout', 'notificationService',
 
-  function($scope, $q, $window, $timeout) {
+  function($scope, $q, $window, $timeout, notificationService) {
     $scope.addingItem = false;
     $scope.editingItem = -1; //Id of the item being edited
 
@@ -18,7 +18,7 @@ app.controller('PlaygroundController',
     }
 
     $scope.onClearClicked = function() {
-      $window.location.reload();
+      notificationService.show('global.clear', 'success', 'top right');
     }
 
     $scope.onConfirmAddItemClicked = function() {
