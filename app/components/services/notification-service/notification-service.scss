@@ -1,0 +1,78 @@
+$notification-width: rem-calc(400);
+
+.notification-service {
+  position: fixed;
+  width: $notification-width;
+  height: rem-calc(90);
+  background-color: $background-medium;
+  border: 1px solid $border-color-medium;
+  color: $text-color;
+
+  &.top {
+    top: rem-calc(10);
+  }
+
+  &.bottom {
+    bottom: rem-calc(10);
+  }
+
+  &.right {
+    #{$opposite-direction}: -$notification-width;
+
+    &.slide-in {
+      #{$opposite-direction}: 0;
+      transition: $opposite-direction $transition-time !important;      
+    }
+
+    &.dismissed {
+      #{$opposite-direction}: -$notification-width;
+      transition: $opposite-direction $transition-time !important;
+    }
+  }
+
+  &.left {
+    #{$default-float}: -$notification-width;
+
+    &.slide-in {
+      #{$default-float}: 0;
+      transition: $default-float $transition-time;      
+    }
+
+    &.dismissed {
+      #{$default-float}: -$notification-width;
+      transition: $default-float $transition-time;
+    }    
+  }
+
+  &.error, &.alert {
+    background-color: $alert-color;
+    border: 1px solid $alert-color-lt;
+    color: $text-color-inverse;
+  }
+
+  &.success {
+    background-color: $success-color;
+    border: 1px solid $success-color-lt;
+    color: $text-color-inverse;
+  }
+
+  &.info {
+    background-color: $info-color;
+    background-color: $info-color-lt;
+    color: $text-color-inverse;
+  }
+
+  .icon {
+    font-size: $font-size-xxlarge;
+    padding: rem-calc(27);
+  }
+
+  .message {
+    position: absolute;
+    top: 0;
+    #{$default-float}: rem-calc(80);
+    width: rem-calc(310);
+    height: 100%;
+    padding-top: 5%;
+  }
+}

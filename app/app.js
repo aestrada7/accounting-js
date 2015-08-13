@@ -4,10 +4,9 @@ var app = angular.module('accountingJS', ['ui.router', 'xc.indexedDB']);
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 
   function($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/404');
-    //$locationProvider.html5Mode(true); //Needs a URL Rewrite, won't be added right now
 
     $stateProvider.state('home', {
-      url: '/', //Needs to be an "/" if using HTML5 mode
+      url: '/',
       templateUrl: 'features/home/home.html',
       pageTitle: 'features.home.title'
     }).state('about', {
@@ -24,18 +23,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
       url: '/404',
       templateUrl: 'features/404/404.html',
       pageTitle: 'features.404.title'
-    });
-  }]
-);
-
-//DB Schema
-//This will be moved to its own file eventually
-app.config(['$indexedDBProvider', 
-  function($indexedDBProvider) {
-    $indexedDBProvider.connection('accountingDB').upgradeDatabase(1, function(event, db, transaction) {
-      //Playground
-      var objStore = db.createObjectStore('playground-items', {keyPath: 'id', autoIncrement: true});
-      objStore.createIndex('name_idx', 'name', {unique: false});
     });
   }]
 );

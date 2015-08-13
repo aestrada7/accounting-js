@@ -1,5 +1,5 @@
 app.provider('translateService', function() {
-  this.$get = function(localizeService) {
+  this.$get = ['localizeService', function(localizeService) {
     var translate = function(key) {
       return serializeKey(lang['lang'][localizeService.locale], key);
     }
@@ -15,5 +15,5 @@ app.provider('translateService', function() {
     return {
       translate: translate
     };
-  }
+  }]
 });

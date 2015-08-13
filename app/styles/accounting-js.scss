@@ -2,6 +2,7 @@
 @import "mixins";     // App defined mixins
 @import "../vendor/foundation/scss/foundation"; // Foundation
 @import "../vendor/foundation-icon-fonts/foundation-icons"; //Foundation Icons
+@import "foundation-variables"; // App defined variables that need foundation
 
 // Main definitions
 @import "components/main";
@@ -14,3 +15,7 @@
 @import "../features/about/about";
 // Playground page
 @import "../features/playground/playground";
+
+/* -- Directives/Services -- */
+// Notification Service
+@import "../components/services/notification-service/notification-service"
