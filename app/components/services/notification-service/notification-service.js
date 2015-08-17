@@ -40,7 +40,7 @@ app.provider('notificationService', function() {
 
         $timeout(function() {
           angular.element('.notification-service').addClass('slide-in');
-        }, 0);
+        }, 100);
 
         $timeout(function() {
           scope.dismiss();
@@ -50,7 +50,7 @@ app.provider('notificationService', function() {
       scope.dismiss = function() {
         if(!scope.dismissed) {
           scope.dismissed = true;
-          angular.element('.notification-service').addClass('dismissed');
+          angular.element('.notification-service').removeClass('slide-in');
           $timeout(function() {
             angular.element('.notification-service').remove();
           }, REMOVE_MILLISECONDS);

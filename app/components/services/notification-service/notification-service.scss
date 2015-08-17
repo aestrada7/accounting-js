@@ -18,30 +18,20 @@ $notification-width: rem-calc(400);
 
   &.right {
     #{$opposite-direction}: -$notification-width;
+    transition: $opposite-direction $transition-time;
 
     &.slide-in {
-      #{$opposite-direction}: 0;
-      transition: $opposite-direction $transition-time !important;      
-    }
-
-    &.dismissed {
-      #{$opposite-direction}: -$notification-width;
-      transition: $opposite-direction $transition-time !important;
+      #{$opposite-direction}: 0 !important;
     }
   }
 
   &.left {
     #{$default-float}: -$notification-width;
+    transition: $default-float $transition-time;
 
     &.slide-in {
-      #{$default-float}: 0;
-      transition: $default-float $transition-time;      
+      #{$default-float}: 0 !important;
     }
-
-    &.dismissed {
-      #{$default-float}: -$notification-width;
-      transition: $default-float $transition-time;
-    }    
   }
 
   &.error, &.alert {

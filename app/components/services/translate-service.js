@@ -5,7 +5,7 @@ app.provider('translateService', function() {
     }
 
     var serializeKey = function(obj, key) {
-      var arr = key.split(".");
+      var arr = key.split('.');
       for(var i = 0; i < arr.length; i++) {
         obj = obj[arr[i]];
       }

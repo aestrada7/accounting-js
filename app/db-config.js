@@ -19,6 +19,7 @@ dbStartUp = function(notificationService) {
     fileStream.Reader('data').pipe(tar.Pack()).pipe(zlib.Gzip()).pipe(fileStream.Writer(filename)).on('close', function() {
       notificationService.show('components.import-export.export-success', 'success', 'top right');
     });
+    $('#file-export-dialog').val('');
   }
 
   importDB = function(filename) {
@@ -46,6 +47,7 @@ dbStartUp = function(notificationService) {
         }
       });
     });
+    $('#file-import-dialog').val('');
   }
 
   $('#file-export-dialog').on('change', function() {
