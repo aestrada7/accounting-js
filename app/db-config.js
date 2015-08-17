@@ -35,7 +35,7 @@ dbStartUp = function(notificationService) {
           rimraf('data', function(er) {
             ncp('temp/data', 'data', function() {
               rimraf('temp', function(er) {
-                notificationService.show('components.import-export.import-success', 'success', 'top right', '', false);
+                window.location.href += '?imported';
                 win.reloadDev();
               });
             });
@@ -49,6 +49,15 @@ dbStartUp = function(notificationService) {
     });
     $('#file-import-dialog').val('');
   }
+
+  checkIfFileImported = function() {
+    if(window.location.href.indexOf('?imported') !== -1) {
+      notificationService.show('components.import-export.import-success', 'success', 'top right', '', false);
+      window.location.href = window.location.href.split('?imported').join('');
+    }
+  }
+
+  checkIfFileImported();
 
   $('#file-export-dialog').on('change', function() {
     var exportPath = $('#file-export-dialog').val();
