@@ -24,25 +24,25 @@ dbStartUp = function(notificationService) {
 
   importDB = function(filename) {
     fs.createReadStream(filename).on('error', function(err) {
-      notificationService.show('components.import-export.file-removed', 'alert', 'top right');
+      notificationService.show('components.import-export.file-removed', 'alert', 'top right', '', true);
     }).pipe(zlib.Gunzip()).on('error', function(err) {
-      notificationService.show('components.import-export.file-corrupted', 'alert', 'top right');
+      notificationService.show('components.import-export.file-corrupted', 'alert', 'top right', '', true);
     }).pipe(tar.Extract({ path: 'temp' })).on('error', function(err) {
-      notificationService.show('components.import-export.file-corrupted', 'alert', 'top right');
+      notificationService.show('components.import-export.file-corrupted', 'alert', 'top right', '', true);
     }).on('end', function() {
       fs.exists('temp/data/playground.db', function(exists) {
         if(exists) {
           rimraf('data', function(er) {
             ncp('temp/data', 'data', function() {
               rimraf('temp', function(er) {
-                notificationService.show('components.import-export.import-success', 'success', 'top right');
+                notificationService.show('components.import-export.import-success', 'success', 'top right', '', false);
                 win.reloadDev();
               });
             });
           });
         } else {
           rimraf('temp', function(er) {
-            notificationService.show('components.import-export.file-corrupted', 'alert', 'top right');
+            notificationService.show('components.import-export.file-corrupted', 'alert', 'top right', '', true);
           });
         }
       });

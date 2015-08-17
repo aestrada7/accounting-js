@@ -5,7 +5,7 @@ app.provider('notificationService', function() {
     var MAX_MILLISECONDS = 4000;
     var REMOVE_MILLISECONDS = 1000;
 
-    var show = function(key, kind, position, icon) {
+    var show = function(key, kind, position, icon, autoDisabled) {
       var notificationTemplate = '';
       var scope = $rootScope.$new(true);
 
@@ -14,6 +14,7 @@ app.provider('notificationService', function() {
       scope.position = position;
       scope.icon = icon;
       scope.dismissed = false;
+      scope.autoDisabled = autoDisabled;
 
       if(!scope.position) {
         scope.position = 'bottom left'
@@ -42,9 +43,11 @@ app.provider('notificationService', function() {
           angular.element('.notification-service').addClass('slide-in');
         }, 100);
 
-        $timeout(function() {
-          scope.dismiss();
-        }, MAX_MILLISECONDS);
+        if(!scope.autoDisabled) {
+          $timeout(function() {
+            scope.dismiss();
+          }, MAX_MILLISECONDS);
+        }
       });
 
       scope.dismiss = function() {

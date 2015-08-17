@@ -10,3 +10,7 @@ h1 {
 .main-content {
   padding: rem-calc(10);
 }
+
+button {
+  transition: color $transition-time, background-color $transition-time;
+}

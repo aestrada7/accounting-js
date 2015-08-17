@@ -12,7 +12,8 @@ lang = {
         "clear": "Clear",
         "export": "Export",
         "import": "Import",
-        "tools": "Tools"
+        "tools": "Tools",
+        "close": "Close"
       },
       "features": {
         "home": {
@@ -59,7 +60,8 @@ lang = {
         "clear": "Limpiar",
         "export": "Exportar",
         "import": "Importar",
-        "tools": "Herramientas"
+        "tools": "Herramientas",
+        "close": "Cerrar"
       },
       "features": {
         "home": {

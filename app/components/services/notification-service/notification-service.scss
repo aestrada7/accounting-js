@@ -16,6 +16,14 @@ $notification-width: rem-calc(400);
     bottom: rem-calc(10);
   }
 
+  button {
+    position: absolute;
+    top: 0;
+    #{$opposite-direction}: rem-calc(-20);
+    background: transparent;
+    outline: none;
+  }
+
   &.right {
     #{$opposite-direction}: -$notification-width;
     transition: $opposite-direction $transition-time;
@@ -38,18 +46,36 @@ $notification-width: rem-calc(400);
     background-color: $alert-color;
     border: 1px solid $alert-color-lt;
     color: $text-color-inverse;
+
+    button {
+      &:hover {
+        color: $alert-color-dk;
+      }
+    }
   }
 
   &.success {
     background-color: $success-color;
     border: 1px solid $success-color-lt;
     color: $text-color-inverse;
+
+    button {
+      &:hover {
+        color: $success-color-dk;
+      }
+    }
   }
 
   &.info {
     background-color: $info-color;
     background-color: $info-color-lt;
     color: $text-color-inverse;
+
+    button {
+      &:hover {
+        color: $info-color-dk;
+      }
+    }
   }
 
   .icon {
