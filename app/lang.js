@@ -42,7 +42,8 @@ lang = {
           "import-success": "Database imported successfully and ready to be used.",
           "export-error": "An error occurred during database export, please contact your administrator.",
           "import-error": "An error occurred during database import, please contact your administrator.",
-          "file-corrupted": "This file is corrupted and couldn't be loaded, please contact your administrator."
+          "file-corrupted": "This file is corrupted and couldn't be loaded, please contact your administrator.",
+          "file-removed": "This file is no longer available and couldn't be loaded. Please try again."
         }
       }
     },
@@ -88,7 +89,8 @@ lang = {
           "import-success": "La base de datos fue importada correctamente y está lista para ser utilizada.",
           "export-error": "Sucedió un error al exportar la base de datos, por favor contacta a tu administrador.",
           "import-error": "Sucedió un error al importar la base de datos, por favor contacta a tu administrador.",
-          "file-corrupted": "Este archivo está corrupto y no puede ser cargada, por favor contacta a tu administrador."
+          "file-corrupted": "Este archivo está corrupto y no puede ser cargado, por favor contacta a tu administrador.",
+          "file-removed": "Este archivo no está disponible y no pudo ser cargado. Intenta de nuevo por favor."
         }
       }
     }

@@ -22,7 +22,13 @@ dbStartUp = function(notificationService) {
   }
 
   importDB = function(filename) {
-    fs.createReadStream(filename).pipe(zlib.Gunzip()).pipe(tar.Extract({ path: 'temp' })).on('end', function() {
+    fs.createReadStream(filename).on('error', function(err) {
+      notificationService.show('components.import-export.file-removed', 'alert', 'top right');
+    }).pipe(zlib.Gunzip()).on('error', function(err) {
+      notificationService.show('components.import-export.file-corrupted', 'alert', 'top right');
+    }).pipe(tar.Extract({ path: 'temp' })).on('error', function(err) {
+      notificationService.show('components.import-export.file-corrupted', 'alert', 'top right');
+    }).on('end', function() {
       fs.exists('temp/data/playground.db', function(exists) {
         if(exists) {
           rimraf('data', function(er) {
