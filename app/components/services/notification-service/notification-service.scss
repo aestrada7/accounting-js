@@ -19,7 +19,8 @@ $notification-width: rem-calc(400);
   button {
     position: absolute;
     top: 0;
-    #{$opposite-direction}: rem-calc(-20);
+    #{$opposite-direction}: 0;
+    padding: rem-calc(10);
     background: transparent;
     outline: none;
   }
@@ -87,8 +88,14 @@ $notification-width: rem-calc(400);
     position: absolute;
     top: 0;
     #{$default-float}: rem-calc(80);
-    width: rem-calc(310);
+    width: rem-calc(280);
     height: 100%;
-    padding-top: 5%;
+    display: table;
+    font-size: $font-size-normal;
+
+    span {
+      display: table-cell;
+      vertical-align: middle;
+    }
   }
 }

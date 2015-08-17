@@ -1,6 +1,6 @@
 <div class="notification-service {{kind}} {{position}}" ng-click="!autoDisabled && dismiss();" role="alert">
   <div class="icon"><i class="{{icon}}"></i></div>
-  <div class="message">{{message}}</div>
+  <div class="message"><span>{{message}}</span></div>
   <button ng-if="autoDisabled" ax-translate-attrs="{'aria-label': 'global.close'}" ng-click="dismiss();">
     <i class="fi-x"></i>
   </button>
