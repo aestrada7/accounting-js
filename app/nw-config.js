@@ -10,6 +10,7 @@ nwStartUp = function(translateService) {
   fileMenu.append(new gui.MenuItem({
     label: translateService.translate('global.new'),
     click: function() {
+      $('body').trigger('new-clicked');
     },
     key: 'n',
     modifiers: 'ctrl'

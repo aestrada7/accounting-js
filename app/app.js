@@ -39,8 +39,8 @@ app.run(['$rootScope', 'translateService', 'notificationService',
       $rootScope.index.title = translateService.translate(toState.pageTitle);
     });
 
+    dbStartUp(notificationService, translateService);
     nwStartUp(translateService);
-    dbStartUp(notificationService);
   }]
 
 );

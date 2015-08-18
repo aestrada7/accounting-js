@@ -10,7 +10,7 @@ var ncp = require('ncp').ncp;
 //var playground = new Datastore({ filename: path.join(gui.App.dataPath, 'data/playground.db'), autoload: true });
 var playgroundDB = new Datastore({ filename: 'data/playground.db', autoload: true });
 
-dbStartUp = function(notificationService) {
+dbStartUp = function(notificationService, translateService) {
   //Import-Export
   var fileStream = require('fstream');
   var tar = require('tar');
@@ -50,6 +50,19 @@ dbStartUp = function(notificationService) {
     $('#file-import-dialog').val('');
   }
 
+  newDB = function() {
+    //The confirm will eventually need to be changed for a foundation modal
+    if(confirm(translateService.translate('components.import-export.confirm-overwrite'))) {
+      fs.exists('data/playground.db', function(exists) {
+        if(exists) {
+          rimraf('data', function(er) {
+            win.reloadDev();
+          });
+        }
+      });
+    }
+  }
+
   checkIfFileImported = function() {
     if(window.location.href.indexOf('?imported') !== -1) {
       notificationService.show('components.import-export.import-success', 'success', 'top right', '', false);
@@ -67,5 +80,9 @@ dbStartUp = function(notificationService) {
   $('#file-import-dialog').on('change', function() {
     var importPath = $('#file-import-dialog').val();
     if(importPath) importDB(importPath);
+  });
+
+  $('body').on('new-clicked', function() {
+    newDB();
   });
 }
