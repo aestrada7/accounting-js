@@ -10,7 +10,8 @@
     "foundation": "~5.5.2",
     "foundation-icon-fonts": "git://github.com/zurb/foundation-icon-fonts.git#*",
     "requirejs": "2.1.20",
-    "angularjs-indexedDB": "*"
+    "angularjs-indexedDB": "*",
+    "ag-grid": "~1.13.0"
   },
   "exportsOverride": {
     "foundation": {
