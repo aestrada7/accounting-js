@@ -1,7 +1,7 @@
 <div class="base-organization">
   <h1 ax-translate>features.organization.title</h1>
   <span ax-translate>features.organization.pageText</span>
-  <form>
+  <form class="panel">
     <div class="row">
       <div class="columns small-12">
         <label for="org-business-name" ax-translate>features.organization.business-name</label>
@@ -36,10 +36,12 @@
     </div>
     <div class="row">
       <div class="columns small-12">
-        <button class="save-button" ax-translate-attrs="{'aria-label': 'global.save'}">
-          <i class="fi-check"></i>
-          <span ax-translate>global.save</span>          
-        </button>
+        <div class="right">
+          <button class="save-button" ax-translate-attrs="{'aria-label': 'global.save'}">
+            <i class="fi-check"></i>
+            <span ax-translate>global.save</span>          
+          </button>
+        </div>
       </div>
     </div>
   </form>
