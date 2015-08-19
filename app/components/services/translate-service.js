@@ -6,9 +6,11 @@ app.provider('translateService', function() {
 
     var serializeKey = function(obj, key) {
       var arr = key.split('.');
-      for(var i = 0; i < arr.length; i++) {
-        obj = obj[arr[i]];
-      }
+      try {
+        for(var i = 0; i < arr.length; i++) {
+          obj = obj[arr[i]];
+        }
+      } catch(err) {}
       return obj || key;
     }
 

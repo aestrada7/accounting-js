@@ -17,6 +17,15 @@ nwStartUp = function(translateService) {
   }));
 
   fileMenu.append(new gui.MenuItem({
+    label: translateService.translate('features.organization.title'),
+    click: function() {
+      $('#organization-link').click();
+    },
+    key: 'n',
+    modifiers: 'ctrl'
+  }));
+
+  fileMenu.append(new gui.MenuItem({
     label: translateService.translate('global.export'),
     click: function() {
       $('#file-export-dialog').click();
@@ -57,7 +66,6 @@ nwStartUp = function(translateService) {
     label: translateService.translate($('#home-link').html()),
     click: function() {
       $('#home-link').click();
-      $('body').click();
     },
     key: 'h',
     modifiers: 'alt'
@@ -67,7 +75,6 @@ nwStartUp = function(translateService) {
     label: translateService.translate($('#about-link').html()),
     click: function() {
       $('#about-link').click();
-      $('body').click();
     },
     key: 'a',
     modifiers: 'alt'
@@ -77,7 +84,6 @@ nwStartUp = function(translateService) {
     label: translateService.translate($('#playground-link').html()),
     click: function() {
       $('#playground-link').click();
-      $('body').click();
     },
     key: 'p',
     modifiers: 'alt'

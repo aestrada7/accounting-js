@@ -13,7 +13,21 @@ lang = {
         "export": "Export",
         "import": "Import",
         "tools": "Tools",
-        "close": "Close"
+        "close": "Close",
+        "months": {
+          "january": "January",
+          "february": "February",
+          "march": "March",
+          "april": "April",
+          "may": "May",
+          "june": "June",
+          "july": "July",
+          "august": "August",
+          "september": "September",
+          "october": "October",
+          "november": "November",
+          "december": "December"
+        }
       },
       "features": {
         "home": {
@@ -35,6 +49,16 @@ lang = {
         "404": {
           "title": "Not Found",
           "pageText": "File not found"
+        },
+        "organization": {
+          "title": "Organization",
+          "pageText": "Details of your organization go here.",
+          "business-name": "Business Name",
+          "tin": "TIN",
+          "tin-full": "Tax Identification Number",
+          "address": "Address",
+          "exercise-year": "Exercise Year",
+          "start-month": "Start Month"
         }
       },
       "components": {
@@ -62,7 +86,21 @@ lang = {
         "export": "Exportar",
         "import": "Importar",
         "tools": "Herramientas",
-        "close": "Cerrar"
+        "close": "Cerrar",
+        "months": {
+          "january": "Enero",
+          "february": "Febrero",
+          "march": "Marzo",
+          "april": "Abril",
+          "may": "Mayo",
+          "june": "Junio",
+          "july": "Julio",
+          "august": "Agosto",
+          "september": "Septiembre",
+          "october": "Octubre",
+          "november": "Noviembre",
+          "december": "Diciembre"
+        }
       },
       "features": {
         "home": {
@@ -84,6 +122,16 @@ lang = {
         "404": {
           "title": "No Encontrado",
           "pageText": "Archivo no encontrado"
+        },
+        "organization": {
+          "title": "Empresa",
+          "pageText": "Ingresa la información de tu empresa y el ejercicio.",
+          "business-name": "Razón Social",
+          "tin": "RFC",
+          "tin-full": "Registro Federal de Contribuyentes",
+          "address": "Dirección",
+          "exercise-year": "Año de Ejercicio",
+          "start-month": "Mes de Inicio"
         }
       },
       "components": {

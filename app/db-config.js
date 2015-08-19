@@ -9,6 +9,7 @@ var ncp = require('ncp').ncp;
 //Schema
 //var playground = new Datastore({ filename: path.join(gui.App.dataPath, 'data/playground.db'), autoload: true });
 var playgroundDB = new Datastore({ filename: 'data/playground.db', autoload: true });
+var organizationDB = new Datastore({ filename: 'data/organization.db', autoload: true });
 
 dbStartUp = function(notificationService, translateService) {
   //Import-Export

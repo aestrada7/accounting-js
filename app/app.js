@@ -19,6 +19,11 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
       templateUrl: 'features/playground/playground.html',
       controller: 'PlaygroundController',
       pageTitle: 'features.playground.title'
+    }).state('organization', {
+      url: '/organization',
+      templateUrl: 'features/organization/organization.html',
+      controller: 'OrganizationController',
+      pageTitle: 'features.organization.title'
     }).state('404', {
       url: '/404',
       templateUrl: 'features/404/404.html',
