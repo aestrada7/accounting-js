@@ -27,6 +27,9 @@ lang = {
           "october": "October",
           "november": "November",
           "december": "December"
+        },
+        "notifications": {
+          "saved-successfully": "Saved successfully!"
         }
       },
       "features": {
@@ -100,6 +103,9 @@ lang = {
           "october": "Octubre",
           "november": "Noviembre",
           "december": "Diciembre"
+        },
+        "notifications": {
+          "saved-successfully": "Datos guardados correctamente."
         }
       },
       "features": {

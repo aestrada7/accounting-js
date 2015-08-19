@@ -5,39 +5,39 @@
     <div class="row">
       <div class="columns small-12">
         <label for="org-business-name" ax-translate>features.organization.business-name</label>
-        <input id="org-business-name" type="text" value="{{businessName}}" 
+        <input id="org-business-name" type="text" ng-model="businessName"
                ax-translate-attrs="{'placeholder': 'features.organization.business-name'}">
       </div>
     </div>
     <div class="row">
       <div class="columns small-12">
         <label for="org-tin" ax-translate>features.organization.tin</label>
-        <input id="org-tin" type="text" value="{{tin}}" 
+        <input id="org-tin" type="text" ng-model="tin" 
                ax-translate-attrs="{'placeholder': 'features.organization.tin-full'}">
       </div>
     </div>
     <div class="row">
       <div class="columns small-12">
         <label for="org-address" ax-translate>features.organization.address</label>
-        <textarea id="org-address" type="text" value="{{address}}" 
+        <textarea id="org-address" type="text" ng-model="address"
                   ax-translate-attrs="{'placeholder': 'features.organization.address'}"></textarea>
       </div>
     </div>
     <div class="row">
       <div class="columns small-6">
         <label for="org-ex-year" ax-translate>features.organization.exercise-year</label>
-        <input id="org-ex-year" type="text" value="{{exerciseYear}}" 
+        <input id="org-ex-year" type="text" ng-model="exerciseYear" 
                ax-translate-attrs="{'placeholder': 'features.organization.exercise-year'}">
       </div>
       <div class="columns small-6">
         <label for="org-start-month" ax-translate>features.organization.start-month</label>
-        <ax-month-select id="org-start-month" selected-month="{{startMonth}}"></ax-month-select>
+        <ax-month-select element-id="org-start-month" selected-month="{{startMonth}}"></ax-month-select>
       </div>
     </div>
     <div class="row">
       <div class="columns small-12">
         <div class="right">
-          <button class="save-button" ax-translate-attrs="{'aria-label': 'global.save'}">
+          <button class="save-button" ng-click="saveOrganization();" ax-translate-attrs="{'aria-label': 'global.save'}">
             <i class="fi-check"></i>
             <span ax-translate>global.save</span>          
           </button>

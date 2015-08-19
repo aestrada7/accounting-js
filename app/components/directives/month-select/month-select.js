@@ -5,7 +5,7 @@ app.directive('axMonthSelect',
     return {
       restrict: 'E',
       scope: {
-        id: '@',
+        elementId: '@',
         selectedMonth: '@'
       },
       link: function(scope, element, attrs) {
