@@ -12,6 +12,7 @@
   input[type=text] {
     &.ng-dirty.ng-invalid {
       margin-bottom: rem-calc(20);
+      border-color: $alert-color;
     }
   }
 }
