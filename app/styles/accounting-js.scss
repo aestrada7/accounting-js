@@ -19,5 +19,7 @@
 @import "../features/playground/playground";
 
 /* -- Directives/Services -- */
+// Validation Directive
+@import "../components/directives/validate/validate";
 // Notification Service
-@import "../components/services/notification-service/notification-service"
+@import "../components/services/notification-service/notification-service";

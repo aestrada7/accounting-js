@@ -1,0 +1,17 @@
+.validation {
+  .validation-error {
+    margin-top: rem-calc(-20);
+    margin-bottom: rem-calc(20);
+    padding: rem-calc(10 10 5);
+    font-size: $font-size-normal;
+    font-style: italic;
+    color: $alert-color;
+  }
+  
+  textarea,
+  input[type=text] {
+    &.ng-dirty.ng-invalid {
+      margin-bottom: rem-calc(20);
+    }
+  }
+}

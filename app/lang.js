@@ -14,6 +14,7 @@ lang = {
         "import": "Import",
         "tools": "Tools",
         "close": "Close",
+        "error": "Error",
         "months": {
           "january": "January",
           "february": "February",
@@ -90,6 +91,7 @@ lang = {
         "import": "Importar",
         "tools": "Herramientas",
         "close": "Cerrar",
+        "error": "Error",
         "months": {
           "january": "Enero",
           "february": "Febrero",
