@@ -43,11 +43,13 @@ app.controller('OrganizationController',
 
     invalidateList = function() {
       fetchData({}).then(function(results) {
-        $scope.organization.businessName = results[0].businessName;
-        $scope.organization.tin = results[0].tin;
-        $scope.organization.address = results[0].address;
-        $scope.organization.exerciseYear = parseInt(results[0].exerciseYear);
-        $scope.organization.startMonth = results[0].startMonth;
+        if(results[0]) {
+          $scope.organization.businessName = results[0].businessName;
+          $scope.organization.tin = results[0].tin;
+          $scope.organization.address = results[0].address;
+          $scope.organization.exerciseYear = parseInt(results[0].exerciseYear);
+          $scope.organization.startMonth = results[0].startMonth;
+        }
       });
     }
 

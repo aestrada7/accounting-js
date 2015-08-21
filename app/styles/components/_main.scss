@@ -15,3 +15,9 @@ h1 {
 button {
   transition: color $transition-time, background-color $transition-time;
 }
+
+.row {
+  &.full {
+    max-width: initial;
+  }
+}
