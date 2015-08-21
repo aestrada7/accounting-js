@@ -9,7 +9,8 @@
   }
   
   textarea,
-  input[type=text] {
+  input[type=text],
+  input[type=number] {
     &.ng-dirty.ng-invalid {
       margin-bottom: rem-calc(20);
       border-color: $alert-color;

@@ -10,9 +10,20 @@ app.directive('axValidate',
       },
       link: function(scope, element, attrs) {
         scope.showError = false;
-        element.find('input,textarea').on('blur, keyup', function() {
+        scope.errorDescription = '';
+        var field = element.find('input,textarea');
+        field.on('blur, keyup', function() {
           $timeout(function() {
-            scope.showError = element.find('input,textarea').hasClass('ng-invalid') && element.find('input,textarea').hasClass('ng-dirty');
+            scope.showError = field.hasClass('ng-invalid') && field.hasClass('ng-dirty');
+
+            switch(scope.kind) {
+              case 'text':
+                scope.errorDescription = translateService.translate('global.errors.missing-value');
+                break;
+              case 'number':
+                scope.errorDescription = translateService.translate('global.errors.invalid-value');
+                break;
+            }
           }, 0);
         });
       },

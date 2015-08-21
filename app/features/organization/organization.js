@@ -2,18 +2,20 @@ app.controller('OrganizationController',
   ['$scope', '$q', 'notificationService',
 
   function($scope, $q, notificationService) {
-    $scope.businessName = '';
-    $scope.tin = '';
-    $scope.address = '';
-    $scope.exerciseYear = '';
-    $scope.startMonth = 0;
+    $scope.organization = {
+      businessName: '',
+      tin: '',
+      address: '',
+      exerciseYear: '',
+      startMonth: 0
+    };
 
     $scope.saveOrganization = function() {
       var organizationData = { '_id': 1,
-                               'businessName': $scope.businessName,
-                               'tin': $scope.tin,
-                               'address': $scope.address,
-                               'exerciseYear': $scope.exerciseYear,
+                               'businessName': $scope.organization.businessName,
+                               'tin': $scope.organization.tin,
+                               'address': $scope.organization.address,
+                               'exerciseYear': $scope.organization.exerciseYear,
                                'startMonth': $('#org-start-month').val() };
       organizationDB.insert(organizationData, function(err, newItem) {
         if(err.key === 1) {
@@ -41,11 +43,11 @@ app.controller('OrganizationController',
 
     invalidateList = function() {
       fetchData({}).then(function(results) {
-        $scope.businessName = results[0].businessName;
-        $scope.tin = results[0].tin;
-        $scope.address = results[0].address;
-        $scope.exerciseYear = results[0].exerciseYear;
-        $scope.startMonth = results[0].startMonth;
+        $scope.organization.businessName = results[0].businessName;
+        $scope.organization.tin = results[0].tin;
+        $scope.organization.address = results[0].address;
+        $scope.organization.exerciseYear = parseInt(results[0].exerciseYear);
+        $scope.organization.startMonth = results[0].startMonth;
       });
     }
 

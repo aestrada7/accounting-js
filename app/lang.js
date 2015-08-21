@@ -15,6 +15,10 @@ lang = {
         "tools": "Tools",
         "close": "Close",
         "error": "Error",
+        "errors": {
+          "invalid-value": "Invalid value",
+          "missing-value": "Missing value"
+        },
         "months": {
           "january": "January",
           "february": "February",
@@ -92,6 +96,10 @@ lang = {
         "tools": "Herramientas",
         "close": "Cerrar",
         "error": "Error",
+        "errors": {
+          "invalid-value": "Dato inválido",
+          "missing-value": "Dato requerido"
+        },
         "months": {
           "january": "Enero",
           "february": "Febrero",
