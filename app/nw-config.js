@@ -72,6 +72,15 @@ nwStartUp = function(translateService) {
   }));
 
   toolMenu.append(new gui.MenuItem({
+    label: translateService.translate($('#catalogs-link').html()),
+    click: function() {
+      $('#catalogs-link').click();
+    },
+    key: 'c',
+    modifiers: 'alt'
+  }));
+
+  toolMenu.append(new gui.MenuItem({
     label: translateService.translate($('#about-link').html()),
     click: function() {
       $('#about-link').click();

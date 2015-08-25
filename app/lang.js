@@ -67,6 +67,9 @@ lang = {
           "address": "Address",
           "exercise-year": "Exercise Year",
           "start-month": "Start Month"
+        },
+        "catalogs": {
+          "title": "Catalogs"
         }
       },
       "components": {
@@ -148,6 +151,9 @@ lang = {
           "address": "Dirección",
           "exercise-year": "Año de Ejercicio",
           "start-month": "Mes de Inicio"
+        },
+        "catalogs": {
+          "title": "Catálogos"
         }
       },
       "components": {
