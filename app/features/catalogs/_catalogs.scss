@@ -1,3 +1,20 @@
 .base-catalogs {
-  
+  .tabs {
+    margin-#{$default-float}: rem-calc(-10);
+    margin-#{$opposite-direction}: rem-calc(10);
+    margin-top: rem-calc(-10);
+  }
+
+  .tabs-content {
+    padding-#{$default-float}: rem-calc(10);
+
+    @media #{$medium-up} {
+      position: absolute;
+      #{$opposite-direction}: rem-calc(10);
+      top: rem-calc(-10);
+      width: 80%;
+      min-height: rem-calc(300);
+      background-color: white;
+    }
+  }
 }

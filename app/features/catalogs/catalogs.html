@@ -1,5 +1,35 @@
 <div class="base-catalogs">
   <h1 ax-translate>features.catalogs.title</h1>
-  <span ax-translate>features.catalogs.pageText</span>
-  <!-- tabs? -->
+  <div class="row-full">
+    <div class="columns small-12">
+      <ul class="tabs vertical">
+        <li class="tab-title" ng-class="{'active': catalogs.selectedTab === 'general'}">
+          <a ng-click="tabSelect('general')" ax-translate>features.catalogs.general</a>
+        </li>
+        <li class="tab-title" ng-class="{'active': catalogs.selectedTab === 'categories'}">
+          <a ng-click="tabSelect('categories')" ax-translate>features.catalogs.categories</a>
+        </li>
+        <li class="tab-title" ng-class="{'active': catalogs.selectedTab === 'accounts'}">
+          <a ng-click="tabSelect('accounts')" ax-translate>features.catalogs.accounts</a>
+        </li>
+        <li class="tab-title" ng-class="{'active': catalogs.selectedTab === 'sub-accounts'}">
+          <a ng-click="tabSelect('sub-accounts')" ax-translate>features.catalogs.sub-accounts</a>
+        </li>
+      </ul>
+      <div class="tabs-content">
+        <div class="content" ng-class="{'active': catalogs.selectedTab === 'general'}">
+          <p ax-translate>features.catalogs.general.description</p>
+        </div>
+        <div class="content" ng-class="{'active': catalogs.selectedTab === 'categories'}">
+          <p ax-translate>features.catalogs.categories.description</p>
+        </div>
+        <div class="content" ng-class="{'active': catalogs.selectedTab === 'accounts'}">
+          <p ax-translate>features.catalogs.accounts.description</p>
+        </div>
+        <div class="content" ng-class="{'active': catalogs.selectedTab === 'sub-accounts'}">
+          <p ax-translate>features.catalogs.sub-accounts.description</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

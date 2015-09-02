@@ -69,7 +69,12 @@ lang = {
           "start-month": "Start Month"
         },
         "catalogs": {
-          "title": "Catalogs"
+          "title": "Catalogs",
+          "pageText": "",
+          "general": "General",
+          "categories": "Categories",
+          "accounts": "Accounts",
+          "sub-accounts": "Sub-accounts"
         }
       },
       "components": {
@@ -153,7 +158,12 @@ lang = {
           "start-month": "Mes de Inicio"
         },
         "catalogs": {
-          "title": "Catálogos"
+          "title": "Catálogos",
+          "pageText": "",
+          "general": "General",
+          "categories": "Categorías",
+          "accounts": "Cuentas",
+          "sub-accounts": "Subcuentas"
         }
       },
       "components": {
