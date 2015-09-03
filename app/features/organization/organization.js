@@ -41,6 +41,10 @@ app.controller('OrganizationController',
       reader.readAsDataURL(event.target.files[0]);
     }
 
+    $scope.onLogoChangeClick = function() {
+      angular.element('#org-logo').click();
+    }
+
     saveSuccess = function() {
       notificationService.show('global.notifications.saved-successfully', 'success', 'top right', '', false);
     }

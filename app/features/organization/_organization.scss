@@ -2,4 +2,14 @@
   .panel {
     margin-top: rem-calc(10);
   }
+
+  .logo-upload {
+    input[type="file"] {
+      display: none;
+    }
+
+    button {
+      margin-top: rem-calc(10);
+    }
+  }
 }
