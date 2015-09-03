@@ -2,4 +2,14 @@
   h1 {
     text-align: center;
   }
+
+  .logo {
+    position: absolute;
+    top: rem-calc(10);
+    #{$opposite-direction}: rem-calc(10);
+
+    img {
+      max-width: rem-calc(200);
+    }
+  }
 }

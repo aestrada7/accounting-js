@@ -8,6 +8,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     $stateProvider.state('home', {
       url: '/',
       templateUrl: 'features/home/home.html',
+      controller: 'HomeController',
       pageTitle: 'features.home.title'
     }).state('about', {
       url: '/about',
