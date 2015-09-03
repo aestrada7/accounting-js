@@ -66,7 +66,8 @@ lang = {
           "tin-full": "Tax Identification Number",
           "address": "Address",
           "exercise-year": "Exercise Year",
-          "start-month": "Start Month"
+          "start-month": "Start Month",
+          "logo": "Logo"
         },
         "catalogs": {
           "title": "Catalogs",
@@ -155,7 +156,8 @@ lang = {
           "tin-full": "Registro Federal de Contribuyentes",
           "address": "Dirección",
           "exercise-year": "Año de Ejercicio",
-          "start-month": "Mes de Inicio"
+          "start-month": "Mes de Inicio",
+          "logo": "Logotipo"
         },
         "catalogs": {
           "title": "Catálogos",

@@ -18,7 +18,7 @@ app.controller('OrganizationController',
                                'address': $scope.organization.address,
                                'exerciseYear': $scope.organization.exerciseYear,
                                'startMonth': $('#org-start-month').val(),
-                               'logo': '' };
+                               'logo': $scope.organization.logo };
       organizationDB.insert(organizationData, function(err, newItem) {
         if(err.key === 1) {
           organizationDB.update({ _id: 1 }, { $set: organizationData }, { multi: false }, function (err, numReplaced) {
@@ -32,7 +32,13 @@ app.controller('OrganizationController',
     }
 
     $scope.logoChanged = function(event) {
-      console.log(event.target.files);
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        console.log(e.target.result);
+        $scope.organization.logo = e.target.result;
+        $scope.$apply();
+      }
+      reader.readAsDataURL(event.target.files[0]);
     }
 
     saveSuccess = function() {

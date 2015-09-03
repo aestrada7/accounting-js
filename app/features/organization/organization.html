@@ -47,7 +47,7 @@
       <div class="columns small-6">
         <label for="org-logo" ax-translate>features.organization.logo</label>
         <input id="org-logo" type="file" accept="image/*" ax-on-change="logoChanged">
-        <img>
+        <img ng-if="organization.logo" ng-src="{{organization.logo}}">
       </div>
     </div>
     <div class="row">
