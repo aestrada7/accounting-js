@@ -7,7 +7,8 @@ app.controller('OrganizationController',
       tin: '',
       address: '',
       exerciseYear: '',
-      startMonth: 0
+      startMonth: 0,
+      logo: ''
     };
 
     $scope.saveOrganization = function() {
@@ -16,7 +17,8 @@ app.controller('OrganizationController',
                                'tin': $scope.organization.tin,
                                'address': $scope.organization.address,
                                'exerciseYear': $scope.organization.exerciseYear,
-                               'startMonth': $('#org-start-month').val() };
+                               'startMonth': $('#org-start-month').val(),
+                               'logo': '' };
       organizationDB.insert(organizationData, function(err, newItem) {
         if(err.key === 1) {
           organizationDB.update({ _id: 1 }, { $set: organizationData }, { multi: false }, function (err, numReplaced) {
@@ -27,6 +29,10 @@ app.controller('OrganizationController',
         invalidateList();
         saveSuccess();
       });
+    }
+
+    $scope.logoChanged = function(event) {
+      console.log(event.target.files);
     }
 
     saveSuccess = function() {
@@ -49,6 +55,7 @@ app.controller('OrganizationController',
           $scope.organization.address = results[0].address;
           $scope.organization.exerciseYear = parseInt(results[0].exerciseYear);
           $scope.organization.startMonth = results[0].startMonth;
+          $scope.organization.logo = results[0].logo;
         }
       });
     }

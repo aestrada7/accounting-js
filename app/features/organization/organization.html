@@ -44,6 +44,13 @@
       </div>
     </div>
     <div class="row">
+      <div class="columns small-6">
+        <label for="org-logo" ax-translate>features.organization.logo</label>
+        <input id="org-logo" type="file" accept="image/*" ax-on-change="logoChanged">
+        <img>
+      </div>
+    </div>
+    <div class="row">
       <div class="columns small-12">
         <div class="right">
           <button class="save-button" ng-click="saveOrganization();" ng-disabled="orgForm.$invalid" ax-translate-attrs="{'aria-label': 'global.save'}">
