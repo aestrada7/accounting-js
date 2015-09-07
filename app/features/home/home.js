@@ -8,10 +8,9 @@ app.controller('HomeController',
 
     var organizationScope = $scope.$new();
     $controller('OrganizationController', {$scope: organizationScope});
-    setTimeout(function() {
+    $(window).on('organization.loaded', function() {
       $scope.home.logo = organizationScope.organization.logo;
-      $scope.$apply();
-    }, 500);
+    });
     
   }]
 );
