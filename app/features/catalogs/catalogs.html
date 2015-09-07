@@ -19,15 +19,27 @@
       <div class="tabs-content">
         <div class="content" ng-class="{'active': catalogs.selectedTab === 'general'}">
           <p ax-translate>features.catalogs.general.description</p>
+          <li ng-repeat="item in items | filter: { level: 1 }">
+            {{item.name}}
+          </li>
         </div>
         <div class="content" ng-class="{'active': catalogs.selectedTab === 'categories'}">
           <p ax-translate>features.catalogs.categories.description</p>
+          <li ng-repeat="item in items | filter: { level: 2 }">
+            {{item.name}}
+          </li>
         </div>
         <div class="content" ng-class="{'active': catalogs.selectedTab === 'accounts'}">
           <p ax-translate>features.catalogs.accounts.description</p>
+          <li ng-repeat="item in items | filter: { level: 3 }">
+            {{item.name}}
+          </li>
         </div>
         <div class="content" ng-class="{'active': catalogs.selectedTab === 'sub-accounts'}">
           <p ax-translate>features.catalogs.sub-accounts.description</p>
+          <li ng-repeat="item in items | filter: { level: 4 }">
+            {{item.name}}
+          </li>
         </div>
       </div>
     </div>

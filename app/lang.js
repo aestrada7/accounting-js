@@ -77,6 +77,31 @@ lang = {
           "categories": "Categories",
           "accounts": "Accounts",
           "sub-accounts": "Sub-accounts"
+        },
+        "accounts": {
+          "active-assets": {
+            "name": "Active Assets",
+            "floating-assets": "Floating Assets",
+            "cash": "Cash",
+            "banks": "Banks",
+            "investments": "Investments",
+            "clients": "Clients",
+            "properties": "Properties",
+            "terrains": "Terrains",
+            "buildings": "Buildings",
+            "building-depreciation": "Building Depreciation",
+            "machinery": "Machinery",
+            "deferred": "Deferred Assets"
+          },
+          "passive-assets": {
+            "name": "Passive Assets",
+            "short-term": "Short Term Passive",
+            "long-term": "Long Term Passive",
+            "suppliers": "Suppliers",
+            "sundry-creditors": "Sundry Creditors",
+            "long-term-to-pay": "Long Term To Pay",
+            "mortgages": "Morgages"
+          }
         }
       },
       "components": {
@@ -168,6 +193,31 @@ lang = {
           "categories": "Categorías",
           "accounts": "Cuentas",
           "sub-accounts": "Subcuentas"
+        },
+        "accounts": {
+          "active-assets": {
+            "name": "Activo",
+            "floating-assets": "Activo Circulante",
+            "cash": "Caja",
+            "banks": "Bancos",
+            "investments": "Inversiones",
+            "clients": "Clientes",
+            "properties": "Inmuebles, Maquinaria y Equipo",
+            "terrains": "Terrenos",
+            "buildings": "Edificios",
+            "building-depreciation": "Depreciación de Edificios",
+            "machinery": "Maquinaria",
+            "deferred": "Activo Diferido"
+          },
+          "passive-assets": {
+            "name": "Pasivo",
+            "short-term": "Pasivo a Corto Plazo",
+            "long-term": "Pasivo a Largo Plazo",
+            "suppliers": "Proveedores",
+            "sundry-creditors": "Acreedores Diversos",
+            "long-term-to-pay": "Documentos por Pagar a Largo Plazo",
+            "mortgages": "Hipotecas"
+          }
         }
       },
       "components": {

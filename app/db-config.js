@@ -7,15 +7,42 @@ var rimraf = require('rimraf');
 var ncp = require('ncp').ncp;
 
 //Schema
-//var playground = new Datastore({ filename: path.join(gui.App.dataPath, 'data/playground.db'), autoload: true });
 var playgroundDB = new Datastore({ filename: 'data/playground.db', autoload: true });
 var organizationDB = new Datastore({ filename: 'data/organization.db', autoload: true });
+var accountsDB = new Datastore({ filename: 'data/accounts.db', autoload: true });
+
+//Preloaded records
+var preloaded = {
+  accounts: [
+    { '_id': 1, 'parentId': 0, 'key': '1000', 'level': 1, 'name': 'features.accounts.active-assets.name', 'inverted': false, 'blocked': true },
+    { '_id': 2, 'parentId': 0, 'key': '2000', 'level': 1, 'name': 'features.accounts.passive-assets.name', 'inverted': false, 'blocked': true },
+    { '_id': 3, 'parentId': 1, 'key': '1100', 'level': 2, 'name': 'features.accounts.active-assets.floating-assets', 'inverted': false },
+    { '_id': 4, 'parentId': 3, 'key': '1101', 'level': 3, 'name': 'features.accounts.active-assets.cash', 'inverted': false },
+    { '_id': 5, 'parentId': 3, 'key': '1102', 'level': 3, 'name': 'features.accounts.active-assets.banks', 'inverted': false },
+    { '_id': 6, 'parentId': 3, 'key': '1103', 'level': 3, 'name': 'features.accounts.active-assets.investments', 'inverted': false },
+    { '_id': 7, 'parentId': 3, 'key': '1104', 'level': 3, 'name': 'features.accounts.active-assets.clients', 'inverted': false },
+    { '_id': 8, 'parentId': 3, 'key': '1102', 'level': 3, 'name': 'features.accounts.active-assets.banks', 'inverted': false },
+    { '_id': 9, 'parentId': 1, 'key': '1200', 'level': 2, 'name': 'features.accounts.active-assets.properties', 'inverted': false },
+    { '_id': 10, 'parentId': 9, 'key': '1201', 'level': 3, 'name': 'features.accounts.active-assets.terrains', 'inverted': false },
+    { '_id': 11, 'parentId': 9, 'key': '1202', 'level': 3, 'name': 'features.accounts.active-assets.buildings', 'inverted': false },
+    { '_id': 12, 'parentId': 9, 'key': '1203', 'level': 3, 'name': 'features.accounts.active-assets.building-depreciation', 'inverted': false },
+    { '_id': 13, 'parentId': 9, 'key': '1204', 'level': 3, 'name': 'features.accounts.active-assets.machinery', 'inverted': false },
+    { '_id': 14, 'parentId': 1, 'key': '1300', 'level': 2, 'name': 'features.accounts.active-assets.deferred', 'inverted': false },
+    { '_id': 15, 'parentId': 2, 'key': '2100', 'level': 2, 'name': 'features.accounts.passive-assets.short-term', 'inverted': false },
+    { '_id': 16, 'parentId': 2, 'key': '2200', 'level': 2, 'name': 'features.accounts.passive-assets.long-term', 'inverted': false },
+    { '_id': 17, 'parentId': 15, 'key': '2101', 'level': 3, 'name': 'features.accounts.passive-assets.suppliers', 'inverted': false },
+    { '_id': 18, 'parentId': 15, 'key': '2101', 'level': 3, 'name': 'features.accounts.passive-assets.sundry-creditors', 'inverted': false },
+    { '_id': 19, 'parentId': 16, 'key': '2201', 'level': 3, 'name': 'features.accounts.passive-assets.long-term-to-pay', 'inverted': false },
+    { '_id': 20, 'parentId': 16, 'key': '2201', 'level': 3, 'name': 'features.accounts.passive-assets.mortgages', 'inverted': false }
+  ]
+};
 
 dbStartUp = function(notificationService, translateService) {
   //Import-Export
   var fileStream = require('fstream');
   var tar = require('tar');
   var zlib = require('zlib');
+
   exportDB = function(filename) {
     fileStream.Reader('data').pipe(tar.Pack()).pipe(zlib.Gzip()).pipe(fileStream.Writer(filename)).on('close', function() {
       notificationService.show('components.import-export.export-success', 'success', 'top right');
@@ -57,6 +84,7 @@ dbStartUp = function(notificationService, translateService) {
       fs.exists('data/playground.db', function(exists) {
         if(exists) {
           rimraf('data', function(er) {
+            buildDefaultData();
             win.reloadDev();
           });
         }
@@ -71,7 +99,26 @@ dbStartUp = function(notificationService, translateService) {
     }
   }
 
+  hasDefaultData = function() {
+    fs.readFile('data/accounts.db', 'utf8', function(err, data) {
+      if(err) {
+        buildDefaultData();
+      } else {
+        if(data === '') {
+          buildDefaultData();
+        }
+      }
+    });
+  }
+
+  buildDefaultData = function() {
+    for(var i = 0; i < preloaded.accounts.length; i++) {
+      accountsDB.insert(preloaded.accounts[i]);
+    }
+  }
+
   checkIfFileImported();
+  hasDefaultData();
 
   $('#file-export-dialog').on('change', function() {
     var exportPath = $('#file-export-dialog').val();
