@@ -10,8 +10,13 @@ app.controller('CatalogsController',
       $scope.catalogs.selectedTab = tabName;
     }
 
-    $scope.onAddCatalogClicked = function() {
+    $scope.onAddAccountClicked = function() {
       accountModalService.show();
+    }
+
+    $scope.onEditAccountClicked = function(item) {
+      console.log(item._id);
+      accountModalService.show(item._id);
     }
 
     fetchData = function(args) {

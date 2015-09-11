@@ -1,7 +1,7 @@
 <div class="base-catalogs">
   <h1 ax-translate>features.catalogs.title</h1>
   <div class="button-container">
-    <button ng-click="onAddCatalogClicked()" ax-translate-atts="{'aria-label': 'global.add'}">
+    <button ng-click="onAddAccountClicked()" ax-translate-attrs="{'aria-label': 'global.add'}">
       <i class="fi-plus"></i>
       <span ax-translate>global.add</span>
     </button>
@@ -27,6 +27,14 @@
           <p ax-translate>features.catalogs.general.description</p>
           <li ng-repeat="item in items | filter: { level: 1 }">
             {{item.name}}
+            <button class="tiny" ng-click="onDeleteAccountClicked(item)" ax-translate-attrs="{'aria-label': 'global.delete'}">
+              <i class="fi-trash"></i>
+              <span ax-translate>global.delete</span>
+            </button>
+            <button class="tiny" ng-click="onEditAccountClicked(item)" ax-translate-attrs="{'aria-label': 'global.edit'}">
+              <i class="fi-pencil"></i>
+              <span ax-translate>global.edit</span>
+            </button>
           </li>
         </div>
         <div class="content" ng-class="{'active': catalogs.selectedTab === 'categories'}">

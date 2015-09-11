@@ -17,6 +17,11 @@ app.provider('accountModalService', function() {
       scope.dismiss = function() {
         $('#account-modal').foundation('reveal', 'close');
       }
+
+      $(document).on('closed.fndtn.reveal', '#account-modal', function() {
+        $('#account-modal').remove();
+        $(document).off('closed.fndtn.reveal');
+      });
     }
 
     return {
