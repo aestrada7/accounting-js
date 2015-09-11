@@ -1,0 +1,18 @@
+<h1>Icon List</h1>
+<div class="panel">
+  <ul id="icon-font-grid" class="small-block-grid-2 medium-block-grid-5 large-block-grid-8"></ul>
+</div>
+
+<script>
+  $(function() {
+    $.each(document.styleSheets, function(sheetIndex, sheet) {
+      $.each(sheet.cssRules || sheet.rules, function(ruleIndex, rule) {
+        var ruleName = rule.selectorText || "";
+        if(ruleName.lastIndexOf(".fi-") == 0) {
+          var cssClass = rule.selectorText.substr(1, rule.selectorText.lastIndexOf("::") - 1);
+          $("#icon-font-grid").append("<li><i class='size-36 " + cssClass + "'></i>&nbsp;" + cssClass + "</li>");
+        }
+      });
+    });
+  });
+</script>

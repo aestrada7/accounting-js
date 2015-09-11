@@ -30,6 +30,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
       templateUrl: 'features/organization/organization.html',
       controller: 'OrganizationController',
       pageTitle: 'features.organization.title'
+    }).state('dev', {
+      url: '/dev',
+      templateUrl: 'dev/dev.html',
+      pageTitle: 'Dev'
     }).state('404', {
       url: '/404',
       templateUrl: 'features/404/404.html',

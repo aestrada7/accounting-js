@@ -123,6 +123,15 @@ nwStartUp = function(translateService) {
     key: 'f12'
   }));
 
+  devMenu.append(new gui.MenuItem({
+    label: 'Dev Guide',
+    click: function() {
+      $('#dev-link').click();
+    },
+    key: 'i',
+    modifiers: 'alt'
+  }));
+
   menu.append(new gui.MenuItem({
     label: 'Dev',
     submenu: devMenu,
