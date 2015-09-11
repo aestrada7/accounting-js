@@ -1,4 +1,10 @@
 .base-catalogs {
+  .button-container {
+    position: absolute;
+    top: rem-calc(10);
+    #{$opposite-direction}: rem-calc(20);
+  }
+
   .tabs {
     margin-#{$default-float}: rem-calc(-10);
     margin-#{$opposite-direction}: rem-calc(10);

@@ -1,13 +1,17 @@
 app.controller('CatalogsController', 
-  ['$scope', '$q', 'notificationService', 'translateService',
+  ['$scope', '$q', 'notificationService', 'translateService', 'accountModalService',
 
-  function($scope, $q, notificationService, translateService) {
+  function($scope, $q, notificationService, translateService, accountModalService) {
     $scope.catalogs = {
       selectedTab: 'general'
     };
 
     $scope.tabSelect = function(tabName) {
       $scope.catalogs.selectedTab = tabName;
+    }
+
+    $scope.onAddCatalogClicked = function() {
+      accountModalService.show();
     }
 
     fetchData = function(args) {
