@@ -15,8 +15,7 @@ app.controller('CatalogsController',
     }
 
     $scope.onEditAccountClicked = function(item) {
-      console.log(item._id);
-      accountModalService.show(item._id);
+      accountModalService.show(item);
     }
 
     fetchData = function(args) {

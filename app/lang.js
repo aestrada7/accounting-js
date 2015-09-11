@@ -79,6 +79,11 @@ lang = {
           "sub-accounts": "Sub-accounts"
         },
         "accounts": {
+          "account": "Account",
+          "editAccount": "Edit Account",
+          "newAccount": "New Account",
+          "key": "Key",
+          "name": "Name",
           "active-assets": {
             "name": "Active Assets",
             "floating-assets": "Floating Assets",
@@ -195,6 +200,11 @@ lang = {
           "sub-accounts": "Subcuentas"
         },
         "accounts": {
+          "account": "Cuenta",
+          "editAccount": "Editar Cuenta",
+          "newAccount": "Nueva Cuenta",
+          "key": "Clave",
+          "name": "Nombre",
           "active-assets": {
             "name": "Activo",
             "floating-assets": "Activo Circulante",
