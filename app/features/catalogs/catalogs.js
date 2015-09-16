@@ -1,7 +1,7 @@
 app.controller('CatalogsController', 
-  ['$scope', '$q', 'notificationService', 'translateService', 'accountModalService',
+  ['$scope', '$q', 'notificationService', 'translateService', 'accountModalService', 'confirmService',
 
-  function($scope, $q, notificationService, translateService, accountModalService) {
+  function($scope, $q, notificationService, translateService, accountModalService, confirmService) {
     $scope.catalogs = {
       selectedTab: 'general'
     };
@@ -16,6 +16,22 @@ app.controller('CatalogsController',
 
     $scope.onEditAccountClicked = function(item) {
       accountModalService.show(item);
+    }
+
+    $scope.onDeleteAccountClicked = function(item) {
+      var confirmOptions = {
+        label: 'delete?',
+        icon: '',
+        kind: 'delete',
+        cancelLabel: 'cancel!',
+        confirmLabel: 'confirm!!'
+      }
+
+      confirmService.show(confirmOptions).then(function(result) {
+        console.log("delete");
+      }, function(result) {
+        console.log("no oopsie");
+      });
     }
 
     fetchData = function(args) {
