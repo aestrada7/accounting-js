@@ -2,6 +2,65 @@ body {
   color: $text-color;
   background-color: $background-light;
   font-family: $font-family-sans-serif;
+
+  .loading {
+    position: absolute;
+    top: 0;
+    #{$default-float}: 0;
+    width: 100%;
+    height: 100%;
+    content: ' ';
+    background-color: rgba($background-inverse, 0.5);
+    z-index: 5;
+
+    &:before {
+      position: absolute;
+      top: 50%;
+      #{$default-float}: 48%;
+      width: rem-calc(20);
+      height: rem-calc(20);
+      content: ' ';
+      border-radius: rem-calc(100);
+      background-color: $background-white;
+      -webkit-animation: dot-pulse 1s infinite;
+    }
+
+    &:after {
+      position: absolute;
+      top: 50%;
+      #{$default-float}: 52%;
+      width: rem-calc(20);
+      height: rem-calc(20);
+      content: ' ';
+      border-radius: rem-calc(100);
+      background-color: $background-white;
+      -webkit-animation: dot-pulse 500ms infinite alternate;
+    }
+
+    @at-root {
+      @-webkit-keyframes dot-pulse {
+        0% {
+          opacity: 0;
+        }
+
+        25% {
+          opacity: 0.5;
+        }
+
+        50% {
+          opacity: 1;
+        }
+
+        75% {
+          opacity: 0.5;
+        }
+
+        100% {
+          opacity: 0;
+        }
+      }
+    }
+  }
 }
 
 h1 {

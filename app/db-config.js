@@ -61,6 +61,7 @@ dbStartUp = function(notificationService, translateService, confirmService) {
       fs.exists('temp/data/playground.db', function(exists) {
         if(exists) {
           rimraf('data', function(er) {
+            $('.loading').show();
             ncp('temp/data', 'data', function() {
               rimraf('temp', function(er) {
                 window.location.href += '?imported';
@@ -91,6 +92,7 @@ dbStartUp = function(notificationService, translateService, confirmService) {
       fs.exists('data/playground.db', function(exists) {
         if(exists) {
           rimraf('data', function(er) {
+            $('.loading').show();
             buildDefaultData();
             win.reloadDev();
           });

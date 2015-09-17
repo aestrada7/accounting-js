@@ -140,4 +140,5 @@ nwStartUp = function(translateService) {
   }));
 
   win.menu = menu;
+  $('.loading').hide();
 }
