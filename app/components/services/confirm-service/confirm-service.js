@@ -3,9 +3,16 @@ app.provider('confirmService', function() {
 
   function($q, translateService, notificationService, $compile, $rootScope, $http) {
 
-    var show = function(account) {
+    var show = function(options) {
       var confirmDeleteModalTemplate = '';
       var scope = $rootScope.$new(true);
+      scope.options = {
+        label: translateService.translate(options.label),
+        icon: options.icon,
+        kind: options.kind,
+        cancelLabel: translateService.translate(options.cancelLabel),
+        confirmLabel: translateService.translate(options.confirmLabel)
+      }
       var defer = $q.defer();
 
       $http.get('components/services/confirm-service/confirm-service.html').success(function(data) {
@@ -27,7 +34,12 @@ app.provider('confirmService', function() {
       $(document).on('closed.fndtn.reveal', '#confirm-modal', function() {
         $('#confirm-modal').remove();
         $(document).off('closed.fndtn.reveal');
+        $(document).off('opened.fndtn.reveal');
         defer.reject();
+      });
+
+      $(document).on('opened.fndtn.reveal', '#confirm-modal', function() {
+        $('.confirm-modal-confirm').focus();
       });
 
       return defer.promise;

@@ -82,6 +82,7 @@ lang = {
           "account": "Account",
           "editAccount": "Edit Account",
           "newAccount": "New Account",
+          "confirm-delete": "Are you sure you want to delete this account? All voucher associated data will also be lost.",
           "key": "Key",
           "name": "Name",
           "active-assets": {
@@ -203,6 +204,7 @@ lang = {
           "account": "Cuenta",
           "editAccount": "Editar Cuenta",
           "newAccount": "Nueva Cuenta",
+          "confirm-delete": "¿Estás seguro que deseas eliminar esta cuenta? Todos los datos de pólizas asociados a esta cuenta se perderán.",
           "key": "Clave",
           "name": "Nombre",
           "active-assets": {

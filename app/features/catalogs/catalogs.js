@@ -20,17 +20,19 @@ app.controller('CatalogsController',
 
     $scope.onDeleteAccountClicked = function(item) {
       var confirmOptions = {
-        label: 'delete?',
-        icon: '',
-        kind: 'delete',
-        cancelLabel: 'cancel!',
-        confirmLabel: 'confirm!!'
+        label: 'features.accounts.confirm-delete',
+        icon: 'fi-trash',
+        kind: 'alert',
+        cancelLabel: 'global.cancel',
+        confirmLabel: 'global.delete'
       }
 
       confirmService.show(confirmOptions).then(function(result) {
-        console.log("delete");
+        accountsDB.remove({ _id: item._id }, function(err, totalRemoved) {
+          invalidateList();
+        });
       }, function(result) {
-        console.log("no oopsie");
+        //delete was cancelled
       });
     }
 

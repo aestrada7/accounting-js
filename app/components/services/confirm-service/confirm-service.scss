@@ -1,0 +1,47 @@
+.confirm-modal {
+  max-width: rem-calc(600) !important;
+
+  &.alert {
+    .modal-content {
+      i {
+        color: $alert-color;
+      }
+    }
+
+    .controls {
+      .primary {
+        background-color: $alert-color;
+
+        &:hover, &:focus {
+          background-color: $alert-color-dk;
+        }
+      }
+    }
+  }
+
+  &.warning {
+    .modal-content {
+      i {
+        color: $warning-color;
+      }
+    }
+
+    .controls {
+      .primary {
+        background-color: $warning-color;
+
+        &:hover, &:focus {
+          background-color: $warning-color-dk;
+        }
+      }
+    }
+  }
+
+  .modal-content {
+    text-align: center;
+  }
+
+  .controls {
+    text-align: center;
+  }
+}
