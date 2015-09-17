@@ -42,9 +42,9 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
   }]
 );
 
-app.run(['$rootScope', 'translateService', 'notificationService', 
+app.run(['$rootScope', 'translateService', 'notificationService', 'confirmService', 
 
-  function($rootScope, translateService, notificationService) {
+  function($rootScope, translateService, notificationService, confirmService) {
     $rootScope.$on('$stateChangeError', function(event, toState, fromState) {
       console.log("error");
       console.log(toState);
@@ -54,7 +54,7 @@ app.run(['$rootScope', 'translateService', 'notificationService',
       $rootScope.index.title = translateService.translate(toState.pageTitle);
     });
 
-    dbStartUp(notificationService, translateService);
+    dbStartUp(notificationService, translateService, confirmService);
     nwStartUp(translateService);
   }]
 

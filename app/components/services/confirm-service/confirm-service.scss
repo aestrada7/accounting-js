@@ -1,5 +1,6 @@
 .confirm-modal {
-  max-width: rem-calc(600) !important;
+  max-width: rem-calc(500) !important;
+  padding-bottom: rem-calc(5);
 
   &.alert {
     .modal-content {
@@ -43,5 +44,9 @@
 
   .controls {
     text-align: center;
+
+    & > button {
+      width: 45%;
+    }
   }
 }

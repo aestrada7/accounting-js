@@ -4,7 +4,7 @@ app.provider('confirmService', function() {
   function($q, translateService, notificationService, $compile, $rootScope, $http) {
 
     var show = function(options) {
-      var confirmDeleteModalTemplate = '';
+      var confirmModalTemplate = '';
       var scope = $rootScope.$new(true);
       scope.options = {
         label: translateService.translate(options.label),

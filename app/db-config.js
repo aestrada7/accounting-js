@@ -37,7 +37,7 @@ var preloaded = {
   ]
 };
 
-dbStartUp = function(notificationService, translateService) {
+dbStartUp = function(notificationService, translateService, confirmService) {
   //Import-Export
   var fileStream = require('fstream');
   var tar = require('tar');
@@ -79,8 +79,15 @@ dbStartUp = function(notificationService, translateService) {
   }
 
   newDB = function() {
-    //The confirm will eventually need to be changed for a foundation modal
-    if(confirm(translateService.translate('components.import-export.confirm-overwrite'))) {
+    var confirmOptions = {
+      label: 'components.import-export.confirm-overwrite',
+      icon: 'fi-trash',
+      kind: 'warning',
+      cancelLabel: 'global.cancel',
+      confirmLabel: 'global.ok'
+    }
+
+    confirmService.show(confirmOptions).then(function(result) {
       fs.exists('data/playground.db', function(exists) {
         if(exists) {
           rimraf('data', function(er) {
@@ -89,7 +96,7 @@ dbStartUp = function(notificationService, translateService) {
           });
         }
       });
-    }
+    });
   }
 
   checkIfFileImported = function() {
