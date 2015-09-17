@@ -1,3 +1,8 @@
+$anim-start: 0;
+$anim-mid: 0.25;
+$anim-end: 1;
+$anim-duration: 300ms;
+
 body {
   color: $text-color;
   background-color: $background-light;
@@ -13,51 +18,76 @@ body {
     background-color: rgba($background-inverse, 0.5);
     z-index: 5;
 
-    &:before {
-      position: absolute;
-      top: 50%;
-      #{$default-float}: 48%;
-      width: rem-calc(20);
-      height: rem-calc(20);
-      content: ' ';
-      border-radius: rem-calc(100);
-      background-color: $background-white;
-      -webkit-animation: dot-pulse 1s infinite;
+    .squares-left, .squares-right {
+      &:before, &:after {
+        position: absolute;
+        width: rem-calc(20);
+        height: rem-calc(20);
+        opacity: 0;
+        content: ' ';
+        background-color: $background-white;
+      }
     }
 
-    &:after {
-      position: absolute;
-      top: 50%;
-      #{$default-float}: 52%;
-      width: rem-calc(20);
-      height: rem-calc(20);
-      content: ' ';
-      border-radius: rem-calc(100);
-      background-color: $background-white;
-      -webkit-animation: dot-pulse 500ms infinite alternate;
+    .squares-left {
+      &:before {
+        top: calc(50% #{"-"} #{rem-calc(20)});
+        #{$default-float}: calc(50% #{"-"} #{rem-calc(20)});
+        -webkit-animation: dot-pulse $anim-duration infinite;
+      }
+
+      &:after {
+        top: 50%;
+        #{$default-float}: calc(50% #{"-"} #{rem-calc(20)});
+        -webkit-animation: dot-pulse-2 $anim-duration infinite;
+      }
+    }
+
+    .squares-right {
+      &:before {
+        top: calc(50% #{"-"} #{rem-calc(20)});
+        #{$default-float}: 50%;
+        -webkit-animation: dot-pulse-4 $anim-duration infinite;
+      }
+
+      &:after {
+        top: 50%;
+        #{$default-float}: 50%;
+        -webkit-animation: dot-pulse-3 $anim-duration infinite;
+      }
     }
 
     @at-root {
       @-webkit-keyframes dot-pulse {
-        0% {
-          opacity: 0;
-        }
+        0%   { opacity: $anim-start; }
+        25%  { opacity: $anim-mid;   }
+        50%  { opacity: $anim-end;   }
+        75%  { opacity: $anim-mid;   }
+        100% { opacity: $anim-start; }
+      }
 
-        25% {
-          opacity: 0.5;
-        }
+      @-webkit-keyframes dot-pulse-2 {
+        0%   { opacity: $anim-mid;   }
+        25%  { opacity: $anim-end;   }
+        50%  { opacity: $anim-mid;   }
+        75%  { opacity: $anim-start; }
+        100% { opacity: $anim-start; }
+      }
 
-        50% {
-          opacity: 1;
-        }
+      @-webkit-keyframes dot-pulse-3 {
+        0%   { opacity: $anim-end;   }
+        25%  { opacity: $anim-mid;   }
+        50%  { opacity: $anim-start; }
+        75%  { opacity: $anim-start; }
+        100% { opacity: $anim-mid;   }
+      }
 
-        75% {
-          opacity: 0.5;
-        }
-
-        100% {
-          opacity: 0;
-        }
+      @-webkit-keyframes dot-pulse-4 {
+        0%   { opacity: $anim-start; }
+        25%  { opacity: $anim-start; }
+        50%  { opacity: $anim-mid;   }
+        75%  { opacity: $anim-end;   }
+        100% { opacity: $anim-mid;   }
       }
     }
   }

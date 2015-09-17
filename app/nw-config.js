@@ -140,5 +140,5 @@ nwStartUp = function(translateService) {
   }));
 
   win.menu = menu;
-  $('.loading').hide();
+  $('.loading').fadeOut(200);
 }
