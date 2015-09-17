@@ -6,6 +6,7 @@ app.provider('confirmService', function() {
     var show = function(options) {
       var confirmModalTemplate = '';
       var scope = $rootScope.$new(true);
+      var defer = $q.defer();
       scope.options = {
         label: translateService.translate(options.label),
         icon: options.icon,
@@ -13,7 +14,6 @@ app.provider('confirmService', function() {
         cancelLabel: translateService.translate(options.cancelLabel),
         confirmLabel: translateService.translate(options.confirmLabel)
       }
-      var defer = $q.defer();
 
       $http.get('components/services/confirm-service/confirm-service.html').success(function(data) {
         confirmModalTemplate = $compile(data)(scope);

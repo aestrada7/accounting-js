@@ -11,6 +11,10 @@ var playgroundDB = new Datastore({ filename: 'data/playground.db', autoload: tru
 var organizationDB = new Datastore({ filename: 'data/organization.db', autoload: true });
 var accountsDB = new Datastore({ filename: 'data/accounts.db', autoload: true });
 
+//Unique fields
+accountsDB.ensureIndex({ fieldName: 'key', unique: true });
+accountsDB.ensureIndex({ fieldName: 'name', unique: true });
+
 //Preloaded records
 var preloaded = {
   accounts: [

@@ -35,7 +35,8 @@ lang = {
           "december": "December"
         },
         "notifications": {
-          "saved-successfully": "Saved successfully!"
+          "saved-successfully": "Saved successfully!",
+          "duplicate-values": "Couldn't save, the value '{{key}}' already exists."
         }
       },
       "features": {
@@ -157,7 +158,8 @@ lang = {
           "december": "Diciembre"
         },
         "notifications": {
-          "saved-successfully": "Datos guardados correctamente."
+          "saved-successfully": "Datos guardados correctamente.",
+          "duplicate-values": "No se pudo completar la operación, el valor '{{key}}' ya existe."
         }
       },
       "features": {
