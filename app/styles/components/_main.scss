@@ -119,3 +119,25 @@ button {
     max-width: initial;
   }
 }
+
+.button, button {
+  &.circle {
+    border-radius: 100%;
+    width: rem-calc(20);
+    height: rem-calc(20);
+    padding-top: rem-calc(8);
+    padding-#{$opposite-direction}: rem-calc(23.5);
+    padding-bottom: rem-calc(27);
+    padding-#{$default-float}: rem-calc(11.5);
+    margin-bottom: rem-calc(10);
+    border: 2px solid $border-color-semi-light;
+    background-color: transparent;
+    color: $text-color-light;
+
+    &:hover, &:focus {
+      border: 2px solid $border-color-medium;
+      background-color: $background-light;
+      color: $text-color;
+    }
+  }
+}

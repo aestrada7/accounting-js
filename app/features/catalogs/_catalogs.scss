@@ -70,10 +70,12 @@
   .account-card {
     margin: rem-calc(10);
     padding: rem-calc(20);
+    padding-top: rem-calc(7);
     padding-bottom: 0;
     background-color: $background-white;
     border: 1px solid $border-color-semi-light;
     width: calc(20% #{'-'} #{rem-calc(20)});
+    height: rem-calc(130);
 
     @for $i from 1 through length($global-colors) {
       &.account-color-#{$i} {
@@ -96,6 +98,11 @@
 
     .account-title {
       @include ellipsis;
+    }
+
+    .account-key {
+      @include ellipsis;
+      font-size: $font-size-small;
     }
   }
 }

@@ -29,15 +29,16 @@
         <p ng-if="catalogs.selectedFilter === 'sub-accounts'" ax-translate>features.catalogs.sub-accounts.description</p>
         <div class="small-block-grid-1 medium-block-grid-3 large-block-grid-5">
           <li class="account-card account-color-{{item.color}}" ng-repeat="item in items | filter: (!!catalogs.level || undefined) && {level: catalogs.level }">
+            <div class="account-key">{{item.key}}</div>
             <div class="account-title">{{item.name}}</div>
-            <div class="controls">
-              <button class="tiny" ng-click="onDeleteAccountClicked(item)" ax-translate-attrs="{'aria-label': 'global.delete'}">
-                <i class="fi-trash"></i>
-                <span ax-translate>global.delete</span>
+            <div class="controls" ng-if="!item.blocked">
+              <button class="circle" ng-click="onDeleteAccountClicked(item)" 
+                      ax-translate-attrs="{'aria-label': 'global.delete', 'title': 'global.delete'}">
+                <i class="fi-trash size-18"></i>
               </button>
-              <button class="tiny" ng-click="onEditAccountClicked(item)" ax-translate-attrs="{'aria-label': 'global.edit'}">
-                <i class="fi-pencil"></i>
-                <span ax-translate>global.edit</span>
+              <button class="circle" ng-click="onEditAccountClicked(item)"
+                      ax-translate-attrs="{'aria-label': 'global.edit', 'title': 'global.edit'}">
+                <i class="fi-pencil size-18"></i>
               </button>
             </div>
           </li>
