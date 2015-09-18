@@ -3,15 +3,17 @@ app.provider('accountModalService', function() {
 
   function($q, translateService, notificationService, $compile, $rootScope, $http) {
 
-    var show = function(account) {
+    var show = function(account, items) {
       var accountModalTemplate = '';
       var scope = $rootScope.$new(true);
       var defer = $q.defer();
       scope.account = {
         key: '',
         name: '',
-        level: 0
+        level: 3 //temp
       }
+      scope.parentAccounts = items;
+      console.log(items);
       if(account) scope.account = account;
 
       $http.get('components/services/account-modal-service/account-modal-service.html').success(function(data) {
@@ -30,11 +32,11 @@ app.provider('accountModalService', function() {
         var accountData = { '_id': scope.account._id,
                             'key': scope.account.key,
                             'name': scope.account.name,
-                            'level': 1 }; //completely temporal, this needs to be calculated
+                            'level': 3 }; //completely temporal, this needs to be calculated
 
         if(scope.account._id) {
           accountsDB.update({ _id: scope.account._id }, { $set: accountData }, { multi: false }, function (err, numReplaced) {
-            if(err.errorType === "uniqueViolated") {
+            if(err && err.errorType === "uniqueViolated") {
               saveFailure(err.key);
             } else {
               saveSuccess();
@@ -42,7 +44,7 @@ app.provider('accountModalService', function() {
           });
         } else {
           accountsDB.insert(accountData, function(err, newItem) {
-            if(err.errorType === "uniqueViolated") {
+            if(err && err.errorType === "uniqueViolated") {
               saveFailure(err.key);
             } else {
               saveSuccess();

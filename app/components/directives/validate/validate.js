@@ -11,7 +11,7 @@ app.directive('axValidate',
       link: function(scope, element, attrs) {
         scope.showError = false;
         scope.errorDescription = '';
-        var field = element.find('input,textarea');
+        var field = element.find('input,textarea,select');
         field.on('blur, keyup', function() {
           $timeout(function() {
             scope.showError = field.hasClass('ng-invalid') && field.hasClass('ng-dirty');

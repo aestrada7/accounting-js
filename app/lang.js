@@ -81,11 +81,12 @@ lang = {
         },
         "accounts": {
           "account": "Account",
-          "editAccount": "Edit Account",
-          "newAccount": "New Account",
+          "edit-account": "Edit Account",
+          "new-account": "New Account",
           "confirm-delete": "Are you sure you want to delete this account? All voucher associated data will also be lost.",
           "key": "Key",
           "name": "Name",
+          "parent-account": "Parent Account",
           "active-assets": {
             "name": "Active Assets",
             "floating-assets": "Floating Assets",
@@ -204,11 +205,12 @@ lang = {
         },
         "accounts": {
           "account": "Cuenta",
-          "editAccount": "Editar Cuenta",
-          "newAccount": "Nueva Cuenta",
+          "edit-account": "Editar Cuenta",
+          "new-account": "Nueva Cuenta",
           "confirm-delete": "¿Estás seguro que deseas eliminar esta cuenta? Todos los datos de pólizas asociados a esta cuenta se perderán.",
           "key": "Clave",
           "name": "Nombre",
+          "parent-account": "Cuenta Padre",
           "active-assets": {
             "name": "Activo",
             "floating-assets": "Activo Circulante",

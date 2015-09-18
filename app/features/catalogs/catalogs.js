@@ -11,13 +11,13 @@ app.controller('CatalogsController',
     }
 
     $scope.onAddAccountClicked = function() {
-      accountModalService.show().then(function(result) {
+      accountModalService.show({}, $scope.items).then(function(result) {
         invalidateList();
       });
     }
 
     $scope.onEditAccountClicked = function(item) {
-      accountModalService.show(item).then(function(result) {
+      accountModalService.show(item, $scope.items).then(function(result) {
         invalidateList();
       });
     }
