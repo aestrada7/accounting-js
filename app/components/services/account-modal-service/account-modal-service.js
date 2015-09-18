@@ -3,18 +3,19 @@ app.provider('accountModalService', function() {
 
   function($q, translateService, notificationService, $compile, $rootScope, $http) {
 
-    var show = function(account, items) {
+    var show = function(account, items, level) {
       var accountModalTemplate = '';
       var scope = $rootScope.$new(true);
       var defer = $q.defer();
       scope.account = {
         key: '',
         name: '',
-        level: 3 //temp
+        parentId: 0,
+        level: 0
       }
       scope.parentAccounts = items;
-      console.log(items);
       if(account) scope.account = account;
+      if(level) scope.account.level = level;
 
       $http.get('components/services/account-modal-service/account-modal-service.html').success(function(data) {
         accountModalTemplate = $compile(data)(scope);
@@ -32,7 +33,8 @@ app.provider('accountModalService', function() {
         var accountData = { '_id': scope.account._id,
                             'key': scope.account.key,
                             'name': scope.account.name,
-                            'level': 3 }; //completely temporal, this needs to be calculated
+                            'parentId': scope.account.parentId,
+                            'level': scope.account.level };
 
         if(scope.account._id) {
           accountsDB.update({ _id: scope.account._id }, { $set: accountData }, { multi: false }, function (err, numReplaced) {

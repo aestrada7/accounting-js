@@ -3,7 +3,9 @@ app.controller('CatalogsController',
 
   function($scope, $q, notificationService, translateService, accountModalService, confirmService) {
     $scope.catalogs = {
-      selectedTab: 'general'
+      selectedFilter: 'all',
+      selectedFilterName: translateService.translate('features.catalogs.all'),
+      level: undefined
     };
 
     $scope.tabSelect = function(tabName) {
@@ -11,13 +13,13 @@ app.controller('CatalogsController',
     }
 
     $scope.onAddAccountClicked = function() {
-      accountModalService.show({}, $scope.items).then(function(result) {
+      accountModalService.show({}, $scope.items, $scope.catalogs.level).then(function(result) {
         invalidateList();
       });
     }
 
     $scope.onEditAccountClicked = function(item) {
-      accountModalService.show(item, $scope.items).then(function(result) {
+      accountModalService.show(item, $scope.items, $scope.catalogs.level).then(function(result) {
         invalidateList();
       });
     }
@@ -38,6 +40,28 @@ app.controller('CatalogsController',
       }, function(result) {
         //delete was cancelled
       });
+    }
+
+    $scope.setSelectedFilter = function() {
+      $scope.catalogs.selectedFilterName = translateService.translate('features.catalogs.' + $scope.catalogs.selectedFilter);
+
+      switch($scope.catalogs.selectedFilter) {
+        case 'all':
+          $scope.catalogs.level = undefined;
+          break;
+        case 'general':
+          $scope.catalogs.level = 1;
+          break;
+        case 'categories':
+          $scope.catalogs.level = 2;
+          break;
+        case 'accounts':
+          $scope.catalogs.level = 3;
+          break;
+        case 'sub-accounts':
+          $scope.catalogs.level = 4;
+          break;
+      }
     }
 
     fetchData = function(args) {

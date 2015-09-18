@@ -1,4 +1,31 @@
 .base-catalogs {
+  h1 {
+    .heading-title {
+      &:after {
+        position: absolute;
+        top: rem-calc(28);
+        margin-#{$default-float}: rem-calc(5);
+        content: '|';
+        color: $text-color-medium;
+        font-size: $font-size-xlarge;
+      }
+    }
+
+    .filter {
+      position: absolute;
+      top: rem-calc(28);
+      margin-#{$default-float}: rem-calc(20);
+      color: $text-color-light;
+      font-size: $font-size-xlarge;
+
+      select {
+        position: absolute;
+        #{$default-float}: 0;
+        opacity: 0;
+      }
+    }
+  }
+
   .button-container {
     position: absolute;
     top: rem-calc(10);

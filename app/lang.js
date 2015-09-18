@@ -74,6 +74,7 @@ lang = {
         "catalogs": {
           "title": "Catalogs",
           "pageText": "",
+          "all": "All",
           "general": "General",
           "categories": "Categories",
           "accounts": "Accounts",
@@ -198,6 +199,7 @@ lang = {
         "catalogs": {
           "title": "Catálogos",
           "pageText": "",
+          "all": "Todos",
           "general": "General",
           "categories": "Categorías",
           "accounts": "Cuentas",
