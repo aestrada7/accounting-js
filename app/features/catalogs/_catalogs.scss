@@ -3,20 +3,31 @@
     .heading-title {
       &:after {
         position: absolute;
-        top: rem-calc(28);
-        margin-#{$default-float}: rem-calc(5);
+        top: rem-calc(20);
+        margin-#{$default-float}: rem-calc(8);
         content: '|';
-        color: $text-color-medium;
+        color: $text-color-xlight;
         font-size: $font-size-xlarge;
+
+        @media #{$small-only} {
+          font-size: $font-size-large;
+          top: rem-calc(18);
+        }
       }
     }
 
     .filter {
       position: absolute;
-      top: rem-calc(28);
-      margin-#{$default-float}: rem-calc(20);
+      top: rem-calc(23);
+      margin-#{$default-float}: rem-calc(28);
       color: $text-color-light;
       font-size: $font-size-xlarge;
+
+      @media #{$small-only} {
+        font-size: $font-size-large;
+        top: rem-calc(20);
+        margin-#{$default-float}: rem-calc(26);
+      }
 
       select {
         position: absolute;
@@ -30,6 +41,11 @@
     position: absolute;
     top: rem-calc(10);
     #{$opposite-direction}: rem-calc(20);
+
+    @media #{$small-only} {
+      position: relative;
+      margin-#{$default-float}: rem-calc(20);
+    }
   }
 
   .tabs {
@@ -48,6 +64,33 @@
       width: 80%;
       min-height: rem-calc(300);
       background-color: $background-white;
+    }
+  }
+
+  .account-card {
+    margin: rem-calc(10);
+    padding: rem-calc(20);
+    padding-bottom: 0;
+    background-color: $background-white;
+    border: 1px solid $border-color-semi-light;
+    border-top: 3px solid $alert-color;
+    width: calc(20% #{'-'} #{rem-calc(20)});
+
+    @media #{$small-only} {
+      width: calc(100% #{'-'} #{rem-calc(20)});
+    }
+
+    @media #{$medium-only} {
+      width: calc(33% #{'-'} #{rem-calc(20)});
+    }
+
+    .controls {
+      text-align: $opposite-direction;
+      margin-top: rem-calc(30);
+    }
+
+    .account-title {
+      @include ellipsis;
     }
   }
 }

@@ -95,6 +95,15 @@ body {
 
 h1 {
   color: $text-color-medium;
+  font-size: $font-size-xxlarge;
+
+  @media #{$small-only} {
+    font-size: $font-size-xlarge;
+  }
+}
+
+.menu-items {
+  display: none;
 }
 
 .main-content {

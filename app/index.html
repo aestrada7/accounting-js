@@ -10,26 +10,20 @@
       <div class="squares-left"></div>
       <div class="squares-right"></div>
     </div>
-    <nav class="top-bar fixed hide" data-topbar role="navigation">
-      <section class="top-bar-section">
-        <ul class="left">
-          <li class="has-dropdown">
-            <a href="#" ax-translate>global.file</a>
-            <ul class="dropdown">
-              <li><a id="home-link" ui-sref="home" ax-translate>features.home.title</a></li>
-              <li><a id="catalogs-link" ui-sref="catalogs" ax-translate>features.catalogs.title</a></li>
-              <li><a id="organization-link" ui-sref="organization" ax-translate>features.organization.title</a></li>
-              <li><a id="playground-link" ui-sref="playground" ax-translate>features.playground.title</a></li>
-              <li><a id="about-link" ui-sref="about" ax-translate>features.about.title</a></li>
-              <li><a id="quit-link" href="#" ax-translate>features.quit.title</a></li>
-              <li><a id="dev-link" ui-sref="dev">Dev</a></li>
-            </ul>
-          </li>
-        </ul>
-      </section>
+    <div class="menu-items">
+      <a href="#" ax-translate>global.file</a>
+      <ul>
+        <li><a id="home-link" ui-sref="home" ax-translate>features.home.title</a></li>
+        <li><a id="catalogs-link" ui-sref="catalogs" ax-translate>features.catalogs.title</a></li>
+        <li><a id="organization-link" ui-sref="organization" ax-translate>features.organization.title</a></li>
+        <li><a id="playground-link" ui-sref="playground" ax-translate>features.playground.title</a></li>
+        <li><a id="about-link" ui-sref="about" ax-translate>features.about.title</a></li>
+        <li><a id="quit-link" href="#" ax-translate>features.quit.title</a></li>
+        <li><a id="dev-link" ui-sref="dev">Dev</a></li>
+      </ul>
       <input id="file-export-dialog" type="file" accept=".zip" nwsaveas>
       <input id="file-import-dialog" type="file" accept=".zip">
-    </nav>
+    </div>
     <div class="main-content" ui-view></div>
     <!--All these will be modified by requireJS-->
     <script src="./vendor/jquery/jquery.js"></script>

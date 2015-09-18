@@ -19,7 +19,7 @@
       <span ax-translate>global.add</span>
     </button>
   </div>
-  <div class="row-full">
+  <div class="row full">
     <div class="columns small-12">
       <div class="content">
         <p ng-if="catalogs.selectedFilter === 'all'" ax-translate>features.catalogs.all.description</p>
@@ -27,17 +27,21 @@
         <p ng-if="catalogs.selectedFilter === 'categories'" ax-translate>features.catalogs.categories.description</p>
         <p ng-if="catalogs.selectedFilter === 'accounts'" ax-translate>features.catalogs.accounts.description</p>
         <p ng-if="catalogs.selectedFilter === 'sub-accounts'" ax-translate>features.catalogs.sub-accounts.description</p>
-        <li ng-repeat="item in items | filter: (!!catalogs.level || undefined) && {level: catalogs.level }">
-          {{item.name}}
-          <button class="tiny" ng-click="onDeleteAccountClicked(item)" ax-translate-attrs="{'aria-label': 'global.delete'}">
-            <i class="fi-trash"></i>
-            <span ax-translate>global.delete</span>
-          </button>
-          <button class="tiny" ng-click="onEditAccountClicked(item)" ax-translate-attrs="{'aria-label': 'global.edit'}">
-            <i class="fi-pencil"></i>
-            <span ax-translate>global.edit</span>
-          </button>
-        </li>
+        <div class="small-block-grid-1 medium-block-grid-3 large-block-grid-5">
+          <li class="account-card" ng-repeat="item in items | filter: (!!catalogs.level || undefined) && {level: catalogs.level }">
+            <div class="account-title">{{item.name}}</div>
+            <div class="controls">
+              <button class="tiny" ng-click="onDeleteAccountClicked(item)" ax-translate-attrs="{'aria-label': 'global.delete'}">
+                <i class="fi-trash"></i>
+                <span ax-translate>global.delete</span>
+              </button>
+              <button class="tiny" ng-click="onEditAccountClicked(item)" ax-translate-attrs="{'aria-label': 'global.edit'}">
+                <i class="fi-pencil"></i>
+                <span ax-translate>global.edit</span>
+              </button>
+            </div>
+          </li>
+        </div>
       </div>
     </div>
   </div>
