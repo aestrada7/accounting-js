@@ -15,3 +15,6 @@ $success-color-dk: darken($success-color, 25%);
 $success-color-lt: lighten($success-color, 25%);
 $warning-color-dk: darken($warning-color, 25%);
 $warning-color-lt: lighten($warning-color, 25%);
+
+// All colors list
+$global-colors: $alert-color, $info-color, $success-color, $warning-color, $primary-color, #666666, #b20822, #ffe44c;

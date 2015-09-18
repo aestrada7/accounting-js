@@ -73,8 +73,13 @@
     padding-bottom: 0;
     background-color: $background-white;
     border: 1px solid $border-color-semi-light;
-    border-top: 3px solid $alert-color;
     width: calc(20% #{'-'} #{rem-calc(20)});
+
+    @for $i from 1 through length($global-colors) {
+      &.account-color-#{$i} {
+        border-top: 3px solid nth($global-colors, $i);
+      }
+    }
 
     @media #{$small-only} {
       width: calc(100% #{'-'} #{rem-calc(20)});

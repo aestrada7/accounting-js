@@ -64,6 +64,16 @@ app.controller('CatalogsController',
       }
     }
 
+    getColor = function(_id) {
+      var totalColors = 8; //list of $global-colors
+      var itemColor = 1;
+      try {
+        var parsedId = _id.replace(/\D/g, '');
+        itemColor = (parseInt(parsedId) % totalColors) + 1;
+      } catch(e) {}
+      return itemColor;
+    }
+
     fetchData = function(args) {
       var defer = $q.defer();
       accountsDB.find(args, function(err, results) {
@@ -76,8 +86,10 @@ app.controller('CatalogsController',
       fetchData({}).then(function(results) {
         angular.forEach(results, function(value, key) {
           results[key].name = translateService.translate(results[key].name);
+          results[key].color = getColor(results[key]._id + '');
         });
         $scope.items = results;
+        getColor();
       });
     }
 

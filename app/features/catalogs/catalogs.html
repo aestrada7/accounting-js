@@ -28,7 +28,7 @@
         <p ng-if="catalogs.selectedFilter === 'accounts'" ax-translate>features.catalogs.accounts.description</p>
         <p ng-if="catalogs.selectedFilter === 'sub-accounts'" ax-translate>features.catalogs.sub-accounts.description</p>
         <div class="small-block-grid-1 medium-block-grid-3 large-block-grid-5">
-          <li class="account-card" ng-repeat="item in items | filter: (!!catalogs.level || undefined) && {level: catalogs.level }">
+          <li class="account-card account-color-{{item.color}}" ng-repeat="item in items | filter: (!!catalogs.level || undefined) && {level: catalogs.level }">
             <div class="account-title">{{item.name}}</div>
             <div class="controls">
               <button class="tiny" ng-click="onDeleteAccountClicked(item)" ax-translate-attrs="{'aria-label': 'global.delete'}">
