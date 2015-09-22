@@ -10,6 +10,8 @@ var ncp = require('ncp').ncp;
 var playgroundDB = new Datastore({ filename: 'data/playground.db', autoload: true });
 var organizationDB = new Datastore({ filename: 'data/organization.db', autoload: true });
 var accountsDB = new Datastore({ filename: 'data/accounts.db', autoload: true });
+var vouchersDB = new Datastore({ filename: 'data/vouchers.db', autoload: true });
+var voucherEntriesDB = new Datastore({ filename: 'data/voucherEntries.db', autoload: true });
 
 //Unique fields
 accountsDB.ensureIndex({ fieldName: 'key', unique: true });
