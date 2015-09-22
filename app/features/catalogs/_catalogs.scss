@@ -104,5 +104,24 @@
       @include ellipsis;
       font-size: $font-size-small;
     }
+
+    &.level-1 {
+      width: calc(100% #{'-'} #{rem-calc(20)});
+    }
+
+    &.level-2 {
+      margin-#{$default-float}: rem-calc(40);
+      width: calc(100% #{'-'} #{rem-calc(60)});
+    }
+
+    &.level-3 {
+      margin-#{$default-float}: rem-calc(80);
+      width: calc(100% #{'-'} #{rem-calc(100)});
+    }
+
+    &.level-4 {
+      margin-#{$default-float}: rem-calc(120);
+      width: calc(100% #{'-'} #{rem-calc(140)});
+    }    
   }
 }

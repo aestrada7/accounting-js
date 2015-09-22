@@ -64,12 +64,27 @@ app.controller('CatalogsController',
       }
     }
 
+    getFullTree = function(catalog, rootCatalog, fullTree) {
+      var parentCatalog;
+      for(var i = 0; i < $scope.items.length; i++) {
+        if(catalog.parentId == $scope.items[i]._id) {
+          parentCatalog = $scope.items[i];
+          var currentTree = fullTree ? parentCatalog._id + '-' + fullTree : parentCatalog._id;
+          return getFullTree(parentCatalog, rootCatalog, currentTree);
+          break;
+        }
+      }
+      fullTree = !fullTree ? '' : fullTree + '-';
+      return fullTree + rootCatalog._id;
+    }
+
     getColor = function(_id) {
       var totalColors = 8; //list of $global-colors
       var itemColor = 1;
       try {
-        var parsedId = _id.replace(/\D/g, '');
-        itemColor = (parseInt(parsedId) % totalColors) + 1;
+        var parsedId = parseInt(_id.replace(/\D/g, ''));
+        if(isNaN(parsedId)) parsedId = 0;
+        itemColor = (parsedId % totalColors) + 1;
       } catch(e) {}
       return itemColor;
     }
@@ -89,7 +104,9 @@ app.controller('CatalogsController',
           results[key].color = getColor(results[key]._id + '');
         });
         $scope.items = results;
-        getColor();
+        angular.forEach(results, function(value, key) {
+          results[key].fullTree = getFullTree(results[key], results[key]);
+        });
       });
     }
 

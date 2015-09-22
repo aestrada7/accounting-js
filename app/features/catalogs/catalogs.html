@@ -9,6 +9,7 @@
         <option value="categories" ax-translate>features.catalogs.categories</option>
         <option value="accounts" ax-translate>features.catalogs.accounts</option>
         <option value="sub-accounts" ax-translate>features.catalogs.sub-accounts</option>
+        <option value="tree-view" ax-translate>features.catalogs.tree-view</option>
       </select>
       <i class="fi-filter"></i>
     </span>
@@ -27,8 +28,25 @@
         <p ng-if="catalogs.selectedFilter === 'categories'" ax-translate>features.catalogs.categories.description</p>
         <p ng-if="catalogs.selectedFilter === 'accounts'" ax-translate>features.catalogs.accounts.description</p>
         <p ng-if="catalogs.selectedFilter === 'sub-accounts'" ax-translate>features.catalogs.sub-accounts.description</p>
-        <div class="small-block-grid-1 medium-block-grid-3 large-block-grid-5">
+        <p ng-if="catalogs.selectedFilter === 'tree-view'" ax-translate>features.catalogs.tree-view.description</p>
+        <div class="small-block-grid-1 medium-block-grid-3 large-block-grid-5" ng-if="catalogs.selectedFilter !== 'tree-view'">
           <li class="account-card account-color-{{item.color}}" ng-repeat="item in items | filter: (!!catalogs.level || undefined) && {level: catalogs.level }">
+            <div class="account-key">{{item.key}}</div>
+            <div class="account-title">{{item.name}}</div>
+            <div class="controls" ng-if="!item.blocked">
+              <button class="circle" ng-click="onDeleteAccountClicked(item)" 
+                      ax-translate-attrs="{'aria-label': 'global.delete', 'title': 'global.delete'}">
+                <i class="fi-trash size-18"></i>
+              </button>
+              <button class="circle" ng-click="onEditAccountClicked(item)"
+                      ax-translate-attrs="{'aria-label': 'global.edit', 'title': 'global.edit'}">
+                <i class="fi-pencil size-18"></i>
+              </button>
+            </div>
+          </li>
+        </div>
+        <div class="small-block-grid-1" ng-if="catalogs.selectedFilter === 'tree-view'">
+          <li class="account-card account-color-{{item.color}} level-{{item.level}}" ng-repeat="item in items | orderBy: 'fullTree'">
             <div class="account-key">{{item.key}}</div>
             <div class="account-title">{{item.name}}</div>
             <div class="controls" ng-if="!item.blocked">
