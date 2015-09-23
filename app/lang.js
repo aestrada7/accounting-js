@@ -112,6 +112,9 @@ lang = {
             "long-term-to-pay": "Long Term To Pay",
             "mortgages": "Morgages"
           }
+        },
+        "vouchers": {
+          "title": "Vouchers"
         }
       },
       "components": {
@@ -238,6 +241,9 @@ lang = {
             "long-term-to-pay": "Documentos por Pagar a Largo Plazo",
             "mortgages": "Hipotecas"
           }
+        },
+        "vouchers": {
+          "title": "Pólizas"
         }
       },
       "components": {

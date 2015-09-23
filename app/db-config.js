@@ -16,6 +16,7 @@ var voucherEntriesDB = new Datastore({ filename: 'data/voucherEntries.db', autol
 //Unique fields
 accountsDB.ensureIndex({ fieldName: 'key', unique: true });
 accountsDB.ensureIndex({ fieldName: 'name', unique: true });
+vouchersDB.ensureIndex({ fieldName: 'key', unique: true });
 
 //Preloaded records
 var preloaded = {

@@ -1,0 +1,19 @@
+<div class="base-vouchers">
+  <h1 ax-translate>features.vouchers.title</h1>
+
+  <input type="text" ng-model="vouchers.textFilter">
+
+  <div class="panel">
+    <div class="row" ng-repeat="item in items | filter: vouchers.textFilter">
+      <div class="columns small-4">
+        {{item.date}}
+      </div>
+      <div class="columns small-4">
+        {{item.key}}
+      </div>
+      <div class="columns small-4">
+        {{item.description}}
+      </div>
+    </div>
+  </div>
+</div>
