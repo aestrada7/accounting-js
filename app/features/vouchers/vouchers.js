@@ -37,7 +37,8 @@ app.controller('VouchersController',
           { _id: 7, date: '1/22/2015', kind: '1', key: '7', description: 'haha' },
           { _id: 8, date: '1/23/2015', kind: '1', key: '8', description: 'nice1' },
           { _id: 9, date: '1/26/2015', kind: '1', key: '9', description: 'yo' },
-          { _id: 10, date: '1/31/2015', kind: '1', key: '10', description: ':|' }
+          { _id: 10, date: '1/31/2015', kind: '1', key: '10', description: ':|' },
+          { _id: 11, date: '1/31/2015', kind: '1', key: '11', description: 'oops' }
         ];
       });
     }
