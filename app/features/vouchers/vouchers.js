@@ -3,8 +3,17 @@ app.controller('VouchersController',
 
   function($scope, $q, notificationService, translateService, confirmService) {
     $scope.vouchers = {
-      textFilter: ''
+      textFilter: '',
+      orderColumn: 'key',
+      isReverse: false
     };
+
+    $scope.setOrderColumn = function(column) {
+      if($scope.vouchers.orderColumn === column) {
+        $scope.vouchers.isReverse = !$scope.vouchers.isReverse;
+      }
+      $scope.vouchers.orderColumn = column;
+    }
 
     fetchData = function(args) {
       var defer = $q.defer();

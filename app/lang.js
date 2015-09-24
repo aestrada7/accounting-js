@@ -16,6 +16,7 @@ lang = {
         "tools": "Tools",
         "close": "Close",
         "error": "Error",
+        "search": "Search",
         "errors": {
           "invalid-value": "Invalid value",
           "missing-value": "Missing value"
@@ -114,7 +115,10 @@ lang = {
           }
         },
         "vouchers": {
-          "title": "Vouchers"
+          "title": "Vouchers",
+          "key": "Key",
+          "date": "Date",
+          "description": "Description"
         }
       },
       "components": {
@@ -145,6 +149,7 @@ lang = {
         "tools": "Herramientas",
         "close": "Cerrar",
         "error": "Error",
+        "search": "Buscar",
         "errors": {
           "invalid-value": "Dato inválido",
           "missing-value": "Dato requerido"
@@ -243,7 +248,10 @@ lang = {
           }
         },
         "vouchers": {
-          "title": "Pólizas"
+          "title": "Pólizas",
+          "key": "Clave",
+          "date": "Fecha",
+          "description": "Descripción"
         }
       },
       "components": {

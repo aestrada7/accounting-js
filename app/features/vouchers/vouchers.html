@@ -1,18 +1,42 @@
 <div class="base-vouchers">
   <h1 ax-translate>features.vouchers.title</h1>
 
-  <input type="text" ng-model="vouchers.textFilter">
+  <div class="search-field">
+    <input type="text" ng-model="vouchers.textFilter" ax-translate-attrs="{'aria-label': 'global.search', 'placeholder': 'global.search'}">
+    <i class="fi-magnifying-glass"></i>
+  </div>
 
-  <div class="panel">
-    <div class="row" ng-repeat="item in items | filter: vouchers.textFilter">
+  <div class="panel voucher-list">
+    <div class="row title">
       <div class="columns small-4">
-        {{item.date}}
+        <div ng-class="{'selected': vouchers.orderColumn === 'date', 'reverse': vouchers.isReverse}" 
+             ng-click="setOrderColumn('date')">
+          <span ax-translate>features.vouchers.date</span>
+        </div>
       </div>
       <div class="columns small-4">
-        {{item.key}}
+        <div ng-class="{'selected': vouchers.orderColumn === 'key', 'reverse': vouchers.isReverse}" 
+             ng-click="setOrderColumn('key')">
+          <span ax-translate>features.vouchers.key</span>
+        </div>
       </div>
       <div class="columns small-4">
-        {{item.description}}
+        <div ng-class="{'selected': vouchers.orderColumn === 'description', 'reverse': vouchers.isReverse}" 
+             ng-click="setOrderColumn('description')">
+          <span ax-translate>features.vouchers.description</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" ng-repeat="item in items | filter: vouchers.textFilter | orderBy: vouchers.orderColumn: vouchers.isReverse">
+      <div class="columns small-4">
+        <div>{{item.date}}</div>
+      </div>
+      <div class="columns small-4">
+        <div>{{item.key}}</div>
+      </div>
+      <div class="columns small-4">
+        <div>{{item.description}}</div>
       </div>
     </div>
   </div>
