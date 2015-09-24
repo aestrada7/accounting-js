@@ -3,7 +3,12 @@
   "version": "0.0.4",
   "main": "app/index.html",
   "window": {
-    "toolbar": false
+    "title": "AccountingJS",
+    "toolbar": false,
+    "width": 700,
+    "height": 550,
+    "min_width": 320,
+    "min_height": 300
   },
   "devDependencies": {
     "grunt": "^0.4.5",
