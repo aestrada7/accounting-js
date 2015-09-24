@@ -3,19 +3,18 @@ app.provider('accountModalService', function() {
 
   function($q, translateService, notificationService, $compile, $rootScope, $http) {
 
-    var show = function(account, items, level) {
+    var show = function(account, items) {
       var accountModalTemplate = '';
       var scope = $rootScope.$new(true);
       var defer = $q.defer();
       scope.account = {
         key: '',
         name: '',
-        parentId: 0,
-        level: 0
+        parentId: account.parentId || 0,
+        level: account.level || 0
       }
       scope.parentAccounts = items;
       if(account) scope.account = account;
-      if(level) scope.account.level = level;
 
       $http.get('components/services/account-modal-service/account-modal-service.html').success(function(data) {
         accountModalTemplate = $compile(data)(scope);

@@ -106,6 +106,7 @@
     }
 
     &.level-1 {
+      margin-#{$default-float}: 0;
       width: calc(100% #{'-'} #{rem-calc(20)});
     }
 

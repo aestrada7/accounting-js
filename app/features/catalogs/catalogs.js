@@ -13,7 +13,13 @@ app.controller('CatalogsController',
     }
 
     $scope.onAddAccountClicked = function() {
-      accountModalService.show({}, $scope.items, $scope.catalogs.level).then(function(result) {
+      accountModalService.show({level: $scope.catalogs.level}, $scope.items).then(function(result) {
+        invalidateList();
+      });
+    }
+
+    $scope.onAddChildClicked = function(item) {
+      accountModalService.show({parentId: item._id, level: item.level + 1}, $scope.items).then(function(result) {
         invalidateList();
       });
     }
