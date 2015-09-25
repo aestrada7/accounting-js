@@ -12,8 +12,11 @@ app.controller('CatalogsController',
       $scope.catalogs.selectedTab = tabName;
     }
 
-    $scope.onAddAccountClicked = function() {
-      accountModalService.show({level: $scope.catalogs.level}, $scope.items).then(function(result) {
+    $scope.onAddAccountClicked = function(level) {
+      var item = {};
+      item.level = $scope.catalogs.level;
+      if(level) item.level = level;
+      accountModalService.show(item, $scope.items).then(function(result) {
         invalidateList();
       });
     }
@@ -113,6 +116,7 @@ app.controller('CatalogsController',
         angular.forEach(results, function(value, key) {
           results[key].fullTree = getFullTree(results[key], results[key]);
         });
+        $(document).foundation();
       });
     }
 

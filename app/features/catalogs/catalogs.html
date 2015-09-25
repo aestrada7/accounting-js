@@ -15,11 +15,27 @@
     </span>
   </h1>
   <div class="button-container">
-    <button ng-click="onAddAccountClicked()" ax-translate-attrs="{'aria-label': 'global.add'}">
-      <i class="fi-plus"></i>
-      <span ax-translate>global.add</span>
-    </button>
+    <div ng-if="catalogs.selectedFilter == 'all' || catalogs.selectedFilter == 'tree-view'">
+      <button data-dropdown="acc-level-select" aria-controls="acc-level-select"
+              ax-translate-attrs="{'aria-label': 'global.add'}">
+        <i class="fi-plus"></i>
+        <span ax-translate>global.add</span>
+      </button>
+      <ul id="acc-level-select" class="f-dropdown" data-dropdown-content>
+        <li><a tabindex="0" ng-click="onAddAccountClicked(1)" ax-translate>features.catalogs.general</a></li>
+        <li><a tabindex="0" ng-click="onAddAccountClicked(2)" ax-translate>features.catalogs.category</a></li>
+        <li><a tabindex="0" ng-click="onAddAccountClicked(3)" ax-translate>features.catalogs.account</a></li>
+        <li><a tabindex="0" ng-click="onAddAccountClicked(4)" ax-translate>features.catalogs.sub-account</a></li>
+      </ul>
+    </div>
+    <div ng-if="catalogs.selectedFilter != 'all' && catalogs.selectedFilter != 'tree-view'">
+      <button ng-click="onAddAccountClicked()" ax-translate-attrs="{'aria-label': 'global.add'}">
+        <i class="fi-plus"></i>
+        <span ax-translate>global.add</span>
+      </button>
+    </div>
   </div>
+  
   <div class="row full">
     <div class="columns small-12">
       <div class="content">

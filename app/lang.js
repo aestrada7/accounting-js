@@ -80,7 +80,10 @@ lang = {
           "categories": "Categories",
           "accounts": "Accounts",
           "sub-accounts": "Sub-accounts",
-          "tree-view": "Tree View"
+          "tree-view": "Tree View",
+          "category": "Category",
+          "account": "Account",
+          "sub-account": "Sub-account"
         },
         "accounts": {
           "account": "Account",
@@ -214,7 +217,10 @@ lang = {
           "categories": "Categorías",
           "accounts": "Cuentas",
           "sub-accounts": "Subcuentas",
-          "tree-view": "Vista de Árbol"
+          "tree-view": "Vista de Árbol",
+          "category": "Categoría",
+          "account": "Cuenta",
+          "sub-account": "Subcuenta"
         },
         "accounts": {
           "account": "Cuenta",
