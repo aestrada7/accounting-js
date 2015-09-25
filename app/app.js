@@ -19,7 +19,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
       url: '/catalogs',
       templateUrl: 'features/catalogs/catalogs.html',
       controller: 'CatalogsController',
-      pageTitle: 'features.catalogs.title'
+      pageTitle: 'features.accounts.title'
     }).state('vouchers', {
       url: '/vouchers',
       templateUrl: 'features/vouchers/vouchers.html',
