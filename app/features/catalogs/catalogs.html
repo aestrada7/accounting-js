@@ -1,15 +1,15 @@
 <div class="base-catalogs">
   <h1>
-    <span class="heading-title" ax-translate>features.catalogs.title</span>
+    <span class="heading-title" ax-translate>features.accounts.title</span>
     <span class="filter">
       <span>{{catalogs.selectedFilterName}}</span>
       <select class="catalog-filter" ng-model="catalogs.selectedFilter" ng-change="setSelectedFilter();">
-        <option value="all" ax-translate>features.catalogs.all</option>
-        <option value="general" ax-translate>features.catalogs.general</option>
-        <option value="categories" ax-translate>features.catalogs.categories</option>
-        <option value="accounts" ax-translate>features.catalogs.accounts</option>
-        <option value="sub-accounts" ax-translate>features.catalogs.sub-accounts</option>
-        <option value="tree-view" ax-translate>features.catalogs.tree-view</option>
+        <option value="all" ax-translate>features.accounts.all.title</option>
+        <option value="general" ax-translate>features.accounts.general.title</option>
+        <option value="categories" ax-translate>features.accounts.categories.title</option>
+        <option value="accounts" ax-translate>features.accounts.accounts.title</option>
+        <option value="sub-accounts" ax-translate>features.accounts.sub-accounts.title</option>
+        <option value="tree-view" ax-translate>features.accounts.tree-view.title</option>
       </select>
       <i class="fi-filter"></i>
     </span>
@@ -22,10 +22,10 @@
         <span ax-translate>global.add</span>
       </button>
       <ul id="acc-level-select" class="f-dropdown" data-dropdown-content>
-        <li><a tabindex="0" ng-click="onAddAccountClicked(1)" ax-translate>features.catalogs.general</a></li>
-        <li><a tabindex="0" ng-click="onAddAccountClicked(2)" ax-translate>features.catalogs.category</a></li>
-        <li><a tabindex="0" ng-click="onAddAccountClicked(3)" ax-translate>features.catalogs.account</a></li>
-        <li><a tabindex="0" ng-click="onAddAccountClicked(4)" ax-translate>features.catalogs.sub-account</a></li>
+        <li><a tabindex="0" ng-click="onAddAccountClicked(1)" ax-translate>features.accounts.general.singular</a></li>
+        <li><a tabindex="0" ng-click="onAddAccountClicked(2)" ax-translate>features.accounts.categories.singular</a></li>
+        <li><a tabindex="0" ng-click="onAddAccountClicked(3)" ax-translate>features.accounts.accounts.singular</a></li>
+        <li><a tabindex="0" ng-click="onAddAccountClicked(4)" ax-translate>features.accounts.sub-accounts.singular</a></li>
       </ul>
     </div>
     <div ng-if="catalogs.selectedFilter != 'all' && catalogs.selectedFilter != 'tree-view'">
@@ -39,12 +39,12 @@
   <div class="row full">
     <div class="columns small-12">
       <div class="content">
-        <p ng-if="catalogs.selectedFilter === 'all'" ax-translate>features.catalogs.all.description</p>
-        <p ng-if="catalogs.selectedFilter === 'general'" ax-translate>features.catalogs.general.description</p>
-        <p ng-if="catalogs.selectedFilter === 'categories'" ax-translate>features.catalogs.categories.description</p>
-        <p ng-if="catalogs.selectedFilter === 'accounts'" ax-translate>features.catalogs.accounts.description</p>
-        <p ng-if="catalogs.selectedFilter === 'sub-accounts'" ax-translate>features.catalogs.sub-accounts.description</p>
-        <p ng-if="catalogs.selectedFilter === 'tree-view'" ax-translate>features.catalogs.tree-view.description</p>
+        <p ng-if="catalogs.selectedFilter === 'all'" ax-translate>features.accounts.all.description</p>
+        <p ng-if="catalogs.selectedFilter === 'general'" ax-translate>features.accounts.general.description</p>
+        <p ng-if="catalogs.selectedFilter === 'categories'" ax-translate>features.accounts.categories.description</p>
+        <p ng-if="catalogs.selectedFilter === 'accounts'" ax-translate>features.accounts.accounts.description</p>
+        <p ng-if="catalogs.selectedFilter === 'sub-accounts'" ax-translate>features.accounts.sub-accounts.description</p>
+        <p ng-if="catalogs.selectedFilter === 'tree-view'" ax-translate>features.accounts.tree-view.description</p>
         <div class="small-block-grid-1 medium-block-grid-3 large-block-grid-5" ng-if="catalogs.selectedFilter !== 'tree-view'">
           <li class="account-card account-color-{{item.color}}" ng-repeat="item in items | filter: (!!catalogs.level || undefined) && {level: catalogs.level }">
             <ax-account-card on-edit-account-clicked="onEditAccountClicked(item)" item="item" 

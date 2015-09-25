@@ -11,8 +11,12 @@
 
         @media #{$small-only} {
           font-size: $font-size-large;
-          top: rem-calc(18);
+          top: rem-calc(13);
         }
+      }
+
+      @media #{$small-only} {
+        font-size: $font-size-large;
       }
     }
 
@@ -24,8 +28,8 @@
       font-size: $font-size-xlarge;
 
       @media #{$small-only} {
-        font-size: $font-size-large;
-        top: rem-calc(20);
+        font-size: $font-size-medium;
+        top: rem-calc(15);
         margin-#{$default-float}: rem-calc(26);
       }
 

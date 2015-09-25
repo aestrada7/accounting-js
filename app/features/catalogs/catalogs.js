@@ -4,7 +4,7 @@ app.controller('CatalogsController',
   function($scope, $q, notificationService, translateService, accountModalService, confirmService) {
     $scope.catalogs = {
       selectedFilter: 'all',
-      selectedFilterName: translateService.translate('features.catalogs.all'),
+      selectedFilterName: translateService.translate('features.accounts.all.title'),
       level: undefined
     };
 
@@ -52,7 +52,7 @@ app.controller('CatalogsController',
     }
 
     $scope.setSelectedFilter = function() {
-      $scope.catalogs.selectedFilterName = translateService.translate('features.catalogs.' + $scope.catalogs.selectedFilter);
+      $scope.catalogs.selectedFilterName = translateService.translate('features.accounts.' + $scope.catalogs.selectedFilter + '.title');
 
       switch($scope.catalogs.selectedFilter) {
         case 'all':

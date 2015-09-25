@@ -72,20 +72,36 @@ lang = {
           "start-month": "Start Month",
           "logo": "Logo"
         },
-        "catalogs": {
-          "title": "Catalogs",
-          "pageText": "",
-          "all": "All",
-          "general": "General",
-          "categories": "Categories",
-          "accounts": "Accounts",
-          "sub-accounts": "Sub-accounts",
-          "tree-view": "Tree View",
-          "category": "Category",
-          "account": "Account",
-          "sub-account": "Sub-account"
-        },
         "accounts": {
+          "title": "Account Catalog",
+          "all": {
+            "title": "All",
+            "description": "All created accounts are shown here."
+          },
+          "general": {
+            "title": "General",
+            "singular": "General",
+            "description": "Top level accounts go here."
+          },
+          "categories": {
+            "title": "Categories",
+            "singular": "Category",
+            "description": "Category encompassing accounts go here."
+          },
+          "accounts": {
+            "title": "Accounts",
+            "singular": "Account",
+            "description": "Main accounts go here."
+          },
+          "sub-accounts": {
+            "title": "Sub-accounts",
+            "singular": "Sub-account",
+            "description": "Sub-accounts of main accounts go here. This is the bottom level of the tree."
+          },
+          "tree-view": {
+            "title": "Tree View",
+            "description": "All accounts are shown here displayed as a tree."
+          },
           "account": "Account",
           "edit-account": "Edit Account",
           "new-account": "New Account",
@@ -209,20 +225,36 @@ lang = {
           "start-month": "Mes de Inicio",
           "logo": "Logotipo"
         },
-        "catalogs": {
-          "title": "Catálogos",
-          "pageText": "",
-          "all": "Todos",
-          "general": "General",
-          "categories": "Categorías",
-          "accounts": "Cuentas",
-          "sub-accounts": "Subcuentas",
-          "tree-view": "Vista de Árbol",
-          "category": "Categoría",
-          "account": "Cuenta",
-          "sub-account": "Subcuenta"
-        },
         "accounts": {
+          "title": "Cuentas",
+          "all": {
+            "title": "Todas",
+            "description": "Todas las cuentas existentes se muestran en este listado."
+          },
+          "general": {
+            "title": "General",
+            "singular": "General",
+            "description": "Cuentas del nivel mas alto se muestran en este listado."
+          },
+          "categories": {
+            "title": "Categorías",
+            "singular": "Categoría",
+            "description": "Cuentas de categorización se muestran en este listado."
+          },
+          "accounts": {
+            "title": "Cuentas",
+            "singular": "Cuenta",
+            "description": "Cuentas principales se muestran en este listado."
+          },
+          "sub-accounts": {
+            "title": "Subcuentas",
+            "singular": "Subcuenta",
+            "description": "Subcuentas de las cuentas principales se muestran en este listado. Este es el último nivel en el que se pueden agregar cuentas."
+          },
+          "tree-view": {
+            "title": "Vista de Árbol",
+            "description": "Todas las cuentas se muestran en este listado desplegadas en una vista de árbol."
+          },
           "account": "Cuenta",
           "edit-account": "Editar Cuenta",
           "new-account": "Nueva Cuenta",
