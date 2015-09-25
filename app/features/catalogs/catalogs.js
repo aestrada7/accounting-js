@@ -18,17 +18,23 @@ app.controller('CatalogsController',
       if(level) item.level = level;
       accountModalService.show(item, $scope.items).then(function(result) {
         invalidateList();
+      }, function(reject) {
+        invalidateList();
       });
     }
 
     $scope.onAddChildClicked = function(item) {
       accountModalService.show({parentId: item._id, level: item.level + 1}, $scope.items).then(function(result) {
         invalidateList();
+      }, function(reject) {
+        invalidateList();
       });
     }
 
     $scope.onEditAccountClicked = function(item) {
       accountModalService.show(item, $scope.items, $scope.catalogs.level).then(function(result) {
+        invalidateList();
+      }, function(reject) {
         invalidateList();
       });
     }
