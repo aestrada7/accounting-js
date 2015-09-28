@@ -40,6 +40,7 @@ app.controller('VouchersController',
           { _id: 10, date: '1/31/2015', kind: '1', key: '10', description: ':|' },
           { _id: 11, date: '1/31/2015', kind: '1', key: '11', description: 'oops' }
         ];
+        $(document).foundation();
       });
     }
 

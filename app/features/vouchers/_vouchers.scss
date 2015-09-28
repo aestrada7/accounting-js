@@ -1,4 +1,30 @@
 .base-vouchers {
+  .button-container {
+    position: absolute;
+    top: rem-calc(10);
+    #{$opposite-direction}: rem-calc(20);
+
+    @media #{$small-only} {
+      position: relative;
+      margin-#{$default-float}: rem-calc(20);
+    }
+
+    @media #{$medium-up} {
+      .f-dropdown.open {
+        #{$default-float}: rem-calc(-90) !important;
+        width: rem-calc(200);
+
+        &:before {
+          #{$default-float}: rem-calc(170) !important;
+        }
+
+        &:after {
+          #{$default-float}: rem-calc(169) !important;
+        }
+      }
+    }
+  }
+
   .search-field {
     position: relative;
 

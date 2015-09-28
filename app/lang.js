@@ -138,7 +138,27 @@ lang = {
           "title": "Vouchers",
           "key": "Key",
           "date": "Date",
-          "description": "Description"
+          "description": "Description",
+          "journal": {
+            "title": "Journal Voucher",
+            "plural": "Journal Vouchers",
+            "description": ""
+          },
+          "cheques": {
+            "title": "Cheques Voucher",
+            "plural": "Cheques Vouchers",
+            "description": ""
+          },
+          "disimbursement": {
+            "title": "Disimbursement Voucher",
+            "plural": "Disimbursement Vouchers",
+            "description": ""
+          },
+          "cash-receipt": {
+            "title": "Cash Receipt Voucher",
+            "plural": "Cash Receipt Vouchers",
+            "description": ""
+          }
         }
       },
       "components": {
@@ -291,7 +311,27 @@ lang = {
           "title": "Pólizas",
           "key": "Clave",
           "date": "Fecha",
-          "description": "Descripción"
+          "description": "Descripción",
+          "journal": {
+            "title": "Póliza de Diario",
+            "plural": "Pólizas de Diario",
+            "description": ""
+          },
+          "cheques": {
+            "title": "Póliza de Cheques",
+            "plural": "Pólizas de Cheques",
+            "description": ""
+          },
+          "disimbursement": {
+            "title": "Póliza de Egreso",
+            "plural": "Pólizas de Egreso",
+            "description": ""
+          },
+          "cash-receipt": {
+            "title": "Póliza de Ingreso",
+            "plural": "Pólizas de Ingreso",
+            "description": ""
+          }
         }
       },
       "components": {
