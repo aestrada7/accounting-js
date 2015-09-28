@@ -139,24 +139,30 @@ lang = {
           "key": "Key",
           "date": "Date",
           "description": "Description",
+          "new-voucher": "New Voucher",
+          "edit-voucher": "Edit Voucher",
           "journal": {
             "title": "Journal Voucher",
             "plural": "Journal Vouchers",
+            "short-title": "Journal",
             "description": ""
           },
           "cheques": {
             "title": "Cheques Voucher",
             "plural": "Cheques Vouchers",
+            "short-title": "Cheques",
             "description": ""
           },
           "disimbursement": {
             "title": "Disimbursement Voucher",
             "plural": "Disimbursement Vouchers",
+            "short-title": "Disimbursement",
             "description": ""
           },
           "cash-receipt": {
             "title": "Cash Receipt Voucher",
             "plural": "Cash Receipt Vouchers",
+            "short-title": "Cash Receipt",
             "description": ""
           }
         }
@@ -312,24 +318,30 @@ lang = {
           "key": "Clave",
           "date": "Fecha",
           "description": "Descripción",
+          "new-voucher": "Nueva Póliza",
+          "edit-voucher": "Editar Póliza",
           "journal": {
             "title": "Póliza de Diario",
             "plural": "Pólizas de Diario",
+            "short-title": "Diario",
             "description": ""
           },
           "cheques": {
             "title": "Póliza de Cheques",
             "plural": "Pólizas de Cheques",
+            "short-title": "Cheques",
             "description": ""
           },
           "disimbursement": {
-            "title": "Póliza de Egreso",
-            "plural": "Pólizas de Egreso",
+            "title": "Póliza de Egresos",
+            "plural": "Pólizas de Egresos",
+            "short-title": "Egresos",
             "description": ""
           },
           "cash-receipt": {
-            "title": "Póliza de Ingreso",
-            "plural": "Pólizas de Ingreso",
+            "title": "Póliza de Ingresos",
+            "plural": "Pólizas de Ingresos",
+            "short-title": "Ingresos",
             "description": ""
           }
         }

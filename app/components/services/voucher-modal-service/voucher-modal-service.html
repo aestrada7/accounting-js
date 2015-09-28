@@ -1,0 +1,60 @@
+<div class="reveal-modal large voucher-modal" id="voucher-modal" role="dialog" data-reveal>
+  <h4>
+    <div ng-if="!voucher._id">
+      <span ax-translate>features.vouchers.new-voucher</span>
+      <div class="voucher-kind">
+        <span ng-if="voucher.kind == 1" ax-translate>features.vouchers.journal.short-title</span>
+        <span ng-if="voucher.kind == 2" ax-translate>features.vouchers.cheques.short-title</span>
+        <span ng-if="voucher.kind == 3" ax-translate>features.vouchers.disimbursement.short-title</span>
+        <span ng-if="voucher.kind == 4" ax-translate>features.vouchers.cash-receipt.short-title</span>
+      </div>
+    </div>
+    <span ng-if="account._id" ax-translate>features.accounts.edit-account</span>
+  </h4>
+<!--
+  <form name="accForm">
+    <div class="row.full">
+      <div class="columns small-12">
+        <ax-validate kind="text">
+          <label for="acc-key" ax-translate>features.accounts.key</label>
+          <input id="acc-key" type="text" ng-model="account.key" required
+                 ax-translate-attrs="{'placeholder': 'features.accounts.key'}">
+        </ax-validate>
+      </div>
+    </div>
+    <div class="row.full">
+      <div class="columns small-12">
+        <ax-validate kind="text">
+          <label for="acc-name" ax-translate>features.accounts.name</label>
+          <input id="acc-name" type="text" ng-model="account.name" required
+                 ax-translate-attrs="{'placeholder': 'features.accounts.name'}">
+        </ax-validate>
+      </div>
+    </div>
+    <div class="row.full" ng-if="account.level != 1">
+      <div class="columns small-12">
+        <ax-validate kind="text">
+          <label for="acc-parent" ax-translate>features.accounts.parent-account</label>
+          <select id="acc-parent" ng-model="account.parentId" required>
+            <option value="{{parentAccount._id}}" 
+                    ng-repeat="parentAccount in parentAccounts | filter: { level: account.level - 1 }"
+                    ng-selected="account.parentId == parentAccount._id">{{parentAccount.name}}</option>
+            }
+          </select>
+        </ax-validate>
+      </div>
+    </div>
+    <div class="row.full">
+      <div class="columns small-12">
+        <div class="right">
+          <button class="save-button" ng-click="saveAccount();" ng-disabled="accForm.$invalid" ax-translate-attrs="{'aria-label': 'global.save'}">
+            <i class="fi-check"></i>
+            <span ax-translate>global.save</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+  -->
+  <a class="close-reveal-modal" ng-click="dismiss();" ax-translate-attrs="{'aria-label': 'global.close'}">&#215;</a>
+</div>

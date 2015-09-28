@@ -1,12 +1,27 @@
 app.controller('VouchersController', 
-  ['$scope', '$q', 'notificationService', 'translateService', 'confirmService',
+  ['$scope', '$q', 'notificationService', 'translateService', 'voucherModalService', 'confirmService',
 
-  function($scope, $q, notificationService, translateService, confirmService) {
+  function($scope, $q, notificationService, translateService, voucherModalService, confirmService) {
+    $scope.JRN = 1;
+    $scope.CHQ = 2;
+    $scope.DIS = 3;
+    $scope.CSH = 4;
+
     $scope.vouchers = {
       textFilter: '',
       orderColumn: 'key',
       isReverse: false
     };
+
+    $scope.onAddVoucherClicked = function(kind) {
+      var item = {};
+      item.kind = kind;
+      voucherModalService.show(item).then(function(result) {
+        invalidateList();
+      }, function(reject) {
+        invalidateList();
+      });
+    }
 
     $scope.setOrderColumn = function(column) {
       if($scope.vouchers.orderColumn === column) {
