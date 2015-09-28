@@ -1,3 +1,10 @@
 .voucher-modal {
-  
+  @media #{$medium-only} {
+    margin-top: rem-calc(-50) !important;
+  }
+
+  .voucher-kind {
+    color: $text-color-xlight;
+    font-size: $font-size-normal;
+  }
 }
