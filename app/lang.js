@@ -17,6 +17,7 @@ lang = {
         "close": "Close",
         "error": "Error",
         "search": "Search",
+        "date": "Date",
         "errors": {
           "invalid-value": "Invalid value",
           "missing-value": "Missing value"
@@ -141,6 +142,9 @@ lang = {
           "description": "Description",
           "new-voucher": "New Voucher",
           "edit-voucher": "Edit Voucher",
+          "item": "Item",
+          "debits": "Debits",
+          "credits": "Credits",
           "journal": {
             "title": "Journal Voucher",
             "plural": "Journal Vouchers",
@@ -196,6 +200,7 @@ lang = {
         "close": "Cerrar",
         "error": "Error",
         "search": "Buscar",
+        "date": "Fecha",
         "errors": {
           "invalid-value": "Dato inválido",
           "missing-value": "Dato requerido"
@@ -320,6 +325,9 @@ lang = {
           "description": "Descripción",
           "new-voucher": "Nueva Póliza",
           "edit-voucher": "Editar Póliza",
+          "item": "Partida",
+          "debits": "Cargos",
+          "credits": "Abonos",
           "journal": {
             "title": "Póliza de Diario",
             "plural": "Pólizas de Diario",

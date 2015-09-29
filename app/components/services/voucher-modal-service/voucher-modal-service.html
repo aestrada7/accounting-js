@@ -15,7 +15,9 @@
     <div class="row.full">
       <div class="columns small-6">
         <ax-validate kind="date">
-          <input type="date">
+          <label for="vch-date" ax-translate>global.date</label>
+          <input id="vch-date" type="date" ng-model="voucher.date" required
+                 ax-translate-attrs="{'placeholder': 'global.date'}">
         </ax-validate>
       </div>
     </div>
@@ -28,30 +30,44 @@
         </ax-validate>
       </div>
     </div>
-    <!--
-    <div class="row.full">
+    <div class="row.full voucher-entries grid">
       <div class="columns small-12">
-        <ax-validate kind="text">
-          <label for="acc-name" ax-translate>features.accounts.name</label>
-          <input id="acc-name" type="text" ng-model="account.name" required
-                 ax-translate-attrs="{'placeholder': 'features.accounts.name'}">
-        </ax-validate>
+        <div class="row title">
+          <div class="columns small-1">
+            <span ax-translate>features.vouchers.item</span>
+          </div>
+          <div class="columns small-3">
+            <span ax-translate>features.accounts.account</span>
+          </div>
+          <div class="columns small-4">
+            <span ax-translate>features.accounts.name</span>
+          </div>
+          <div class="columns small-2">
+            <span ax-translate>features.vouchers.debits</span>
+          </div>
+          <div class="columns small-2">
+            <span ax-translate>features.vouchers.credits</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="columns small-1">
+            <span>&nbsp;</span>
+          </div>
+          <div class="columns small-3">
+            <span>&nbsp;</span>
+          </div>
+          <div class="columns small-4">
+            <span>&nbsp;</span>
+          </div>
+          <div class="columns small-2">
+            <span>&nbsp;</span>
+          </div>
+          <div class="columns small-2">
+            <span>&nbsp;</span>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row.full" ng-if="account.level != 1">
-      <div class="columns small-12">
-        <ax-validate kind="text">
-          <label for="acc-parent" ax-translate>features.accounts.parent-account</label>
-          <select id="acc-parent" ng-model="account.parentId" required>
-            <option value="{{parentAccount._id}}" 
-                    ng-repeat="parentAccount in parentAccounts | filter: { level: account.level - 1 }"
-                    ng-selected="account.parentId == parentAccount._id">{{parentAccount.name}}</option>
-            }
-          </select>
-        </ax-validate>
-      </div>
-    </div>
-    -->
     <div class="row.full">
       <div class="columns small-12">
         <div class="right">
