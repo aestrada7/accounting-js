@@ -8,7 +8,7 @@
 * `cd accounting-js`
 * `npm install`
 * `grunt update`
-* `grunt develop`
+* `grunt develop` for English or `grunt develop-es` for the Spanish version
 * nw.exe will load automatically
 
 This app uses nw.js, grunt update fetches the branches from git, installs all bower components, installs npm packages.
