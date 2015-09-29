@@ -1,6 +1,7 @@
 .voucher-modal {
   @media #{$medium-only} {
     margin-top: rem-calc(-50) !important;
+    width: 95% !important;
   }
 
   .voucher-kind {

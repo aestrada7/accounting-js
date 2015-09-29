@@ -9,19 +9,26 @@
         <span ng-if="voucher.kind == 4" ax-translate>features.vouchers.cash-receipt.short-title</span>
       </div>
     </div>
-    <span ng-if="account._id" ax-translate>features.accounts.edit-account</span>
+    <span ng-if="voucher._id" ax-translate>features.vouchers.edit-voucher</span>
   </h4>
   <form name="voucherForm">
-  <!--
     <div class="row.full">
-      <div class="columns small-12">
-        <ax-validate kind="text">
-          <label for="acc-key" ax-translate>features.accounts.key</label>
-          <input id="acc-key" type="text" ng-model="account.key" required
-                 ax-translate-attrs="{'placeholder': 'features.accounts.key'}">
+      <div class="columns small-6">
+        <ax-validate kind="date">
+          <input type="date">
         </ax-validate>
       </div>
     </div>
+    <div class="row.full">
+      <div class="columns small-12">
+        <ax-validate kind="text">
+          <label for="vch-description" ax-translate>features.vouchers.description</label>
+          <input id="vch-description" type="text" ng-model="voucher.key" required
+                 ax-translate-attrs="{'placeholder': 'features.vouchers.description'}">
+        </ax-validate>
+      </div>
+    </div>
+    <!--
     <div class="row.full">
       <div class="columns small-12">
         <ax-validate kind="text">
