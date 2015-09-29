@@ -62,6 +62,9 @@ module.exports = function(grunt) {
           failOnError: false
         }
       },
+      'nw-es': {
+        command: '"node_modules/.bin/nw" accounting-js --lang=es'
+      },
       'nw': {
         command: '"node_modules/.bin/nw" accounting-js'
       }
@@ -86,6 +89,16 @@ module.exports = function(grunt) {
           stream: true,
           args: ['watch']
         }]
+      },
+
+      "watchers-es": {
+        tasks: [{
+          grunt: true,
+          args: ['shell:nw-es']
+        }, {
+          stream: true,
+          args: ['watch']
+        }]
       }
     }
   });
@@ -101,5 +114,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('update', ['shell:git-pull', 'shell:npm', 'clean', 'bower', 'copy']);
+  grunt.registerTask('develop-es', ['http-server:dev', 'sass', 'parallel:watchers-es']);
   grunt.registerTask('develop', ['http-server:dev', 'sass', 'parallel:watchers']);
 };
