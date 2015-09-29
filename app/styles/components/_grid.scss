@@ -41,4 +41,23 @@
       }
     }
   }
+
+  .editable {
+    min-width: rem-calc(500) !important;
+    overflow-x: auto; //not working properly yet
+
+    .row {
+      display: inline-block;
+
+      input {
+        padding: 0 !important;
+        margin: 0;
+        font-size: $font-size-normal;
+        height: rem-calc(24);
+        width: calc(100% #{'+'} #{rem-calc(30)});
+        margin-#{$default-float}: rem-calc(-15);
+        border: 0;
+      }
+    }
+  }
 }

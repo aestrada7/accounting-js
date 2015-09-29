@@ -13,7 +13,7 @@
   </h4>
   <form name="voucherForm">
     <div class="row.full">
-      <div class="columns small-6">
+      <div class="columns small-12 medium-6">
         <ax-validate kind="date">
           <label for="vch-date" ax-translate>global.date</label>
           <input id="vch-date" type="date" ng-model="voucher.date" required
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="row.full voucher-entries grid">
-      <div class="columns small-12">
+      <div class="columns editable small-12">
         <div class="row title">
           <div class="columns small-1">
             <span ax-translate>features.vouchers.item</span>
@@ -51,19 +51,19 @@
         </div>
         <div class="row">
           <div class="columns small-1">
-            <span>&nbsp;</span>
+            <input type="text">
           </div>
           <div class="columns small-3">
-            <span>&nbsp;</span>
+            <input type="text" ax-autocomplete>
           </div>
           <div class="columns small-4">
-            <span>&nbsp;</span>
+            <input type="text">
           </div>
           <div class="columns small-2">
-            <span>&nbsp;</span>
+            <input type="text">
           </div>
           <div class="columns small-2">
-            <span>&nbsp;</span>
+            <input type="text">
           </div>
         </div>
       </div>
