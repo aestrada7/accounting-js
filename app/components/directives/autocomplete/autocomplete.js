@@ -1,7 +1,7 @@
 app.directive('axAutocomplete', 
-  ['$compile', '$q', 
+  ['$compile', '$q', 'translateService', 
 
-  function($compile, $q) {
+  function($compile, $q, translateService) {
     return {
       restrict: 'E',
       transclude: true,
