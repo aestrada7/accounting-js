@@ -26,6 +26,8 @@
 /* -- Directives/Services -- */
 // Validation Directive
 @import "../components/directives/validate/validate";
+// Autocomplete Directive
+@import "../components/directives/autocomplete/autocomplete";
 // Notification Service
 @import "../components/services/notification-service/notification-service";
 // Confirm Service
