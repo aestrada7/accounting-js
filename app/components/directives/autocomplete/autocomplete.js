@@ -40,7 +40,6 @@ app.directive('axAutocomplete',
             searchField.focus();
             selectedFieldIndex = 0;
           }
-          console.log(element.find('.entry:nth-child(' + selectedFieldIndex + ')'));
           element.find('.entry:nth-child(' + selectedFieldIndex + ')').focus();
         })
 
@@ -57,7 +56,7 @@ app.directive('axAutocomplete',
         });
 
         scope.textFilter = function(item) {
-          return item.key.search(searchField.val()) != -1;
+          return item[scope.field].search(searchField.val()) != -1;
         }
 
         scope.selectItem = function(item) {
