@@ -1,4 +1,4 @@
-<div class="reveal-modal large voucher-modal" id="voucher-modal" role="dialog" data-reveal>
+<div class="reveal-modal large voucher-modal" id="voucher-modal" role="dialog" data-reveal data-options="close_on_esc:false;">
   <h4>
     <div ng-if="!voucher._id">
       <span ax-translate>features.vouchers.new-voucher</span>
@@ -55,7 +55,7 @@
           </div>
           <div class="columns small-3">
             <ax-autocomplete db="accounts" field="key">
-              <input type="text">
+              <input type="text" class="wadup">
             </ax-autocomplete>
           </div>
           <div class="columns small-4">
