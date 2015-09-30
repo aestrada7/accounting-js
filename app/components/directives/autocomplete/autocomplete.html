@@ -1,0 +1,8 @@
+<div>
+  <div ng-transclude></div>
+  <div class="autocomplete" ng-if="showAutocomplete">
+    <div class="entry" tabindex="0" ng-click="selectItem(item)" ng-repeat="item in items | filter: textFilter">
+      {{item[field]}}
+    </div>
+  </div>
+</div>
