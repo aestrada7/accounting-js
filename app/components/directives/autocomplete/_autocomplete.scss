@@ -1,0 +1,20 @@
+.autocomplete {
+  position: absolute;
+  width: calc(100% #{'-'} #{rem-calc(29)});
+  background: $background-white;
+  border: 1px solid $border-color-semi-light;
+  margin-top: rem-calc(-17);
+  z-index: 97;
+
+  .entry {
+    padding: rem-calc(5);
+    padding-#{$default-float}: rem-calc(10);
+    color: $text-color;
+    font-size: $font-size-normal;
+
+    &:hover, &:focus {
+      background: $background-semi-light;
+      cursor: pointer;
+    }
+  }
+}
