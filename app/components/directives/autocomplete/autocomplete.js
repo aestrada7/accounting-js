@@ -65,6 +65,9 @@ app.directive('axAutocomplete',
         }
 
         fetchData({db: scope.db, field: scope.field}).then(function(results) {
+          angular.forEach(results, function(value, key) {
+            results[key].name = translateService.translate(results[key].name);
+          });
           scope.items = results;
         });
 
