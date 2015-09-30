@@ -25,6 +25,7 @@ app.directive('axAutocomplete',
             } else {
               selectedFieldIndex--;
             }
+            element.find('.entry:nth-child(' + selectedFieldIndex + ')').focus();
           }
           if(event.keyCode === 40) { //down arrow
             event.preventDefault();
@@ -33,6 +34,7 @@ app.directive('axAutocomplete',
             } else {
               selectedFieldIndex++;
             }
+            element.find('.entry:nth-child(' + selectedFieldIndex + ')').focus();
           }
           if(event.keyCode === 13) { //enter
             event.preventDefault();
@@ -40,23 +42,33 @@ app.directive('axAutocomplete',
             searchField.focus();
             selectedFieldIndex = 0;
           }
-          element.find('.entry:nth-child(' + selectedFieldIndex + ')').focus();
-        })
+          if(event.keyCode === 8) { //backspace
+            if($(event.target).hasClass('entry')) {
+              event.preventDefault();
+              searchField.focus();
+            }
+          }
+          if(event.keyCode === 27) { //escape
+            searchField.focus();
+            scope.showAutocomplete = false;
+            scope.$apply();
+          }
+          if(event.keyCode === 9) { //tab
+            searchField.focus();
+            scope.showAutocomplete = false;
+            scope.$apply();
+          }
+        });
 
         searchField.on('keyup', function(event) {
-          if(event.keyCode !== 13) { //enter
+          if(event.keyCode !== 13 && event.keyCode !== 27) { //enter, esc
             scope.showAutocomplete = searchField.val().length > 1;
             scope.$apply();
           }
         });
 
-        element.on('blur', function() {
-          scope.showAutocomplete = false;
-          scope.$apply();
-        });
-
         scope.textFilter = function(item) {
-          return item[scope.field].search(searchField.val()) != -1;
+          return item[scope.field].toLowerCase().search(searchField.val().toLowerCase()) != -1;
         }
 
         scope.selectItem = function(item) {
