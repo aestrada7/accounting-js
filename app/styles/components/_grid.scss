@@ -1,0 +1,69 @@
+.grid {
+  .row {
+    border-top: 1px dotted $border-color-medium;
+
+    &:last-child {
+      border-bottom: 1px dotted $border-color-medium;
+    }
+
+    &.title {
+      .columns {
+        background-color: $background-medium;
+        color: $text-color-white;
+
+        .selected {
+          & > span:before {
+            font-size: $font-size-small;
+            content: '\25b2';
+            padding-top: rem-calc(2);
+            float: #{$opposite-direction};
+          }
+
+          &.reverse {
+            & > span:before {
+              content: '\25bc';
+            }
+          }
+        }
+      }
+    }
+
+    .columns {
+      background-color: $background-white;
+      border-#{$default-float}: 1px dotted $border-color-medium;
+
+      div {
+        @include ellipsis;
+      }
+
+      &:last-child {
+        border-#{$opposite-direction}: 1px dotted $border-color-medium;
+      }
+    }
+  }
+
+  .editable {
+    min-width: rem-calc(500) !important;
+    //overflow-x: auto; //not working properly yet
+
+    .row {
+      display: inline-block;
+
+      .autocomplete {
+        margin-top: 0 !important;
+      }
+
+      .columns {
+        padding: 0;
+      }
+
+      input {
+        margin: 0;
+        font-size: $font-size-normal;
+        height: rem-calc(24);
+        width: 100%;
+        border: 0;
+      }
+    }
+  }
+}
