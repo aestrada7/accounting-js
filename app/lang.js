@@ -17,6 +17,7 @@ lang = {
         "close": "Close",
         "error": "Error",
         "search": "Search",
+        "date": "Date",
         "errors": {
           "invalid-value": "Invalid value",
           "missing-value": "Missing value"
@@ -139,24 +140,33 @@ lang = {
           "key": "Key",
           "date": "Date",
           "description": "Description",
+          "new-voucher": "New Voucher",
+          "edit-voucher": "Edit Voucher",
+          "item": "Item",
+          "debits": "Debits",
+          "credits": "Credits",
           "journal": {
             "title": "Journal Voucher",
             "plural": "Journal Vouchers",
+            "short-title": "Journal",
             "description": ""
           },
           "cheques": {
             "title": "Cheques Voucher",
             "plural": "Cheques Vouchers",
+            "short-title": "Cheques",
             "description": ""
           },
           "disimbursement": {
             "title": "Disimbursement Voucher",
             "plural": "Disimbursement Vouchers",
+            "short-title": "Disimbursement",
             "description": ""
           },
           "cash-receipt": {
             "title": "Cash Receipt Voucher",
             "plural": "Cash Receipt Vouchers",
+            "short-title": "Cash Receipt",
             "description": ""
           }
         }
@@ -190,6 +200,7 @@ lang = {
         "close": "Cerrar",
         "error": "Error",
         "search": "Buscar",
+        "date": "Fecha",
         "errors": {
           "invalid-value": "Dato inválido",
           "missing-value": "Dato requerido"
@@ -312,24 +323,33 @@ lang = {
           "key": "Clave",
           "date": "Fecha",
           "description": "Descripción",
+          "new-voucher": "Nueva Póliza",
+          "edit-voucher": "Editar Póliza",
+          "item": "Partida",
+          "debits": "Cargos",
+          "credits": "Abonos",
           "journal": {
             "title": "Póliza de Diario",
             "plural": "Pólizas de Diario",
+            "short-title": "Diario",
             "description": ""
           },
           "cheques": {
             "title": "Póliza de Cheques",
             "plural": "Pólizas de Cheques",
+            "short-title": "Cheques",
             "description": ""
           },
           "disimbursement": {
-            "title": "Póliza de Egreso",
-            "plural": "Pólizas de Egreso",
+            "title": "Póliza de Egresos",
+            "plural": "Pólizas de Egresos",
+            "short-title": "Egresos",
             "description": ""
           },
           "cash-receipt": {
-            "title": "Póliza de Ingreso",
-            "plural": "Pólizas de Ingreso",
+            "title": "Póliza de Ingresos",
+            "plural": "Pólizas de Ingresos",
+            "short-title": "Ingresos",
             "description": ""
           }
         }

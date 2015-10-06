@@ -1,0 +1,110 @@
+<div class="reveal-modal large voucher-modal" id="voucher-modal" role="dialog" data-reveal data-options="close_on_esc:false;">
+  <h4>
+    <div ng-if="!voucher._id">
+      <span ax-translate>features.vouchers.new-voucher</span>
+      <div class="voucher-kind">
+        <span ng-if="voucher.kind == 1" ax-translate>features.vouchers.journal.short-title</span>
+        <span ng-if="voucher.kind == 2" ax-translate>features.vouchers.cheques.short-title</span>
+        <span ng-if="voucher.kind == 3" ax-translate>features.vouchers.disimbursement.short-title</span>
+        <span ng-if="voucher.kind == 4" ax-translate>features.vouchers.cash-receipt.short-title</span>
+      </div>
+    </div>
+    <span ng-if="voucher._id" ax-translate>features.vouchers.edit-voucher</span>
+  </h4>
+  <form name="voucherForm">
+    <div class="row.full">
+      <div class="columns small-12 medium-6">
+        <ax-validate kind="text">
+          <label for="vch-key" ax-translate>features.vouchers.key</label>
+          <input id="vch-key" type="text" ng-model="voucher.key" required
+                 ax-translate-attrs="{'placeholder': 'features.vouchers.key'}">
+        </ax-validate>
+      </div>
+    </div>
+    <div class="row.full">
+      <div class="columns small-12 medium-6">
+        <ax-validate kind="date">
+          <label for="vch-date" ax-translate>global.date</label>
+          <input id="vch-date" type="date" ng-model="voucher.date" required
+                 ax-translate-attrs="{'placeholder': 'global.date'}">
+        </ax-validate>
+      </div>
+    </div>
+    <div class="row.full">
+      <div class="columns small-12">
+        <ax-validate kind="text">
+          <label for="vch-description" ax-translate>features.vouchers.description</label>
+          <input id="vch-description" type="text" ng-model="voucher.description" required
+                 ax-translate-attrs="{'placeholder': 'features.vouchers.description'}">
+        </ax-validate>
+      </div>
+    </div>
+    <div class="row.full voucher-entries grid" ax-grid>
+      <div class="columns editable small-12">
+        <div class="row title">
+          <div class="columns small-1">
+            <span ax-translate>features.vouchers.item</span>
+          </div>
+          <div class="columns small-3">
+            <span ax-translate>features.accounts.account</span>
+          </div>
+          <div class="columns small-4">
+            <span ax-translate>features.accounts.name</span>
+          </div>
+          <div class="columns small-2">
+            <span ax-translate>features.vouchers.debits</span>
+          </div>
+          <div class="columns small-2">
+            <span ax-translate>features.vouchers.credits</span>
+          </div>
+        </div>
+        <div ng-repeat="voucherEntry in voucherEntries" class="row">
+          <div class="columns small-1">
+            <input type="text" ng-model="voucherEntry.item">
+          </div>
+          <div class="columns small-3">
+            <ax-autocomplete db="accounts" field="key">
+              <input type="text" ng-model="voucherEntry.key">
+            </ax-autocomplete>
+          </div>
+          <div class="columns small-4">
+            <ax-autocomplete db="accounts" field="name">
+              <input type="text">
+            </ax-autocomplete>
+          </div>
+          <div class="columns small-2">
+            <input type="text" ng-model="voucherEntry.debits">
+          </div>
+          <div class="columns small-2">
+            <input type="text" ng-model="voucherEntry.credits">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row.full">
+      <div class="columns small-12">
+        <div class="right">
+          <button class="small" ng-click="onRemoveVoucherEntryClicked();" ax-translate-attrs="{'aria-label': 'global.delete'}">
+            <i class="fi-minus"></i>
+            <span ax-translate>global.delete</span>
+          </button>
+          <button class="small" ng-click="onAddVoucherEntryClicked();" ax-translate-attrs="{'aria-label': 'global.add'}">
+            <i class="fi-plus"></i>
+            <span ax-translate>global.add</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row.full">
+      <div class="columns small-12">
+        <div class="right">
+          <button class="save-button" ng-click="saveVoucher();" ng-disabled="voucherForm.$invalid" ax-translate-attrs="{'aria-label': 'global.save'}">
+            <i class="fi-check"></i>
+            <span ax-translate>global.save</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <a class="close-reveal-modal" ng-click="dismiss();" ax-translate-attrs="{'aria-label': 'global.close'}">&#215;</a>
+</div>

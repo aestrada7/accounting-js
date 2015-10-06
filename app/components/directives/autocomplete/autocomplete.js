@@ -41,6 +41,7 @@ app.directive('axAutocomplete',
             element.find('.entry:nth-child(' + selectedFieldIndex + ')').click();
             searchField.focus();
             selectedFieldIndex = 0;
+            scope.$apply();
           }
           if(event.keyCode === 8) { //backspace
             if($(event.target).hasClass('entry')) {
@@ -54,6 +55,7 @@ app.directive('axAutocomplete',
             scope.$apply();
           }
           if(event.keyCode === 9) { //tab
+            element.find('.entry:nth-child(' + selectedFieldIndex + ')').click();
             searchField.focus();
             scope.showAutocomplete = false;
             scope.$apply();
@@ -82,6 +84,7 @@ app.directive('axAutocomplete',
 
         scope.selectItem = function(item) {
           searchField.val(item[scope.field]);
+          searchField.trigger('change');
           scope.showAutocomplete = false;
         }
 
