@@ -39,6 +39,21 @@ app.provider('voucherModalService', function() {
             if(err && err.errorType === 'uniqueViolated') {
               saveFailure(err.key);
             } else {
+              angular.forEach(scope.voucherEntries, function(value, key) {
+                var voucherEntryData = { '_id': scope.voucherEntries[key]._id,
+                                         'item': scope.voucherEntries[key].item,
+                                         'key': scope.voucherEntries[key].key,
+                                         'debits': scope.voucherEntries[key].debits,
+                                         'credits': scope.voucherEntries[key].credits };
+                console.log(voucherEntryData);
+                if(voucherEntryData._id) {
+                  //edit, not working yet
+                } else {
+                  voucherEntriesDB.insert(voucherEntryData, function(err, newItem) {
+                    console.log('save');
+                  })
+                }
+              });
               saveSuccess();
             }
           });
