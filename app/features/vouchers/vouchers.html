@@ -46,7 +46,7 @@
 
     <div class="row" ng-repeat="item in items | filter: vouchers.textFilter | orderBy: vouchers.orderColumn: vouchers.isReverse">
       <div class="columns small-4">
-        <div>{{item.date}}</div>
+        <div>{{item.date | date}}</div>
       </div>
       <div class="columns small-4">
         <div>{{item.key}}</div>

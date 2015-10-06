@@ -22,6 +22,29 @@ app.provider('voucherModalService', function() {
         scope.voucherEntries.push({});
       }
 
+      scope.onRemoveVoucherEntryClicked = function() {
+        scope.voucherEntries.pop();
+      }
+
+      scope.saveVoucher = function() {
+        var voucherData = { '_id': scope.voucher._id,
+                            'key': scope.voucher.key,
+                            'date': scope.voucher.date,
+                            'description': scope.voucher.description,
+                            'kind': scope.voucher.kind };
+        if(scope.voucher._id) {
+          //edit, not working yet
+        } else {
+          vouchersDB.insert(voucherData, function(err, newItem) {
+            if(err && err.errorType === 'uniqueViolated') {
+              saveFailure(err.key);
+            } else {
+              saveSuccess();
+            }
+          });
+        }
+      }
+
       scope.dismiss = function() {
         $('#voucher-modal').foundation('reveal', 'close');
         defer.reject();

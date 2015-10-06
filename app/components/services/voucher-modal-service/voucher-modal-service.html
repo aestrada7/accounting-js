@@ -14,6 +14,15 @@
   <form name="voucherForm">
     <div class="row.full">
       <div class="columns small-12 medium-6">
+        <ax-validate kind="text">
+          <label for="vch-key" ax-translate>features.vouchers.key</label>
+          <input id="vch-key" type="text" ng-model="voucher.key" required
+                 ax-translate-attrs="{'placeholder': 'features.vouchers.key'}">
+        </ax-validate>
+      </div>
+    </div>
+    <div class="row.full">
+      <div class="columns small-12 medium-6">
         <ax-validate kind="date">
           <label for="vch-date" ax-translate>global.date</label>
           <input id="vch-date" type="date" ng-model="voucher.date" required
@@ -25,13 +34,30 @@
       <div class="columns small-12">
         <ax-validate kind="text">
           <label for="vch-description" ax-translate>features.vouchers.description</label>
-          <input id="vch-description" type="text" ng-model="voucher.key" required
+          <input id="vch-description" type="text" ng-model="voucher.description" required
                  ax-translate-attrs="{'placeholder': 'features.vouchers.description'}">
         </ax-validate>
       </div>
     </div>
     <div class="row.full voucher-entries grid" ax-grid>
       <div class="columns editable small-12">
+        <div class="row title">
+          <div class="columns small-1">
+            <span ax-translate>features.vouchers.item</span>
+          </div>
+          <div class="columns small-3">
+            <span ax-translate>features.accounts.account</span>
+          </div>
+          <div class="columns small-4">
+            <span ax-translate>features.accounts.name</span>
+          </div>
+          <div class="columns small-2">
+            <span ax-translate>features.vouchers.debits</span>
+          </div>
+          <div class="columns small-2">
+            <span ax-translate>features.vouchers.credits</span>
+          </div>
+        </div>
         <div ng-repeat="voucherEntry in voucherEntries" class="row">
           <div class="columns small-1">
             <input type="text">
@@ -54,7 +80,20 @@
           </div>
         </div>
       </div>
-      <button ng-click="onAddVoucherEntryClicked();">Add</button>
+    </div>
+    <div class="row.full">
+      <div class="columns small-12">
+        <div class="right">
+          <button class="small" ng-click="onRemoveVoucherEntryClicked();" ax-translate-attrs="{'aria-label': 'global.delete'}">
+            <i class="fi-minus"></i>
+            <span ax-translate>global.delete</span>
+          </button>
+          <button class="small" ng-click="onAddVoucherEntryClicked();" ax-translate-attrs="{'aria-label': 'global.add'}">
+            <i class="fi-plus"></i>
+            <span ax-translate>global.add</span>
+          </button>
+        </div>
+      </div>
     </div>
     <div class="row.full">
       <div class="columns small-12">

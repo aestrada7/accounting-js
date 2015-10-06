@@ -37,7 +37,7 @@ app.provider('accountModalService', function() {
 
         if(scope.account._id) {
           accountsDB.update({ _id: scope.account._id }, { $set: accountData }, { multi: false }, function (err, numReplaced) {
-            if(err && err.errorType === "uniqueViolated") {
+            if(err && err.errorType === 'uniqueViolated') {
               saveFailure(err.key);
             } else {
               saveSuccess();
@@ -45,7 +45,7 @@ app.provider('accountModalService', function() {
           });
         } else {
           accountsDB.insert(accountData, function(err, newItem) {
-            if(err && err.errorType === "uniqueViolated") {
+            if(err && err.errorType === 'uniqueViolated') {
               saveFailure(err.key);
             } else {
               saveSuccess();
