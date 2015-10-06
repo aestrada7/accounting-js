@@ -30,32 +30,15 @@
         </ax-validate>
       </div>
     </div>
-    <div class="row.full voucher-entries grid">
+    <div class="row.full voucher-entries grid" ax-grid>
       <div class="columns editable small-12">
-        <div class="row title">
-          <div class="columns small-1">
-            <span ax-translate>features.vouchers.item</span>
-          </div>
-          <div class="columns small-3">
-            <span ax-translate>features.accounts.account</span>
-          </div>
-          <div class="columns small-4">
-            <span ax-translate>features.accounts.name</span>
-          </div>
-          <div class="columns small-2">
-            <span ax-translate>features.vouchers.debits</span>
-          </div>
-          <div class="columns small-2">
-            <span ax-translate>features.vouchers.credits</span>
-          </div>
-        </div>
-        <div class="row">
+        <div ng-repeat="voucherEntry in voucherEntries" class="row">
           <div class="columns small-1">
             <input type="text">
           </div>
           <div class="columns small-3">
             <ax-autocomplete db="accounts" field="key">
-              <input type="text" class="wadup">
+              <input type="text">
             </ax-autocomplete>
           </div>
           <div class="columns small-4">
@@ -71,6 +54,7 @@
           </div>
         </div>
       </div>
+      <button ng-click="onAddVoucherEntryClicked();">Add</button>
     </div>
     <div class="row.full">
       <div class="columns small-12">

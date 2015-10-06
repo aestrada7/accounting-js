@@ -10,12 +10,17 @@ app.provider('voucherModalService', function() {
       scope.voucher = {
         kind: voucher.kind
       }
+      scope.voucherEntries = [];
 
       $http.get('components/services/voucher-modal-service/voucher-modal-service.html').success(function(data) {
         voucherModalTemplate = $compile(data)(scope);
         angular.element(document.body).append(voucherModalTemplate);
         $('#voucher-modal').foundation('reveal', 'open');
       });
+
+      scope.onAddVoucherEntryClicked = function() {
+        scope.voucherEntries.push({});
+      }
 
       scope.dismiss = function() {
         $('#voucher-modal').foundation('reveal', 'close');

@@ -32,12 +32,14 @@
       background-color: $background-white;
       border-#{$default-float}: 1px dotted $border-color-medium;
 
-      div {
-        @include ellipsis;
-      }
-
       &:last-child {
         border-#{$opposite-direction}: 1px dotted $border-color-medium;
+      }
+    }
+
+    .columns:not(.editable) {
+      div {
+        @include ellipsis;
       }
     }
   }
@@ -63,6 +65,10 @@
         height: rem-calc(24);
         width: 100%;
         border: 0;
+
+        &:focus {
+          border: 1px solid $primary-color;
+        }
       }
     }
   }

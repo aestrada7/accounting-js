@@ -1,7 +1,7 @@
 app.directive('axAutocomplete', 
-  ['$compile', '$q', 'translateService', 
+  ['$compile', '$q', 'translateService', '$timeout',
 
-  function($compile, $q, translateService) {
+  function($compile, $q, translateService, $timeout) {
     return {
       restrict: 'E',
       transclude: true,
@@ -65,6 +65,15 @@ app.directive('axAutocomplete',
             scope.showAutocomplete = searchField.val().length > 1;
             scope.$apply();
           }
+        });
+
+        searchField.on('blur', function(event) {
+          $timeout(function() {
+            if(element.find( ':focus' ).length === 0) {
+              scope.showAutocomplete = false;
+              scope.$apply();
+            }
+          }, 100);
         });
 
         scope.textFilter = function(item) {
