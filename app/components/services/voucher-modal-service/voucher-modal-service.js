@@ -50,8 +50,8 @@ app.provider('voucherModalService', function() {
                   //edit, not working yet
                 } else {
                   voucherEntriesDB.insert(voucherEntryData, function(err, newItem) {
-                    console.log('save');
-                  })
+                    //console.log('save');
+                  });
                 }
               });
               saveSuccess();
