@@ -64,6 +64,34 @@ app.provider('voucherModalService', function() {
         }
       }
 
+      getAccountData = function(args) {
+        var defer = $q.defer();
+        accountsDB.find(args, function(err, results) {
+          defer.resolve(results);
+        });
+        return defer.promise;
+      }
+
+      scope.onChangeKey = function(item) {
+        getAccountData({key: item.key}).then(function(results) {
+          item.name = translateService.translate(results[0].name);
+        });
+      }
+
+      scope.onChangeName = function(item) {
+        var itemName = '';
+        getAccountData().then(function(results) {
+          angular.forEach(results, function(value, key) {
+            if(item.name === translateService.translate(results[key].name)) {
+              itemName = results[key].name;
+            }
+          });
+          getAccountData({name: itemName}).then(function(results) {
+            item.key = results[0].key;
+          });
+        });
+      }
+
       scope.dismiss = function() {
         $('#voucher-modal').foundation('reveal', 'close');
       }

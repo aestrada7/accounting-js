@@ -64,12 +64,12 @@
           </div>
           <div class="columns small-3">
             <ax-autocomplete db="accounts" field="key">
-              <input type="text" ng-model="voucherEntry.key">
+              <input type="text" ng-model="voucherEntry.key" ng-change="onChangeKey(voucherEntry)">
             </ax-autocomplete>
           </div>
           <div class="columns small-4">
             <ax-autocomplete db="accounts" field="name">
-              <input type="text">
+              <input type="text" ng-model="voucherEntry.name" ng-change="onChangeName(voucherEntry)">
             </ax-autocomplete>
           </div>
           <div class="columns small-2">
