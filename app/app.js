@@ -51,7 +51,7 @@ app.run(['$rootScope', 'translateService', 'notificationService', 'confirmServic
 
   function($rootScope, translateService, notificationService, confirmService) {
     $rootScope.$on('$stateChangeError', function(event, toState, fromState) {
-      console.log("error");
+      console.log('error');
       console.log(toState);
     });
     $rootScope.$on('$stateChangeSuccess', function(event, toState, fromState) {

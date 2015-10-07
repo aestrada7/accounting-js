@@ -97,7 +97,7 @@ app.directive('axAutocomplete',
 
         function fetchData(args) {
           var defer = $q.defer();
-          if(args.db === "accounts") {
+          if(args.db === 'accounts') {
             accountsDB.find({}, function(err, results) {
               defer.resolve(results);
             });

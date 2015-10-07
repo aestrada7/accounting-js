@@ -5,7 +5,7 @@ app.directive('axKeyHandler',
     return {
       restrict: 'A',
       link: function(scope, element, attrs) {
-        var keyHandlerAttrs = scope.$root.$eval(element.attr("ax-key-handler"));
+        var keyHandlerAttrs = scope.$root.$eval(element.attr('ax-key-handler'));
         var transitionObj = {};
 
         angular.forEach(keyHandlerAttrs, function(value, key) {
