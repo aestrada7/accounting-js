@@ -14,7 +14,7 @@
       <div class="columns small-12 medium-6">
         <ax-validate kind="text">
           <label for="vch-key" ax-translate>features.vouchers.key</label>
-          <input id="vch-key" type="text" ng-model="voucher.key" required
+          <input id="vch-key" type="text" ng-model="voucher.key" ng-change="setDirty()" required
                  ax-translate-attrs="{'placeholder': 'features.vouchers.key'}">
         </ax-validate>
       </div>
@@ -23,7 +23,7 @@
       <div class="columns small-12 medium-6">
         <ax-validate kind="date">
           <label for="vch-date" ax-translate>global.date</label>
-          <input id="vch-date" type="date" ng-model="voucher.date" required
+          <input id="vch-date" type="date" ng-model="voucher.date" ng-change="setDirty()" required
                  ax-translate-attrs="{'placeholder': 'global.date'}">
         </ax-validate>
       </div>
@@ -32,7 +32,7 @@
       <div class="columns small-12">
         <ax-validate kind="text">
           <label for="vch-description" ax-translate>features.vouchers.description</label>
-          <input id="vch-description" type="text" ng-model="voucher.description" required
+          <input id="vch-description" type="text" ng-model="voucher.description" ng-change="setDirty()" required
                  ax-translate-attrs="{'placeholder': 'features.vouchers.description'}">
         </ax-validate>
       </div>
@@ -62,19 +62,19 @@
           </div>
           <div class="columns small-3">
             <ax-autocomplete db="accounts" field="key">
-              <input type="text" ng-model="voucherEntry.key" ng-change="onChangeKey(voucherEntry)">
+              <input type="text" ng-model="voucherEntry.key" ng-change="onChangeKey(voucherEntry);setDirty()">
             </ax-autocomplete>
           </div>
           <div class="columns small-4">
             <ax-autocomplete db="accounts" field="name">
-              <input type="text" ng-model="voucherEntry.name" ng-change="onChangeName(voucherEntry)">
+              <input type="text" ng-model="voucherEntry.name" ng-change="onChangeName(voucherEntry);setDirty()">
             </ax-autocomplete>
           </div>
           <div class="columns small-2">
-            <input type="text" ng-model="voucherEntry.debits">
+            <input type="text" ng-model="voucherEntry.debits" ng-change="setDirty()">
           </div>
           <div class="columns small-2">
-            <input type="text" ng-model="voucherEntry.credits">
+            <input type="text" ng-model="voucherEntry.credits" ng-change="setDirty()">
           </div>
         </div>
       </div>

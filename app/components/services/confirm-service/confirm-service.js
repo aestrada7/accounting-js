@@ -1,7 +1,7 @@
 app.provider('confirmService', function() {
-  this.$get = ['$q', 'translateService', 'notificationService', '$compile', '$rootScope', '$http',
+  this.$get = ['$q', 'translateService', '$compile', '$timeout', '$rootScope', '$http',
 
-  function($q, translateService, notificationService, $compile, $rootScope, $http) {
+  function($q, translateService, $compile, $timeout, $rootScope, $http) {
 
     var show = function(options) {
       var confirmModalTemplate = '';
@@ -18,31 +18,37 @@ app.provider('confirmService', function() {
       $http.get('components/services/confirm-service/confirm-service.html').success(function(data) {
         confirmModalTemplate = $compile(data)(scope);
         angular.element(document.body).append(confirmModalTemplate);
-        $('#confirm-modal').foundation('reveal', 'open', {
-          close_on_background_click: false,
-          close_on_esc: false
-        });
+        $('#confirm-modal').css('top', window.scrollY);
+        $timeout(function() {
+          $('#confirm-modal').addClass('shown');
+          $('.confirm-modal-bg').addClass('shown');
+          $('.confirm-modal-confirm').focus();
+        }, 0);
       });
 
       scope.confirmAction = function() {
-        $('#confirm-modal').foundation('reveal', 'close');
+        closeConfirmation();
         defer.resolve();
       }
 
       scope.dismiss = function() {
-        $('#confirm-modal').foundation('reveal', 'close');
+        closeConfirmation();
         defer.reject();
       }
 
-      $(document).on('closed.fndtn.reveal', '#confirm-modal', function() {
-        $('#confirm-modal').remove();
-        $(document).off('closed.fndtn.reveal');
-        $(document).off('opened.fndtn.reveal');
-        defer.reject();
-      });
+      closeConfirmation = function() {
+        $('#confirm-modal').removeClass('shown');
+        $('.confirm-modal-bg').removeClass('shown');
+        $timeout(function() {
+          $('#confirm-modal').trigger('modalClosed');
+        }, 350);
+      }
 
-      $(document).on('opened.fndtn.reveal', '#confirm-modal', function() {
-        $('.confirm-modal-confirm').focus();
+      $(document).on('modalClosed', '#confirm-modal', function() {
+        $('#confirm-modal').remove();
+        $('.confirm-modal-bg').remove();
+        $(document).off('modalClosed');
+        defer.reject();
       });
 
       return defer.promise;

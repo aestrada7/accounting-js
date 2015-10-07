@@ -1,6 +1,31 @@
+.confirm-modal-bg {
+  transition: opacity $transition-time;
+  display: block !important;
+  z-index: 2001;
+  opacity: 0;
+
+  &.shown {
+    opacity: 1;
+  }
+}
+
 .confirm-modal {
+  transition: opacity $transition-time;
   max-width: rem-calc(500) !important;
   padding-bottom: rem-calc(5);
+  z-index: 2002;
+  display: block;
+  opacity: 0;
+
+  &.shown {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(rem-calc(100));
+
+    @media #{$small-only} {
+      min-height: initial;
+    }
+  }
 
   &.alert {
     .modal-content {

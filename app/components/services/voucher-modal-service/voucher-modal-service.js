@@ -7,6 +7,7 @@ app.provider('voucherModalService', function() {
       var voucherModalTemplate = '';
       var scope = $rootScope.$new(true);
       var defer = $q.defer();
+      scope.dirty = false;
       scope.voucher = {
         kind: voucher.kind
       }
@@ -17,17 +18,19 @@ app.provider('voucherModalService', function() {
         angular.element(document.body).append(voucherModalTemplate);
         $('#voucher-modal').foundation('reveal', 'open', {
           close_on_background_click: false,
-          close_on_esc: false
-          //dismiss_modal_class: ''
+          close_on_esc: false,
+          dismiss_modal_class: 'no-class'
         });
       });
 
       scope.onAddVoucherEntryClicked = function() {
         scope.voucherEntries.push({item: scope.voucherEntries.length + 1});
+        scope.dirty = true;
       }
 
       scope.onRemoveVoucherEntryClicked = function() {
         scope.voucherEntries.pop();
+        scope.dirty = true;
       }
 
       scope.deleteVoucher = function() {
@@ -108,15 +111,35 @@ app.provider('voucherModalService', function() {
       }
 
       scope.dismiss = function() {
-        $('#voucher-modal').foundation('reveal', 'close');
+        if(scope.dirty) {
+          var confirmOptions = {
+            label: 'components.confirmation.confirm-overwrite',
+            icon: 'fi-alert',
+            kind: 'warning',
+            cancelLabel: 'global.cancel',
+            confirmLabel: 'global.ok'
+          }
+
+          confirmService.show(confirmOptions).then(function(result) {
+            $('#voucher-modal').foundation('reveal', 'close');
+          });
+        } else {
+          $('#voucher-modal').foundation('reveal', 'close');
+        }
+      }
+
+      scope.setDirty = function() {
+        scope.dirty = true;
       }
 
       saveSuccess = function() {
+        scope.dirty = false;
         notificationService.show('global.notifications.saved-successfully', 'success', 'top right', '', false);
         defer.resolve();
       }
 
       saveFailure = function(key) {
+        scope.dirty = true;
         var errorText = translateService.translate('global.notifications.duplicate-values');
         errorText = errorText.split('{{key}}').join(key);
         notificationService.show(errorText, 'alert', 'top right', '', false);

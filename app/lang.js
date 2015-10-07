@@ -180,6 +180,9 @@ lang = {
           "file-corrupted": "This file is corrupted and couldn't be loaded, please contact your administrator.",
           "file-removed": "This file is no longer available and couldn't be loaded. Please try again.",
           "confirm-overwrite": "All unsaved data will be overwritten. Are you sure you want to continue?"
+        },
+        "confirmation": {
+          "confirm-overwrite": "All unsaved data will be lost. Are you sure you want to continue?"
         }
       }
     },
@@ -362,6 +365,9 @@ lang = {
           "import-error": "Sucedió un error al importar la base de datos, por favor contacta a tu administrador.",
           "file-corrupted": "Este archivo está corrupto y no puede ser cargado, por favor contacta a tu administrador.",
           "file-removed": "Este archivo no está disponible y no pudo ser cargado. Intenta de nuevo por favor.",
+          "confirm-overwrite": "Todos los datos sin guardar se perderán. ¿Deseas continuar?"
+        },
+        "confirmation": {
           "confirm-overwrite": "Todos los datos sin guardar se perderán. ¿Deseas continuar?"
         }
       }
