@@ -24,36 +24,54 @@
 
   <div class="panel voucher-list grid">
     <div class="row title">
-      <div class="columns small-4">
+      <div class="columns small-3">
         <div ng-class="{'selected': vouchers.orderColumn === 'date', 'reverse': vouchers.isReverse}" 
              ng-click="setOrderColumn('date')">
           <span ax-translate>features.vouchers.date</span>
         </div>
       </div>
-      <div class="columns small-4">
+      <div class="columns small-2">
         <div ng-class="{'selected': vouchers.orderColumn === 'key', 'reverse': vouchers.isReverse}" 
              ng-click="setOrderColumn('key')">
           <span ax-translate>features.vouchers.key</span>
         </div>
       </div>
-      <div class="columns small-4">
+      <div class="columns small-3">
         <div ng-class="{'selected': vouchers.orderColumn === 'description', 'reverse': vouchers.isReverse}" 
              ng-click="setOrderColumn('description')">
           <span ax-translate>features.vouchers.description</span>
+        </div>
+      </div>
+      <div class="columns small-2">
+        <div ng-class="{'selected': vouchers.orderColumn === 'debits', 'reverse': vouchers.isReverse}" 
+             ng-click="setOrderColumn('debits')">
+          <span ax-translate>features.vouchers.debits</span>
+        </div>
+      </div>
+      <div class="columns small-2">
+        <div ng-class="{'selected': vouchers.orderColumn === 'credits', 'reverse': vouchers.isReverse}" 
+             ng-click="setOrderColumn('credits')">
+          <span ax-translate>features.vouchers.credits</span>
         </div>
       </div>
     </div>
 
     <div class="row" ng-repeat="item in items | filter: vouchers.textFilter | orderBy: vouchers.orderColumn: vouchers.isReverse"
          ng-click="onEditVoucherClicked(item)">
-      <div class="columns small-4">
+      <div class="columns small-3">
         <div>{{item.date | date}}</div>
       </div>
-      <div class="columns small-4">
+      <div class="columns small-2">
         <div>{{item.key}}</div>
       </div>
-      <div class="columns small-4">
+      <div class="columns small-3">
         <div>{{item.description}}</div>
+      </div>
+      <div class="columns small-2">
+        <div>{{item.debits | currency}}</div>
+      </div>
+      <div class="columns small-2">
+        <div>{{item.credits | currency}}</div>
       </div>
     </div>
   </div>

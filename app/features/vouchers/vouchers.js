@@ -62,6 +62,20 @@ app.controller('VouchersController',
 
     invalidateList = function() {
       fetchData({}).then(function(results) {
+        angular.forEach(results, function(value, key) {
+          results[key].credits = 0;
+          results[key].debits = 0;
+          getVoucherEntries({voucherId: results[key]._id}).then(function(itemList) {
+            angular.forEach(itemList, function(itemValue, itemKey) {
+              if(itemList[itemKey].credits) {
+                results[key].credits += parseFloat(itemList[itemKey].credits);
+              }
+              if(itemList[itemKey].debits) {
+                results[key].debits += parseFloat(itemList[itemKey].debits);
+              }
+            });
+          });
+        });
         $scope.items = results;
         $(document).foundation();
       });
