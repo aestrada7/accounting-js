@@ -1,12 +1,13 @@
 app.provider('accountModalService', function() {
-  this.$get = ['$q', 'translateService', 'notificationService', '$compile', '$rootScope', '$http',
+  this.$get = ['$q', 'translateService', 'notificationService', 'confirmService', '$compile', '$rootScope', '$http',
 
-  function($q, translateService, notificationService, $compile, $rootScope, $http) {
+  function($q, translateService, notificationService, confirmService, $compile, $rootScope, $http) {
 
     var show = function(account, items) {
       var accountModalTemplate = '';
       var scope = $rootScope.$new(true);
       var defer = $q.defer();
+      scope.dirty = false;
       scope.account = {
         key: '',
         name: '',
@@ -21,14 +22,33 @@ app.provider('accountModalService', function() {
         angular.element(document.body).append(accountModalTemplate);
         $('#account-modal').foundation('reveal', 'open', {
           close_on_background_click: false,
-          close_on_esc: false
-          //dismiss_modal_class: ''
+          close_on_esc: false,
+          dismiss_modal_class: 'no-class'
         });
       });
 
       scope.dismiss = function() {
-        $('#account-modal').foundation('reveal', 'close');
-        defer.reject();
+        if(scope.dirty) {
+          var confirmOptions = {
+            label: 'components.confirmation.confirm-overwrite',
+            icon: 'fi-alert',
+            kind: 'warning',
+            cancelLabel: 'global.cancel',
+            confirmLabel: 'global.ok'
+          }
+
+          confirmService.show(confirmOptions).then(function(result) {
+            $('#account-modal').foundation('reveal', 'close');
+            $(document).off('click');
+          });
+        } else {
+          $('#account-modal').foundation('reveal', 'close');
+          $(document).off('click');
+        }
+      }
+
+      scope.setDirty = function() {
+        scope.dirty = true;
       }
 
       scope.saveAccount = function() {
@@ -59,11 +79,13 @@ app.provider('accountModalService', function() {
       }
 
       saveSuccess = function() {
+        scope.dirty = false;
         notificationService.show('global.notifications.saved-successfully', 'success', 'top right', '', false);
         defer.resolve();
       }
 
       saveFailure = function(key) {
+        scope.dirty = true;
         var errorText = translateService.translate('global.notifications.duplicate-values');
         errorText = errorText.split('{{key}}').join(key);
         notificationService.show(errorText, 'alert', 'top right', '', false);
@@ -73,6 +95,10 @@ app.provider('accountModalService', function() {
         $('#account-modal').remove();
         $(document).off('closed.fndtn.reveal');
         defer.reject();
+      });
+
+      $(document).on('click', '.reveal-modal-bg:not(.confirm-modal-bg)', function() {
+        $('#account-modal').focus();
       });
 
       return defer.promise;

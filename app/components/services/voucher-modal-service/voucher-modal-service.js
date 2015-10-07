@@ -122,9 +122,11 @@ app.provider('voucherModalService', function() {
 
           confirmService.show(confirmOptions).then(function(result) {
             $('#voucher-modal').foundation('reveal', 'close');
+            $(document).off('click');
           });
         } else {
           $('#voucher-modal').foundation('reveal', 'close');
+          $(document).off('click');
         }
       }
 
@@ -149,6 +151,10 @@ app.provider('voucherModalService', function() {
         $('#voucher-modal').remove();
         $(document).off('closed.fndtn.reveal');
         defer.reject();
+      });
+
+      $(document).on('click', '.reveal-modal-bg:not(.confirm-modal-bg)', function() {
+        $('#voucher-modal').focus();
       });
 
       if(voucher) scope.voucher = voucher;

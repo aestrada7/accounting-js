@@ -41,6 +41,7 @@ app.provider('confirmService', function() {
         $('.confirm-modal-bg').removeClass('shown');
         $timeout(function() {
           $('#confirm-modal').trigger('modalClosed');
+          $(document).off('click');
         }, 350);
       }
 
@@ -48,7 +49,12 @@ app.provider('confirmService', function() {
         $('#confirm-modal').remove();
         $('.confirm-modal-bg').remove();
         $(document).off('modalClosed');
+        $('.reveal-modal').focus();
         defer.reject();
+      });
+
+      $(document).on('click', '#confirm-modal-bg', function() {
+        $('#confirm-modal button').focus();
       });
 
       return defer.promise;
