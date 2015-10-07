@@ -1,7 +1,7 @@
 app.provider('voucherModalService', function() {
-  this.$get = ['$q', 'translateService', 'notificationService', '$compile', '$rootScope', '$http',
+  this.$get = ['$q', 'translateService', 'notificationService', 'confirmService', '$compile', '$rootScope', '$http',
 
-  function($q, translateService, notificationService, $compile, $rootScope, $http) {
+  function($q, translateService, notificationService, confirmService, $compile, $rootScope, $http) {
 
     var show = function(voucher) {
       var voucherModalTemplate = '';
@@ -15,7 +15,11 @@ app.provider('voucherModalService', function() {
       $http.get('components/services/voucher-modal-service/voucher-modal-service.html').success(function(data) {
         voucherModalTemplate = $compile(data)(scope);
         angular.element(document.body).append(voucherModalTemplate);
-        $('#voucher-modal').foundation('reveal', 'open');
+        $('#voucher-modal').foundation('reveal', 'open', {
+          close_on_background_click: false,
+          close_on_esc: false
+          //dismiss_modal_class: ''
+        });
       });
 
       scope.onAddVoucherEntryClicked = function() {
@@ -62,7 +66,6 @@ app.provider('voucherModalService', function() {
 
       scope.dismiss = function() {
         $('#voucher-modal').foundation('reveal', 'close');
-        defer.reject();
       }
 
       saveSuccess = function() {

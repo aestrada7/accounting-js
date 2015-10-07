@@ -19,7 +19,11 @@ app.provider('accountModalService', function() {
       $http.get('components/services/account-modal-service/account-modal-service.html').success(function(data) {
         accountModalTemplate = $compile(data)(scope);
         angular.element(document.body).append(accountModalTemplate);
-        $('#account-modal').foundation('reveal', 'open');
+        $('#account-modal').foundation('reveal', 'open', {
+          close_on_background_click: false,
+          close_on_esc: false
+          //dismiss_modal_class: ''
+        });
       });
 
       scope.dismiss = function() {

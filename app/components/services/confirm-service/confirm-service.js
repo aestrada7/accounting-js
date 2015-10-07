@@ -18,7 +18,10 @@ app.provider('confirmService', function() {
       $http.get('components/services/confirm-service/confirm-service.html').success(function(data) {
         confirmModalTemplate = $compile(data)(scope);
         angular.element(document.body).append(confirmModalTemplate);
-        $('#confirm-modal').foundation('reveal', 'open');
+        $('#confirm-modal').foundation('reveal', 'open', {
+          close_on_background_click: false,
+          close_on_esc: false
+        });
       });
 
       scope.confirmAction = function() {
