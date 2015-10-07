@@ -1,4 +1,4 @@
-<div class="reveal-modal large voucher-modal" id="voucher-modal" role="dialog" data-reveal>
+<div class="reveal-modal large voucher-modal" id="voucher-modal" role="dialog" data-reveal ax-trap-focus>
   <h4>
     <span ng-if="!voucher._id" ax-translate>features.vouchers.new-voucher</span>
     <span ng-if="voucher._id" ax-translate>features.vouchers.edit-voucher</span>
@@ -14,7 +14,7 @@
       <div class="columns small-12 medium-6">
         <ax-validate kind="text">
           <label for="vch-key" ax-translate>features.vouchers.key</label>
-          <input id="vch-key" type="text" ng-model="voucher.key" ng-change="setDirty()" required
+          <input id="vch-key" type="text" ng-model="voucher.key" ng-change="setDirty()" required ax-focus
                  ax-translate-attrs="{'placeholder': 'features.vouchers.key'}">
         </ax-validate>
       </div>
