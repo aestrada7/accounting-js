@@ -1,15 +1,13 @@
 <div class="reveal-modal large voucher-modal" id="voucher-modal" role="dialog" data-reveal>
   <h4>
-    <div ng-if="!voucher._id">
-      <span ax-translate>features.vouchers.new-voucher</span>
-      <div class="voucher-kind">
-        <span ng-if="voucher.kind == 1" ax-translate>features.vouchers.journal.short-title</span>
-        <span ng-if="voucher.kind == 2" ax-translate>features.vouchers.cheques.short-title</span>
-        <span ng-if="voucher.kind == 3" ax-translate>features.vouchers.disimbursement.short-title</span>
-        <span ng-if="voucher.kind == 4" ax-translate>features.vouchers.cash-receipt.short-title</span>
-      </div>
-    </div>
+    <span ng-if="!voucher._id" ax-translate>features.vouchers.new-voucher</span>
     <span ng-if="voucher._id" ax-translate>features.vouchers.edit-voucher</span>
+    <div class="voucher-kind">
+      <span ng-if="voucher.kind == 1" ax-translate>features.vouchers.journal.short-title</span>
+      <span ng-if="voucher.kind == 2" ax-translate>features.vouchers.cheques.short-title</span>
+      <span ng-if="voucher.kind == 3" ax-translate>features.vouchers.disimbursement.short-title</span>
+      <span ng-if="voucher.kind == 4" ax-translate>features.vouchers.cash-receipt.short-title</span>
+    </div>
   </h4>
   <form name="voucherForm">
     <div class="row.full">
@@ -98,6 +96,10 @@
     <div class="row.full">
       <div class="columns small-12">
         <div class="right">
+          <button class="delete-button" ng-click="deleteVoucher();" ng-if="voucher._id" ax-translate-attrs="{'aria-label': 'global.delete'}">
+            <i class="fi-trash"></i>
+            <span ax-translate>global.delete</span>
+          </button>
           <button class="save-button" ng-click="saveVoucher();" ng-disabled="voucherForm.$invalid" ax-translate-attrs="{'aria-label': 'global.save'}">
             <i class="fi-check"></i>
             <span ax-translate>global.save</span>

@@ -3,7 +3,7 @@ app.provider('voucherModalService', function() {
 
   function($q, translateService, notificationService, confirmService, $compile, $rootScope, $http) {
 
-    var show = function(voucher) {
+    var show = function(voucher, voucherEntries) {
       var voucherModalTemplate = '';
       var scope = $rootScope.$new(true);
       var defer = $q.defer();
@@ -23,11 +23,21 @@ app.provider('voucherModalService', function() {
       });
 
       scope.onAddVoucherEntryClicked = function() {
-        scope.voucherEntries.push({});
+        scope.voucherEntries.push({item: scope.voucherEntries.length + 1});
       }
 
       scope.onRemoveVoucherEntryClicked = function() {
         scope.voucherEntries.pop();
+      }
+
+      scope.deleteVoucher = function() {
+        //todo: show confirmation before deleting
+        vouchersDB.remove({ _id: scope.voucher._id }, function(err, totalRemoved) {
+          //todo: remove children here
+          //todo: refresh list
+          //todo: add delete string to lang.js
+          notificationService.show('global.notifications.deleted-successfully', 'success', 'top right', '', false);
+        });
       }
 
       scope.saveVoucher = function() {
@@ -45,6 +55,7 @@ app.provider('voucherModalService', function() {
             } else {
               angular.forEach(scope.voucherEntries, function(value, key) {
                 var voucherEntryData = { '_id': scope.voucherEntries[key]._id,
+                                         'voucherId': newItem._id,
                                          'item': scope.voucherEntries[key].item,
                                          'key': scope.voucherEntries[key].key,
                                          'debits': scope.voucherEntries[key].debits,
@@ -73,9 +84,11 @@ app.provider('voucherModalService', function() {
       }
 
       scope.onChangeKey = function(item) {
-        getAccountData({key: item.key}).then(function(results) {
-          item.name = translateService.translate(results[0].name);
-        });
+        try {
+          getAccountData({key: item.key}).then(function(results) {
+            item.name = translateService.translate(results[0].name);
+          });
+        } catch(e) {}
       }
 
       scope.onChangeName = function(item) {
@@ -86,9 +99,11 @@ app.provider('voucherModalService', function() {
               itemName = results[key].name;
             }
           });
-          getAccountData({name: itemName}).then(function(results) {
-            item.key = results[0].key;
-          });
+          if(itemName) {
+            getAccountData({name: itemName}).then(function(results) {
+              item.key = results[0].key;
+            });
+          }
         });
       }
 
@@ -112,6 +127,16 @@ app.provider('voucherModalService', function() {
         $(document).off('closed.fndtn.reveal');
         defer.reject();
       });
+
+      if(voucher) scope.voucher = voucher;
+      if(voucherEntries) {
+        scope.voucherEntries = voucherEntries;
+        angular.forEach(scope.voucherEntries, function(value, key) {
+          getAccountData({key: scope.voucherEntries[key].key}).then(function(results) {
+            scope.voucherEntries[key].name = translateService.translate(results[0].name);
+          });
+        });
+      }
 
       return defer.promise;
     }

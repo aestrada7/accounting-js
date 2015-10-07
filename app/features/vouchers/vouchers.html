@@ -44,7 +44,8 @@
       </div>
     </div>
 
-    <div class="row" ng-repeat="item in items | filter: vouchers.textFilter | orderBy: vouchers.orderColumn: vouchers.isReverse">
+    <div class="row" ng-repeat="item in items | filter: vouchers.textFilter | orderBy: vouchers.orderColumn: vouchers.isReverse"
+         ng-click="onEditVoucherClicked(item)">
       <div class="columns small-4">
         <div>{{item.date | date}}</div>
       </div>

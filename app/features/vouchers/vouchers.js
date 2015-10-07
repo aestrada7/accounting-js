@@ -23,6 +23,22 @@ app.controller('VouchersController',
       });
     }
 
+    getVoucherEntries = function(args) {
+      var defer = $q.defer();
+      voucherEntriesDB.find(args, function(err, results) {
+        defer.resolve(results);
+      });
+      return defer.promise;
+    }
+
+    $scope.onEditVoucherClicked = function(item) {
+      getVoucherEntries({voucherId: item._id}).then(function(results) {
+        voucherModalService.show(item, results).then(function(result) {
+          invalidateList();
+        });
+      });
+    }
+
     $scope.setOrderColumn = function(column) {
       if($scope.vouchers.orderColumn === column) {
         $scope.vouchers.isReverse = !$scope.vouchers.isReverse;
