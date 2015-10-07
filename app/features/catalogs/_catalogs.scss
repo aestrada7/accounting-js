@@ -50,6 +50,13 @@
       position: relative;
       margin-#{$default-float}: rem-calc(20);
     }
+
+    .f-dropdown {
+      display: block;
+      position: absolute;
+      #{$default-float}: 0;
+      top: rem-calc(55);
+    }
   }
 
   .tabs {

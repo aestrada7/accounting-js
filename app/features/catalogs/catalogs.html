@@ -16,12 +16,12 @@
   </h1>
   <div class="button-container">
     <div ng-if="catalogs.selectedFilter == 'all' || catalogs.selectedFilter == 'tree-view'">
-      <button data-dropdown="acc-level-select" aria-controls="acc-level-select"
+      <button ng-click="onAddAccountWithMenuClicked()"
               ax-translate-attrs="{'aria-label': 'global.add'}">
         <i class="fi-plus"></i>
         <span ax-translate>global.add</span>
       </button>
-      <ul id="acc-level-select" class="f-dropdown" data-dropdown-content>
+      <ul id="acc-level-select" class="f-dropdown" ng-if="menuVisible">
         <li><a tabindex="0" ng-click="onAddAccountClicked(1)" ax-enter-click ax-translate>features.accounts.general.singular</a></li>
         <li><a tabindex="0" ng-click="onAddAccountClicked(2)" ax-enter-click ax-translate>features.accounts.categories.singular</a></li>
         <li><a tabindex="0" ng-click="onAddAccountClicked(3)" ax-enter-click ax-translate>features.accounts.accounts.singular</a></li>

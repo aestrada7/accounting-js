@@ -2,6 +2,7 @@ app.controller('CatalogsController',
   ['$scope', '$q', 'notificationService', 'translateService', 'accountModalService', 'confirmService',
 
   function($scope, $q, notificationService, translateService, accountModalService, confirmService) {
+    $scope.menuVisible = false;
     $scope.catalogs = {
       selectedFilter: 'all',
       selectedFilterName: translateService.translate('features.accounts.all.title'),
@@ -12,7 +13,12 @@ app.controller('CatalogsController',
       $scope.catalogs.selectedTab = tabName;
     }
 
+    $scope.onAddAccountWithMenuClicked = function() {
+      $scope.menuVisible = !$scope.menuVisible;
+    }
+
     $scope.onAddAccountClicked = function(level) {
+      $scope.menuVisible = false;
       var item = {};
       item.level = $scope.catalogs.level;
       if(level) item.level = level;

@@ -6,6 +6,7 @@ app.controller('VouchersController',
     $scope.CHQ = 2;
     $scope.DIS = 3;
     $scope.CSH = 4;
+    $scope.menuVisible = false;
 
     $scope.vouchers = {
       textFilter: '',
@@ -13,7 +14,12 @@ app.controller('VouchersController',
       isReverse: false
     };
 
+    $scope.onAddVoucherWithMenuClicked = function() {
+      $scope.menuVisible = !$scope.menuVisible;
+    }
+
     $scope.onAddVoucherClicked = function(kind) {
+      $scope.menuVisible = false;
       var item = {};
       item.kind = kind;
       voucherModalService.show(item).then(function(result) {

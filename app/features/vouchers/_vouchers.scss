@@ -4,13 +4,20 @@
     top: rem-calc(10);
     #{$opposite-direction}: rem-calc(20);
 
+    .f-dropdown {
+      display: block;
+      position: absolute;
+      top: rem-calc(55);
+      #{$default-float}: 0;
+    }
+
     @media #{$small-only} {
       position: relative;
       margin-#{$default-float}: rem-calc(20);
     }
 
     @media #{$medium-up} {
-      .f-dropdown.open {
+      .f-dropdown {
         #{$default-float}: rem-calc(-90) !important;
         width: rem-calc(200);
 
