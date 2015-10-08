@@ -47,7 +47,7 @@
       border-bottom-style: solid;
     }
 
-    .highlight {
+    .highlight, .highlight-2 {
       top: rem-calc(-28);
     }
   }
@@ -75,7 +75,7 @@
       #{$default-float}: rem-calc(9);
     }
 
-    .highlight {
+    .highlight, .highlight-2 {
       #{$default-float}: rem-calc(6);
     }
   }
@@ -91,7 +91,7 @@
       #{$opposite-direction}: rem-calc(9);
     }
 
-    .highlight {
+    .highlight, .highlight-2 {
       #{$default-float}: rem-calc(222);
     }
   }
@@ -107,7 +107,7 @@
       #{$default-float}: calc(50% #{'-'} #{rem-calc(9)});
     }
 
-    .highlight {
+    .highlight, .highlight-2 {
       #{$default-float}: rem-calc(112);
     }
   }
@@ -116,6 +116,7 @@
     font-size: $font-size-xxlarge;
     text-align: center;
     color: $warning-color;
+    text-shadow: 0 0 rem-calc(20) $warning-color;
   }
 
   .ftue-content {
@@ -130,7 +131,7 @@
     background-color: $background-inverse-light;
     top: rem-calc(130);
     border-radius: rem-calc(500);
-    -webkit-animation: pulse-highlight 400ms infinite;
+    -webkit-animation: pulse-highlight 1000ms infinite;
     -webkit-animation-timing-function: ease-in-out;
 
     @at-root {
@@ -140,20 +141,57 @@
           opacity: 0.5;
         }
         25% {
-          transform: scale(1.1);
-          opacity: 0.75;
+          transform: scale(1.05);
+          opacity: 0.6;
         }
         50% {
-          transform: scale(1.15);
-          opacity: 0.9;
+          transform: scale(1.1);
+          opacity: 0.7;
         }
         75% {
-          transform: scale(1.1);
-          opacity: 0.75;
+          transform: scale(1.05);
+          opacity: 0.6;
         }
         100% {
           transform: scale(1);
-          opacity: 0.5;
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+
+  .highlight-2 {
+    position: absolute;
+    width: rem-calc(20);
+    height: rem-calc(20);
+    background-color: transparent;
+    top: rem-calc(130);
+    border: 3px solid $background-inverse-light;
+    border-radius: rem-calc(500);
+    -webkit-animation: pulse-highlight-2 1000ms infinite;
+    -webkit-animation-timing-function: ease-in-out;
+
+    @at-root {
+      @-webkit-keyframes pulse-highlight-2 {
+        0% {
+          transform: scale(1);
+          opacity: 0.8;
+        }
+        25% {
+          transform: scale(1.2);
+          opacity: 0.6;
+        }
+        50% {
+          transform: scale(1.4);
+          opacity: 0.4;
+        }
+        75% {
+          transform: scale(1.7);
+          opacity: 0.2;
+        }
+        100% {
+          transform: scale(2);
+          opacity: 0;
         }
       }
     }
