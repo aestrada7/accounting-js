@@ -29,7 +29,8 @@ module.exports = function(grunt) {
     clean: {
       bower: ['bower_components'],
       vendor: ['app/vendor'],
-      develop: ['app/build']
+      develop: ['app/build'],
+      ftue: ['data/ftues.db']
     },
 
     bower: {
@@ -113,7 +114,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-shell');
 
-  grunt.registerTask('update', ['shell:git-pull', 'shell:npm', 'clean', 'bower', 'copy']);
+  grunt.registerTask('clean-instance', ['clean:bower', 'clean:vendor', 'clean:develop']);
+  grunt.registerTask('update', ['shell:git-pull', 'shell:npm', 'clean-instance', 'bower', 'copy']);
   grunt.registerTask('develop-es', ['http-server:dev', 'sass', 'parallel:watchers-es']);
   grunt.registerTask('develop', ['http-server:dev', 'sass', 'parallel:watchers']);
 };

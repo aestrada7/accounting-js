@@ -129,12 +129,21 @@ dbStartUp = function(notificationService, translateService, confirmService) {
         }
       }
     });
+    fs.readFile('data/ftues.db', 'utf8', function(err, data) {
+      if(err) {
+        buildFTUEList();
+      }
+    });
   }
 
   buildDefaultData = function() {
     for(var i = 0; i < preloaded.accounts.length; i++) {
       accountsDB.insert(preloaded.accounts[i]);
     }
+    buildFTUEList();
+  }
+
+  buildFTUEList = function() {
     for(var i = 0; i < preloaded.ftues.length; i++) {
       ftuesDB.insert(preloaded.ftues[i]);
     }
