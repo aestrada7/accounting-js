@@ -20,6 +20,9 @@ app.directive('axValidate',
               case 'text':
                 scope.errorDescription = translateService.translate('global.errors.missing-value');
                 break;
+              case 'date':
+                scope.errorDescription = translateService.translate('global.errors.invalid-value');
+                break;
               case 'number':
                 scope.errorDescription = translateService.translate('global.errors.invalid-value');
                 break;

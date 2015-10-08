@@ -168,6 +168,9 @@ lang = {
             "plural": "Cash Receipt Vouchers",
             "short-title": "Cash Receipt",
             "description": ""
+          },
+          "ftue": {
+            "order": "You can order the grid by clicking on the title of the column!"
           }
         }
       },
@@ -354,6 +357,9 @@ lang = {
             "plural": "Pólizas de Ingresos",
             "short-title": "Ingresos",
             "description": ""
+          },
+          "ftue": {
+            "order": "Puedes ordenar los datos haciendo click en el título de cada columna!"
           }
         }
       },

@@ -12,6 +12,7 @@ var organizationDB = new Datastore({ filename: 'data/organization.db', autoload:
 var accountsDB = new Datastore({ filename: 'data/accounts.db', autoload: true });
 var vouchersDB = new Datastore({ filename: 'data/vouchers.db', autoload: true });
 var voucherEntriesDB = new Datastore({ filename: 'data/voucherEntries.db', autoload: true });
+var ftuesDB = new Datastore({ filename: 'data/ftues.db', autoload: true });
 
 //Unique fields
 accountsDB.ensureIndex({ fieldName: 'key', unique: true });
@@ -41,6 +42,9 @@ var preloaded = {
     { '_id': 18, 'parentId': 15, 'key': '2101', 'level': 3, 'name': 'features.accounts.passive-assets.sundry-creditors', 'inverted': false },
     { '_id': 19, 'parentId': 16, 'key': '2201', 'level': 3, 'name': 'features.accounts.passive-assets.long-term-to-pay', 'inverted': false },
     { '_id': 20, 'parentId': 16, 'key': '2201', 'level': 3, 'name': 'features.accounts.passive-assets.mortgages', 'inverted': false }
+  ],
+  ftues: [
+    { '_id': 1, 'key': 'voucher-order', 'displayed': false }
   ]
 };
 
@@ -130,6 +134,9 @@ dbStartUp = function(notificationService, translateService, confirmService) {
   buildDefaultData = function() {
     for(var i = 0; i < preloaded.accounts.length; i++) {
       accountsDB.insert(preloaded.accounts[i]);
+    }
+    for(var i = 0; i < preloaded.ftues.length; i++) {
+      ftuesDB.insert(preloaded.ftues[i]);
     }
   }
 

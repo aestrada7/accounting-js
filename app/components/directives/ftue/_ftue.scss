@@ -1,0 +1,161 @@
+.ftue {
+  position: absolute;
+  top: rem-calc(-130);
+  #{$default-float}: 0;
+  width: rem-calc(250);
+  height: rem-calc(130);
+  padding: rem-calc(10);
+  font-size: $font-size-normal;
+  border: 1px solid $border-color-medium;
+  border-radius: rem-calc(3);
+  background-color: $background-inverse-light;
+  color: $text-color-white;
+  z-index: 2003;
+
+  &:before {
+    position: absolute;
+    border: inset rem-calc(6);
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    z-index: 2004;
+  }
+
+  &:after {
+    position: absolute;
+    border: inset rem-calc(7);
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    z-index: 2005;
+  }
+
+  &.bottom {
+    top: rem-calc(30);
+
+    &:before {
+      top: rem-calc(-12);
+      border-color: transparent transparent $border-color-medium transparent;
+      border-bottom-style: solid;
+    }
+
+    &:after {
+      top: rem-calc(-14);
+      border-color: transparent transparent $background-inverse-light transparent;
+      border-bottom-style: solid;
+    }
+
+    .highlight {
+      top: rem-calc(-28);
+    }
+  }
+
+  &.top {
+    &:before {
+      top: rem-calc(128);
+      border-color: $border-color-medium transparent transparent transparent;
+      border-top-style: solid;
+    }
+
+    &:after {
+      top: rem-calc(127);
+      border-color: $background-inverse-light transparent transparent transparent;
+      border-top-style: solid;
+    }
+  }
+
+  &.left {
+    &:before {
+      #{$default-float}: rem-calc(10);
+    }
+
+    &:after {
+      #{$default-float}: rem-calc(9);
+    }
+
+    .highlight {
+      #{$default-float}: rem-calc(6);
+    }
+  }
+
+  &.right {
+    #{$default-float}: rem-calc(-200);
+
+    &:before {
+      #{$opposite-direction}: rem-calc(10);
+    }
+
+    &:after {
+      #{$opposite-direction}: rem-calc(9);
+    }
+
+    .highlight {
+      #{$default-float}: rem-calc(222);
+    }
+  }
+
+  &.center {
+    #{$default-float}: rem-calc(-100);
+
+    &:before {
+      #{$default-float}: calc(50% #{'-'} #{rem-calc(10)});
+    }
+
+    &:after {
+      #{$default-float}: calc(50% #{'-'} #{rem-calc(9)});
+    }
+
+    .highlight {
+      #{$default-float}: rem-calc(112);
+    }
+  }
+
+  .icon {
+    font-size: $font-size-xxlarge;
+    text-align: center;
+    color: $warning-color;
+  }
+
+  .ftue-content {
+    padding-top: rem-calc(10);
+    text-align: center;
+  }
+
+  .highlight {
+    position: absolute;
+    width: rem-calc(20);
+    height: rem-calc(20);
+    background-color: $background-inverse-light;
+    top: rem-calc(130);
+    border-radius: rem-calc(500);
+    -webkit-animation: pulse-highlight 400ms infinite;
+    -webkit-animation-timing-function: ease-in-out;
+
+    @at-root {
+      @-webkit-keyframes pulse-highlight {
+        0% {
+          transform: scale(1);
+          opacity: 0.5;
+        }
+        25% {
+          transform: scale(1.1);
+          opacity: 0.75;
+        }
+        50% {
+          transform: scale(1.15);
+          opacity: 0.9;
+        }
+        75% {
+          transform: scale(1.1);
+          opacity: 0.75;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
