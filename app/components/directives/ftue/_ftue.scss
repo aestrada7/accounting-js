@@ -1,6 +1,6 @@
 .ftue {
   position: absolute;
-  top: rem-calc(-130);
+  top: rem-calc(-140);
   #{$default-float}: 0;
   width: rem-calc(250);
   height: rem-calc(130);
@@ -22,7 +22,7 @@
 
   &:before {
     position: absolute;
-    border: inset rem-calc(6);
+    border: inset rem-calc(11);
     content: '';
     display: block;
     height: 0;
@@ -32,7 +32,7 @@
 
   &:after {
     position: absolute;
-    border: inset rem-calc(7);
+    border: inset rem-calc(12);
     content: '';
     display: block;
     height: 0;
@@ -41,22 +41,22 @@
   }
 
   &.bottom {
-    top: rem-calc(30);
+    top: rem-calc(36);
 
     &:before {
-      top: rem-calc(-12);
+      top: rem-calc(-22);
       border-color: transparent transparent $border-color-medium transparent;
       border-bottom-style: solid;
     }
 
     &:after {
-      top: rem-calc(-14);
+      top: rem-calc(-23);
       border-color: transparent transparent $background-inverse-light transparent;
       border-bottom-style: solid;
     }
 
     .highlight, .highlight-2 {
-      top: rem-calc(-28);
+      top: rem-calc(-34);
     }
   }
 
@@ -84,7 +84,7 @@
     }
 
     .highlight, .highlight-2 {
-      #{$default-float}: rem-calc(6);
+      #{$default-float}: rem-calc(11);
     }
   }
 
@@ -100,7 +100,7 @@
     }
 
     .highlight, .highlight-2 {
-      #{$default-float}: rem-calc(222);
+      #{$default-float}: rem-calc(217);
     }
   }
 
@@ -108,15 +108,15 @@
     #{$default-float}: rem-calc(-100);
 
     &:before {
-      #{$default-float}: calc(50% #{'-'} #{rem-calc(10)});
+      #{$default-float}: calc(50% #{'-'} #{rem-calc(12)});
     }
 
     &:after {
-      #{$default-float}: calc(50% #{'-'} #{rem-calc(9)});
+      #{$default-float}: calc(50% #{'-'} #{rem-calc(12)});
     }
 
     .highlight, .highlight-2 {
-      #{$default-float}: rem-calc(112);
+      #{$default-float}: rem-calc(114);
     }
   }
 
@@ -137,7 +137,7 @@
     width: rem-calc(20);
     height: rem-calc(20);
     background-color: $background-inverse-light;
-    top: rem-calc(130);
+    top: rem-calc(140);
     border-radius: rem-calc(500);
     -webkit-animation: pulse-highlight 1000ms infinite;
     -webkit-animation-timing-function: ease-in-out;
@@ -173,7 +173,7 @@
     width: rem-calc(20);
     height: rem-calc(20);
     background-color: transparent;
-    top: rem-calc(130);
+    top: rem-calc(140);
     border: 3px solid $background-inverse-light;
     border-radius: rem-calc(500);
     -webkit-animation: pulse-highlight-2 1000ms infinite;
