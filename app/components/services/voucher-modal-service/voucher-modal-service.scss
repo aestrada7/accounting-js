@@ -12,4 +12,20 @@
   .grid {
     margin-bottom: rem-calc(10);
   }
+
+  .tally-status {
+    margin-top: rem-calc(24);
+
+    i {
+      font-size: $font-size-large;
+
+      &.fi-check {
+        color: $success-color;
+      }
+
+      &.fi-x {
+        color: $alert-color;
+      }
+    }
+  }
 }

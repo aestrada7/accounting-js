@@ -148,6 +148,7 @@ lang = {
           "item": "Item",
           "debits": "Debits",
           "credits": "Credits",
+          "tallies": "Tallies",
           "confirm-delete": "Are you sure you want to delete this voucher? All voucher entries will also be deleted.",
           "journal": {
             "title": "Journal Voucher",
@@ -342,6 +343,7 @@ lang = {
           "item": "Partida",
           "debits": "Cargos",
           "credits": "Abonos",
+          "tallies": "Cuadra",
           "confirm-delete": "¿Estás seguro que deseas eliminar esta póliza? Todos los movimientos de la póliza serán eliminados.",
           "journal": {
             "title": "Póliza de Diario",

@@ -139,6 +139,14 @@ app.provider('voucherModalService', function() {
         });
       }
 
+      scope.isValidAccount = function(item) {
+        getAccountData({key: item.key}).then(function(results) {
+          if(results.length === 0) {
+            item.key = '';
+          }
+        });
+      }
+
       scope.dismiss = function() {
         if(scope.dirty) {
           var confirmOptions = {
@@ -161,6 +169,20 @@ app.provider('voucherModalService', function() {
 
       scope.setDirty = function() {
         scope.dirty = true;
+      }
+
+      scope.voucherTallies = function() {
+        var tmpCredits = 0;
+        var tmpDebits = 0;
+        angular.forEach(scope.voucherEntries, function(value, key) {
+          if(scope.voucherEntries[key].credits) {
+            tmpCredits += parseFloat(scope.voucherEntries[key].credits);
+          }
+          if(scope.voucherEntries[key].debits) {
+            tmpDebits += parseFloat(scope.voucherEntries[key].debits);
+          }
+        });
+        return tmpDebits === tmpCredits;
       }
 
       saveSuccess = function() {

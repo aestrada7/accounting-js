@@ -56,18 +56,19 @@
             <span ax-translate>features.vouchers.credits</span>
           </div>
         </div>
-        <div ng-repeat="voucherEntry in voucherEntries" class="row">
+        <div ng-repeat="voucherEntry in voucherEntries | orderBy: 'item'" class="row">
           <div class="columns small-1">
-            <input type="text" ng-model="voucherEntry.item">
+            <input type="text" ng-model="voucherEntry.item" disabled="disabled">
           </div>
           <div class="columns small-3">
             <ax-autocomplete db="accounts" field="key">
-              <input type="text" ng-model="voucherEntry.key" ng-change="onChangeKey(voucherEntry);setDirty()">
+              <input type="text" ng-model="voucherEntry.key" required ng-change="onChangeKey(voucherEntry);setDirty()"
+                     ng-blur="isValidAccount(voucherEntry)">
             </ax-autocomplete>
           </div>
           <div class="columns small-4">
             <ax-autocomplete db="accounts" field="name">
-              <input type="text" ng-model="voucherEntry.name" ng-change="onChangeName(voucherEntry);setDirty()">
+              <input type="text" ng-model="voucherEntry.name" required ng-change="onChangeName(voucherEntry);setDirty()">
             </ax-autocomplete>
           </div>
           <div class="columns small-2">
@@ -94,7 +95,13 @@
       </div>
     </div>
     <div class="row.full">
-      <div class="columns small-12">
+      <div class="columns small-6">
+        <div class="tally-status">
+          <span ax-translate>features.vouchers.tallies</span>
+          <i ng-class="voucherTallies() ? 'fi-check' : 'fi-x'"></i>
+        </div>
+      </div>
+      <div class="columns small-6">
         <div class="right">
           <button class="delete-button" ng-click="deleteVoucher();" ng-if="voucher._id" ax-translate-attrs="{'aria-label': 'global.delete'}">
             <i class="fi-trash"></i>
