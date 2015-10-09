@@ -34,12 +34,24 @@ app.provider('voucherModalService', function() {
       }
 
       scope.deleteVoucher = function() {
-        //todo: show confirmation before deleting
-        vouchersDB.remove({ _id: scope.voucher._id }, function(err, totalRemoved) {
-          //todo: remove children here
-          //todo: refresh list
-          //todo: add delete string to lang.js
-          notificationService.show('global.notifications.deleted-successfully', 'success', 'top right', '', false);
+        var confirmOptions = {
+          label: 'features.vouchers.confirm-delete',
+          icon: 'fi-trash',
+          kind: 'alert',
+          cancelLabel: 'global.cancel',
+          confirmLabel: 'global.delete'
+        }
+
+        confirmService.show(confirmOptions).then(function(result) {
+          vouchersDB.remove({ _id: scope.voucher._id }, function(err, totalRemoved) {
+            voucherEntriesDB.remove({ voucherId: scope.voucher._id }, function(err, totalRemoved) {
+              scope.dismiss();
+              invalidateList();
+              notificationService.show('global.notifications.deleted-successfully', 'success', 'top right', '', false);
+            });
+          });
+        }, function(result) {
+          //delete was cancelled
         });
       }
 

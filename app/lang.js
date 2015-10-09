@@ -40,6 +40,7 @@ lang = {
         },
         "notifications": {
           "saved-successfully": "Saved successfully!",
+          "deleted-successfully": "Deleted successfully!",
           "duplicate-values": "Couldn't save, the value '{{key}}' already exists."
         }
       },
@@ -147,6 +148,7 @@ lang = {
           "item": "Item",
           "debits": "Debits",
           "credits": "Credits",
+          "confirm-delete": "Are you sure you want to delete this voucher? All voucher entries will also be deleted.",
           "journal": {
             "title": "Journal Voucher",
             "plural": "Journal Vouchers",
@@ -232,6 +234,7 @@ lang = {
         },
         "notifications": {
           "saved-successfully": "Datos guardados correctamente.",
+          "deleted-successfully": "Datos eliminados correctamente.",
           "duplicate-values": "No se pudo completar la operación, el valor '{{key}}' ya existe."
         }
       },
@@ -339,6 +342,7 @@ lang = {
           "item": "Partida",
           "debits": "Cargos",
           "credits": "Abonos",
+          "confirm-delete": "¿Estás seguro que deseas eliminar esta póliza? Todos los movimientos de la póliza serán eliminados.",
           "journal": {
             "title": "Póliza de Diario",
             "plural": "Pólizas de Diario",
