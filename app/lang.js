@@ -172,7 +172,8 @@ lang = {
             "description": ""
           },
           "ftue": {
-            "order": "You can order the grid by clicking on the title of the column!"
+            "order": "You can order the grid by clicking on the title of the column!",
+            "grid": "You can click on each row to open a window with the voucher's details."
           }
         }
       },
@@ -363,7 +364,8 @@ lang = {
             "description": ""
           },
           "ftue": {
-            "order": "Puedes ordenar los datos haciendo click en el título de cada columna!"
+            "order": "Puedes ordenar los datos haciendo click en el título de cada columna!",
+            "grid": "Puedes hacer click en cada renglón para abrir una ventana con los detalles de la póliza."
           }
         }
       },

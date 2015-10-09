@@ -41,6 +41,8 @@ app.controller('VouchersController',
       getVoucherEntries({voucherId: item._id}).then(function(results) {
         voucherModalService.show(item, results).then(function(result) {
           invalidateList();
+        }, function(reject) {
+          invalidateList();
         });
       });
     }

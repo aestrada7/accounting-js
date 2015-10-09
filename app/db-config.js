@@ -44,7 +44,8 @@ var preloaded = {
     { '_id': 20, 'parentId': 16, 'key': '2201', 'level': 3, 'name': 'features.accounts.passive-assets.mortgages', 'inverted': false }
   ],
   ftues: [
-    { '_id': 1, 'key': 'voucher-order', 'displayed': false }
+    { '_id': 1, 'key': 'voucher-order', 'displayed': false },
+    { '_id': 2, 'key': 'voucher-click-to-edit', 'displayed': false }
   ]
 };
 

@@ -47,4 +47,9 @@
       padding-#{$default-float}: rem-calc(30);
     }
   }
+
+  .grid-ftue {
+    position: absolute;
+    #{$default-float}: calc(50% #{'-'} #{rem-calc(25)});
+  }
 }

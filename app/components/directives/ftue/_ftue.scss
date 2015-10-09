@@ -10,7 +10,15 @@
   border-radius: rem-calc(3);
   background-color: $background-inverse-light;
   color: $text-color-white;
-  z-index: 2003;
+  z-index: 1003;
+
+  &.in-modal {
+    z-index: 1998;
+
+    .ftue-overlay {
+      z-index: 1999;
+    }
+  }
 
   &:before {
     position: absolute;
@@ -195,5 +203,16 @@
         }
       }
     }
+  }
+
+  .ftue-overlay {
+    position: fixed;
+    top: 0;
+    #{$default-float}: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity: 0;
+    z-index: 1004;
   }
 }

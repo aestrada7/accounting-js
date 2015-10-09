@@ -13,6 +13,13 @@ app.directive('axFtue',
       link: function(scope, element, attrs) {
         scope.canBeShown = false;
 
+        scope.removeFTUE = function() {
+          ftuesDB.update({ key: scope.key }, { $set: { 'displayed': true }}, { multi: false }, function (err, numReplaced) {
+            scope.canBeShown = false;
+            loadFtueStatus();
+          });
+        }
+
         fetchFTUEData = function(args) {
           var defer = $q.defer();
           ftuesDB.find(args, function(err, results) {
@@ -31,14 +38,6 @@ app.directive('axFtue',
               if(parentPosition === 'static') {
                 element.parent().css('position', 'relative');
               }
-
-              $(document).on('click', function() {
-                ftuesDB.update({ key: scope.key }, { $set: { 'displayed': true }}, { multi: false }, function (err, numReplaced) {
-                  scope.canBeShown = false;
-                  $(document).off('click');
-                  loadFtueStatus();
-                });
-              });
             }
           });
         }
