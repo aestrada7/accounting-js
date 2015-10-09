@@ -57,6 +57,8 @@
       </div>
     </div>
 
+    <ax-ftue class="grid-ftue" key="voucher-click-to-edit" text="features.vouchers.ftue.grid" position="bottom center" 
+             ng-if="items.length > 0"></ax-ftue>
     <div class="row" ng-repeat="item in items | filter: vouchers.textFilter | orderBy: vouchers.orderColumn: vouchers.isReverse"
          ng-click="onEditVoucherClicked(item)">
       <div class="columns small-3">
@@ -75,7 +77,6 @@
         <div>{{item.credits | currency}}</div>
       </div>
     </div>
-    <ax-ftue key="voucher-click-to-edit" text="features.vouchers.ftue.grid" position="bottom center" ng-if="items.length > 0" class="grid-ftue"></ax-ftue>
 
   </div>
 </div>
