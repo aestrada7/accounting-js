@@ -62,27 +62,44 @@ app.provider('voucherModalService', function() {
                             'description': scope.voucher.description,
                             'kind': scope.voucher.kind };
         if(scope.voucher._id) {
-          //edit, not working yet
+          vouchersDB.update({ _id: scope.voucher._id }, { $set: voucherData }, { multi: false }, function (err, numReplaced) {
+            if(err && err.errorType === 'uniqueViolated') {
+              saveFailure(err.key);
+            } else {
+              angular.forEach(scope.voucherEntries, function(value, key) {
+                var voucherEntryData = { '_id': scope.voucherEntries[key]._id,
+                                         'voucherId': scope.voucher._id,
+                                         'item': scope.voucherEntries[key].item,
+                                         'key': scope.voucherEntries[key].key,
+                                         'debits': scope.voucherEntries[key].debits,
+                                         'credits': scope.voucherEntries[key].credits };
+                if(voucherEntryData._id) {
+                  voucherEntriesDB.update({ _id: voucherEntryData._id }, { $set: voucherEntryData }, { multi: false }, function (err, numReplaced) {
+                    //saved!
+                  });
+                } else {
+                  voucherEntriesDB.insert(voucherEntryData, function(err, newItem) {
+                    //new stuff added!
+                  });
+                }
+              });
+              saveSuccess();
+            }
+          });
         } else {
           vouchersDB.insert(voucherData, function(err, newItem) {
             if(err && err.errorType === 'uniqueViolated') {
               saveFailure(err.key);
             } else {
               angular.forEach(scope.voucherEntries, function(value, key) {
-                var voucherEntryData = { '_id': scope.voucherEntries[key]._id,
-                                         'voucherId': newItem._id,
+                var voucherEntryData = { 'voucherId': newItem._id,
                                          'item': scope.voucherEntries[key].item,
                                          'key': scope.voucherEntries[key].key,
                                          'debits': scope.voucherEntries[key].debits,
                                          'credits': scope.voucherEntries[key].credits };
-                console.log(voucherEntryData);
-                if(voucherEntryData._id) {
-                  //edit, not working yet
-                } else {
-                  voucherEntriesDB.insert(voucherEntryData, function(err, newItem) {
-                    //console.log('save');
-                  });
-                }
+                voucherEntriesDB.insert(voucherEntryData, function(err, newItem) {
+                  //console.log('save');
+                });
               });
               saveSuccess();
             }
