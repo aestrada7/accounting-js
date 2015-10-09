@@ -65,6 +65,7 @@ app.controller('VouchersController',
         angular.forEach(results, function(value, key) {
           results[key].credits = 0;
           results[key].debits = 0;
+          if(!results[key].description) results[key].description = '-';
           getVoucherEntries({voucherId: results[key]._id}).then(function(itemList) {
             angular.forEach(itemList, function(itemValue, itemKey) {
               if(itemList[itemKey].credits) {
@@ -77,7 +78,6 @@ app.controller('VouchersController',
           });
         });
         $scope.items = results;
-        $(document).foundation();
       });
     }
 

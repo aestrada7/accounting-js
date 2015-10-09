@@ -13,7 +13,7 @@ app.directive('axFtue',
       link: function(scope, element, attrs) {
         scope.canBeShown = false;
 
-        fetchData = function(args) {
+        fetchFTUEData = function(args) {
           var defer = $q.defer();
           ftuesDB.find(args, function(err, results) {
             defer.resolve(results);
@@ -22,7 +22,7 @@ app.directive('axFtue',
         }
 
         loadFtueStatus = function() {
-          fetchData({key: scope.key}).then(function(results) {
+          fetchFTUEData({key: scope.key}).then(function(results) {
             if(!results[0].displayed) {
               scope.canBeShown = true;
               scope.ftueText = translateService.translate(scope.text);

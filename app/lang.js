@@ -18,6 +18,8 @@ lang = {
         "error": "Error",
         "search": "Search",
         "date": "Date",
+        "add-row": "Add Row",
+        "delete-row": "Remove Row",
         "errors": {
           "invalid-value": "Invalid value",
           "missing-value": "Missing value"
@@ -207,6 +209,8 @@ lang = {
         "error": "Error",
         "search": "Buscar",
         "date": "Fecha",
+        "add-row": "Agregar Renglón",
+        "delete-row": "Eliminar Renglón",
         "errors": {
           "invalid-value": "Dato inválido",
           "missing-value": "Dato requerido"
