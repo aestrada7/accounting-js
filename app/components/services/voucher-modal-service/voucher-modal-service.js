@@ -24,7 +24,7 @@ app.provider('voucherModalService', function() {
       });
 
       scope.onAddVoucherEntryClicked = function() {
-        scope.voucherEntries.push({item: scope.voucherEntries.length + 1});
+        scope.voucherEntries.push({item: scope.voucherEntries.length + 1, invalid: true});
         scope.dirty = true;
       }
 
@@ -110,17 +110,23 @@ app.provider('voucherModalService', function() {
       getAccountData = function(args) {
         var defer = $q.defer();
         accountsDB.find(args, function(err, results) {
+          if(err) {
+            defer.reject();
+          }
           defer.resolve(results);
         });
         return defer.promise;
       }
 
       scope.onChangeKey = function(item) {
-        try {
-          getAccountData({key: item.key}).then(function(results) {
+        getAccountData({key: item.key}).then(function(results) {
+          if(results.length > 0) {
             item.name = translateService.translate(results[0].name);
-          });
-        } catch(e) {}
+            item.invalid = false;
+          } else {
+            item.invalid = true;
+          }
+        });
       }
 
       scope.onChangeName = function(item) {
@@ -134,6 +140,7 @@ app.provider('voucherModalService', function() {
           if(itemName) {
             getAccountData({name: itemName}).then(function(results) {
               item.key = results[0].key;
+              item.invalid = false;
             });
           }
         });
@@ -141,10 +148,18 @@ app.provider('voucherModalService', function() {
 
       scope.isValidAccount = function(item) {
         getAccountData({key: item.key}).then(function(results) {
-          if(results.length === 0) {
-            item.key = '';
+          item.invalid = results.length === 0;
+        });
+      }
+
+      scope.hasInvalidData = function() {
+        var isInvalid = false;
+        angular.forEach(scope.voucherEntries, function(value, key) {
+          if(scope.voucherEntries[key].invalid) {
+            isInvalid = true;
           }
         });
+        return isInvalid;
       }
 
       scope.dismiss = function() {

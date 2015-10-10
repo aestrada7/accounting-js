@@ -62,8 +62,8 @@
           </div>
           <div class="columns small-3">
             <ax-autocomplete db="accounts" field="key">
-              <input type="text" ng-model="voucherEntry.key" required ng-change="onChangeKey(voucherEntry);setDirty()"
-                     ng-blur="isValidAccount(voucherEntry)">
+              <input type="text" ng-class="{'invalid': voucherEntry.invalid}" ng-model="voucherEntry.key" required
+                     ng-change="onChangeKey(voucherEntry);setDirty()">
             </ax-autocomplete>
           </div>
           <div class="columns small-4">
@@ -107,7 +107,8 @@
             <i class="fi-trash"></i>
             <span ax-translate>global.delete</span>
           </button>
-          <button class="save-button" ng-click="saveVoucher();" ng-disabled="voucherForm.$invalid" ax-translate-attrs="{'aria-label': 'global.save'}">
+          <button class="save-button" ng-click="saveVoucher();" ng-disabled="voucherForm.$invalid || hasInvalidData()" 
+                  ax-translate-attrs="{'aria-label': 'global.save'}">
             <i class="fi-check"></i>
             <span ax-translate>global.save</span>
           </button>

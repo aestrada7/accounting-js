@@ -66,6 +66,10 @@
         width: 100%;
         border: 0;
 
+        &.invalid.ng-touched {
+          background-color: $alert-color-lt;
+        }
+
         &:focus {
           border: 1px solid $primary-color;
         }
