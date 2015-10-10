@@ -10,6 +10,7 @@
       .columns {
         background-color: $background-medium;
         color: $text-color-white;
+        font-size: $font-size-normal;
 
         .selected {
           & > span:before {
