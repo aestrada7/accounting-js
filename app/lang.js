@@ -46,7 +46,10 @@ lang = {
       },
       "features": {
         "home": {
-          "title": "Home"
+          "title": "Home",
+          "ftue": {
+            "menu-shortcuts": "Access to any system option from this menu, or press ALT+M for quicker access."
+          }
         },
         "playground": {
           "title": "Playground",
@@ -241,7 +244,10 @@ lang = {
       },
       "features": {
         "home": {
-          "title": "Inicio"
+          "title": "Inicio",
+          "ftue": {
+            "menu-shortcuts": "Accede a las diferentes opciones del sistema desde este menú (o presiona ALT+M)"
+          }
         },
         "playground": {
           "title": "Sala de juego",

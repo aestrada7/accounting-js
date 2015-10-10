@@ -45,7 +45,8 @@ var preloaded = {
   ],
   ftues: [
     { '_id': 1, 'key': 'voucher-order', 'displayed': false },
-    { '_id': 2, 'key': 'voucher-click-to-edit', 'displayed': false }
+    { '_id': 2, 'key': 'voucher-click-to-edit', 'displayed': false },
+    { '_id': 3, 'key': 'menu-shortcuts', 'displayed': false}
   ]
 };
 
