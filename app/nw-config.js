@@ -10,7 +10,7 @@ nwStartUp = function(translateService) {
   fileMenu.append(new gui.MenuItem({
     label: translateService.translate('global.new'),
     click: function() {
-      $('body').trigger('new-clicked');
+      if(this.enabled) $('body').trigger('new-clicked');
     },
     key: 'n',
     modifiers: 'ctrl'
@@ -19,25 +19,25 @@ nwStartUp = function(translateService) {
   fileMenu.append(new gui.MenuItem({
     label: translateService.translate('features.organization.title'),
     click: function() {
-      $('#organization-link').click();
+      if(this.enabled) $('#organization-link').click();
     },
-    key: 'n',
+    key: 'd',
     modifiers: 'ctrl'
   }));
 
   fileMenu.append(new gui.MenuItem({
     label: translateService.translate('global.export'),
     click: function() {
-      $('#file-export-dialog').click();
+      if(this.enabled) $('#file-export-dialog').click();
     },
     key: 's',
-    modifiers: 'ctrl-shift'
+    modifiers: 'ctrl'
   }));
 
   fileMenu.append(new gui.MenuItem({
     label: translateService.translate('global.import'),
     click: function() {
-      $('#file-import-dialog').click();
+      if(this.enabled) $('#file-import-dialog').click();
     },
     key: 'o',
     modifiers: 'ctrl'
@@ -49,14 +49,14 @@ nwStartUp = function(translateService) {
       gui.App.quit();
     },
     key: 'q',
-    modifiers: 'ctrl'
+    modifiers: 'ctrl',
+    icon: true
   }));
 
   menu.append(new gui.MenuItem({
     label: translateService.translate('global.file'),
     submenu: fileMenu,
-    key: 'f',
-    modifiers: 'alt'
+    icon: true
   }));
 
   //Tools menu
@@ -65,53 +65,51 @@ nwStartUp = function(translateService) {
   toolMenu.append(new gui.MenuItem({
     label: translateService.translate($('#home-link').html()),
     click: function() {
-      $('#home-link').click();
+      if(this.enabled) $('#home-link').click();
     },
     key: 'h',
-    modifiers: 'alt'
+    modifiers: 'ctrl+alt'
   }));
 
   toolMenu.append(new gui.MenuItem({
     label: translateService.translate($('#catalogs-link').html()),
     click: function() {
-      $('#catalogs-link').click();
+      if(this.enabled) $('#catalogs-link').click();
     },
     key: 'c',
-    modifiers: 'alt'
+    modifiers: 'ctrl+alt'
   }));
 
   toolMenu.append(new gui.MenuItem({
     label: translateService.translate($('#vouchers-link').html()),
     click: function() {
-      $('#vouchers-link').click();
+      if(this.enabled) $('#vouchers-link').click();
     },
     key: 'p',
-    modifiers: 'alt'
+    modifiers: 'ctrl+alt'
   }));
 
   toolMenu.append(new gui.MenuItem({
     label: translateService.translate($('#about-link').html()),
     click: function() {
-      $('#about-link').click();
+      if(this.enabled) $('#about-link').click();
     },
     key: 'a',
-    modifiers: 'alt'
+    modifiers: 'ctrl+alt'
   }));
 
   toolMenu.append(new gui.MenuItem({
     label: translateService.translate($('#playground-link').html()),
     click: function() {
-      $('#playground-link').click();
+      if(this.enabled) $('#playground-link').click();
     },
     key: 'p',
-    modifiers: 'alt'
+    modifiers: 'ctrl+alt'
   }));
 
   menu.append(new gui.MenuItem({
     label: translateService.translate('global.tools'),
-    submenu: toolMenu,
-    key: 't',
-    modifiers: 'alt'
+    submenu: toolMenu
   }));
 
   //Dev menu
@@ -121,7 +119,8 @@ nwStartUp = function(translateService) {
     click: function() {
       win.reloadDev();
     },
-    key: 'f5'
+    key: 'f5',
+    icon: true
   }));
 
   devMenu.append(new gui.MenuItem({
@@ -129,25 +128,71 @@ nwStartUp = function(translateService) {
     click: function() {
       win.showDevTools();
     },
-    key: 'f12'
+    key: 'f12',
+    icon: true
   }));
 
   devMenu.append(new gui.MenuItem({
     label: 'Dev Guide',
     click: function() {
-      $('#dev-link').click();
+      if(this.enabled) $('#dev-link').click();
     },
     key: 'i',
-    modifiers: 'alt'
+    modifiers: 'ctrl+alt'
   }));
 
   menu.append(new gui.MenuItem({
     label: 'Dev',
     submenu: devMenu,
-    key: 'd',
-    modifiers: 'alt'
+    icon: true
   }));
 
   win.menu = menu;
   $('.loading').fadeOut(200);
+
+  //alt menus
+  var localeValue = 'en';
+  var navigatorLanguage = window.navigator.language;
+
+  if(navigatorLanguage != 'en' && navigatorLanguage != 'en-us') {
+    localeValue = navigatorLanguage;
+  }
+
+  var fileMenuKey = 70; //f
+  var toolsMenuKey = 84; //t
+  var devMenuKey = 68; //d
+  var menuKey = 77; //m
+
+  if(localeValue === 'es') {
+    fileMenuKey = 65; //a
+    toolsMenuKey = 72; //h
+    devMenuKey = 68; //d
+  }
+
+  $(document).on('keydown', function(event) {
+    if(event.altKey && event.keyCode == menuKey) {
+      win.menu.popup(0, 0);
+    }
+    if(event.altKey && event.keyCode == fileMenuKey) {
+      win.menu.items[0].submenu.popup(0, 0);
+    }
+    if(event.altKey && event.keyCode == toolsMenuKey) {
+      win.menu.items[1].submenu.popup(0, 0);
+    }
+    if(event.altKey && event.keyCode == devMenuKey) {
+      win.menu.items[2].submenu.popup(0, 0);
+    }
+  });
+}
+
+setMenuBarEnabled = function(isEnabled) {
+  var menuItems = win.menu.items;
+  var subMenuItems = [];
+  for(var i in menuItems) {
+    if(!menuItems[i].icon) menuItems[i].enabled = isEnabled;
+    subMenuItems = menuItems[i].submenu.items;
+    for(var k in subMenuItems) {
+      if(!subMenuItems[k].icon) subMenuItems[k].enabled = isEnabled;
+    }
+  }
 }

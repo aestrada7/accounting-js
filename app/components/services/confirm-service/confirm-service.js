@@ -4,6 +4,7 @@ app.provider('confirmService', function() {
   function($q, translateService, $compile, $timeout, $rootScope, $http) {
 
     var show = function(options) {
+      setMenuBarEnabled(false);
       var confirmModalTemplate = '';
       var scope = $rootScope.$new(true);
       var defer = $q.defer();
@@ -43,6 +44,7 @@ app.provider('confirmService', function() {
           $('#confirm-modal').trigger('modalClosed');
           $(document).off('click');
         }, 350);
+        setMenuBarEnabled(true);
       }
 
       $(document).on('modalClosed', '#confirm-modal', function() {
