@@ -37,6 +37,23 @@ app.controller('VouchersController',
       return defer.promise;
     }
 
+    getKindText = function(kind) {
+      switch(kind) {
+        case $scope.JRN:
+          return translateService.translate('features.vouchers.journal.short-title');
+          break;
+        case $scope.CHQ:
+          return translateService.translate('features.vouchers.cheques.short-title');
+          break;
+        case $scope.DIS:
+          return translateService.translate('features.vouchers.disimbursement.short-title');
+          break;
+        case $scope.CSH:
+          return translateService.translate('features.vouchers.cash-receipt.short-title');
+          break;
+      }
+    }
+
     $scope.onEditVoucherClicked = function(item) {
       getVoucherEntries({voucherId: item._id}).then(function(results) {
         voucherModalService.show(item, results).then(function(result) {
@@ -65,6 +82,7 @@ app.controller('VouchersController',
     invalidateList = function() {
       fetchData({}).then(function(results) {
         angular.forEach(results, function(value, key) {
+          results[key].kindText = getKindText(results[key].kind);
           results[key].credits = 0;
           results[key].debits = 0;
           if(!results[key].description) results[key].description = '-';

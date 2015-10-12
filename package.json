@@ -5,9 +5,9 @@
   "window": {
     "title": "AccountingJS",
     "toolbar": false,
-    "width": 700,
-    "height": 550,
-    "min_width": 320,
+    "width": 800,
+    "height": 600,
+    "min_width": 550,
     "min_height": 300
   },
   "devDependencies": {

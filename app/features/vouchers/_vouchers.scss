@@ -52,4 +52,14 @@
     position: absolute;
     #{$default-float}: calc(50% #{'-'} #{rem-calc(25)});
   }
+
+  .voucher-list {
+    @media #{$small-only} {
+      font-size: $font-size-small;
+    }
+
+    @media #{$medium-only} {
+      font-size: $font-size-normal;
+    }
+  }
 }
