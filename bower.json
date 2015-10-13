@@ -1,6 +1,6 @@
 {
   "name": "accounting-js",
-  "version": "0.0.03",
+  "version": "0.0.5",
   "authors": [
     "Tony Estrada <aestrada7@outlook.com>"
   ],
@@ -10,8 +10,7 @@
     "angular-ui-router": "ssh://git@stash.bbpd.io/shared/angular-ui-router.git#6961baa0365e03899c962fb3e9b544729402e037",
     "foundation": "~5.5.2",
     "foundation-icon-fonts": "git://github.com/zurb/foundation-icon-fonts.git#*",
-    "requirejs": "2.1.20",
-    "angularjs-indexedDB": "*"
+    "requirejs": "2.1.20"
   },
   "exportsOverride": {
     "foundation": {

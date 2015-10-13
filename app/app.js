@@ -1,12 +1,22 @@
-var app = angular.module('accountingJS', ['ui.router', 'xc.indexedDB']);
+var os = require('os');
+var app = angular.module('accountingJS', ['ui.router']);
 
 //Routing
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 
   function($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/404');
 
+    //Linux/Mac
+    if(os.platform() === 'linux' || os.platform() === 'darwin') {
+      homeURL = '';
+    }
+    //Windows
+    if(os.platform() === 'win32') {
+      homeURL = '/';
+    }
+
     $stateProvider.state('home', {
-      url: '/',
+      url: homeURL,
       templateUrl: 'features/home/home.html',
       controller: 'HomeController',
       pageTitle: 'features.home.title'
