@@ -48,6 +48,13 @@
     }
   }
 
+  .date-filter {
+    .small-6 {
+      padding-#{$opposite-direction}: rem-calc(10);
+      margin-#{$opposite-direction}: rem-calc(-10);
+    }
+  }
+
   .grid-ftue {
     position: absolute;
     #{$default-float}: calc(50% #{'-'} #{rem-calc(25)});

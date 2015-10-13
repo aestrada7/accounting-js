@@ -41,6 +41,17 @@
     <i class="fi-magnifying-glass"></i>
   </div>
 
+  <div class="row full collapse date-filter">
+    <div class="columns small-6">
+      <label for="vch-filter-from-date" ax-translate>global.from-date</label>
+      <input id="vch-filter-from-date" type="date" ng-model="vouchers.fromDate">
+    </div>
+    <div class="columns small-6">
+      <label for="vch-filter-to-date" ax-translate>global.to-date</label>
+      <input id="vch-filter-to-date" type="date" ng-model="vouchers.toDate">
+    </div>
+  </div>
+
   <div class="panel voucher-list grid">
     <div class="row title">
       <ax-ftue key="voucher-order" text="features.vouchers.ftue.order" position="top left"></ax-ftue>
@@ -85,7 +96,7 @@
     <ax-ftue class="grid-ftue" key="voucher-click-to-edit" text="features.vouchers.ftue.grid" position="bottom center" 
              ng-if="items.length > 0"></ax-ftue>
     <div class="row" ng-click="onEditVoucherClicked(item)"
-         ng-repeat="item in items | filter: vouchers.textFilter | filter: (!!vouchers.kind || undefined) && { kind: vouchers.kind } | orderBy: vouchers.orderColumn: vouchers.isReverse">
+         ng-repeat="item in items | filter: vouchers.textFilter | filter: (!!vouchers.kind || undefined) && { kind: vouchers.kind } | DateRangeFilter:vouchers.fromDate:vouchers.toDate | orderBy: vouchers.orderColumn: vouchers.isReverse">
       <div class="columns small-2">
         <div>{{item.date | date}}</div>
       </div>

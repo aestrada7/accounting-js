@@ -18,6 +18,8 @@ lang = {
         "error": "Error",
         "search": "Search",
         "date": "Date",
+        "from-date": "From Date",
+        "to-date": "To Date",
         "add-row": "Add Row",
         "delete-row": "Remove Row",
         "errors": {
@@ -221,6 +223,8 @@ lang = {
         "error": "Error",
         "search": "Buscar",
         "date": "Fecha",
+        "from-date": "Fecha Desde",
+        "to-date": "Fecha Hasta",
         "add-row": "Agregar Renglón",
         "delete-row": "Eliminar Renglón",
         "errors": {
