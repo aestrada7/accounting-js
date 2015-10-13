@@ -154,6 +154,10 @@ lang = {
           "kind": "Kind",
           "tallies": "Tallies",
           "confirm-delete": "Are you sure you want to delete this voucher? All voucher entries will also be deleted.",
+          "all": {
+            "title": "All Vouchers",
+            "short-title": "All"
+          },
           "journal": {
             "title": "Journal Voucher",
             "plural": "Journal Vouchers",
@@ -353,6 +357,10 @@ lang = {
           "kind": "Tipo",
           "tallies": "Cuadra",
           "confirm-delete": "¿Estás seguro que deseas eliminar esta póliza? Todos los movimientos de la póliza serán eliminados.",
+          "all": {
+            "title": "Todas las Pólizas",
+            "short-title": "Todas"
+          },
           "journal": {
             "title": "Póliza de Diario",
             "plural": "Pólizas de Diario",

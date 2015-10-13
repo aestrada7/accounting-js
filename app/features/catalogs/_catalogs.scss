@@ -1,46 +1,4 @@
 .base-catalogs {
-  h1 {
-    .heading-title {
-      &:after {
-        position: absolute;
-        top: rem-calc(20);
-        margin-#{$default-float}: rem-calc(8);
-        content: '|';
-        color: $text-color-xlight;
-        font-size: $font-size-xlarge;
-
-        @media #{$small-only} {
-          font-size: $font-size-large;
-          top: rem-calc(13);
-        }
-      }
-
-      @media #{$small-only} {
-        font-size: $font-size-large;
-      }
-    }
-
-    .filter {
-      position: absolute;
-      top: rem-calc(23);
-      margin-#{$default-float}: rem-calc(28);
-      color: $text-color-light;
-      font-size: $font-size-xlarge;
-
-      @media #{$small-only} {
-        font-size: $font-size-medium;
-        top: rem-calc(15);
-        margin-#{$default-float}: rem-calc(26);
-      }
-
-      select {
-        position: absolute;
-        #{$default-float}: 0;
-        opacity: 0;
-      }
-    }
-  }
-
   .button-container {
     position: absolute;
     top: rem-calc(10);

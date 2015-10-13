@@ -10,8 +10,11 @@ app.controller('VouchersController',
 
     $scope.vouchers = {
       textFilter: '',
+      selectedFilter: 'all',
+      selectedFilterName: translateService.translate('features.vouchers.all.short-title'),
       orderColumn: 'key',
-      isReverse: false
+      isReverse: false,
+      kind: undefined
     };
 
     $scope.onAddVoucherWithMenuClicked = function() {
@@ -27,6 +30,28 @@ app.controller('VouchersController',
       }, function(reject) {
         invalidateList();
       });
+    }
+
+    $scope.setSelectedFilter = function() {
+      $scope.vouchers.selectedFilterName = translateService.translate('features.vouchers.' + $scope.vouchers.selectedFilter + '.short-title');
+
+      switch($scope.vouchers.selectedFilter) {
+        case 'all':
+          $scope.vouchers.kind = undefined;
+          break;
+        case 'journal':
+          $scope.vouchers.kind = 1;
+          break;
+        case 'cheques':
+          $scope.vouchers.kind = 2;
+          break;
+        case 'disimbursement':
+          $scope.vouchers.kind = 3;
+          break;
+        case 'cash-receipt':
+          $scope.vouchers.kind = 4;
+          break;
+      }
     }
 
     getVoucherEntries = function(args) {
