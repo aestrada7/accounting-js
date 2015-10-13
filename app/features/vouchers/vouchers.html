@@ -15,7 +15,7 @@
   </h1>
 
   <div class="button-container">
-    <div>
+    <div ng-if="vouchers.selectedFilter == 'all'">
       <button ng-click="onAddVoucherWithMenuClicked()"
               ax-translate-attrs="{'aria-label': 'global.add'}">
         <i class="fi-plus"></i>
@@ -27,6 +27,12 @@
         <li><a tabindex="0" ng-click="onAddVoucherClicked(DIS)" ax-enter-click ax-translate>features.vouchers.disimbursement.title</a></li>
         <li><a tabindex="0" ng-click="onAddVoucherClicked(CSH)" ax-enter-click ax-translate>features.vouchers.cash-receipt.title</a></li>
       </ul>
+    </div>
+    <div ng-if="vouchers.selectedFilter != 'all'">
+      <button ng-click="onAddVoucherClicked()" ax-translate-attrs="{'aria-label': 'global.add'}">
+        <i class="fi-plus"></i>
+        <span ax-translate>global.add</span>
+      </button>
     </div>
   </div>
 

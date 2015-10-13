@@ -24,7 +24,8 @@ app.controller('VouchersController',
     $scope.onAddVoucherClicked = function(kind) {
       $scope.menuVisible = false;
       var item = {};
-      item.kind = kind;
+      item.kind = $scope.vouchers.kind;
+      if(kind) item.kind = kind;
       voucherModalService.show(item).then(function(result) {
         invalidateList();
       }, function(reject) {
