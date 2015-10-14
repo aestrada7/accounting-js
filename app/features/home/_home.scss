@@ -1,8 +1,4 @@
 .base-home {
-  h1 {
-    text-align: center;
-  }
-
   .logo {
     position: absolute;
     top: rem-calc(10);
@@ -10,11 +6,81 @@
 
     img {
       max-width: rem-calc(200);
+      max-height: rem-calc(80);
+    }
+  }
+
+  .home-tools {
+    margin-top: rem-calc(25);
+
+    @media #{$small-only} {
+      margin-top: rem-calc(45);
+    }
+
+    .menu-card {
+      position: relative;
+      margin: rem-calc(10);
+      padding: rem-calc(20);
+      padding-top: rem-calc(7);
+      padding-bottom: 0;
+      background-color: $background-white;
+      border: 1px solid $border-color-semi-light;
+      width: calc(50% #{'-'} #{rem-calc(20)});
+      height: rem-calc(130);
+      cursor: pointer;
+      border-top: 3px solid $primary-color;
+      transition: border-top, border $transition-time;
+
+      @media #{$small-only} {
+        width: calc(100% #{'-'} #{rem-calc(20)});
+      }
+
+      &:hover {
+        border: 1px solid rgba($primary-color, 0.5);
+        border-top: 3px solid rgba($primary-color, 0.5);
+
+        i {
+          color: $primary-color;
+        }
+      }
+
+      i {
+        position: absolute;
+        font-size: rem-calc(52);
+        top: rem-calc(10);
+        #{$opposite-direction}: rem-calc(20);
+        color: $text-color-light;
+        transition: color $transition-time;
+      }
+
+      .title {
+        font-size: $font-size-medium;
+        color: $text-color;
+        padding-#{$opposite-direction}: rem-calc(44);
+        padding-bottom: rem-calc(15);
+      }
+
+      .info {
+        font-size: $font-size-normal;
+        padding-#{$opposite-direction}: rem-calc(44);
+
+        .info-label {
+          color: $text-color-light;
+
+          &:after {
+            content: ':';
+          }
+        }
+      }
     }
   }
 
   .menu-ftue {
     position: absolute;
     top: rem-calc(-38);
+  }
+
+  .main-menu-ftue {
+
   }
 }

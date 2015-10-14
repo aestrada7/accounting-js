@@ -124,6 +124,7 @@ app.controller('VouchersController',
           });
         });
         $scope.items = results;
+        $(window).trigger('vouchers.loaded');
       });
     }
 

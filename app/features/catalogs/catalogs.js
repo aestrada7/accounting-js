@@ -128,6 +128,7 @@ app.controller('CatalogsController',
         angular.forEach(results, function(value, key) {
           results[key].fullTree = getFullTree(results[key], results[key]);
         });
+        $(window).trigger('catalogs.loaded');
         $(document).foundation();
       });
     }

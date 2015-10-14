@@ -20,6 +20,7 @@ lang = {
         "date": "Date",
         "from-date": "From Date",
         "to-date": "To Date",
+        "total": "Total",
         "add-row": "Add Row",
         "delete-row": "Remove Row",
         "errors": {
@@ -48,7 +49,7 @@ lang = {
       },
       "features": {
         "home": {
-          "title": "Home",
+          "title": "Dashboard",
           "ftue": {
             "menu-shortcuts": "Access to any system option from this menu, or press ALT+M for quicker access."
           }
@@ -112,6 +113,7 @@ lang = {
             "description": "All accounts are shown here displayed as a tree."
           },
           "account": "Account",
+          "accounts": "Accounts",
           "edit-account": "Edit Account",
           "new-account": "New Account",
           "add-child": "Add Child Account",
@@ -225,6 +227,7 @@ lang = {
         "date": "Fecha",
         "from-date": "Fecha Desde",
         "to-date": "Fecha Hasta",
+        "total": "Total",
         "add-row": "Agregar Renglón",
         "delete-row": "Eliminar Renglón",
         "errors": {
@@ -317,6 +320,7 @@ lang = {
             "description": "Todas las cuentas se muestran en este listado desplegadas en una vista de árbol."
           },
           "account": "Cuenta",
+          "accounts": "Cuentas",
           "edit-account": "Editar Cuenta",
           "new-account": "Nueva Cuenta",
           "add-child": "Crear Nueva Subcuenta",

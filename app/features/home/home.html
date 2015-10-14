@@ -5,4 +5,39 @@
   <div class="logo" ng-if="home.logo">
     <img ng-src="{{home.logo}}">
   </div>
+
+  <div class="row full home-tools">
+    <div class="columns small-12">
+      <div class="small-block-grid-1 medium-block-grid-2">
+        <li class="menu-card organization" ui-sref="organization" tabindex="0" ax-enter-click
+            ax-translate-attrs="{'aria-label': 'features.organization.title'}">
+          <i class="fi-address-book"></i>
+          <div class="title" ax-translate>features.organization.title</div>
+          <div class="info">{{home.organizationName}}</div>
+          <div class="info">
+            <span class="info-label" ax-translate>features.organization.tin</span>
+            <span class="info-content">{{home.organizationTIN}}</span>
+          </div>
+        </li>
+        <li class="menu-card accounts" ui-sref="catalogs" tabindex="0" ax-enter-click 
+            ax-translate-attrs="{'aria-label': 'features.accounts.accounts'}">
+          <i class="fi-dollar"></i>
+          <div class="title" ax-translate>features.accounts.accounts</div>
+          <div class="info">
+            <span class="info-label" ax-translate>global.total</span>
+            <span class="info-content">{{home.totalAccounts}}</span>
+          </div>
+        </li>
+        <li class="menu-card vouchers" ui-sref="vouchers" tabindex="0" ax-enter-click
+            ax-translate-attrs="{'aria-label': 'features.vouchers.title'}">
+          <i class="fi-dollar-bill"></i>
+          <div class="title" ax-translate>features.vouchers.title</div>
+          <div class="info">
+            <span class="info-label" ax-translate>global.total</span>
+            <span class="info-content">{{home.totalVouchers}}</span>
+          </div>
+        </li>
+      </div>
+    </div>
+  </div>
 </div>

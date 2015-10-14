@@ -9,14 +9,21 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     //Linux/Mac
     if(os.platform() === 'linux' || os.platform() === 'darwin') {
       homeURL = '';
+      emptyURL = '/';
     }
     //Windows
     if(os.platform() === 'win32') {
       homeURL = '/';
+      emptyURL = '';
     }
 
     $stateProvider.state('home', {
       url: homeURL,
+      templateUrl: 'features/home/home.html',
+      controller: 'HomeController',
+      pageTitle: 'features.home.title'
+    }).state('empty', {
+      url: emptyURL,
       templateUrl: 'features/home/home.html',
       controller: 'HomeController',
       pageTitle: 'features.home.title'
