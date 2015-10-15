@@ -4,6 +4,7 @@
   "main": "app/index.html",
   "window": {
     "title": "AccountingJS",
+    "icon": "static/icon/icon.png",
     "toolbar": false,
     "width": 800,
     "height": 600,
