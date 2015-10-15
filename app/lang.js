@@ -51,7 +51,8 @@ lang = {
         "home": {
           "title": "Dashboard",
           "ftue": {
-            "menu-shortcuts": "Access to any system option from this menu, or press ALT+M for quicker access."
+            "menu-shortcuts": "Access to any system option from this menu, or press ALT+M for quicker access.",
+            "dashboard-items": "A quick glance will show you information about your data. Click on any card for more information!"
           }
         },
         "playground": {
@@ -258,7 +259,8 @@ lang = {
         "home": {
           "title": "Inicio",
           "ftue": {
-            "menu-shortcuts": "Accede a las diferentes opciones del sistema desde este menú (o presiona ALT+M)"
+            "menu-shortcuts": "Accede a las diferentes opciones del sistema desde este menú (o presiona ALT+M)",
+            "dashboard-items": "Con un vistazo tendrás información de tus datos. Haz click en cada tarjeta para mayor información."
           }
         },
         "playground": {

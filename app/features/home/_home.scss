@@ -25,7 +25,7 @@
       padding-bottom: 0;
       background-color: $background-white;
       border: 1px solid $border-color-semi-light;
-      width: calc(50% #{'-'} #{rem-calc(20)});
+      width: calc(33% #{'-'} #{rem-calc(20)});
       height: rem-calc(130);
       cursor: pointer;
       border-top: 3px solid $primary-color;
@@ -33,6 +33,10 @@
 
       @media #{$small-only} {
         width: calc(100% #{'-'} #{rem-calc(20)});
+      }
+
+      @media #{$medium-only} {
+        width: calc(50% #{'-'} #{rem-calc(20)});
       }
 
       &:hover {
@@ -80,7 +84,9 @@
     top: rem-calc(-38);
   }
 
-  .main-menu-ftue {
-
+  .dashboard-items-ftue {
+    position: absolute;
+    top: rem-calc(200);
+    #{$default-float}: calc(50% #{'-'} #{rem-calc(25)});
   }
 }
