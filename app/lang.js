@@ -260,7 +260,7 @@ lang = {
           "title": "Inicio",
           "ftue": {
             "menu-shortcuts": "Accede a las diferentes opciones del sistema desde este menú (o presiona ALT+M)",
-            "dashboard-items": "Con un vistazo tendrás información de tus datos. Haz click en cada tarjeta para mayor información."
+            "dashboard-items": "En este menú tendrás una vista rápida de tus datos. Haz click en cada tarjeta para mayor información."
           }
         },
         "playground": {

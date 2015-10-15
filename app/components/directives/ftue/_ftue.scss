@@ -3,7 +3,7 @@
   top: rem-calc(-140);
   #{$default-float}: 0;
   width: rem-calc(250);
-  height: rem-calc(130);
+  min-height: rem-calc(130);
   padding: rem-calc(10);
   font-size: $font-size-normal;
   border: 1px solid $border-color-medium;

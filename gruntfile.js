@@ -116,6 +116,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('clean-instance', ['clean:bower', 'clean:vendor', 'clean:develop']);
   grunt.registerTask('update', ['shell:git-pull', 'shell:npm', 'clean-instance', 'bower', 'copy']);
-  grunt.registerTask('develop-es', ['http-server:dev', 'sass', 'parallel:watchers-es']);
-  grunt.registerTask('develop', ['http-server:dev', 'sass', 'parallel:watchers']);
+  grunt.registerTask('develop-es', ['sass', 'parallel:watchers-es']);
+  grunt.registerTask('develop', ['sass', 'parallel:watchers']);
 };

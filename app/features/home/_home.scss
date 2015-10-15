@@ -1,7 +1,9 @@
 .base-home {
+  position: relative;
+
   .logo {
     position: absolute;
-    top: rem-calc(10);
+    top: 0;
     #{$opposite-direction}: rem-calc(10);
 
     img {
