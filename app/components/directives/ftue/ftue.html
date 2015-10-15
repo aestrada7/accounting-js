@@ -1,9 +1,11 @@
-<div class="ftue {{position}}" ng-if="canBeShown">
+<div class="ftue {{position}}" ng-if="canBeShown" ng-click="removeFTUE()">
+  <div class="dismiss">
+    <i class="fi-x"></i>
+  </div>
   <div class="icon">
     <i class="fi-lightbulb"></i>
   </div>
   <div class="ftue-content">{{ftueText}}</div>
   <div class="highlight"></div>
   <div class="highlight-2"></div>
-  <div class="ftue-overlay" ng-click="removeFTUE()"></div>
 </div>

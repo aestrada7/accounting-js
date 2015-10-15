@@ -11,6 +11,13 @@
   background-color: $background-inverse-light;
   color: $text-color-white;
   z-index: 1003;
+  cursor: pointer;
+
+  .dismiss {
+    position: absolute;
+    top: rem-calc(10);
+    color: $text-color-xlight;
+  }
 
   &.in-modal {
     z-index: 1998;
@@ -86,6 +93,10 @@
     .highlight, .highlight-2 {
       #{$default-float}: rem-calc(11);
     }
+
+    .dismiss {
+      #{$opposite-direction}: rem-calc(10);
+    }
   }
 
   &.right {
@@ -102,6 +113,10 @@
     .highlight, .highlight-2 {
       #{$default-float}: rem-calc(217);
     }
+
+    .dismiss {
+      #{$default-float}: rem-calc(10);
+    }
   }
 
   &.center {
@@ -117,6 +132,10 @@
 
     .highlight, .highlight-2 {
       #{$default-float}: rem-calc(114);
+    }
+
+    .dismiss {
+      #{$opposite-direction}: rem-calc(10);
     }
   }
 
