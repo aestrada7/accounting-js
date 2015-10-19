@@ -33,6 +33,10 @@
       background-color: $background-white;
       border-#{$default-float}: 1px dotted $border-color-medium;
 
+      &.currency {
+        text-align: $opposite-direction;
+      }
+
       &:last-child {
         border-#{$opposite-direction}: 1px dotted $border-color-medium;
       }
@@ -58,6 +62,21 @@
 
       .columns {
         padding: 0;
+
+        &.currency {
+          input {
+            text-align: right;//$opposite-direction;
+          }
+
+          &:before {
+            position: absolute;
+            top: rem-calc(2);
+            #{$default-float}: rem-calc(2);
+            content: '$';
+            font-size: $font-size-normal;
+            color: $text-color-light;
+          }
+        }
       }
 
       input {
