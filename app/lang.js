@@ -121,6 +121,8 @@ lang = {
           "confirm-delete": "Are you sure you want to delete this account? All voucher associated data will also be lost.",
           "key": "Key",
           "name": "Name",
+          "account-key": "Account Key",
+          "account-name": "Account Name",
           "parent-account": "Parent Account",
           "active-assets": {
             "name": "Active Assets",
@@ -329,6 +331,8 @@ lang = {
           "confirm-delete": "¿Estás seguro que deseas eliminar esta cuenta? Todos los datos de pólizas asociados a esta cuenta se perderán.",
           "key": "Clave",
           "name": "Nombre",
+          "account-key": "Clave de la Cuenta",
+          "account-name": "Nombre de la Cuenta",
           "parent-account": "Cuenta Padre",
           "active-assets": {
             "name": "Activo",
