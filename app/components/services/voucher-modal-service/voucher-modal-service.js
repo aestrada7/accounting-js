@@ -75,11 +75,11 @@ app.provider('voucherModalService', function() {
                                          'credits': scope.voucherEntries[key].credits };
                 if(voucherEntryData._id) {
                   voucherEntriesDB.update({ _id: voucherEntryData._id }, { $set: voucherEntryData }, { multi: false }, function (err, numReplaced) {
-                    //saved!
+                    invalidateList();
                   });
                 } else {
                   voucherEntriesDB.insert(voucherEntryData, function(err, newItem) {
-                    //new stuff added!
+                    invalidateList();
                   });
                 }
               });
@@ -88,6 +88,7 @@ app.provider('voucherModalService', function() {
           });
         } else {
           vouchersDB.insert(voucherData, function(err, newItem) {
+            scope.voucher._id = newItem._id;
             if(err && err.errorType === 'uniqueViolated') {
               saveFailure(err.key);
             } else {
@@ -98,10 +99,13 @@ app.provider('voucherModalService', function() {
                                          'debits': scope.voucherEntries[key].debits,
                                          'credits': scope.voucherEntries[key].credits };
                 voucherEntriesDB.insert(voucherEntryData, function(err, newItem) {
-                  //console.log('save');
+                  scope.voucherEntries[key]._id = newItem._id;
+                  if(scope.voucherEntries[scope.voucherEntries.length - 1] == scope.voucherEntries[key]) {
+                    saveSuccess();
+                  }
                 });
               });
-              saveSuccess();
+              if(scope.voucherEntries.length === 0) saveSuccess();
             }
           });
         }
