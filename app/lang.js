@@ -362,7 +362,7 @@ lang = {
           "title": "Pólizas",
           "key": "Clave",
           "date": "Fecha",
-          "description": "Descripción",
+          "description": "Concepto",
           "new-voucher": "Nueva Póliza",
           "edit-voucher": "Editar Póliza",
           "item": "Partida",
