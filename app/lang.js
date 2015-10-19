@@ -102,6 +102,7 @@ lang = {
           "accounts": {
             "title": "Accounts",
             "singular": "Account",
+            "plural": "Accounts",
             "description": "Main accounts go here."
           },
           "sub-accounts": {
@@ -114,7 +115,6 @@ lang = {
             "description": "All accounts are shown here displayed as a tree."
           },
           "account": "Account",
-          "accounts": "Accounts",
           "edit-account": "Edit Account",
           "new-account": "New Account",
           "add-child": "Add Child Account",
@@ -310,6 +310,7 @@ lang = {
           "accounts": {
             "title": "Cuentas",
             "singular": "Cuenta",
+            "plural": "Cuentas",
             "description": "Cuentas principales se muestran en este listado."
           },
           "sub-accounts": {
@@ -322,7 +323,6 @@ lang = {
             "description": "Todas las cuentas se muestran en este listado desplegadas en una vista de árbol."
           },
           "account": "Cuenta",
-          "accounts": "Cuentas",
           "edit-account": "Editar Cuenta",
           "new-account": "Nueva Cuenta",
           "add-child": "Crear Nueva Subcuenta",
