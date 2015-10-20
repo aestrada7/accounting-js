@@ -136,7 +136,19 @@ lang = {
             "buildings": "Buildings",
             "building-depreciation": "Building Depreciation",
             "machinery": "Machinery",
-            "deferred": "Deferred Assets"
+            "deferred": "Deferred Assets",
+            "various-debtors": "Various Debtors",
+            "warehouse": "Warehouse",
+            "notes-receivable": "Notes Receivable",
+            "advances-to-suppliers": "Advances To Suppliers",
+            "creditable-taxes": "Creditable Taxes",
+            "machinery-depreciation": "Machinery Depreciation",
+            "transport-equipment": "Transport Equipment",
+            "transport-equipment-depreciation": "Transport Equipment Depreciation",
+            "computer-equipment": "Computer Equipment",
+            "computer-equipment-depreciation": "Computer Equipment Depreciation",
+            "office-furniture": "Office Furniture",
+            "office-furniture-depreciation": "Office Furniture Depreciation"
           },
           "passive-assets": {
             "name": "Passive Assets",
@@ -145,7 +157,22 @@ lang = {
             "suppliers": "Suppliers",
             "sundry-creditors": "Sundry Creditors",
             "long-term-to-pay": "Long Term To Pay",
-            "mortgages": "Morgages"
+            "mortgages": "Morgages",
+            "notes-to-pay": "Notes To Pay",
+            "taxes-to-pay": "Taxes To Pay",
+            "salaries-to-pay": "Salaries To Pay",
+            "profit-sharing-to-pay": "Profit Sharing To Pay",
+            "transferred-taxes": "Transferred Taxes"
+          },
+          "stockholders-equity": {
+            "name": "Stockholders Equity",
+            "contributed-capital": "Contributed Capital",
+            "earned-capital": "Earned Capital",
+            "social-capital": "Social Capital",
+            "future-increases-contributions": "Future Increases Contributions",
+            "retained-earnings": "Retained Earnings",
+            "net-income": "Net Income",
+            "legal-reserve": "Legal Reserve"
           }
         },
         "vouchers": {
@@ -346,7 +373,19 @@ lang = {
             "buildings": "Edificios",
             "building-depreciation": "Depreciación de Edificios",
             "machinery": "Maquinaria",
-            "deferred": "Activo Diferido"
+            "deferred": "Activo Diferido",
+            "various-debtors": "Deudores Diversos",
+            "warehouse": "Almacén",
+            "notes-receivable": "Documentos por Cobrar",
+            "advances-to-suppliers": "Anticipo a Proveedores",
+            "creditable-taxes": "Impuestos Acreditables",
+            "machinery-depreciation": "Depreciación de Maquinaria",
+            "transport-equipment": "Equipo de Transporte",
+            "transport-equipment-depreciation": "Depreciación de Equipo de Transporte",
+            "computer-equipment": "Equipo de Cómputo",
+            "computer-equipment-depreciation": "Depreciación de Equipo de Cómputo",
+            "office-furniture": "Mobiliario y Equipo de Oficina",
+            "office-furniture-depreciation": "Depreciación de Mobiliario y Equipo de Oficina"
           },
           "passive-assets": {
             "name": "Pasivo",
@@ -355,7 +394,22 @@ lang = {
             "suppliers": "Proveedores",
             "sundry-creditors": "Acreedores Diversos",
             "long-term-to-pay": "Documentos por Pagar a Largo Plazo",
-            "mortgages": "Hipotecas"
+            "mortgages": "Hipotecas",
+            "notes-to-pay": "Documentos por Pagar",
+            "taxes-to-pay": "Impuestos por Pagar",
+            "salaries-to-pay": "Salarios por Pagar",
+            "profit-sharing-to-pay": "PTU por Pagar",
+            "transferred-taxes": "Impuestos Trasladados"
+          },
+          "stockholders-equity": {
+            "name": "Capital Contable",
+            "contributed-capital": "Capital Contribuido",
+            "earned-capital": "Capital Ganado",
+            "social-capital": "Capital Social",
+            "future-increases-contributions": "Aportaciones Para Futuros Aumentos",
+            "retained-earnings": "Utilidades Acumuladas",
+            "net-income": "Utilidad del Ejercicio",
+            "legal-reserve": "Reserva Legal"
           }
         },
         "vouchers": {
