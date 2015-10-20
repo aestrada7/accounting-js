@@ -7,7 +7,8 @@ app.directive('axAutocomplete',
       transclude: true,
       scope: {
         db: '@',
-        field: '@'
+        field: '@',
+        filter: '='
       },
       templateUrl: 'components/directives/autocomplete/autocomplete.html',
       link: function(scope, element, attrs) {
@@ -88,7 +89,7 @@ app.directive('axAutocomplete',
           scope.showAutocomplete = false;
         }
 
-        fetchData({db: scope.db, field: scope.field}).then(function(results) {
+        fetchData({db: scope.db, field: scope.field, filter: scope.filter}).then(function(results) {
           angular.forEach(results, function(value, key) {
             results[key].name = translateService.translate(results[key].name);
           });
@@ -97,8 +98,10 @@ app.directive('axAutocomplete',
 
         function fetchData(args) {
           var defer = $q.defer();
+          var filter = {};
+          if(args.filter) filter = args.filter;
           if(args.db === 'accounts') {
-            accountsDB.find({}, function(err, results) {
+            accountsDB.find(filter, function(err, results) {
               defer.resolve(results);
             });
           }

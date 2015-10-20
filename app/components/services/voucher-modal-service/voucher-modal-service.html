@@ -61,13 +61,13 @@
             <input type="text" ng-model="voucherEntry.item" disabled="disabled">
           </div>
           <div class="columns small-3">
-            <ax-autocomplete db="accounts" field="key">
+            <ax-autocomplete db="accounts" field="key" filter="{'level': 4}">
               <input type="text" ng-class="{'invalid': voucherEntry.invalid}" ng-model="voucherEntry.key" required
                      ng-change="onChangeKey(voucherEntry);setDirty()" ax-translate-attrs="{'aria-label': 'features.accounts.account-key'}">
             </ax-autocomplete>
           </div>
           <div class="columns small-4">
-            <ax-autocomplete db="accounts" field="name">
+            <ax-autocomplete db="accounts" field="name" filter="{'level': 4}">
               <input type="text" ng-model="voucherEntry.name" required ng-change="onChangeName(voucherEntry);setDirty()"
                      ax-translate-attrs="{'aria-label': 'features.accounts.account-name'}">
             </ax-autocomplete>

@@ -123,7 +123,7 @@ app.provider('voucherModalService', function() {
       }
 
       scope.onChangeKey = function(item) {
-        getAccountData({key: item.key}).then(function(results) {
+        getAccountData({key: item.key, level: 4}).then(function(results) {
           if(results.length > 0) {
             item.name = translateService.translate(results[0].name);
             item.invalid = false;
@@ -142,7 +142,7 @@ app.provider('voucherModalService', function() {
             }
           });
           if(itemName) {
-            getAccountData({name: itemName}).then(function(results) {
+            getAccountData({name: itemName, level: 4}).then(function(results) {
               item.key = results[0].key;
               item.invalid = false;
             });
@@ -151,7 +151,7 @@ app.provider('voucherModalService', function() {
       }
 
       scope.isValidAccount = function(item) {
-        getAccountData({key: item.key}).then(function(results) {
+        getAccountData({key: item.key, level: 4}).then(function(results) {
           item.invalid = results.length === 0;
         });
       }
