@@ -60,6 +60,18 @@
       width: calc(33% #{'-'} #{rem-calc(20)});
     }
 
+    &.tree-view {
+      height: rem-calc(80);
+
+      .controls {
+        margin-top: rem-calc(-20);
+      }
+
+      .account-title {
+        width: calc(100% #{'-'} #{rem-calc(130)});
+      }
+    }
+
     .controls {
       text-align: $opposite-direction;
       margin-top: rem-calc(30);

@@ -53,7 +53,8 @@
           </li>
         </div>
         <div class="small-block-grid-1" ng-if="catalogs.selectedFilter === 'tree-view'">
-          <li class="account-card account-color-{{item.color}} level-{{item.level}}" ng-repeat="item in items | orderBy: 'fullTree'">
+          <li class="account-card tree-view account-color-{{item.color}} level-{{item.level}}" 
+              ng-repeat="item in items | orderBy: 'fullTree'">
             <ax-account-card on-edit-account-clicked="onEditAccountClicked(item)" item="item"
                              on-delete-account-clicked="onDeleteAccountClicked(item)"
                              on-add-child-clicked="onAddChildClicked(item)"></ax-account-card>
