@@ -65,7 +65,7 @@
 
         &.currency {
           input {
-            text-align: right;//$opposite-direction;
+            text-align: $opposite-direction;
           }
 
           &:before {

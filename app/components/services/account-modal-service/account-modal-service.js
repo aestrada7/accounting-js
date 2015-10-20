@@ -12,7 +12,8 @@ app.provider('accountModalService', function() {
         key: '',
         name: '',
         parentId: account.parentId || 0,
-        level: account.level || 0
+        level: account.level || 0,
+        balance: account.balance || 0
       }
       scope.parentAccounts = items;
       if(account) scope.account = account;
@@ -57,7 +58,8 @@ app.provider('accountModalService', function() {
                             'key': scope.account.key,
                             'name': scope.account.name,
                             'parentId': scope.account.parentId,
-                            'level': scope.account.level };
+                            'level': scope.account.level,
+                            'balance': scope.account.balance };
 
         if(scope.account._id) {
           accountsDB.update({ _id: scope.account._id }, { $set: accountData }, { multi: false }, function (err, numReplaced) {

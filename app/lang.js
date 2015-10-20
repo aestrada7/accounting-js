@@ -124,6 +124,7 @@ lang = {
           "account-key": "Account Key",
           "account-name": "Account Name",
           "parent-account": "Parent Account",
+          "opening-balance": "Opening Balance",
           "active-assets": {
             "name": "Active Assets",
             "floating-assets": "Floating Assets",
@@ -361,6 +362,7 @@ lang = {
           "account-key": "Clave de la Cuenta",
           "account-name": "Nombre de la Cuenta",
           "parent-account": "Cuenta Padre",
+          "opening-balance": "Saldo Inicial",
           "active-assets": {
             "name": "Activo",
             "floating-assets": "Activo Circulante",
