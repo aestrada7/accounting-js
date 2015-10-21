@@ -46,20 +46,38 @@ app.controller('CatalogsController',
     }
 
     $scope.onDeleteAccountClicked = function(item) {
-      var confirmOptions = {
-        label: 'features.accounts.confirm-delete',
-        icon: 'fi-trash',
-        kind: 'alert',
-        cancelLabel: 'global.cancel',
-        confirmLabel: 'global.delete'
-      }
+      var errorText = '';
+      fetchData({ parentId: item._id }).then(function(results) {
+        if(results.length > 0) {
+          errorText = translateService.translate('features.accounts.has-child-accounts');
+          errorText = errorText.split('{{number}}').join(results.length);
+          notificationService.show(errorText, 'alert', 'top right');
+        } else {
+          fetchVoucherEntriesData({ key: item.key }).then(function(entries) {
+            if(entries.length > 0) {
+              errorText = translateService.translate('features.accounts.is-in-use-vouchers');
+              errorText = errorText.split('{{number}}').join(entries.length);
+              notificationService.show(errorText, 'alert', 'top right');
+            } else {
+              var confirmOptions = {
+                label: 'features.accounts.confirm-delete',
+                icon: 'fi-trash',
+                kind: 'alert',
+                cancelLabel: 'global.cancel',
+                confirmLabel: 'global.delete'
+              }
 
-      confirmService.show(confirmOptions).then(function(result) {
-        accountsDB.remove({ _id: item._id }, function(err, totalRemoved) {
-          invalidateList();
-        });
-      }, function(result) {
-        //delete was cancelled
+              confirmService.show(confirmOptions).then(function(result) {
+                accountsDB.remove({ _id: item._id }, function(err, totalRemoved) {
+                  invalidateList();
+                  notificationService.show('global.notifications.deleted-successfully', 'success', 'top right');
+                });
+              }, function(result) {
+                //delete was cancelled
+              });
+            }
+          });
+        }
       });
     }
 
@@ -108,6 +126,14 @@ app.controller('CatalogsController',
         itemColor = (parsedId % totalColors) + 1;
       } catch(e) {}
       return itemColor;
+    }
+
+    fetchVoucherEntriesData = function(args) {
+      var defer = $q.defer();
+      voucherEntriesDB.find(args, function(err, results) {
+        defer.resolve(results);
+      });
+      return defer.promise;      
     }
 
     fetchData = function(args) {
