@@ -167,7 +167,16 @@ var preloaded = {
     { '_id': 144, 'parentId': 141, 'key': '9103', 'level': 3, 'name': 'features.accounts.memorandum-accounts.goods-on-commission', 'inverted': false },
     { '_id': 145, 'parentId': 141, 'key': '9104', 'level': 3, 'name': 'features.accounts.memorandum-accounts.orderer-clients', 'inverted': false },
     { '_id': 146, 'parentId': 141, 'key': '9105', 'level': 3, 'name': 'features.accounts.memorandum-accounts.orderer-cash', 'inverted': false },
-    { '_id': 147, 'parentId': 141, 'key': '9106', 'level': 3, 'name': 'features.accounts.memorandum-accounts.control-values', 'inverted': false }
+    { '_id': 147, 'parentId': 141, 'key': '9106', 'level': 3, 'name': 'features.accounts.memorandum-accounts.control-values', 'inverted': false },
+    { '_id': 148, 'parentId': 14, 'key': '1301', 'level': 3, 'name': 'features.accounts.active-assets.installation-expenses', 'inverted': false },
+    { '_id': 149, 'parentId': 14, 'key': '1302', 'level': 3, 'name': 'features.accounts.active-assets.installation-expenses-accrued-amortization', 'inverted': false },
+    { '_id': 150, 'parentId': 14, 'key': '1303', 'level': 3, 'name': 'features.accounts.active-assets.organization-expenses', 'inverted': false },
+    { '_id': 151, 'parentId': 14, 'key': '1304', 'level': 3, 'name': 'features.accounts.active-assets.rent-advance-payments', 'inverted': false },
+    { '_id': 152, 'parentId': 14, 'key': '1305', 'level': 3, 'name': 'features.accounts.active-assets.insurance-advance-payments', 'inverted': false },
+    { '_id': 153, 'parentId': 14, 'key': '1306', 'level': 3, 'name': 'features.accounts.active-assets.interest-advance-payments', 'inverted': false },
+    { '_id': 154, 'parentId': 14, 'key': '1307', 'level': 3, 'name': 'features.accounts.active-assets.office-supplies', 'inverted': false },
+    { '_id': 155, 'parentId': 14, 'key': '1308', 'level': 3, 'name': 'features.accounts.active-assets.advertisement', 'inverted': false },
+    { '_id': 156, 'parentId': 14, 'key': '1309', 'level': 3, 'name': 'features.accounts.active-assets.safety-deposits', 'inverted': false }
   ],
   ftues: [
     { '_id': 1, 'key': 'voucher-order', 'displayed': false },

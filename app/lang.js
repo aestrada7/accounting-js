@@ -151,7 +151,16 @@ lang = {
             "computer-equipment": "Computer Equipment",
             "computer-equipment-depreciation": "Computer Equipment Depreciation",
             "office-furniture": "Office Furniture",
-            "office-furniture-depreciation": "Office Furniture Depreciation"
+            "office-furniture-depreciation": "Office Furniture Depreciation",
+            "installation-expenses": "Installation Expenses",
+            "installation-expenses-accrued-amortization": "Installation Expenses Accrued Amortization",
+            "organization-expenses": "Organization Expenses",
+            "rent-advance-payments": "Rent Advance Payments",
+            "insurance-advance-payments": "Insurance Advance Payments",
+            "interest-advance-payments": "Interests Advance Payments",
+            "office-supplies": "Office Supplies",
+            "advertisement": "Advertisement",
+            "safety-deposits": "Safety Deposits"
           },
           "passive-assets": {
             "name": "Passive Assets",
@@ -460,7 +469,16 @@ lang = {
             "computer-equipment": "Equipo de Cómputo",
             "computer-equipment-depreciation": "Depreciación de Equipo de Cómputo",
             "office-furniture": "Mobiliario y Equipo de Oficina",
-            "office-furniture-depreciation": "Depreciación de Mobiliario y Equipo de Oficina"
+            "office-furniture-depreciation": "Depreciación de Mobiliario y Equipo de Oficina",
+            "installation-expenses": "Gastos de Instalación",
+            "installation-expenses-accrued-amortization": "Amortización Acumulada de Gastos de Instalación",
+            "organization-expenses": "Gastos de Organización",
+            "rent-advance-payments": "Rentas Pagadas por Anticipado",
+            "insurance-advance-payments": "Seguros Pagados por Anticipado",
+            "interest-advance-payments": "Intereses Pagados por Anticipado",
+            "office-supplies": "Papelería y Utiles de Oficina",
+            "advertisement": "Propaganda y Publicidad",
+            "safety-deposits": "Depósitos en Garantía"
           },
           "passive-assets": {
             "name": "Pasivo",
