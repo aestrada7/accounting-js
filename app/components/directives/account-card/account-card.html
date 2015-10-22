@@ -2,7 +2,7 @@
   <div class="account-key">{{item.key}}</div>
   <div class="account-title">{{item.name}}</div>
   <div class="controls">
-    <button class="circle" ng-click="onDeleteAccountClicked(item)"  ng-if="!item.blocked"
+    <button class="circle" ng-click="onDeleteAccountClicked(item)" ng-if="!item.blocked"
             ax-translate-attrs="{'aria-label': 'global.delete', 'title': 'global.delete'}">
       <i class="fi-trash size-18"></i>
     </button>
@@ -10,7 +10,7 @@
             ax-translate-attrs="{'aria-label': 'features.accounts.add-child', 'title': 'features.accounts.add-child'}">
       <i class="fi-page-add size-18"></i>
     </button>
-    <button class="circle" ng-click="onEditAccountClicked(item)"  ng-if="!item.blocked"
+    <button class="circle" ng-click="onEditAccountClicked(item)" ng-if="!item.blocked"
             ax-translate-attrs="{'aria-label': 'global.edit', 'title': 'global.edit'}">
       <i class="fi-pencil size-18"></i>
     </button>

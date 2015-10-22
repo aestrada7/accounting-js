@@ -103,18 +103,26 @@ app.controller('CatalogsController',
       }
     }
 
+    addZero = function(text, zeroCount) {
+      text = text.toString();
+      while(text.length < zeroCount) {
+        text = '0' + text;
+      }
+      return text;
+    }
+
     getFullTree = function(catalog, rootCatalog, fullTree) {
       var parentCatalog;
       for(var i = 0; i < $scope.items.length; i++) {
         if(catalog.parentId == $scope.items[i]._id) {
           parentCatalog = $scope.items[i];
-          var currentTree = fullTree ? parentCatalog._id + '-' + fullTree : parentCatalog._id;
+          var currentTree = fullTree ? addZero(parentCatalog._id, 3) + '-' + fullTree : addZero(parentCatalog._id, 3);
           return getFullTree(parentCatalog, rootCatalog, currentTree);
           break;
         }
       }
       fullTree = !fullTree ? '' : fullTree + '-';
-      return fullTree + rootCatalog._id;
+      return fullTree + addZero(rootCatalog._id, 3);
     }
 
     getColor = function(_id) {
