@@ -219,14 +219,32 @@ lang = {
             "installation": "Installation Expenses",
             "advance-payments": "Advance Payments",
             "accrued-income": "Accrued Income",
-            "accured-insurance": "Accrued Insurance",
+            "accrued-insurance": "Accrued Insurance",
             "general": "General Expenses",
             "office-supplies": "Office Supplies",
             "bank-commission": "Bank Commission",
             "power": "Power",
             "telephone": "Telephone",
             "travel": "Travel",
-            "non-deductible": "Non Deductible Expenses"
+            "non-deductible": "Non Deductible Expenses",
+            "sales": "Sales Expenses"
+          },
+          "comprehensive-financing-cost": {
+            "name": "Comprehensive Financing Cost",
+            "paid-interests": "Paid Interests",
+            "earned-interests": "Earned Interests",
+            "exchange-loss": "Exchange Loss",
+            "exchange-gain": "Exchange Gain",
+            "monetary-position": "Monetary Position"
+          },
+          "memorandum-accounts": {
+            "name": "Memorandum Accounts",
+            "goods-on-commission": "Goods On Commission",
+            "alien-values": "Alien Values",
+            "contingent-values": "Contingent Values",
+            "orderer-clients": "Orderer Clients",
+            "orderer-cash": "Orderer Cash",
+            "control-values": "Control Values"
           }
         },
         "vouchers": {
@@ -510,14 +528,32 @@ lang = {
             "installation": "Gastos de Instalación",
             "advance-payments": "Pagos Anticipados",
             "accrued-income": "Rentas Devengadas",
-            "accured-insurance": "Seguros Devengados",
+            "accrued-insurance": "Seguros Devengados",
             "general": "Gastos Generales",
             "office-supplies": "Papelería y Utiles de Oficina",
             "bank-commission": "Comisiones Bancarias",
             "power": "Luz",
             "telephone": "Teléfono",
             "travel": "Viáticos",
-            "non-deductible": "Gastos No Deducibles"
+            "non-deductible": "Gastos No Deducibles",
+            "sales": "Gastos de Venta"
+          },
+          "comprehensive-financing-cost": {
+            "name": "Costo Integral de Financiamiento",
+            "paid-interests": "Intereses Pagados",
+            "earned-interests": "Intereses Ganados",
+            "exchange-loss": "Pérdida Cambiaria",
+            "exchange-gain": "Ganancia Cambiaria",
+            "monetary-position": "Resultado por Posición Monetaria (REPOMO)"
+          },
+          "memorandum-accounts": {
+            "name": "Cuentas de Orden",
+            "goods-on-commission": "Mercancías en Comisión",
+            "alien-values": "Valores Ajenos",
+            "contingent-values": "Valores Contingentes",
+            "orderer-clients": "Clientes del Comitente",
+            "orderer-cash": "Cajas del Comitente",
+            "control-values": "Valores de Control"
           }
         },
         "vouchers": {
