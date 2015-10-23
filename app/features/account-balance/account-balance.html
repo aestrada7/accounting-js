@@ -1,7 +1,20 @@
 <div class="base-account-balance">
   <h1 ax-translate>features.balance.account-balance.title</h1>
 
-  <ax-autocomplete db="accounts" field="key">
-    <input type="text" required ax-translate-attrs="{'aria-label': 'features.accounts.account-key'}">
-  </ax-autocomplete>
+  <div class="row">
+    <div class="columns small-6">
+      <ax-autocomplete db="accounts" field="key">
+        <label for="accb-key" ax-translate>features.accounts.account-key</label>
+        <input id="accb-key" type="text" required ng-change="onChangeKey()" ng-model="accountBalance.accountKey"
+               ax-translate-attrs="{'aria-label': 'features.accounts.account-key', 'placeholder': 'features.accounts.key'}">
+      </ax-autocomplete>
+    </div>
+    <div class="columns small-6">
+      <ax-autocomplete db="accounts" field="name">
+        <label for="accb-name" ax-translate>features.accounts.account-name</label>
+        <input id="accb-name" type="text" ng-change="onChangeName()" ng-model="accountBalance.accountName"
+               ax-translate-attrs="{'aria-label': 'features.accounts.account-name', 'placeholder': 'features.accounts.name'}">
+      </ax-autocomplete>
+    </div>
+  </div>
 </div>
