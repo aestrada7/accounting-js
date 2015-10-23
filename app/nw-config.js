@@ -112,6 +112,23 @@ nwStartUp = function(translateService) {
     submenu: toolMenu
   }));
 
+  //Reports menu
+  var reportMenu = new gui.Menu();
+
+  reportMenu.append(new gui.MenuItem({
+    label: translateService.translate($('#account-balance-link').html()),
+    click: function() {
+      if(this.enabled) $('#account-balance-link').click();
+    },
+    key: 'r',
+    modifiers: 'ctrl+alt'
+  }));
+
+  menu.append(new gui.MenuItem({
+    label: translateService.translate('global.reports'),
+    submenu: reportMenu
+  }));
+
   //Dev menu
   var devMenu = new gui.Menu();
   devMenu.append(new gui.MenuItem({
@@ -161,6 +178,7 @@ nwStartUp = function(translateService) {
   var fileMenuKey = 70; //f
   var toolsMenuKey = 84; //t
   var devMenuKey = 68; //d
+  var reportsMenuKey = 82; //r
   var menuKey = 77; //m
 
   if(localeValue === 'es') {
@@ -179,8 +197,11 @@ nwStartUp = function(translateService) {
     if(event.altKey && event.keyCode == toolsMenuKey) {
       win.menu.items[1].submenu.popup(0, 0);
     }
-    if(event.altKey && event.keyCode == devMenuKey) {
+    if(event.altKey && event.keyCode == reportsMenuKey) {
       win.menu.items[2].submenu.popup(0, 0);
+    }
+    if(event.altKey && event.keyCode == devMenuKey) {
+      win.menu.items[3].submenu.popup(0, 0);
     }
   });
 }

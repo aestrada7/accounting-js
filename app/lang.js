@@ -14,6 +14,7 @@ lang = {
         "export": "Export",
         "import": "Import",
         "tools": "Tools",
+        "reports": "Reports",
         "close": "Close",
         "error": "Error",
         "search": "Search",
@@ -303,6 +304,11 @@ lang = {
             "order": "You can order the grid by clicking on the title of the column!",
             "grid": "You can click on each row to open a window with the voucher's details."
           }
+        },
+        "balance": {
+          "account-balance": {
+            "title": "Account Balance"
+          }
         }
       },
       "components": {
@@ -334,6 +340,7 @@ lang = {
         "export": "Exportar",
         "import": "Importar",
         "tools": "Herramientas",
+        "reports": "Reportes",
         "close": "Cerrar",
         "error": "Error",
         "search": "Buscar",
@@ -622,6 +629,11 @@ lang = {
           "ftue": {
             "order": "Puedes ordenar los datos haciendo click en el título de cada columna!",
             "grid": "Puedes hacer click en cada renglón para abrir una ventana con los detalles de la póliza."
+          }
+        },
+        "balance": {
+          "account-balance": {
+            "title": "Balance por Cuenta"
           }
         }
       },

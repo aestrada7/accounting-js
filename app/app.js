@@ -52,6 +52,11 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
       templateUrl: 'features/organization/organization.html',
       controller: 'OrganizationController',
       pageTitle: 'features.organization.title'
+    }).state('account-balance', {
+      url: '/account-balance',
+      templateUrl: 'features/account-balance/account-balance.html',
+      controller: 'AccountBalanceController',
+      pageTitle: 'features.balance.account-balance.title'
     }).state('dev', {
       url: '/dev',
       templateUrl: 'dev/dev.html',
