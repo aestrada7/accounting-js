@@ -14,5 +14,13 @@
             ax-translate-attrs="{'aria-label': 'global.edit', 'title': 'global.edit'}">
       <i class="fi-pencil size-18"></i>
     </button>
+    <button class="circle" ng-click="onCollapseClicked(item)" ng-if="treeView && !item.childrenCollapsed && item.hasChildren"
+            ax-translate-attrs="{'aria-label': 'global.collapse', 'title': 'global.collapse'}">
+      <i class="fi-minus size-18"></i>
+    </button>
+    <button class="circle" ng-click="onExpandClicked(item)" ng-if="treeView && item.childrenCollapsed && item.hasChildren"
+            ax-translate-attrs="{'aria-label': 'global.expand', 'title': 'global.expand'}">
+      <i class="fi-plus size-18"></i>
+    </button>
   </div>
 </div>

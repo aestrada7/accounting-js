@@ -81,6 +81,25 @@ app.controller('CatalogsController',
       });
     }
 
+    $scope.onExpandClicked = function(item) {
+      item.childrenCollapsed = false;
+      changeItemVisibility(item, false);      
+    }
+
+    $scope.onCollapseClicked = function(item) {
+      item.childrenCollapsed = true;
+      changeItemVisibility(item, true);
+    }
+
+    changeItemVisibility = function(item, hide) {
+      angular.forEach($scope.items, function(value, key) {
+        if($scope.items[key].parentId === item._id) {
+          $scope.items[key].hide = hide;
+          changeItemVisibility($scope.items[key], hide);
+        }
+      });
+    }
+
     $scope.setSelectedFilter = function() {
       $scope.catalogs.selectedFilterName = translateService.translate('features.accounts.' + $scope.catalogs.selectedFilter + '.title');
 
@@ -115,6 +134,7 @@ app.controller('CatalogsController',
       var parentCatalog;
       for(var i = 0; i < $scope.items.length; i++) {
         if(catalog.parentId == $scope.items[i]._id) {
+          $scope.items[i].hasChildren = true;
           parentCatalog = $scope.items[i];
           var currentTree = fullTree ? addZero(parentCatalog._id, 3) + '-' + fullTree : addZero(parentCatalog._id, 3);
           return getFullTree(parentCatalog, rootCatalog, currentTree);

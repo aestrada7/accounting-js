@@ -23,6 +23,8 @@ lang = {
         "total": "Total",
         "add-row": "Add Row",
         "delete-row": "Remove Row",
+        "collapse": "Collapse",
+        "expand": "Expand",
         "errors": {
           "invalid-value": "Invalid value",
           "missing-value": "Missing value"
@@ -341,6 +343,8 @@ lang = {
         "total": "Total",
         "add-row": "Agregar Renglón",
         "delete-row": "Eliminar Renglón",
+        "collapse": "Colapsar",
+        "expand": "Expandir",
         "errors": {
           "invalid-value": "Dato inválido",
           "missing-value": "Dato requerido"

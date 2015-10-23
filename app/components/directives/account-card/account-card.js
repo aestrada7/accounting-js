@@ -6,9 +6,12 @@ app.directive('axAccountCard',
       restrict: 'E',
       scope: {
         item: '=',
+        treeView: '=',
         onEditAccountClicked: '&',
         onDeleteAccountClicked: '&',
-        onAddChildClicked: '&'
+        onAddChildClicked: '&',
+        onCollapseClicked: '&',
+        onExpandClicked: '&'
       },
       templateUrl: 'components/directives/account-card/account-card.html'
     }
