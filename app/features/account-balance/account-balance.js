@@ -64,8 +64,6 @@ app.controller('AccountBalanceController',
         }];
         $scope.accountBalance.items = [];
         $scope.accountBalance.items.push({ month: 1, monthName: 'January', movements: accountMovements });
-        console.log($scope.accountBalance.items);
-        $scope.$apply();
       }
     }
 
