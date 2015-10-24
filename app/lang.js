@@ -26,6 +26,7 @@ lang = {
         "delete-row": "Remove Row",
         "collapse": "Collapse",
         "expand": "Expand",
+        "generate": "Generate",
         "errors": {
           "invalid-value": "Invalid value",
           "missing-value": "Missing value"
@@ -352,6 +353,7 @@ lang = {
         "delete-row": "Eliminar Renglón",
         "collapse": "Colapsar",
         "expand": "Expandir",
+        "generate": "Generar",
         "errors": {
           "invalid-value": "Dato inválido",
           "missing-value": "Dato requerido"

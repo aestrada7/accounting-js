@@ -4,7 +4,9 @@ app.controller('AccountBalanceController',
   function($scope, $q, notificationService, translateService) {
     $scope.accountBalance = {
       accountName: '',
-      accountKey: ''
+      accountKey: '',
+      isValid: false,
+      items: []
     }
 
     getAccountData = function(args) {
@@ -22,6 +24,9 @@ app.controller('AccountBalanceController',
       getAccountData({key: $scope.accountBalance.accountKey}).then(function(results) {
         if(results.length > 0) {
           $scope.accountBalance.accountName = translateService.translate(results[0].name);
+          $scope.accountBalance.isValid = true;
+        } else {
+          $scope.accountBalance.isValid = false;
         }
       });
     }
@@ -37,9 +42,31 @@ app.controller('AccountBalanceController',
         if(itemName) {
           getAccountData({name: itemName}).then(function(results) {
             $scope.accountBalance.accountKey = results[0].key;
+            $scope.accountBalance.isValid = true;
           });
+        } else {
+          $scope.accountBalance.isValid = false;
         }
       });
+
+      $scope.getAccountMovements = function() {
+        // mock data
+        var accountMovements = [{
+          accountKey: '1100',
+          accountName: 'Test',
+          credits: 0,
+          debits: 200
+        }, {
+          accountKey: '1101',
+          accountName: 'Test 2',
+          credits: 200,
+          debits: 0
+        }];
+        $scope.accountBalance.items = [];
+        $scope.accountBalance.items.push({ month: 1, monthName: 'January', movements: accountMovements });
+        console.log($scope.accountBalance.items);
+        $scope.$apply();
+      }
     }
 
   }]

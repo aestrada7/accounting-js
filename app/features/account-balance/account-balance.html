@@ -1,20 +1,66 @@
 <div class="base-account-balance">
-  <h1 ax-translate>features.balance.account-balance.title</h1>
-
-  <div class="row">
-    <div class="columns small-6">
-      <ax-autocomplete db="accounts" field="key">
-        <label for="accb-key" ax-translate>features.accounts.account-key</label>
-        <input id="accb-key" type="text" required ng-change="onChangeKey()" ng-model="accountBalance.accountKey"
-               ax-translate-attrs="{'aria-label': 'features.accounts.account-key', 'placeholder': 'features.accounts.key'}">
-      </ax-autocomplete>
+  <form name="accBalForm">
+    <h1 ax-translate>features.balance.account-balance.title</h1>
+    <div class="button-container">
+      <button class="save-button" ng-click="getAccountMovements();" ng-disabled="accBalForm.$invalid || !accountBalance.isValid" 
+              ax-translate-attrs="{'aria-label': 'global.generate'}">
+        <span ax-translate>global.generate</span>
+      </button>
     </div>
-    <div class="columns small-6">
-      <ax-autocomplete db="accounts" field="name">
-        <label for="accb-name" ax-translate>features.accounts.account-name</label>
-        <input id="accb-name" type="text" ng-change="onChangeName()" ng-model="accountBalance.accountName"
-               ax-translate-attrs="{'aria-label': 'features.accounts.account-name', 'placeholder': 'features.accounts.name'}">
-      </ax-autocomplete>
+
+    <div class="row">
+      <div class="columns small-6">
+        <ax-autocomplete db="accounts" field="key">
+          <label for="accb-key" ax-translate>features.accounts.account-key</label>
+          <input id="accb-key" type="text" required ng-change="onChangeKey()" ng-model="accountBalance.accountKey"
+                 ax-translate-attrs="{'aria-label': 'features.accounts.account-key', 'placeholder': 'features.accounts.key'}">
+        </ax-autocomplete>
+      </div>
+      <div class="columns small-6">
+        <ax-autocomplete db="accounts" field="name">
+          <label for="accb-name" ax-translate>features.accounts.account-name</label>
+          <input id="accb-name" type="text" required ng-change="onChangeName()" ng-model="accountBalance.accountName"
+                 ax-translate-attrs="{'aria-label': 'features.accounts.account-name', 'placeholder': 'features.accounts.name'}">
+        </ax-autocomplete>
+      </div>
+    </div>
+  </form>
+
+  <div class="row" ng-if="accountBalance.isValid">
+    <div class="columns small-12">
+      <div class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+        <li ng-repeat="item in accountBalance.items">
+          <div class="panel grid">
+            <div class="row title main">
+              <div class="columns small-12 small-centered">
+                <span>{{item.monthName}}</span>
+              </div>
+            </div>
+            <div class="row title">
+              <div class="columns small-4">
+                <span ax-translate>features.accounts.key</span>
+              </div>
+              <div class="columns small-4">
+                <span ax-translate>features.vouchers.credits</span>
+              </div>
+              <div class="columns small-4">
+                <span ax-translate>features.vouchers.debits</span>
+              </div>
+            </div>
+            <div class="row" ng-repeat="movement in item.movements">
+              <div class="columns small-4">
+                <span>{{movement.accountKey}}</span>
+              </div>
+              <div class="columns small-4">
+                <span>{{movement.credits | currency}}</span>
+              </div>
+              <div class="columns small-4">
+                <span>{{movement.debits | currency}}</span>
+              </div>              
+            </div>
+          </div>
+        </li>
+      </div>
     </div>
   </div>
 </div>
