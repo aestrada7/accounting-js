@@ -48,23 +48,23 @@ app.controller('AccountBalanceController',
           $scope.accountBalance.isValid = false;
         }
       });
+    }
 
-      $scope.getAccountMovements = function() {
-        // mock data
-        var accountMovements = [{
-          accountKey: '1100',
-          accountName: 'Test',
-          credits: 0,
-          debits: 200
-        }, {
-          accountKey: '1101',
-          accountName: 'Test 2',
-          credits: 200,
-          debits: 0
-        }];
-        $scope.accountBalance.items = [];
-        $scope.accountBalance.items.push({ month: 1, monthName: 'January', movements: accountMovements });
-      }
+    $scope.getAccountMovements = function() {
+      // mock data
+      var accountMovements = [{
+        accountKey: '1100',
+        accountName: 'Test',
+        credits: 0,
+        debits: 200
+      }, {
+        accountKey: '1101',
+        accountName: 'Test 2',
+        credits: 200,
+        debits: 0
+      }];
+      $scope.accountBalance.items = [];
+      $scope.accountBalance.items.push({ month: 1, monthName: 'January', movements: accountMovements });
     }
 
   }]
