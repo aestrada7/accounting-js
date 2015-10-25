@@ -12,5 +12,6 @@ app.controller('AboutController',
                          { name: 'Bower', kind: 'node' },
                          { name: 'Grunt', kind: 'node' },
                          { name: 'Git', kind: 'other'}];
+    $('.loading').fadeOut(200);
   }]
 );

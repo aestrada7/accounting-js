@@ -183,7 +183,7 @@ app.controller('CatalogsController',
           results[key].fullTree = getFullTree(results[key], results[key]);
         });
         $(window).trigger('catalogs.loaded');
-        $(document).foundation();
+        $('.loading').fadeOut(200);
       });
     }
 

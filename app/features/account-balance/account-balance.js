@@ -51,6 +51,7 @@ app.controller('AccountBalanceController',
     }
 
     $scope.getAccountMovements = function() {
+      $('.loading').show();
       // mock data
       var accountMovements = [{
         accountKey: '1100',
@@ -67,7 +68,9 @@ app.controller('AccountBalanceController',
       $scope.accountBalance.items.push({ month: 1, monthName: 'January', movements: accountMovements });
       $scope.accountBalance.items.push({ month: 1, monthName: 'February', movements: accountMovements });
       $scope.accountBalance.items.push({ month: 1, monthName: 'March', movements: accountMovements });
+      $('.loading').fadeOut(200);
     }
 
+    $('.loading').fadeOut(200);
   }]
 );

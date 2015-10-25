@@ -79,6 +79,7 @@ app.run(['$rootScope', 'translateService', 'notificationService', 'confirmServic
     $rootScope.$on('$stateChangeSuccess', function(event, toState, fromState) {
       $rootScope.index = Object.create(null);
       $rootScope.index.title = translateService.translate(toState.pageTitle) + ' - AccountingJS';
+      $('.loading').show();
     });
 
     dbStartUp(notificationService, translateService, confirmService);

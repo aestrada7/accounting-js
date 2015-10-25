@@ -11,6 +11,7 @@
         if(ruleName.lastIndexOf(".fi-") == 0) {
           var cssClass = rule.selectorText.substr(1, rule.selectorText.lastIndexOf("::") - 1);
           $("#icon-font-grid").append("<li><i class='size-36 " + cssClass + "'></i>&nbsp;" + cssClass + "</li>");
+          $('.loading').fadeOut(200);
         }
       });
     });

@@ -66,8 +66,9 @@ app.controller('OrganizationController',
           $scope.organization.exerciseYear = parseInt(results[0].exerciseYear);
           $scope.organization.startMonth = results[0].startMonth;
           $scope.organization.logo = results[0].logo;
-          $(window).trigger('organization.loaded');
         }
+        $(window).trigger('organization.loaded');
+        $('.loading').fadeOut(200);
       });
     }
 

@@ -30,5 +30,6 @@ app.controller('HomeController',
       $scope.home.totalVouchers = vouchersScope.items.length;
     });
     
+    $('.loading').fadeOut(200);
   }]
 );

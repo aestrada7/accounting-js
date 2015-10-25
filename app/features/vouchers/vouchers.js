@@ -125,6 +125,7 @@ app.controller('VouchersController',
         });
         $scope.items = results;
         $(window).trigger('vouchers.loaded');
+        $('.loading').fadeOut(200);
       });
     }
 
