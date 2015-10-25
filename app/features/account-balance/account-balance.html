@@ -8,15 +8,15 @@
       </button>
     </div>
 
-    <div class="row">
-      <div class="columns small-6">
+    <div class="row full">
+      <div class="columns small-6 large-4">
         <ax-autocomplete db="accounts" field="key">
           <label for="accb-key" ax-translate>features.accounts.account-key</label>
           <input id="accb-key" type="text" required ng-change="onChangeKey()" ng-model="accountBalance.accountKey"
                  ax-translate-attrs="{'aria-label': 'features.accounts.account-key', 'placeholder': 'features.accounts.key'}">
         </ax-autocomplete>
       </div>
-      <div class="columns small-6">
+      <div class="columns small-6 large-4 end">
         <ax-autocomplete db="accounts" field="name">
           <label for="accb-name" ax-translate>features.accounts.account-name</label>
           <input id="accb-name" type="text" required ng-change="onChangeName()" ng-model="accountBalance.accountName"
@@ -26,9 +26,9 @@
     </div>
   </form>
 
-  <div class="row" ng-if="accountBalance.isValid">
+  <div class="row full" ng-if="accountBalance.isValid">
     <div class="columns small-12">
-      <div class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+      <div class="small-block-grid-1 medium-block-grid-2 large-block-grid-4">
         <li ng-repeat="item in accountBalance.items">
           <div class="panel grid">
             <div class="row title main">
@@ -51,7 +51,7 @@
               <div class="columns small-4">
                 <span>{{movement.accountKey}}</span>
               </div>
-              <div class="columns small-4">
+              <div class="columns small-4 thick-border">
                 <span>{{movement.credits | currency}}</span>
               </div>
               <div class="columns small-4">

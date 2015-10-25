@@ -38,6 +38,10 @@
       background-color: $background-white;
       border-#{$default-float}: 1px dotted $border-color-medium;
 
+      &.thick-border {
+        border-#{$opposite-direction}: 3px solid $border-color-medium;
+      }
+
       &.currency {
         text-align: $opposite-direction;
       }
