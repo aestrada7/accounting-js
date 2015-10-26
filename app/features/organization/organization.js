@@ -20,7 +20,7 @@ app.controller('OrganizationController',
                                'startMonth': $('#org-start-month').val(),
                                'logo': $scope.organization.logo };
       organizationDB.insert(organizationData, function(err, newItem) {
-        if(err.key === 1) {
+        if(err) {
           organizationDB.update({ _id: 1 }, { $set: organizationData }, { multi: false }, function (err, numReplaced) {
             invalidateList();
             saveSuccess();

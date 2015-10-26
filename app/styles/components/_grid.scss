@@ -39,7 +39,16 @@
       border-#{$default-float}: 1px dotted $border-color-medium;
 
       &.thick-border {
-        border-#{$opposite-direction}: 3px solid $border-color-medium;
+        &:after {
+          position: absolute;
+          background-color: $border-color-medium;
+          content: ' ';
+          top: 0;
+          #{$opposite-direction}: rem-calc(-2);
+          width: rem-calc(4);
+          height: 100%;
+          z-index: 200;
+        }
       }
 
       &.currency {
