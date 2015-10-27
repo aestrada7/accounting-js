@@ -26,7 +26,11 @@
     </div>
   </form>
 
-  <div class="row full" ng-if="accountBalance.isValid">
+  <div class="" ng-if="noStartMonth">
+    Nothing!
+  </div>
+
+  <div class="row full" ng-if="accountBalance.isValid && accountBalance.ready">
     <div class="columns small-12">
       <div class="small-block-grid-1 medium-block-grid-2 large-block-grid-4">
         <li ng-repeat="item in accountBalance.items">
@@ -38,7 +42,7 @@
             </div>
             <div class="row title">
               <div class="columns small-4">
-                <span ax-translate>features.accounts.key</span>
+                <span ax-translate>features.vouchers.key</span>
               </div>
               <div class="columns small-4">
                 <span ax-translate>features.vouchers.credits</span>
@@ -49,12 +53,12 @@
             </div>
             <div class="row" ng-repeat="movement in item.movements">
               <div class="columns small-4">
-                <span>{{movement.accountKey}}</span>
+                <span>{{movement.voucherKey}}</span>
               </div>
-              <div class="columns small-4 thick-border">
+              <div class="columns small-4 thick-border currency">
                 <span>{{movement.credits | currency}}</span>
               </div>
-              <div class="columns small-4">
+              <div class="columns small-4 currency">
                 <span>{{movement.debits | currency}}</span>
               </div>              
             </div>

@@ -3,5 +3,19 @@
     position: absolute;
     top: rem-calc(10);
     #{$opposite-direction}: rem-calc(20);
-  }  
+  }
+
+  .grid {
+    @media #{$small-only} {
+      font-size: $font-size-small;
+    }
+
+    @media #{$medium-only} {
+      font-size: $font-size-normal;
+    }
+
+    div {
+      @include ellipsis;
+    }
+  }
 }
