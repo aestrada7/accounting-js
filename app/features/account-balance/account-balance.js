@@ -8,7 +8,8 @@ app.controller('AccountBalanceController',
       accountKey: '',
       isValid: false,
       items: [],
-      ready: false
+      ready: false,
+      startBalance: 0
     }
     $scope.noStartMonth = false;
     $scope.accountList = [];
@@ -25,13 +26,14 @@ app.controller('AccountBalanceController',
     }
 
     $scope.onChangeKey = function() {
+      $scope.accountBalance.startBalance = 0;
       getAccountData({key: $scope.accountBalance.accountKey}).then(function(results) {
         if(results.length > 0) {
-          $scope.accountBalance.id = results[0]._id;
           $scope.accountBalance.accountName = translateService.translate(results[0].name);
           $scope.accountBalance.isValid = true;
+          $scope.accountBalance.startBalance = parseInt(results[0].balance) || 0;
           $scope.accountList = [results[0].key];
-          getAccountList($scope.accountBalance.id);
+          getAccountList(results[0]);
         } else {
           $scope.accountBalance.isValid = false;
         }
@@ -41,6 +43,7 @@ app.controller('AccountBalanceController',
 
     $scope.onChangeName = function() {
       var itemName = '';
+      $scope.accountBalance.startBalance = 0;
       getAccountData().then(function(results) {
         angular.forEach(results, function(value, key) {
           if($scope.accountBalance.accountName === translateService.translate(results[key].name)) {
@@ -49,11 +52,11 @@ app.controller('AccountBalanceController',
         });
         if(itemName) {
           getAccountData({name: itemName}).then(function(results) {
-            $scope.accountBalance.id = results[0]._id;
             $scope.accountBalance.accountKey = results[0].key;
             $scope.accountBalance.isValid = true;
+            $scope.accountBalance.startBalance = parseInt(results[0].balance) || 0;
             $scope.accountList = [results[0].key];
-            getAccountList($scope.accountBalance.id);
+            getAccountList(results[0]);
           });
         } else {
           $scope.accountBalance.isValid = false;
@@ -62,12 +65,13 @@ app.controller('AccountBalanceController',
       $scope.accountBalance.ready = false;
     }
 
-    getAccountList = function(id) {
-      getAccountData({parentId: id}).then(function(results) {
+    getAccountList = function(obj) {
+      getAccountData({parentId: obj._id}).then(function(results) {
         if(results.length > 0) {
           angular.forEach(results, function(value, key) {
+            $scope.accountBalance.startBalance += parseInt(results[key].balance) || 0;
             $scope.accountList.push(results[key].key);
-            getAccountList(results[key]._id);
+            getAccountList(results[key]);
           });
         }
       });
@@ -106,12 +110,15 @@ app.controller('AccountBalanceController',
                                 voucherResults.month,
                                 voucherResults.year,
                                 voucherResults.index).then(function(results) {
+                var newBalance = $scope.accountBalance.startBalance;
                 angular.forEach(results, function(value, key) {
                   var accountMovement = {
                     accountKey: results[key].key,
                     debits: results[key].debits || 0,
                     credits: results[key].credits || 0
                   }
+                  newBalance += parseInt(accountMovement.debits);
+                  newBalance -= parseInt(accountMovement.credits);
                   accountMovements.push(accountMovement);
                 });
                 if(results.index === 0) {
@@ -121,8 +128,12 @@ app.controller('AccountBalanceController',
                 $scope.accountBalance.items.push({
                   month: results.month,
                   monthName: getMonthName(results.month) + ' ' + results.year,
-                  movements: accountMovements
+                  movements: accountMovements,
+                  startBalance: $scope.accountBalance.startBalance,
+                  endBalance: newBalance
                 });
+
+                $scope.accountBalance.startBalance = newBalance;
 
                 if(results.index === 11) {
                   $('.loading').fadeOut(200);
