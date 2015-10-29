@@ -13,6 +13,7 @@ app.controller('AccountBalanceController',
     }
     $scope.noStartMonth = false;
     $scope.accountList = [];
+    $scope.endBalance = 0;
 
     getAccountData = function(args) {
       var defer = $q.defer();
@@ -26,7 +27,6 @@ app.controller('AccountBalanceController',
     }
 
     $scope.onChangeKey = function() {
-      $scope.accountBalance.startBalance = 0;
       getAccountData({key: $scope.accountBalance.accountKey}).then(function(results) {
         if(results.length > 0) {
           $scope.accountBalance.accountName = translateService.translate(results[0].name);
@@ -43,8 +43,8 @@ app.controller('AccountBalanceController',
 
     $scope.onChangeName = function() {
       var itemName = '';
-      $scope.accountBalance.startBalance = 0;
       getAccountData().then(function(results) {
+        $scope.accountBalance.startBalance = 0;
         angular.forEach(results, function(value, key) {
           if($scope.accountBalance.accountName === translateService.translate(results[key].name)) {
             itemName = results[key].name;
@@ -82,11 +82,11 @@ app.controller('AccountBalanceController',
       var startMonth = null;
       var startYear = null;
       var organizationScope = $scope.$new();
+      $scope.endBalance = 0;
       $controller('OrganizationController', {$scope: organizationScope});
       $(window).on('organization.loaded', function() {
         startMonth = organizationScope.organization.startMonth;
         startYear = organizationScope.organization.exerciseYear;
-        startYear = 2015;
 
         if(organizationScope.organization.businessName && startMonth && startYear) {
           for(var i = 0; i < 12; i++) {
@@ -110,15 +110,16 @@ app.controller('AccountBalanceController',
                                 voucherResults.month,
                                 voucherResults.year,
                                 voucherResults.index).then(function(results) {
-                var newBalance = $scope.accountBalance.startBalance;
+                var balanceStart = (results.index === 0) ? $scope.accountBalance.startBalance : $scope.balanceEnd;
+                $scope.balanceEnd = balanceStart;
                 angular.forEach(results, function(value, key) {
                   var accountMovement = {
                     accountKey: results[key].key,
                     debits: results[key].debits || 0,
                     credits: results[key].credits || 0
                   }
-                  newBalance += parseInt(accountMovement.debits);
-                  newBalance -= parseInt(accountMovement.credits);
+                  $scope.balanceEnd += parseInt(accountMovement.debits);
+                  $scope.balanceEnd -= parseInt(accountMovement.credits);
                   accountMovements.push(accountMovement);
                 });
                 if(results.index === 0) {
@@ -129,11 +130,9 @@ app.controller('AccountBalanceController',
                   month: results.month,
                   monthName: getMonthName(results.month) + ' ' + results.year,
                   movements: accountMovements,
-                  startBalance: $scope.accountBalance.startBalance,
-                  endBalance: newBalance
+                  startBalance: balanceStart,
+                  endBalance: $scope.balanceEnd
                 });
-
-                $scope.accountBalance.startBalance = newBalance;
 
                 if(results.index === 11) {
                   $('.loading').fadeOut(200);

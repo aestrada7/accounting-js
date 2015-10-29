@@ -34,6 +34,12 @@
       }
     }
 
+    &.wrap {
+      .columns {
+        border: none;
+      }
+    }
+
     .columns {
       background-color: $background-white;
       border-#{$default-float}: 1px dotted $border-color-medium;

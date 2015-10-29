@@ -129,6 +129,7 @@ lang = {
           "account-name": "Account Name",
           "parent-account": "Parent Account",
           "opening-balance": "Opening Balance",
+          "ending-balance": "Ending Balance",
           "has-child-accounts": "This account can't be deleted, it has {{number}} child account(s).",
           "is-in-use-vouchers": "This account can't be deleted, it's being used in {{number}} voucher(s).",
           "active-assets": {
@@ -456,6 +457,7 @@ lang = {
           "account-name": "Nombre de la Cuenta",
           "parent-account": "Cuenta Padre",
           "opening-balance": "Saldo Inicial",
+          "ending-balance": "Saldo Final",
           "has-child-accounts": "No se puede eliminar esta cuenta, tiene {{number}} cuenta(s) dependendiente(s).",
           "is-in-use-vouchers": "No se puede eliminar esta cuenta, está en uso en {{number}} póliza(s).",
           "active-assets": {

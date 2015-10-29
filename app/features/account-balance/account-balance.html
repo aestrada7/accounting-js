@@ -40,7 +40,15 @@
                 <span>{{item.monthName}}</span>
               </div>
             </div>
-            <div class="row title">
+            <div class="row wrap">
+              <div class="columns small-6">
+                <span ax-translate>features.accounts.opening-balance</span>: 
+              </div>
+              <div class="columns small-6 currency">
+                {{item.startBalance | currency}}
+              </div>
+            </div>
+            <div class="row title main">
               <div class="columns small-4">
                 <span ax-translate>features.accounts.sub-accounts.singular</span>
               </div>
@@ -62,9 +70,16 @@
                 <span>{{movement.debits | currency}}</span>
               </div>
             </div>
-            <div class="row">
-              <div class="columns small-4">{{item.startBalance}}</div>
-              <div class="columns small-4">{{item.endBalance}}</div>
+            <div class="row title">
+              <div class="columns small-12">
+                &nbsp;
+              </div>
+            </div>
+            <div class="row wrap">
+              <div class="columns small-6">
+                <span ax-translate>features.accounts.ending-balance</span>
+              </div>
+              <div class="columns small-6 currency">{{item.endBalance | currency}}</div>
             </div>
           </div>
         </li>
