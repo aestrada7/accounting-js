@@ -43,16 +43,6 @@ module.exports = function(grunt) {
       }
     },
 
-    'http-server': {
-      'dev': {
-        root: './app',
-        port: 8010,
-        host: '0.0.0.0',
-        runInBackground: true,
-        logFn: function(req, res, error) {}
-      }
-    },
-
     shell: {
       'npm': {
         command: 'npm install'
@@ -68,15 +58,33 @@ module.exports = function(grunt) {
       },
       'nw': {
         command: '"node_modules/.bin/nw" accounting-js --dev'
+      },
+      'deploy-nw-win': {
+        command: [
+          'cd release',
+          'copy /b nw.exe+app.nw accountingjs.exe',
+          'del nw.exe',
+          'del app.nw',
+          'del credits.html',
+          'del ffmpegsumo.dll',
+          'del nwjc.exe',
+          'del pdf.dll'
+        ].join('&&')
       }
     },
 
     copy: {
-      main: {
+      vendor: {
         src: 'node_modules/nedb/browser-version/out/*',
         dest: 'app/vendor/nedb/',
         flatten: true,
         filter: 'isFile',
+        expand: true
+      },
+      'nw': {
+        src: '**',
+        dest: 'release/',
+        cwd: 'node_modules/nw/nwjs/',
         expand: true
       }
     },
@@ -101,21 +109,61 @@ module.exports = function(grunt) {
           args: ['watch']
         }]
       }
+    },
+
+    compress: {
+      deploy: {
+        options: {
+          archive: 'release/app.zip'
+        },
+        files: [
+          { src: ['package.json'] },
+          { src: ['app/**'] },
+          { src: ['static/**'] },
+          { src: ['node_modules/fstream/**'] },
+          { src: ['node_modules/ncp/**'] },
+          { src: ['node_modules/nedb/**'] },
+          { src: ['node_modules/rimraf/**'] },
+          { src: ['node_modules/tar/**'] }
+        ]
+      }
+    },
+
+    rename: {
+      deploy: {
+        files: [
+          { src: ['release/app.zip'], dest: ['release/app.nw'] }
+        ]
+      }
+    },
+
+    'winresourcer': {
+      'set-icon': {
+        operation: 'Update',
+        exeFile: 'release/nw.exe',
+        resourceType: 'Icongroup',
+        resourceName: 'IDR_MAINFRAME',
+        lang: 1033,
+        resourceFile: 'static/icon/icon.ico'
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-bower-task');
-  grunt.loadNpmTasks('grunt-connect-rewrite');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-rename');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-http-server');
   grunt.loadNpmTasks('grunt-parallel');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('winresourcer');
 
   grunt.registerTask('clean-instance', ['clean:bower', 'clean:vendor', 'clean:develop']);
-  grunt.registerTask('update', ['shell:git-pull', 'shell:npm', 'clean-instance', 'bower', 'copy']);
+  grunt.registerTask('update', ['shell:git-pull', 'shell:npm', 'clean-instance', 'bower', 'copy:vendor']);
   grunt.registerTask('develop-es', ['sass', 'parallel:watchers-es']);
   grunt.registerTask('develop', ['sass', 'parallel:watchers']);
+  grunt.registerTask('deploy-win', ['sass', 'compress', 'rename', 'copy:nw', 'winresourcer', 'shell:deploy-nw-win']);
+  grunt.registerTask('deploy-linux', ['sass', 'compress', 'rename', 'copy:nw']);
 };
