@@ -27,9 +27,11 @@ lang = {
         "collapse": "Collapse",
         "expand": "Expand",
         "generate": "Generate",
+        "select": "Select",
         "errors": {
           "invalid-value": "Invalid value",
-          "missing-value": "Missing value"
+          "missing-value": "Missing value",
+          "no-start-month": "No start month selected."
         },
         "months": {
           "january": "January",
@@ -49,6 +51,9 @@ lang = {
           "saved-successfully": "Saved successfully!",
           "deleted-successfully": "Deleted successfully!",
           "duplicate-values": "Couldn't save, the value '{{key}}' already exists."
+        },
+        "messages": {
+          "click-to-select": "Click here to select."
         }
       },
       "features": {
@@ -355,9 +360,11 @@ lang = {
         "collapse": "Colapsar",
         "expand": "Expandir",
         "generate": "Generar",
+        "select": "Seleccionar",
         "errors": {
           "invalid-value": "Dato inválido",
-          "missing-value": "Dato requerido"
+          "missing-value": "Dato requerido",
+          "no-start-month": "No se ha seleccionado mes de inicio del ejercicio."
         },
         "months": {
           "january": "Enero",
@@ -377,6 +384,9 @@ lang = {
           "saved-successfully": "Datos guardados correctamente.",
           "deleted-successfully": "Datos eliminados correctamente.",
           "duplicate-values": "No se pudo completar la operación, el valor '{{key}}' ya existe."
+        },
+        "messages": {
+          "click-to-select": "Haz click aqui para seleccionar."
         }
       },
       "features": {

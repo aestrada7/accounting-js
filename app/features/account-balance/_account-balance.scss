@@ -18,4 +18,13 @@
       @include ellipsis;
     }
   }
+
+  .no-start-month {
+    text-align: center;
+
+    i {
+      color: $alert-color;
+      font-size: $font-size-xxlarge;
+    }
+  }
 }

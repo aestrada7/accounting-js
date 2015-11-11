@@ -26,8 +26,14 @@
     </div>
   </form>
 
-  <div class="" ng-if="noStartMonth">
-    Nothing!
+  <div class="no-start-month" ng-if="noStartMonth">
+    <div class="row">
+      <div class="small-8 columns small-centered panel">
+        <i class="fi-x"></i><br />
+        <span ax-translate>global.errors.no-start-month</span><br />
+        <a ui-sref="organization" ax-translate>global.messages.click-to-select</a>
+      </div>
+    </div>
   </div>
 
   <div class="row full" ng-if="accountBalance.isValid && accountBalance.ready">
