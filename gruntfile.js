@@ -64,10 +64,10 @@ module.exports = function(grunt) {
         }
       },
       'nw-es': {
-        command: '"node_modules/.bin/nw" accounting-js --lang=es'
+        command: '"node_modules/.bin/nw" accounting-js --lang=es --dev'
       },
       'nw': {
-        command: '"node_modules/.bin/nw" accounting-js'
+        command: '"node_modules/.bin/nw" accounting-js --dev'
       }
     },
 

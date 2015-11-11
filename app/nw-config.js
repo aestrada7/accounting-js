@@ -3,6 +3,13 @@ nwStartUp = function(translateService) {
   var gui = require('nw.gui');
   var win = gui.Window.get();
   var menu = new gui.Menu({ type: 'menubar' });
+  var devMode = false;
+
+  for(arg in gui.App.argv) {
+    if(gui.App.argv[arg] === '--dev') {
+      devMode = true;
+    }
+  }
 
   //File menu
   var fileMenu = new gui.Menu();
@@ -129,40 +136,42 @@ nwStartUp = function(translateService) {
     submenu: reportMenu
   }));
 
-  //Dev menu
-  var devMenu = new gui.Menu();
-  devMenu.append(new gui.MenuItem({
-    label: 'Refresh',
-    click: function() {
-      win.reloadDev();
-    },
-    key: 'f5',
-    icon: true
-  }));
+  if(devMode) {
+    //Dev menu
+    var devMenu = new gui.Menu();
+    devMenu.append(new gui.MenuItem({
+      label: 'Refresh',
+      click: function() {
+        win.reloadDev();
+      },
+      key: 'f5',
+      icon: true
+    }));
 
-  devMenu.append(new gui.MenuItem({
-    label: 'Dev Tools',
-    click: function() {
-      win.showDevTools();
-    },
-    key: 'f12',
-    icon: true
-  }));
+    devMenu.append(new gui.MenuItem({
+      label: 'Dev Tools',
+      click: function() {
+        win.showDevTools();
+      },
+      key: 'f12',
+      icon: true
+    }));
 
-  devMenu.append(new gui.MenuItem({
-    label: 'Dev Guide',
-    click: function() {
-      if(this.enabled) $('#dev-link').click();
-    },
-    key: 'i',
-    modifiers: 'ctrl+alt'
-  }));
+    devMenu.append(new gui.MenuItem({
+      label: 'Dev Guide',
+      click: function() {
+        if(this.enabled) $('#dev-link').click();
+      },
+      key: 'i',
+      modifiers: 'ctrl+alt'
+    }));
 
-  menu.append(new gui.MenuItem({
-    label: 'Dev',
-    submenu: devMenu,
-    icon: true
-  }));
+    menu.append(new gui.MenuItem({
+      label: 'Dev',
+      submenu: devMenu,
+      icon: true
+    }));
+  }
 
   win.menu = menu;
   $('.loading').fadeOut(200);
@@ -200,8 +209,10 @@ nwStartUp = function(translateService) {
     if(event.altKey && event.keyCode == reportsMenuKey) {
       win.menu.items[2].submenu.popup(0, 0);
     }
-    if(event.altKey && event.keyCode == devMenuKey) {
-      win.menu.items[3].submenu.popup(0, 0);
+    if(devMode) {
+      if(event.altKey && event.keyCode == devMenuKey) {
+        win.menu.items[3].submenu.popup(0, 0);
+      }
     }
   });
 }
