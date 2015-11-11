@@ -13,5 +13,7 @@ app.controller('AboutController',
                          { name: 'Grunt', kind: 'node' },
                          { name: 'Git', kind: 'other'}];
     $('.loading').fadeOut(200);
+
+    $scope.version = require('nw.gui').App.manifest.version;
   }]
 );

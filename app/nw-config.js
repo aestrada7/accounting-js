@@ -105,14 +105,16 @@ nwStartUp = function(translateService) {
     modifiers: 'ctrl+alt'
   }));
 
-  toolMenu.append(new gui.MenuItem({
-    label: translateService.translate($('#playground-link').html()),
-    click: function() {
-      if(this.enabled) $('#playground-link').click();
-    },
-    key: 'p',
-    modifiers: 'ctrl+alt'
-  }));
+  if(devMode) {
+    toolMenu.append(new gui.MenuItem({
+      label: translateService.translate($('#playground-link').html()),
+      click: function() {
+        if(this.enabled) $('#playground-link').click();
+      },
+      key: 'p',
+      modifiers: 'ctrl+alt'
+    }));
+  }
 
   menu.append(new gui.MenuItem({
     label: translateService.translate('global.tools'),
