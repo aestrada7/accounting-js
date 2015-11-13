@@ -125,6 +125,15 @@ nwStartUp = function(translateService) {
   var reportMenu = new gui.Menu();
 
   reportMenu.append(new gui.MenuItem({
+    label: translateService.translate($('#general-balance-link').html()),
+    click: function() {
+      if(this.enabled) $('#general-balance-link').click();
+    },
+    key: 'g',
+    modifiers: 'ctrl+alt'
+  }));
+
+  reportMenu.append(new gui.MenuItem({
     label: translateService.translate($('#account-balance-link').html()),
     click: function() {
       if(this.enabled) $('#account-balance-link').click();

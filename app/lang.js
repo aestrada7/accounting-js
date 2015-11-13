@@ -315,6 +315,9 @@ lang = {
         "balance": {
           "account-balance": {
             "title": "Account Balance"
+          },
+          "general-balance": {
+            "title": "General Balance"
           }
         }
       },
@@ -648,6 +651,9 @@ lang = {
         "balance": {
           "account-balance": {
             "title": "Balance por Cuenta"
+          },
+          "general-balance": {
+            "title": "Balance General"
           }
         }
       },
