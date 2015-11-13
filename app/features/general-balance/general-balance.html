@@ -1,8 +1,209 @@
 <div class="base-general-balance">
   <h1 ax-translate>features.balance.general-balance.title</h1>
   <div class="button-container">
-    <button class="save-button" ng-click="getAccountMovements()" ax-translate-attrs="{'aria-label': 'global.generate'}">
+    <button class="save-button" ng-click="getAccountBalance()" ax-translate-attrs="{'aria-label': 'global.generate'}">
       <span ax-translate>global.generate</span>
     </button>
+  </div>
+
+  <div class="row full collapse">
+    <div class="columns small-6">
+      <div class="panel grid">
+        <div class="row title main">
+          <div class="columns small-12">
+            <span ax-translate>features.accounts.active-assets.name</span>
+          </div>
+        </div>
+        <!-- Floating Assets -->
+        <div class="row title">
+          <div class="columns small-12">
+            <span ax-translate>features.accounts.active-assets.floating-assets</span>
+          </div>
+        </div>
+        <div ng-repeat="account in floatingAssetsAccounts">
+          <div class="row">
+            <div class="columns small-7">
+              {{account.name}}
+            </div>
+            <div class="columns small-5 currency">
+              {{account.total | currency}}
+            </div>
+          </div>
+        </div>
+        <div class="row total">
+          <div class="columns small-7">
+            <span ax-translate>global.total</span>
+          </div>
+          <div class="columns small-5 currency">
+            {{generalBalance.floatingAssetsTotal | currency}}
+          </div>
+        </div>
+        <!-- Properties Assets -->
+        <div class="row title">
+          <div class="columns small-12">
+            <span ax-translate>features.accounts.active-assets.properties</span>
+          </div>
+        </div>
+        <div ng-repeat="account in propertiesAccounts">
+          <div class="row">
+            <div class="columns small-7">
+              {{account.name}}
+            </div>
+            <div class="columns small-5 currency">
+              {{account.total | currency}}
+            </div>
+          </div>
+        </div>
+        <div class="row total">
+          <div class="columns small-7">
+            <span ax-translate>global.total</span>
+          </div>
+          <div class="columns small-5 currency">
+            {{generalBalance.propertiesTotal | currency}}
+          </div>
+        </div>
+        <!-- Deferred Assets -->
+        <div class="row title">
+          <div class="columns small-12">
+            <span ax-translate>features.accounts.active-assets.deferred</span>
+          </div>
+        </div>
+        <div ng-repeat="account in deferredAssetsAccounts">
+          <div class="row">
+            <div class="columns small-7">
+              {{account.name}}
+            </div>
+            <div class="columns small-5 currency">
+              {{account.total | currency}}
+            </div>
+          </div>
+        </div>
+        <div class="row total">
+          <div class="columns small-7">
+            <span ax-translate>global.total</span>
+          </div>
+          <div class="columns small-5 currency">
+            {{generalBalance.deferredAssetsTotal | currency}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns small-6">
+      <div class="panel grid">
+        <div class="row title main">
+          <div class="columns small-12">
+            <span ax-translate>features.accounts.passive-assets.name</span>
+          </div>
+        </div>
+        <!-- Short Term Passive -->
+        <div class="row title">
+          <div class="columns small-12">
+            <span ax-translate>features.accounts.passive-assets.short-term</span>
+          </div>
+        </div>
+        <div ng-repeat="account in shortTermAccounts">
+          <div class="row">
+            <div class="columns small-7">
+              {{account.name}}
+            </div>
+            <div class="columns small-5 currency">
+              {{account.total | currency}}
+            </div>
+          </div>
+        </div>
+        <div class="row total">
+          <div class="columns small-7">
+            <span ax-translate>global.total</span>
+          </div>
+          <div class="columns small-5 currency">
+            {{generalBalance.shortTermTotal | currency}}
+          </div>
+        </div>
+        <!-- Long Term Passive -->
+        <div class="row title">
+          <div class="columns small-12">
+            <span ax-translate>features.accounts.passive-assets.long-term</span>
+          </div>
+        </div>
+        <div ng-repeat="account in longTermAccounts">
+          <div class="row">
+            <div class="columns small-7">
+              {{account.name}}
+            </div>
+            <div class="columns small-5 currency">
+              {{account.total | currency}}
+            </div>
+          </div>
+        </div>
+        <div class="row total">
+          <div class="columns small-7">
+            <span ax-translate>global.total</span>
+          </div>
+          <div class="columns small-5 currency">
+            {{generalBalance.longTermTotal | currency}}
+          </div>
+        </div>
+        <div class="row total">
+          <div class="columns small-7">
+            <span ax-translate>global.total</span>
+          </div>
+          <div class="columns small-5 currency">
+            {{generalBalance.passiveAssetsTotal | currency}}
+          </div>
+        </div>
+        <div class="row title">
+          <div class="columns small-12">
+            <span ax-translate>features.accounts.stockholders-equity.name</span>
+          </div>
+        </div>
+        <!-- Stockholders Equity -->
+        <div ng-repeat="account in stockholdersAccounts">
+          <div class="row">
+            <div class="columns small-7">
+              {{account.name}}
+            </div>
+            <div class="columns small-5 currency">
+              {{account.total | currency}}
+            </div>
+          </div>
+        </div>
+        <div class="row total">
+          <div class="columns small-7">
+            <span ax-translate>global.total</span>
+          </div>
+          <div class="columns small-5 currency">
+            {{generalBalance.stockholdersAccountsTotal | currency}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row full collapse">
+    <div class="columns small-6">
+      <div class="panel grid">
+        <div class="row total">
+          <div class="columns small-7">
+            <span ax-translate>global.total</span>
+          </div>
+          <div class="columns small-5 currency">
+            {{generalBalance.activeAssetsTotal | currency}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="columns small-6">
+      <div class="panel grid">
+        <div class="row total">
+          <div class="columns small-7">
+            <span ax-translate>global.total</span>
+          </div>
+          <div class="columns small-5 currency">
+            {{generalBalance.passiveAssetsTotal | currency}}
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
