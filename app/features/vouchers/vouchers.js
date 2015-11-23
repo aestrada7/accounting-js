@@ -1,7 +1,7 @@
 app.controller('VouchersController', 
-  ['$scope', '$q', 'notificationService', 'translateService', 'voucherModalService', 'confirmService',
+  ['$scope', '$q', 'notificationService', 'translateService', 'voucherModalService', 'confirmService', 'utilService',
 
-  function($scope, $q, notificationService, translateService, voucherModalService, confirmService) {
+  function($scope, $q, notificationService, translateService, voucherModalService, confirmService, utilService) {
     $scope.JRN = 1;
     $scope.CHQ = 2;
     $scope.DIS = 3;
@@ -55,14 +55,6 @@ app.controller('VouchersController',
       }
     }
 
-    getVoucherEntries = function(args) {
-      var defer = $q.defer();
-      voucherEntriesDB.find(args, function(err, results) {
-        defer.resolve(results);
-      });
-      return defer.promise;
-    }
-
     getKindText = function(kind) {
       switch(kind) {
         case $scope.JRN:
@@ -81,7 +73,7 @@ app.controller('VouchersController',
     }
 
     $scope.onEditVoucherClicked = function(item) {
-      getVoucherEntries({voucherId: item._id}).then(function(results) {
+      utilService.getVoucherEntries({voucherId: item._id}).then(function(results) {
         voucherModalService.show(item, results).then(function(result) {
           invalidateList();
         }, function(reject) {
@@ -97,22 +89,14 @@ app.controller('VouchersController',
       $scope.vouchers.orderColumn = column;
     }
 
-    fetchData = function(args) {
-      var defer = $q.defer();
-      vouchersDB.find(args, function(err, results) {
-        defer.resolve(results);
-      });
-      return defer.promise;
-    }
-
     invalidateList = function() {
-      fetchData({}).then(function(results) {
+      utilService.getVouchers({}).then(function(results) {
         angular.forEach(results, function(value, key) {
           results[key].kindText = getKindText(results[key].kind);
           results[key].credits = 0;
           results[key].debits = 0;
           if(!results[key].description) results[key].description = '-';
-          getVoucherEntries({voucherId: results[key]._id}).then(function(itemList) {
+          utilService.getVoucherEntries({voucherId: results[key]._id}).then(function(itemList) {
             angular.forEach(itemList, function(itemValue, itemKey) {
               if(itemList[itemKey].credits) {
                 results[key].credits += parseFloat(itemList[itemKey].credits);

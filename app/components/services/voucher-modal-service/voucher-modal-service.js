@@ -1,7 +1,7 @@
 app.provider('voucherModalService', function() {
-  this.$get = ['$q', 'translateService', 'notificationService', 'confirmService', '$compile', '$rootScope', '$http',
+  this.$get = ['$q', 'translateService', 'notificationService', 'confirmService', 'utilService', '$compile', '$rootScope', '$http',
 
-  function($q, translateService, notificationService, confirmService, $compile, $rootScope, $http) {
+  function($q, translateService, notificationService, confirmService, utilService, $compile, $rootScope, $http) {
 
     var show = function(voucher, voucherEntries) {
       var voucherModalTemplate = '';
@@ -111,19 +111,8 @@ app.provider('voucherModalService', function() {
         }
       }
 
-      getAccountData = function(args) {
-        var defer = $q.defer();
-        accountsDB.find(args, function(err, results) {
-          if(err) {
-            defer.reject();
-          }
-          defer.resolve(results);
-        });
-        return defer.promise;
-      }
-
       scope.onChangeKey = function(item) {
-        getAccountData({key: item.key, level: 4}).then(function(results) {
+        utilService.getAccountData({key: item.key, level: 4}).then(function(results) {
           if(results.length > 0) {
             item.name = translateService.translate(results[0].name);
             item.invalid = false;
@@ -135,14 +124,14 @@ app.provider('voucherModalService', function() {
 
       scope.onChangeName = function(item) {
         var itemName = '';
-        getAccountData().then(function(results) {
+        utilService.getAccountData().then(function(results) {
           angular.forEach(results, function(value, key) {
             if(item.name === translateService.translate(results[key].name)) {
               itemName = results[key].name;
             }
           });
           if(itemName) {
-            getAccountData({name: itemName, level: 4}).then(function(results) {
+            utilService.getAccountData({name: itemName, level: 4}).then(function(results) {
               item.key = results[0].key;
               item.invalid = false;
             });
@@ -151,7 +140,7 @@ app.provider('voucherModalService', function() {
       }
 
       scope.isValidAccount = function(item) {
-        getAccountData({key: item.key, level: 4}).then(function(results) {
+        utilService.getAccountData({key: item.key, level: 4}).then(function(results) {
           item.invalid = results.length === 0;
         });
       }
@@ -231,7 +220,7 @@ app.provider('voucherModalService', function() {
       if(voucherEntries) {
         scope.voucherEntries = voucherEntries;
         angular.forEach(scope.voucherEntries, function(value, key) {
-          getAccountData({key: scope.voucherEntries[key].key}).then(function(results) {
+          utilService.getAccountData({key: scope.voucherEntries[key].key}).then(function(results) {
             scope.voucherEntries[key].name = translateService.translate(results[0].name);
           });
         });

@@ -1,7 +1,7 @@
 app.controller('CatalogsController', 
-  ['$scope', '$q', 'notificationService', 'translateService', 'accountModalService', 'confirmService',
+  ['$scope', '$q', 'notificationService', 'translateService', 'accountModalService', 'confirmService', 'utilService',
 
-  function($scope, $q, notificationService, translateService, accountModalService, confirmService) {
+  function($scope, $q, notificationService, translateService, accountModalService, confirmService, utilService) {
     $scope.menuVisible = false;
     $scope.catalogs = {
       selectedFilter: 'all',
@@ -47,13 +47,13 @@ app.controller('CatalogsController',
 
     $scope.onDeleteAccountClicked = function(item) {
       var errorText = '';
-      fetchData({ parentId: item._id }).then(function(results) {
+      utilService.getAccountData({ parentId: item._id }).then(function(results) {
         if(results.length > 0) {
           errorText = translateService.translate('features.accounts.has-child-accounts');
           errorText = errorText.split('{{number}}').join(results.length);
           notificationService.show(errorText, 'alert', 'top right');
         } else {
-          fetchVoucherEntriesData({ key: item.key }).then(function(entries) {
+          utilService.getVoucherEntries({ key: item.key }).then(function(entries) {
             if(entries.length > 0) {
               errorText = translateService.translate('features.accounts.is-in-use-vouchers');
               errorText = errorText.split('{{number}}').join(entries.length);
@@ -156,24 +156,8 @@ app.controller('CatalogsController',
       return itemColor;
     }
 
-    fetchVoucherEntriesData = function(args) {
-      var defer = $q.defer();
-      voucherEntriesDB.find(args, function(err, results) {
-        defer.resolve(results);
-      });
-      return defer.promise;      
-    }
-
-    fetchData = function(args) {
-      var defer = $q.defer();
-      accountsDB.find(args, function(err, results) {
-        defer.resolve(results);
-      });
-      return defer.promise;
-    }
-
     invalidateList = function() {
-      fetchData({}).then(function(results) {
+      utilService.getAccountData({}).then(function(results) {
         angular.forEach(results, function(value, key) {
           results[key].name = translateService.translate(results[key].name);
           results[key].color = getColor(results[key]._id + '');

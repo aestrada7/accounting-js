@@ -1,7 +1,7 @@
 app.controller('AccountBalanceController', 
-  ['$scope', '$q', '$controller', 'notificationService', 'translateService',
+  ['$scope', '$q', '$controller', 'notificationService', 'translateService', 'utilService',
 
-  function($scope, $q, $controller, notificationService, translateService) {
+  function($scope, $q, $controller, notificationService, translateService, utilService) {
     $scope.accountBalance = {
       id: 0,
       accountName: '',
@@ -15,19 +15,8 @@ app.controller('AccountBalanceController',
     $scope.accountList = [];
     $scope.endBalance = 0;
 
-    getAccountData = function(args) {
-      var defer = $q.defer();
-      accountsDB.find(args, function(err, results) {
-        if(err) {
-          defer.reject();
-        }
-        defer.resolve(results);
-      });
-      return defer.promise;
-    }
-
     $scope.onChangeKey = function() {
-      getAccountData({key: $scope.accountBalance.accountKey}).then(function(results) {
+      utilService.getAccountData({key: $scope.accountBalance.accountKey}).then(function(results) {
         if(results.length > 0) {
           $scope.accountBalance.accountName = translateService.translate(results[0].name);
           $scope.accountBalance.isValid = true;
@@ -43,7 +32,7 @@ app.controller('AccountBalanceController',
 
     $scope.onChangeName = function() {
       var itemName = '';
-      getAccountData().then(function(results) {
+      utilService.getAccountData().then(function(results) {
         $scope.accountBalance.startBalance = 0;
         angular.forEach(results, function(value, key) {
           if($scope.accountBalance.accountName === translateService.translate(results[key].name)) {
@@ -51,7 +40,7 @@ app.controller('AccountBalanceController',
           }
         });
         if(itemName) {
-          getAccountData({name: itemName}).then(function(results) {
+          utilService.getAccountData({name: itemName}).then(function(results) {
             $scope.accountBalance.accountKey = results[0].key;
             $scope.accountBalance.isValid = true;
             $scope.accountBalance.startBalance = parseInt(results[0].balance) || 0;
@@ -66,7 +55,7 @@ app.controller('AccountBalanceController',
     }
 
     getAccountList = function(obj) {
-      getAccountData({parentId: obj._id}).then(function(results) {
+      utilService.getAccountData({parentId: obj._id}).then(function(results) {
         if(results.length > 0) {
           angular.forEach(results, function(value, key) {
             $scope.accountBalance.startBalance += parseInt(results[key].balance) || 0;
@@ -128,7 +117,7 @@ app.controller('AccountBalanceController',
 
                 $scope.accountBalance.items.push({
                   month: results.month,
-                  monthName: getMonthName(results.month) + ' ' + results.year,
+                  monthName: utilService.getMonthName(results.month) + ' ' + results.year,
                   movements: accountMovements,
                   startBalance: balanceStart,
                   endBalance: $scope.balanceEnd
@@ -168,49 +157,6 @@ app.controller('AccountBalanceController',
         defer.resolve(results);
       });
       return defer.promise;
-    }
-
-    getMonthName = function(currentMonth) {
-      var monthName = '';
-      switch(currentMonth) {
-        case 1:
-          monthName = translateService.translate('global.months.january');
-          break;
-        case 2:
-          monthName = translateService.translate('global.months.february');
-          break;
-        case 3:
-          monthName = translateService.translate('global.months.march');
-          break;
-        case 4:
-          monthName = translateService.translate('global.months.april');
-          break;
-        case 5:
-          monthName = translateService.translate('global.months.may');
-          break;
-        case 6:
-          monthName = translateService.translate('global.months.june');
-          break;
-        case 7:
-          monthName = translateService.translate('global.months.july');
-          break;
-        case 8:
-          monthName = translateService.translate('global.months.august');
-          break;
-        case 9:
-          monthName = translateService.translate('global.months.september');
-          break;
-        case 10:
-          monthName = translateService.translate('global.months.october');
-          break;
-        case 11:
-          monthName = translateService.translate('global.months.november');
-          break;
-        case 12:
-          monthName = translateService.translate('global.months.december');
-          break;
-      }
-      return monthName;
     }
 
     $('.loading').fadeOut(200);
