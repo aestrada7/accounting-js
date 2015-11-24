@@ -4,4 +4,19 @@
     top: rem-calc(10);
     #{$opposite-direction}: rem-calc(20);
   }
+
+  .grid {
+    .row {
+      display: flex;
+
+      .columns {
+        display: inline-flex;
+        align-items: flex-end;
+
+        &.currency {
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
 }

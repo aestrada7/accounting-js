@@ -7,7 +7,7 @@ app.provider('utilService', function() {
         if(err) {
           defer.reject();
         }
-        results.extra = extraArguments;
+        if(extraArguments) results.extra = extraArguments;
         defer.resolve(results);
       });
       return defer.promise;
@@ -19,7 +19,7 @@ app.provider('utilService', function() {
         if(err) {
           defer.reject();
         }
-        results.extra = extraArguments;
+        if(extraArguments) results.extra = extraArguments;
         defer.resolve(results);
       });
       return defer.promise;
@@ -31,7 +31,7 @@ app.provider('utilService', function() {
         if(err) {
           defer.reject();
         }
-        results.extra = extraArguments;
+        if(extraArguments) results.extra = extraArguments;
         defer.resolve(results);
       });
       return defer.promise;

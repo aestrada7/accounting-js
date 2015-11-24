@@ -8,43 +8,52 @@ app.controller('GeneralBalanceController',
       deferredAssetsTotal: 0,
       shortTermTotal: 0,
       longTermTotal: 0,
-      activeAssetsTotal: 900,
+      activeAssetsTotal: 0,
       passiveAssetsTotal: 0,
       stockholdersAccountsTotal: 0,
       reportCreated: false
     }
     $scope.floatingAssetsAccounts = [];
+    $scope.propertiesAccounts = [];
     $scope.deferredAssetsAccounts = [];
+    $scope.shortTermAccounts = [];
 
     $scope.getBalance = function() {
       $('.loading').show();
 
       //Floating Assets
-      getChildAccountsValue(3, true).then(function(results) {
+      getChildAccountsValue(3, true, 'floatingAssetsTotal').then(function(results) {
         $scope.floatingAssetsAccounts = results;
-        $scope.generalBalance.floatingAssetsTotal = 0;
-        angular.forEach(results, function(value, key) {
-          $scope.generalBalance.floatingAssetsTotal += parseFloat(results[key].total);
-        });
-      });
 
-      //Deferred Assets
-      getChildAccountsValue(14, true).then(function(results) {
+        //Properties Assets
+        return getChildAccountsValue(9, true, 'propertiesTotal');
+      }).then(function(results) {
+        $scope.propertiesAccounts = results;
+
+        //Deferred Assets
+        return getChildAccountsValue(14, true, 'deferredAssetsTotal');
+      }).then(function(results) {
         $scope.deferredAssetsAccounts = results;
-        $scope.generalBalance.deferredAssetsTotal = 0;
-        angular.forEach(results, function(value, key) {
-          $scope.generalBalance.deferredAssetsTotal += parseFloat(results[key].total);
-        });
-      });
+        $scope.generalBalance.activeAssetsTotal = $scope.generalBalance.floatingAssetsTotal +
+                                                  $scope.generalBalance.propertiesTotal +
+                                                  $scope.generalBalance.deferredAssetsTotal;
 
-      $scope.generalBalance.reportCreated = true;
-      $('.loading').fadeOut(200);
+        //Short Term Passive Assets
+        return getChildAccountsValue(15, false, 'shortTermTotal');
+      }).then(function(results) {
+        $scope.shortTermAccounts = results;
+
+        $scope.generalBalance.reportCreated = true;
+        $('.loading').fadeOut(200);
+      });
     }
 
-    getChildAccountsValue = function(accountId, isActiveAssetsAccount) {
+    getChildAccountsValue = function(accountId, isActiveAssetsAccount, totalVariable) {
       var defer = $q.defer();
       var accountList = [];
+      $scope.generalBalance[totalVariable] = 0;
       utilService.getAccountData({ parentId: accountId }).then(function(results) {
+        if(results.length === 0) defer.resolve(accountList);
         angular.forEach(results, function(value, key) {
           var accountTotal = 0;
           utilService.getAccountData({ parentId: results[key]._id }, { key: results[key].key }).then(function(accounts) {
@@ -55,17 +64,20 @@ app.controller('GeneralBalanceController',
                     if(!isNaN(movements[key].debits)) accountTotal += parseFloat(movements[key].debits);
                     if(!isNaN(movements[key].credits)) accountTotal -= parseFloat(movements[key].credits);
                   } else {
-                    //To Do
+                    if(!isNaN(movements[key].debits)) accountTotal -= parseFloat(movements[key].debits);
+                    if(!isNaN(movements[key].credits)) accountTotal += parseFloat(movements[key].credits);
                   }
                 });
                 angular.forEach(accountList, function(value, key) {
                   if(movements.extra.key === accountList[key].key) {
                     accountList[key].total = accountTotal;
+                    $scope.generalBalance[totalVariable] += parseFloat(accountTotal);
                   }
                 });
                 defer.resolve(accountList);
               });
             });
+            if(accounts.length === 0) defer.resolve(accountList);
           });
           var account = { name: translateService.translate(results[key].name), key: results[key].key, total: 0 };
           accountList.push(account);
