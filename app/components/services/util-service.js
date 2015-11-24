@@ -1,34 +1,37 @@
 app.provider('utilService', function() {
   this.$get = ['$q', 'translateService', function($q, translateService) {
 
-    var getAccountData = function(args) {
+    var getAccountData = function(args, extraArguments) {
       var defer = $q.defer();
       accountsDB.find(args, function(err, results) {
         if(err) {
           defer.reject();
         }
+        results.extra = extraArguments;
         defer.resolve(results);
       });
       return defer.promise;
     }
 
-    var getVouchers = function(args) {
+    var getVouchers = function(args, extraArguments) {
       var defer = $q.defer();
       vouchersDB.find(args, function(err, results) {
         if(err) {
           defer.reject();
         }
+        results.extra = extraArguments;
         defer.resolve(results);
       });
       return defer.promise;
     }
 
-    var getVoucherEntries = function(args) {
+    var getVoucherEntries = function(args, extraArguments) {
       var defer = $q.defer();
       voucherEntriesDB.find(args, function(err, results) {
         if(err) {
           defer.reject();
         }
+        results.extra = extraArguments;
         defer.resolve(results);
       });
       return defer.promise;

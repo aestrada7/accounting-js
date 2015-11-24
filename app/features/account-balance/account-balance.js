@@ -89,17 +89,19 @@ app.controller('AccountBalanceController',
             var end = new Date(currentYear, currentMonth - 1, 1);
             end.setMonth(end.getMonth() + 1);
 
-            getVouchers({date: {$gte: start, $lt: end}}, currentMonth, currentYear, i).then(function(voucherResults) {
+            utilService.getVouchers({date: {$gte: start, $lt: end}}, { month: currentMonth, 
+                                                                       year: currentYear,
+                                                                       index: i }).then(function(voucherResults) {
               var voucherList = [];
               var accountMovements = [];
               angular.forEach(voucherResults, function(value, key) {
                 voucherList.push(voucherResults[key]._id);
               });
-              getVoucherEntries({key: {$in: $scope.accountList}, voucherId: {$in: voucherList}}, 
-                                voucherResults.month,
-                                voucherResults.year,
-                                voucherResults.index).then(function(results) {
-                var balanceStart = (results.index === 0) ? $scope.accountBalance.startBalance : $scope.balanceEnd;
+              utilService.getVoucherEntries({key: {$in: $scope.accountList}, voucherId: {$in: voucherList}}, 
+                                { month: voucherResults.extra.month,
+                                  year: voucherResults.extra.year,
+                                  index: voucherResults.extra.index }).then(function(results) {
+                var balanceStart = (results.extra.index === 0) ? $scope.accountBalance.startBalance : $scope.balanceEnd;
                 $scope.balanceEnd = balanceStart;
                 angular.forEach(results, function(value, key) {
                   var accountMovement = {
@@ -111,19 +113,19 @@ app.controller('AccountBalanceController',
                   $scope.balanceEnd -= parseInt(accountMovement.credits);
                   accountMovements.push(accountMovement);
                 });
-                if(results.index === 0) {
+                if(results.extra.index === 0) {
                   $scope.accountBalance.items = [];
                 }
 
                 $scope.accountBalance.items.push({
-                  month: results.month,
-                  monthName: utilService.getMonthName(results.month) + ' ' + results.year,
+                  month: results.extra.month,
+                  monthName: utilService.getMonthName(results.extra.month) + ' ' + results.extra.year,
                   movements: accountMovements,
                   startBalance: balanceStart,
                   endBalance: $scope.balanceEnd
                 });
 
-                if(results.index === 11) {
+                if(results.extra.index === 11) {
                   $('.loading').fadeOut(200);
                   $scope.accountBalance.ready = true;
                 }
