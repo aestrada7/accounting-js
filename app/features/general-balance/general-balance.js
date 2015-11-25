@@ -68,27 +68,20 @@ app.controller('GeneralBalanceController',
           utilService.getAccountData({ parentId: results[key]._id }, { key: results[key].key, isLast: isLastItem }).then(function(accounts) {
             var accountTotal = 0;
             angular.forEach(accounts, function(value, key) {
-              //console.log(accounts[key]);
-              //console.log(' ' + key + '==' + (accounts.length - 1) + ' && ' + accounts.extra.isLast);
-              //console.log((key == accounts.length - 1) && accounts.extra.isLast);
               var isLastItem = (key == accounts.length - 1) && accounts.extra.isLast;
               utilService.getVoucherEntries({ key: accounts[key].key }, { key: accounts.extra.key, isLast: isLastItem }).then(function(movements) {
                 angular.forEach(movements, function(value, key) {
                   if(isActiveAssetsAccount) {
                     if(!isNaN(movements[key].debits)) accountTotal -= parseFloat(movements[key].debits);
                     if(!isNaN(movements[key].credits)) accountTotal += parseFloat(movements[key].credits);
-                    //console.log(movements[key].key + ' ' + movements[key].debits + ' ' + movements[key].credits + ' = ' + accountTotal);
                   } else {
                     if(!isNaN(movements[key].debits)) accountTotal += parseFloat(movements[key].debits);
                     if(!isNaN(movements[key].credits)) accountTotal -= parseFloat(movements[key].credits);
-                    //console.log(movements[key].key + ' ' + movements[key].debits + ' ' + movements[key].credits + ' = ' + accountTotal);
                   }
                 });
-                //console.log(accountList);
                 angular.forEach(accountList, function(value, key) {
                   if(movements.extra.key === accountList[key].key) {
                     accountList[key].total = accountTotal;
-                    //console.log(movements.extra.key + ' ' + accountTotal);
                   }
                 }); 
                 if(movements.extra.isLast) {
@@ -102,14 +95,11 @@ app.controller('GeneralBalanceController',
               });
             });
             if(accounts.length === 0 && accounts.extra.isLast) {
-              //console.log("?")
               angular.forEach(accountList, function(value, key) {
                 $timeout(function() {
                   $scope.generalBalance[totalVariable] += parseFloat(accountList[key].total);
                 }, 0);
               });
-              //console.log(accountList[1].total)
-              //console.log(accountList[3].total)
               defer.resolve(accountList);
             }
           });
