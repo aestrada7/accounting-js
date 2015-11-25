@@ -8,9 +8,12 @@ app.controller('GeneralBalanceController',
       deferredAssetsTotal: 0,
       shortTermTotal: 0,
       longTermTotal: 0,
+      contributedCapitalTotal: 0,
+      earnedCapitalTotal: 0,
       activeAssetsTotal: 0,
       passiveAssetsTotal: 0,
-      stockholdersAccountsTotal: 0,
+      stockholdersAssetsTotal: 0,
+      passivePlusCapitalAssetsTotal: 0,
       reportCreated: false
     }
     $scope.floatingAssetsAccounts = [];
@@ -18,6 +21,8 @@ app.controller('GeneralBalanceController',
     $scope.deferredAssetsAccounts = [];
     $scope.shortTermAccounts = [];
     $scope.longTermAccounts = [];
+    $scope.contributedCapitalAccounts = [];
+    $scope.earnedCapitalAccounts = [];
 
     $scope.getBalance = function() {
       $('.loading').show();
@@ -48,6 +53,24 @@ app.controller('GeneralBalanceController',
         return getChildAccountsValue(16, false, 'longTermTotal');
       }).then(function(results) {
         $scope.longTermAccounts = results;
+
+        $scope.generalBalance.passiveAssetsTotal = $scope.generalBalance.shortTermTotal + $scope.generalBalance.longTermTotal;
+
+        //Contributed Capital
+        return getChildAccountsValue(38, false, 'contributedCapitalTotal');
+      }).then(function(results) {
+        $scope.contributedCapitalAccounts = results;
+
+        //Earned Capital
+        return getChildAccountsValue(41, false, 'earnedCapitalTotal');        
+      }).then(function(results) {
+        $scope.earnedCapitalAccounts = results;
+
+        $scope.generalBalance.stockholdersAssetsTotal = $scope.generalBalance.contributedCapitalTotal +
+                                                        $scope.generalBalance.earnedCapitalTotal;
+
+        $scope.generalBalance.passivePlusCapitalAssetsTotal = $scope.generalBalance.passiveAssetsTotal +
+                                                              $scope.generalBalance.stockholdersAssetsTotal;
 
         $scope.generalBalance.reportCreated = true;
         $('.loading').fadeOut(200);

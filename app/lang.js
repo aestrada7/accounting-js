@@ -317,7 +317,11 @@ lang = {
             "title": "Account Balance"
           },
           "general-balance": {
-            "title": "General Balance"
+            "title": "General Balance",
+            "active-total": "Active Total",
+            "passive-total": "Passive Total",
+            "stockholders-total": "Stockholders Total",
+            "passive-plus-capital": "Passive Plus Capital"
           }
         }
       },
@@ -653,7 +657,11 @@ lang = {
             "title": "Balance por Cuenta"
           },
           "general-balance": {
-            "title": "Balance General"
+            "title": "Balance General",
+            "active-total": "Total de Activo",
+            "passive-total": "Total de Pasivo",
+            "stockholders-total": "Total de Capital",
+            "passive-plus-capital": "Pasivo Mas Capital"
           }
         }
       },

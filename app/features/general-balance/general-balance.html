@@ -145,21 +145,29 @@
               {{generalBalance.longTermTotal | currency}}
             </div>
           </div>
+          <div class="row"><div class="columns small-12"><span>&nbsp;</span></div></div>
           <div class="row total">
             <div class="columns small-7">
-              <span ax-translate>global.total</span>
+              <span ax-translate>features.balance.general-balance.passive-total</span>
             </div>
             <div class="columns small-5 currency">
               {{generalBalance.passiveAssetsTotal | currency}}
             </div>
           </div>
-          <div class="row title">
+          <div class="row"><div class="columns small-12"><span>&nbsp;</span></div></div>
+          <!-- Stockholders Equity -->
+          <div class="row title main">
             <div class="columns small-12">
               <span ax-translate>features.accounts.stockholders-equity.name</span>
             </div>
           </div>
-          <!-- Stockholders Equity -->
-          <div ng-repeat="account in stockholdersAccounts">
+          <!-- Contributed Capital -->
+          <div class="row title">
+            <div class="columns small-12">
+              <span ax-translate>features.accounts.stockholders-equity.contributed-capital</span>
+            </div>
+          </div>
+          <div ng-repeat="account in contributedCapitalAccounts">
             <div class="row">
               <div class="columns small-7">
                 {{account.name}}
@@ -174,7 +182,40 @@
               <span ax-translate>global.total</span>
             </div>
             <div class="columns small-5 currency">
-              {{generalBalance.stockholdersAccountsTotal | currency}}
+              {{generalBalance.contributedCapitalTotal | currency}}
+            </div>
+          </div>
+          <!-- Earned Capital -->
+          <div class="row title">
+            <div class="columns small-12">
+              <span ax-translate>features.accounts.stockholders-equity.earned-capital</span>
+            </div>
+          </div>
+          <div ng-repeat="account in earnedCapitalAccounts">
+            <div class="row">
+              <div class="columns small-7">
+                {{account.name}}
+              </div>
+              <div class="columns small-5 currency">
+                {{account.total | currency}}
+              </div>
+            </div>
+          </div>
+          <div class="row total">
+            <div class="columns small-7">
+              <span ax-translate>global.total</span>
+            </div>
+            <div class="columns small-5 currency">
+              {{generalBalance.earnedCapitalTotal | currency}}
+            </div>
+          </div>
+          <div class="row"><div class="columns small-12"><span>&nbsp;</span></div></div>
+          <div class="row total">
+            <div class="columns small-7">
+              <span ax-translate>features.balance.general-balance.stockholders-total</span>
+            </div>
+            <div class="columns small-5 currency">
+              {{generalBalance.stockholdersAssetsTotal | currency}}
             </div>
           </div>
         </div>
@@ -186,7 +227,7 @@
         <div class="panel grid">
           <div class="row total">
             <div class="columns small-7">
-              <span ax-translate>global.total</span>
+              <span ax-translate>features.balance.general-balance.active-total</span>
             </div>
             <div class="columns small-5 currency">
               {{generalBalance.activeAssetsTotal | currency}}
@@ -198,10 +239,10 @@
         <div class="panel grid">
           <div class="row total">
             <div class="columns small-7">
-              <span ax-translate>global.total</span>
+              <span ax-translate>features.balance.general-balance.passive-plus-capital</span>
             </div>
             <div class="columns small-5 currency">
-              {{generalBalance.passiveAssetsTotal | currency}}
+              {{generalBalance.passivePlusCapitalAssetsTotal | currency}}
             </div>
           </div>
         </div>
