@@ -1,7 +1,7 @@
 app.controller('GeneralBalanceController', 
-  ['$scope', '$q', '$controller', 'notificationService', 'translateService', 'utilService',
+  ['$scope', '$q', '$controller', '$timeout', 'notificationService', 'translateService', 'utilService',
 
-  function($scope, $q, $controller, notificationService, translateService, utilService) {
+  function($scope, $q, $controller, $timeout, notificationService, translateService, utilService) {
     $scope.generalBalance = {
       floatingAssetsTotal: 0,
       propertiesTotal: 0,
@@ -63,30 +63,55 @@ app.controller('GeneralBalanceController',
         angular.forEach(results, function(value, key) {
           var account = { name: translateService.translate(results[key].name), key: results[key].key, total: 0 };
           accountList.push(account);
+          var isLastItem = key == results.length - 1;
 
-          utilService.getAccountData({ parentId: results[key]._id }, { key: results[key].key }).then(function(accounts) {
+          utilService.getAccountData({ parentId: results[key]._id }, { key: results[key].key, isLast: isLastItem }).then(function(accounts) {
+            var accountTotal = 0;
             angular.forEach(accounts, function(value, key) {
-              utilService.getVoucherEntries({ key: accounts[key].key }, { key: accounts.extra.key }).then(function(movements) {
-                var accountTotal = 0;
+              //console.log(accounts[key]);
+              //console.log(' ' + key + '==' + (accounts.length - 1) + ' && ' + accounts.extra.isLast);
+              //console.log((key == accounts.length - 1) && accounts.extra.isLast);
+              var isLastItem = (key == accounts.length - 1) && accounts.extra.isLast;
+              utilService.getVoucherEntries({ key: accounts[key].key }, { key: accounts.extra.key, isLast: isLastItem }).then(function(movements) {
                 angular.forEach(movements, function(value, key) {
                   if(isActiveAssetsAccount) {
-                    if(!isNaN(movements[key].debits)) accountTotal += parseFloat(movements[key].debits);
-                    if(!isNaN(movements[key].credits)) accountTotal -= parseFloat(movements[key].credits);
-                  } else {
                     if(!isNaN(movements[key].debits)) accountTotal -= parseFloat(movements[key].debits);
                     if(!isNaN(movements[key].credits)) accountTotal += parseFloat(movements[key].credits);
+                    //console.log(movements[key].key + ' ' + movements[key].debits + ' ' + movements[key].credits + ' = ' + accountTotal);
+                  } else {
+                    if(!isNaN(movements[key].debits)) accountTotal += parseFloat(movements[key].debits);
+                    if(!isNaN(movements[key].credits)) accountTotal -= parseFloat(movements[key].credits);
+                    //console.log(movements[key].key + ' ' + movements[key].debits + ' ' + movements[key].credits + ' = ' + accountTotal);
                   }
                 });
+                //console.log(accountList);
                 angular.forEach(accountList, function(value, key) {
                   if(movements.extra.key === accountList[key].key) {
                     accountList[key].total = accountTotal;
-                    $scope.generalBalance[totalVariable] += parseFloat(accountList[key].total);
+                    //console.log(movements.extra.key + ' ' + accountTotal);
                   }
-                });
-                defer.resolve(accountList);
+                }); 
+                if(movements.extra.isLast) {
+                  angular.forEach(accountList, function(value, key) {
+                    $timeout(function() {
+                      $scope.generalBalance[totalVariable] += parseFloat(accountList[key].total);
+                    }, 0);
+                  });
+                  defer.resolve(accountList);
+                }
               });
             });
-            if(accounts.length === 0) defer.resolve(accountList);
+            if(accounts.length === 0 && accounts.extra.isLast) {
+              //console.log("?")
+              angular.forEach(accountList, function(value, key) {
+                $timeout(function() {
+                  $scope.generalBalance[totalVariable] += parseFloat(accountList[key].total);
+                }, 0);
+              });
+              //console.log(accountList[1].total)
+              //console.log(accountList[3].total)
+              defer.resolve(accountList);
+            }
           });
         });
       });
