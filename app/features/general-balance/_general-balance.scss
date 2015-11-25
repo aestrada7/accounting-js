@@ -8,6 +8,7 @@
   .grid {
     .row {
       display: flex;
+      font-size: $font-size-normal;
 
       .columns {
         display: inline-flex;
@@ -15,6 +16,12 @@
 
         &.currency {
           justify-content: flex-end;
+        }
+      }
+
+      &.title {
+        .columns {
+          display: block !important;
         }
       }
     }

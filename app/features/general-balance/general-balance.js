@@ -17,6 +17,7 @@ app.controller('GeneralBalanceController',
     $scope.propertiesAccounts = [];
     $scope.deferredAssetsAccounts = [];
     $scope.shortTermAccounts = [];
+    $scope.longTermAccounts = [];
 
     $scope.getBalance = function() {
       $('.loading').show();
@@ -43,6 +44,11 @@ app.controller('GeneralBalanceController',
       }).then(function(results) {
         $scope.shortTermAccounts = results;
 
+        //Long Term Passive Assets
+        return getChildAccountsValue(16, false, 'longTermTotal');
+      }).then(function(results) {
+        $scope.longTermAccounts = results;
+
         $scope.generalBalance.reportCreated = true;
         $('.loading').fadeOut(200);
       });
@@ -55,10 +61,13 @@ app.controller('GeneralBalanceController',
       utilService.getAccountData({ parentId: accountId }).then(function(results) {
         if(results.length === 0) defer.resolve(accountList);
         angular.forEach(results, function(value, key) {
-          var accountTotal = 0;
+          var account = { name: translateService.translate(results[key].name), key: results[key].key, total: 0 };
+          accountList.push(account);
+
           utilService.getAccountData({ parentId: results[key]._id }, { key: results[key].key }).then(function(accounts) {
             angular.forEach(accounts, function(value, key) {
               utilService.getVoucherEntries({ key: accounts[key].key }, { key: accounts.extra.key }).then(function(movements) {
+                var accountTotal = 0;
                 angular.forEach(movements, function(value, key) {
                   if(isActiveAssetsAccount) {
                     if(!isNaN(movements[key].debits)) accountTotal += parseFloat(movements[key].debits);
@@ -71,7 +80,7 @@ app.controller('GeneralBalanceController',
                 angular.forEach(accountList, function(value, key) {
                   if(movements.extra.key === accountList[key].key) {
                     accountList[key].total = accountTotal;
-                    $scope.generalBalance[totalVariable] += parseFloat(accountTotal);
+                    $scope.generalBalance[totalVariable] += parseFloat(accountList[key].total);
                   }
                 });
                 defer.resolve(accountList);
@@ -79,8 +88,6 @@ app.controller('GeneralBalanceController',
             });
             if(accounts.length === 0) defer.resolve(accountList);
           });
-          var account = { name: translateService.translate(results[key].name), key: results[key].key, total: 0 };
-          accountList.push(account);
         });
       });
       return defer.promise;
