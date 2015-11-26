@@ -3,6 +3,15 @@ app.directive('axGrid',
     return {
       restrict: 'A',
       link: function(scope, element, attrs) {
+        element.on('keydown', function(event) {
+          switch(event.keyCode) {
+            case 13: //enter
+              event.preventDefault();
+              event.stopImmediatePropagation();
+              break;
+          }
+        });
+
         element.on('keyup', 'input', function(event) {
           var dispatcher = $(event.target);
           switch(event.keyCode) {
