@@ -24,15 +24,6 @@ nwStartUp = function(translateService) {
   }));
 
   fileMenu.append(new gui.MenuItem({
-    label: translateService.translate('features.organization.title'),
-    click: function() {
-      if(this.enabled) $('#organization-link').click();
-    },
-    key: 'd',
-    modifiers: 'ctrl'
-  }));
-
-  fileMenu.append(new gui.MenuItem({
     label: translateService.translate('global.export'),
     click: function() {
       if(this.enabled) $('#file-export-dialog').click();
@@ -47,6 +38,15 @@ nwStartUp = function(translateService) {
       if(this.enabled) $('#file-import-dialog').click();
     },
     key: 'o',
+    modifiers: 'ctrl'
+  }));
+
+  fileMenu.append(new gui.MenuItem({
+    label: translateService.translate('global.print'),
+    click: function() {
+      window.print();
+    },
+    key: 'p',
     modifiers: 'ctrl'
   }));
 
@@ -75,6 +75,15 @@ nwStartUp = function(translateService) {
       if(this.enabled) $('#home-link').click();
     },
     key: 'h',
+    modifiers: 'ctrl+alt'
+  }));
+
+  toolMenu.append(new gui.MenuItem({
+    label: translateService.translate('features.organization.title'),
+    click: function() {
+      if(this.enabled) $('#organization-link').click();
+    },
+    key: 'd',
     modifiers: 'ctrl+alt'
   }));
 

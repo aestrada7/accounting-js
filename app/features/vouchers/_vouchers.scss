@@ -9,6 +9,10 @@
       position: absolute;
       top: rem-calc(55);
       #{$default-float}: 0;
+
+      @media print {
+        display: none;
+      }
     }
 
     @media #{$small-only} {

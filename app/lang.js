@@ -28,6 +28,7 @@ lang = {
         "expand": "Expand",
         "generate": "Generate",
         "select": "Select",
+        "print": "Print",
         "errors": {
           "invalid-value": "Invalid value",
           "missing-value": "Missing value",
@@ -368,6 +369,7 @@ lang = {
         "expand": "Expandir",
         "generate": "Generar",
         "select": "Seleccionar",
+        "print": "Imprimir",
         "errors": {
           "invalid-value": "Dato inválido",
           "missing-value": "Dato requerido",

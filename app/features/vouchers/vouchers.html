@@ -10,7 +10,7 @@
         <option value="disimbursement" ax-translate>features.vouchers.disimbursement.short-title</option>
         <option value="cash-receipt" ax-translate>features.vouchers.cash-receipt.short-title</option>
       </select>
-      <i class="fi-filter"></i>
+      <i class="fi-filter hide-for-print"></i>
     </span>
   </h1>
 
@@ -67,13 +67,13 @@
           <span ax-translate>features.vouchers.key</span>
         </div>
       </div>
-      <div class="columns hide-for-small-only medium-2 large-3">
+      <div class="columns hide-for-small-only hide-for-print medium-2 large-3">
         <div ng-class="{'selected': vouchers.orderColumn === 'description', 'reverse': vouchers.isReverse}" 
              ng-click="setOrderColumn('description')">
           <span ax-translate>features.vouchers.description</span>
         </div>
       </div>
-      <div class="columns hide-for-small-only medium-2">
+      <div class="columns hide-for-small-only hide-for-print medium-2">
         <div ng-class="{'selected': vouchers.orderColumn === 'kind', 'reverse': vouchers.isReverse}"
              ng-click="setOrderColumn('kind')">
           <span ax-translate>features.vouchers.kind</span>
@@ -103,10 +103,10 @@
       <div class="columns small-2 medium-2 large-1">
         <div>{{item.key}}</div>
       </div>
-      <div class="columns hide-for-small-only medium-2 large-3">
+      <div class="columns hide-for-small-only hide-for-print medium-2 large-3">
         <div>{{item.description}}</div>
       </div>
-      <div class="columns hide-for-small-only medium-2">
+      <div class="columns hide-for-small-only hide-for-print medium-2">
         <div>{{item.kindText}}</div>
       </div>
       <div class="columns small-4 medium-2 currency">

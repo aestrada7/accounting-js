@@ -1,4 +1,14 @@
 .voucher-modal {
+  @media print {
+    position: relative;
+
+    &.reveal-modal {
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+    }
+  }
+
   @media #{$medium-only} {
     margin-top: rem-calc(-50) !important;
     width: 95% !important;

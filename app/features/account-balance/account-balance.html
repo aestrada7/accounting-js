@@ -37,58 +37,57 @@
   </div>
 
   <div class="row full" ng-if="accountBalance.isValid && accountBalance.ready">
-    <div class="columns small-12">
-      <div class="small-block-grid-1 medium-block-grid-2 large-block-grid-4">
-        <li ng-repeat="item in accountBalance.items">
-          <div class="panel grid">
-            <div class="row title main">
-              <div class="columns small-12 small-centered">
-                <span>{{item.monthName}}</span>
-              </div>
-            </div>
-            <div class="row wrap">
-              <div class="columns small-6">
-                <span ax-translate>features.accounts.opening-balance</span>: 
-              </div>
-              <div class="columns small-6 currency">
-                {{item.startBalance | currency}}
-              </div>
-            </div>
-            <div class="row title main">
-              <div class="columns small-4">
-                <span ax-translate>features.accounts.sub-accounts.singular</span>
-              </div>
-              <div class="columns small-4">
-                <span ax-translate>features.vouchers.debits</span>
-              </div>
-              <div class="columns small-4">
-                <span ax-translate>features.vouchers.credits</span>
-              </div>
-            </div>
-            <div class="row" ng-repeat="movement in item.movements">
-              <div class="columns small-4">
-                <span>{{movement.accountKey}}</span>
-              </div>
-              <div class="columns small-4 thick-border currency">
-                <span>{{movement.debits | currency}}</span>
-              </div>
-              <div class="columns small-4 currency">
-                <span>{{movement.credits | currency}}</span>
-              </div>
-            </div>
-            <div class="row title">
-              <div class="columns small-12">
-                &nbsp;
-              </div>
-            </div>
-            <div class="row wrap">
-              <div class="columns small-6">
-                <span ax-translate>features.accounts.ending-balance</span>
-              </div>
-              <div class="columns small-6 currency">{{item.endBalance | currency}}</div>
+    <div ng-repeat="item in accountBalance.items">
+      <div class="row collapse hide-for-small-only" ng-if="$index % 2 === 0"></div>
+      <div class="columns small-12 medium-6">
+        <div class="panel grid">
+          <div class="row title main">
+            <div class="columns small-12 small-centered">
+              <span>{{item.monthName}}</span>
             </div>
           </div>
-        </li>
+          <div class="row wrap">
+            <div class="columns small-6">
+              <span ax-translate>features.accounts.opening-balance</span>: 
+            </div>
+            <div class="columns small-6 currency">
+              {{item.startBalance | currency}}
+            </div>
+          </div>
+          <div class="row title main">
+            <div class="columns small-4">
+              <span ax-translate>features.accounts.sub-accounts.singular</span>
+            </div>
+            <div class="columns small-4">
+              <span ax-translate>features.vouchers.debits</span>
+            </div>
+            <div class="columns small-4">
+              <span ax-translate>features.vouchers.credits</span>
+            </div>
+          </div>
+          <div class="row" ng-repeat="movement in item.movements">
+            <div class="columns small-4">
+              <span>{{movement.accountKey}}</span>
+            </div>
+            <div class="columns small-4 thick-border currency">
+              <span>{{movement.debits | currency}}</span>
+            </div>
+            <div class="columns small-4 currency">
+              <span>{{movement.credits | currency}}</span>
+            </div>
+          </div>
+          <div class="row title">
+            <div class="columns small-12">
+              &nbsp;
+            </div>
+          </div>
+          <div class="row wrap">
+            <div class="columns small-6">
+              <span ax-translate>features.accounts.ending-balance</span>
+            </div>
+            <div class="columns small-6 currency">{{item.endBalance | currency}}</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
