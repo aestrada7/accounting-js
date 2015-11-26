@@ -6,6 +6,16 @@
     </button>
   </div>
 
+  <div class="no-start-month" ng-if="noStartMonth">
+    <div class="row">
+      <div class="small-8 columns small-centered panel">
+        <i class="fi-x"></i><br />
+        <span ax-translate>global.errors.no-start-month</span><br />
+        <a ui-sref="organization" ax-translate>global.messages.click-to-select</a>
+      </div>
+    </div>
+  </div>
+
   <div ng-if="generalBalance.reportCreated">
     <div class="row full collapse">
       <div class="columns small-6">
