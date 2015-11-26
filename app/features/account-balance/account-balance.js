@@ -98,9 +98,9 @@ app.controller('AccountBalanceController',
                 voucherList.push(voucherResults[key]._id);
               });
               utilService.getVoucherEntries({key: {$in: $scope.accountList}, voucherId: {$in: voucherList}}, 
-                                { month: voucherResults.extra.month,
-                                  year: voucherResults.extra.year,
-                                  index: voucherResults.extra.index }).then(function(results) {
+                                            { month: voucherResults.extra.month,
+                                              year: voucherResults.extra.year,
+                                              index: voucherResults.extra.index }).then(function(results) {
                 var balanceStart = (results.extra.index === 0) ? $scope.accountBalance.startBalance : $scope.balanceEnd;
                 $scope.balanceEnd = balanceStart;
                 angular.forEach(results, function(value, key) {

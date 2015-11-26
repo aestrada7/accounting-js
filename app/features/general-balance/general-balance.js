@@ -24,71 +24,65 @@ app.controller('GeneralBalanceController',
     $scope.contributedCapitalAccounts = [];
     $scope.earnedCapitalAccounts = [];
     $scope.noStartMonth = false;
+    $scope.hasOrganization = false;
+    var startDate = new Date();
+    var endDate = new Date();
 
     $scope.getBalance = function() {
       $('.loading').show();
-      var organizationScope = $scope.$new();
-      var startYear = 0;
-      var startMonth = 0;
-      $controller('OrganizationController', {$scope: organizationScope});
-      $(window).on('organization.loaded', function() {
-        startMonth = organizationScope.organization.startMonth;
-        startYear = organizationScope.organization.exerciseYear;
+      if($scope.hasOrganization) {
+        //Floating Assets
+        getChildAccountsValue(3, true, 'floatingAssetsTotal').then(function(results) {
+          $scope.floatingAssetsAccounts = results;
 
-        if(organizationScope.organization.businessName && startMonth && startYear) {
-          //Floating Assets
-          getChildAccountsValue(3, true, 'floatingAssetsTotal').then(function(results) {
-            $scope.floatingAssetsAccounts = results;
+          //Properties Assets
+          return getChildAccountsValue(9, true, 'propertiesTotal');
+        }).then(function(results) {
+          $scope.propertiesAccounts = results;
 
-            //Properties Assets
-            return getChildAccountsValue(9, true, 'propertiesTotal');
-          }).then(function(results) {
-            $scope.propertiesAccounts = results;
+          //Deferred Assets
+          return getChildAccountsValue(14, true, 'deferredAssetsTotal');
+        }).then(function(results) {
+          $scope.deferredAssetsAccounts = results;
+          $scope.generalBalance.activeAssetsTotal = $scope.generalBalance.floatingAssetsTotal +
+                                                    $scope.generalBalance.propertiesTotal +
+                                                    $scope.generalBalance.deferredAssetsTotal;
 
-            //Deferred Assets
-            return getChildAccountsValue(14, true, 'deferredAssetsTotal');
-          }).then(function(results) {
-            $scope.deferredAssetsAccounts = results;
-            $scope.generalBalance.activeAssetsTotal = $scope.generalBalance.floatingAssetsTotal +
-                                                      $scope.generalBalance.propertiesTotal +
-                                                      $scope.generalBalance.deferredAssetsTotal;
+          //Short Term Passive Assets
+          return getChildAccountsValue(15, false, 'shortTermTotal');
+        }).then(function(results) {
+          $scope.shortTermAccounts = results;
 
-            //Short Term Passive Assets
-            return getChildAccountsValue(15, false, 'shortTermTotal');
-          }).then(function(results) {
-            $scope.shortTermAccounts = results;
+          //Long Term Passive Assets
+          return getChildAccountsValue(16, false, 'longTermTotal');
+        }).then(function(results) {
+          $scope.longTermAccounts = results;
 
-            //Long Term Passive Assets
-            return getChildAccountsValue(16, false, 'longTermTotal');
-          }).then(function(results) {
-            $scope.longTermAccounts = results;
+          $scope.generalBalance.passiveAssetsTotal = $scope.generalBalance.shortTermTotal + $scope.generalBalance.longTermTotal;
 
-            $scope.generalBalance.passiveAssetsTotal = $scope.generalBalance.shortTermTotal + $scope.generalBalance.longTermTotal;
+          //Contributed Capital
+          return getChildAccountsValue(38, false, 'contributedCapitalTotal');
+        }).then(function(results) {
+          $scope.contributedCapitalAccounts = results;
 
-            //Contributed Capital
-            return getChildAccountsValue(38, false, 'contributedCapitalTotal');
-          }).then(function(results) {
-            $scope.contributedCapitalAccounts = results;
+          //Earned Capital
+          return getChildAccountsValue(41, false, 'earnedCapitalTotal');        
+        }).then(function(results) {
+          $scope.earnedCapitalAccounts = results;
 
-            //Earned Capital
-            return getChildAccountsValue(41, false, 'earnedCapitalTotal');        
-          }).then(function(results) {
-            $scope.earnedCapitalAccounts = results;
+          $scope.generalBalance.stockholdersAssetsTotal = $scope.generalBalance.contributedCapitalTotal +
+                                                          $scope.generalBalance.earnedCapitalTotal;
 
-            $scope.generalBalance.stockholdersAssetsTotal = $scope.generalBalance.contributedCapitalTotal +
-                                                            $scope.generalBalance.earnedCapitalTotal;
+          $scope.generalBalance.passivePlusCapitalAssetsTotal = $scope.generalBalance.passiveAssetsTotal +
+                                                                $scope.generalBalance.stockholdersAssetsTotal;
 
-            $scope.generalBalance.passivePlusCapitalAssetsTotal = $scope.generalBalance.passiveAssetsTotal +
-                                                                  $scope.generalBalance.stockholdersAssetsTotal;
-
-            $scope.generalBalance.reportCreated = true;
-            $('.loading').fadeOut(200);
-          });
-        } else {
-          $scope.noStartMonth = true;
+          $scope.generalBalance.reportCreated = true;
           $('.loading').fadeOut(200);
-        }
-      });
+        });
+      } else {
+        $scope.noStartMonth = true;
+        $('.loading').fadeOut(200);
+      }
     }
 
     getChildAccountsValue = function(accountId, isActiveAssetsAccount, totalVariable) {
@@ -151,6 +145,22 @@ app.controller('GeneralBalanceController',
       return defer.promise;
     }
 
-    $('.loading').fadeOut(200);
+    scopeStart = function() {
+      var organizationScope = $scope.$new();
+      var startYear = 0;
+      var startMonth = 0;
+      $controller('OrganizationController', {$scope: organizationScope});
+      $(window).on('organization.loaded', function() {
+        startMonth = organizationScope.organization.startMonth;
+        startYear = organizationScope.organization.exerciseYear;
+        $scope.hasOrganization = organizationScope.organization.businessName && startMonth && startYear;
+        startDate = new Date(startYear, startMonth - 1, 1);
+        endDate = new Date(startYear, startMonth - 1, 1);
+        endDate.setMonth(endDate.getMonth() + 12);
+        $('.loading').fadeOut(200);
+      });
+    }
+
+    scopeStart();
   }]
 );
