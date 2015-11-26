@@ -7,12 +7,12 @@ var rimraf = require('rimraf');
 var ncp = require('ncp').ncp;
 
 //Schema
-var playgroundDB = new Datastore({ filename: 'data/playground.db', autoload: true });
-var organizationDB = new Datastore({ filename: 'data/organization.db', autoload: true });
-var accountsDB = new Datastore({ filename: 'data/accounts.db', autoload: true });
-var vouchersDB = new Datastore({ filename: 'data/vouchers.db', autoload: true });
-var voucherEntriesDB = new Datastore({ filename: 'data/voucherEntries.db', autoload: true });
-var ftuesDB = new Datastore({ filename: 'data/ftues.db', autoload: true });
+var playgroundDB = new Datastore({ filename: path.join(gui.App.dataPath, 'data/playground.db'), autoload: true });
+var organizationDB = new Datastore({ filename: path.join(gui.App.dataPath, 'data/organization.db'), autoload: true });
+var accountsDB = new Datastore({ filename: path.join(gui.App.dataPath, 'data/accounts.db'), autoload: true });
+var vouchersDB = new Datastore({ filename: path.join(gui.App.dataPath, 'data/vouchers.db'), autoload: true });
+var voucherEntriesDB = new Datastore({ filename: path.join(gui.App.dataPath, 'data/voucherEntries.db'), autoload: true });
+var ftuesDB = new Datastore({ filename: path.join(gui.App.dataPath, 'data/ftues.db'), autoload: true });
 
 //Unique fields
 accountsDB.ensureIndex({ fieldName: 'key', unique: true });
@@ -193,7 +193,10 @@ dbStartUp = function(notificationService, translateService, confirmService) {
   var zlib = require('zlib');
 
   exportDB = function(filename) {
-    fileStream.Reader('data').pipe(tar.Pack()).pipe(zlib.Gzip()).pipe(fileStream.Writer(filename)).on('close', function() {
+    fileStream.Reader(path.join(gui.App.dataPath, 'data')).pipe(tar.Pack())
+                                                          .pipe(zlib.Gzip())
+                                                          .pipe(fileStream.Writer(filename))
+                                                          .on('close', function() {
       notificationService.show('components.import-export.export-success', 'success', 'top right');
     });
     $('#file-export-dialog').val('');
@@ -204,22 +207,22 @@ dbStartUp = function(notificationService, translateService, confirmService) {
       notificationService.show('components.import-export.file-removed', 'alert', 'top right', '', true);
     }).pipe(zlib.Gunzip()).on('error', function(err) {
       notificationService.show('components.import-export.file-corrupted', 'alert', 'top right', '', true);
-    }).pipe(tar.Extract({ path: 'temp' })).on('error', function(err) {
+    }).pipe(tar.Extract({ path: path.join(gui.App.dataPath, 'temp') })).on('error', function(err) {
       notificationService.show('components.import-export.file-corrupted', 'alert', 'top right', '', true);
     }).on('end', function() {
-      fs.exists('temp/data/playground.db', function(exists) {
+      fs.exists(path.join(gui.App.dataPath, 'temp/data/playground.db'), function(exists) {
         if(exists) {
-          rimraf('data', function(er) {
+          rimraf(path.join(gui.App.dataPath, 'data'), function(er) {
             $('.loading').show();
-            ncp('temp/data', 'data', function() {
-              rimraf('temp', function(er) {
+            ncp(path.join(gui.App.dataPath, 'temp/data'), path.join(gui.App.dataPath, 'data'), function() {
+              rimraf(path.join(gui.App.dataPath, 'temp'), function(er) {
                 window.location.href += '?imported';
                 win.reloadDev();
               });
             });
           });
         } else {
-          rimraf('temp', function(er) {
+          rimraf(path.join(gui.App.dataPath, 'temp'), function(er) {
             notificationService.show('components.import-export.file-corrupted', 'alert', 'top right', '', true);
           });
         }
@@ -238,9 +241,9 @@ dbStartUp = function(notificationService, translateService, confirmService) {
     }
 
     confirmService.show(confirmOptions).then(function(result) {
-      fs.exists('data/playground.db', function(exists) {
+      fs.exists(path.join(gui.App.dataPath, 'data/playground.db'), function(exists) {
         if(exists) {
-          rimraf('data', function(er) {
+          rimraf(path.join(gui.App.dataPath, 'data'), function(er) {
             $('.loading').show();
             buildDefaultData();
             win.reloadDev();
@@ -258,7 +261,7 @@ dbStartUp = function(notificationService, translateService, confirmService) {
   }
 
   hasDefaultData = function() {
-    fs.readFile('data/accounts.db', 'utf8', function(err, data) {
+    fs.readFile(path.join(gui.App.dataPath, 'data/accounts.db'), 'utf8', function(err, data) {
       if(err) {
         buildDefaultData();
       } else {
@@ -267,7 +270,7 @@ dbStartUp = function(notificationService, translateService, confirmService) {
         }
       }
     });
-    fs.readFile('data/ftues.db', 'utf8', function(err, data) {
+    fs.readFile(path.join(gui.App.dataPath, 'data/ftues.db'), 'utf8', function(err, data) {
       if(err) {
         buildFTUEList();
       }

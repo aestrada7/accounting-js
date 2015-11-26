@@ -9,6 +9,7 @@ app.controller('AboutController',
                          { name: 'SASS', kind: 'node' },
                          { name: 'CSS3', kind: 'CSS' },
                          { name: 'HTML5', kind: 'HTML' },
+                         { name: 'Foundation 4', kind: 'JS' },
                          { name: 'Bower', kind: 'node' },
                          { name: 'Grunt', kind: 'node' },
                          { name: 'Git', kind: 'other'}];

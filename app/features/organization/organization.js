@@ -34,7 +34,6 @@ app.controller('OrganizationController',
     $scope.logoChanged = function(event) {
       var reader = new FileReader();
       reader.onload = function(e) {
-        console.log(e.target.result);
         $scope.organization.logo = e.target.result;
         $scope.$apply();
       }

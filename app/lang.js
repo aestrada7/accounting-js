@@ -73,7 +73,7 @@ lang = {
         "about": {
           "title": "About",
           "subtitle": "About AccountingJS",
-          "pageText": "Windows x64 app built using the following technologies"
+          "pageText": "Windows x64, Linux x64, OSX app built using the following technologies"
         },
         "quit": {
           "title": "Quit"
@@ -414,7 +414,7 @@ lang = {
         "about": {
           "title": "Acerca de",
           "subtitle": "Acerca de AccountingJS",
-          "pageText": "Aplicación Windows x64 creada utilizando las siguientes tecnologías"
+          "pageText": "Aplicación Windows x64, Linux x64, OSX creada utilizando las siguientes tecnologías"
         },
         "quit": {
           "title": "Salir"
