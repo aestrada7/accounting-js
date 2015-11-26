@@ -94,12 +94,14 @@ app.controller('GeneralBalanceController',
               var isLastItem = (key == accounts.length - 1) && accounts.extra.isLast;
               utilService.getVoucherEntries({ key: accounts[key].key }, { key: accounts.extra.key, isLast: isLastItem }).then(function(movements) {
                 angular.forEach(movements, function(value, key) {
+                  movements[key].debits = parseFloat(movements[key].debits);
+                  movements[key].credits = parseFloat(movements[key].credits);
                   if(isActiveAssetsAccount) {
-                    if(!isNaN(movements[key].debits)) accountTotal -= parseFloat(movements[key].debits);
-                    if(!isNaN(movements[key].credits)) accountTotal += parseFloat(movements[key].credits);
+                    accountTotal -= !isNaN(movements[key].debits) ? movements[key].debits : 0;
+                    accountTotal += !isNaN(movements[key].credits) ? movements[key].credits : 0;
                   } else {
-                    if(!isNaN(movements[key].debits)) accountTotal += parseFloat(movements[key].debits);
-                    if(!isNaN(movements[key].credits)) accountTotal -= parseFloat(movements[key].credits);
+                    accountTotal += !isNaN(movements[key].debits) ? movements[key].debits : 0;
+                    accountTotal -= !isNaN(movements[key].credits) ? movements[key].credits : 0;
                   }
                 });
                 angular.forEach(accountList, function(value, key) {
