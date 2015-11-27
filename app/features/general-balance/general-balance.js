@@ -25,6 +25,7 @@ app.controller('GeneralBalanceController',
     $scope.earnedCapitalAccounts = [];
     $scope.noStartMonth = false;
     $scope.hasOrganization = false;
+    $scope.businessName = '';
     var startDate = new Date();
     var endDate = new Date();
     var voucherList = [];
@@ -91,6 +92,12 @@ app.controller('GeneralBalanceController',
         $scope.noStartMonth = true;
         $('.loading').fadeOut(200);
       }
+    }
+
+    $scope.getExerciseDate = function() {
+      var start = utilService.getMonthName(startDate.getMonth() + 1) + ' ' + startDate.getFullYear();
+      var end = utilService.getMonthName(endDate.getMonth() + 1) + ' ' + endDate.getFullYear();
+      return start + ' - ' + end;
     }
 
     getChildAccountsValue = function(accountId, isActiveAssetsAccount, totalVariable) {
@@ -168,6 +175,7 @@ app.controller('GeneralBalanceController',
         startMonth = organizationScope.organization.startMonth;
         startYear = organizationScope.organization.exerciseYear;
         $scope.hasOrganization = organizationScope.organization.businessName && startMonth && startYear;
+        $scope.businessName = organizationScope.organization.businessName;
         startDate = new Date(startYear, startMonth - 1, 1);
         endDate = new Date(startYear, startMonth - 1, 1);
         endDate.setMonth(endDate.getMonth() + 12);
