@@ -68,7 +68,6 @@ module.exports = function(grunt) {
           'del credits.html',
           'del ffmpegsumo.dll',
           'del nwjc.exe',
-          'del pdf.dll',
           'echo start accountingjs.exe --lang=es >> run.bat'
         ].join('&&')
       }
