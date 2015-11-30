@@ -1,6 +1,37 @@
 app.provider('utilService', function() {
   this.$get = ['$q', 'translateService', function($q, translateService) {
 
+    var getParentAccount = function(args) {
+      var defer = $q.defer();
+      var parentAccount = [];
+      getAccountData(args).then(function(results) {
+        parentAccount = results[0];
+        if(!results[0].parentId) {
+          defer.resolve(parentAccount);
+        } else {
+          getAccountData({ _id: results[0].parentId }).then(function(results) {
+            parentAccount = results[0];
+            if(!results[0].parentId) {
+              defer.resolve(parentAccount);
+            } else {
+              getAccountData({ _id: results[0].parentId }).then(function(results) {
+                parentAccount = results[0];
+                if(!results[0].parentId) {
+                  defer.resolve(parentAccount);
+                } else {
+                  getAccountData({ _id: results[0].parentId }).then(function(results) {
+                    parentAccount = results[0];
+                    defer.resolve(parentAccount);
+                  });
+                }
+              });
+            }
+          });
+        }
+      });
+      return defer.promise;
+    }
+
     var getAccountData = function(args, extraArguments) {
       var defer = $q.defer();
       accountsDB.find(args, function(err, results) {
@@ -81,6 +112,7 @@ app.provider('utilService', function() {
     }
 
     return {
+      getParentAccount: getParentAccount,
       getAccountData: getAccountData,
       getVouchers: getVouchers,
       getVoucherEntries: getVoucherEntries,

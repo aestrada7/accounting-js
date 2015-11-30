@@ -67,10 +67,14 @@ app.controller('AccountBalanceController',
     }
 
     $scope.getAccountMovements = function() {
+      var isPassiveAccount = false;
       $('.loading').show();
       var startMonth = null;
       var startYear = null;
       var organizationScope = $scope.$new();
+      utilService.getParentAccount({ key: $scope.accountBalance.accountKey }).then(function(result) {
+        isPassiveAccount = (result.key === '2000' || result.key === '3000');
+      });
       $scope.endBalance = 0;
       $controller('OrganizationController', {$scope: organizationScope});
       $(window).on('organization.loaded', function() {
@@ -109,8 +113,13 @@ app.controller('AccountBalanceController',
                     debits: results[key].debits || 0,
                     credits: results[key].credits || 0
                   }
-                  $scope.balanceEnd += parseInt(accountMovement.debits);
-                  $scope.balanceEnd -= parseInt(accountMovement.credits);
+                  if(!isPassiveAccount) {
+                    $scope.balanceEnd += parseInt(accountMovement.debits);
+                    $scope.balanceEnd -= parseInt(accountMovement.credits);
+                  } else {
+                    $scope.balanceEnd -= parseInt(accountMovement.debits);
+                    $scope.balanceEnd += parseInt(accountMovement.credits);
+                  }
                   accountMovements.push(accountMovement);
                 });
                 if(results.extra.index === 0) {
