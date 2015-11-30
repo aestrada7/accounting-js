@@ -112,11 +112,14 @@ app.controller('GeneralBalanceController',
           var isLastItem = key == results.length - 1;
 
           utilService.getAccountData({ parentId: results[key]._id }, { key: results[key].key, isLast: isLastItem }).then(function(accounts) {
-            var hasStartingBalance;
-            try {
-              hasStartingBalance = parseFloat(accounts[key].balance);
-            } catch(e) {}
-            var accountTotal = !isNaN(hasStartingBalance) ? hasStartingBalance : 0;
+            var accountTotal = 0;
+            angular.forEach(accounts, function(value, key) {
+              var hasStartingBalance;
+              try {
+                hasStartingBalance = parseFloat(accounts[key].balance);
+                accountTotal = !isNaN(hasStartingBalance) ? hasStartingBalance : 0;
+              } catch(e) {}
+            });
 
             angular.forEach(accounts, function(value, key) {
               var isLastItem = (key == accounts.length - 1) && accounts.extra.isLast;
@@ -127,11 +130,11 @@ app.controller('GeneralBalanceController',
                   movements[key].debits = parseFloat(movements[key].debits);
                   movements[key].credits = parseFloat(movements[key].credits);
                   if(isActiveAssetsAccount) {
-                    accountTotal -= !isNaN(movements[key].debits) ? movements[key].debits : 0;
-                    accountTotal += !isNaN(movements[key].credits) ? movements[key].credits : 0;
-                  } else {
                     accountTotal += !isNaN(movements[key].debits) ? movements[key].debits : 0;
                     accountTotal -= !isNaN(movements[key].credits) ? movements[key].credits : 0;
+                  } else {
+                    accountTotal -= !isNaN(movements[key].debits) ? movements[key].debits : 0;
+                    accountTotal += !isNaN(movements[key].credits) ? movements[key].credits : 0;
                   }
                 });
 
