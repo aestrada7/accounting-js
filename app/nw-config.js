@@ -41,6 +41,8 @@ nwStartUp = function(translateService) {
     modifiers: 'ctrl'
   }));
 
+  fileMenu.append(new gui.MenuItem({ type: 'separator' }));
+
   fileMenu.append(new gui.MenuItem({
     label: translateService.translate('global.print'),
     click: function() {
