@@ -269,6 +269,10 @@ lang = {
             "orderer-clients": "Orderer Clients",
             "orderer-cash": "Orderer Cash",
             "control-values": "Control Values"
+          },
+          "ftue": {
+            "filter-account": "Click here to filter the shown accounts or to change to tree view.",
+            "add-sub-account": "Click here to add a new sub-account of this account."
           }
         },
         "vouchers": {
@@ -617,6 +621,10 @@ lang = {
             "orderer-clients": "Clientes del Comitente",
             "orderer-cash": "Cajas del Comitente",
             "control-values": "Valores de Control"
+          },
+          "ftue": {
+            "filter-account": "Haz click aqui para filtrar las cuentas que se muestran o para ir a la vista de árbol.",
+            "add-sub-account": "Haz click en este botón para agregar una subcuenta de esta cuenta."
           }
         },
         "vouchers": {

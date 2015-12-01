@@ -110,4 +110,20 @@
       width: calc(100% #{'-'} #{rem-calc(140)});
     }    
   }
+
+  .filter-ftue {
+    position: absolute;
+    #{$default-float}: rem-calc(2);
+    top: rem-calc(5);
+
+    @media #{$small-only} {
+      top: 0;
+    }
+  }
+
+  .sub-account-ftue {
+    position: absolute;
+    #{$default-float}: rem-calc(-7);
+    top: rem-calc(5);
+  }
 }

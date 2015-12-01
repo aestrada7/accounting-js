@@ -9,6 +9,8 @@
     <button class="circle" ng-click="onAddChildClicked(item)" ng-if="item.level != 4"
             ax-translate-attrs="{'aria-label': 'features.accounts.add-child', 'title': 'features.accounts.add-child'}">
       <i class="fi-page-add size-18"></i>
+      <ax-ftue ng-if="item._id === 1" class="sub-account-ftue" key="add-sub-account"
+               text="features.accounts.ftue.add-sub-account" position="bottom center small-right"></ax-ftue>
     </button>
     <button class="circle" ng-click="onEditAccountClicked(item)" ng-if="!item.blocked"
             ax-translate-attrs="{'aria-label': 'global.edit', 'title': 'global.edit'}">

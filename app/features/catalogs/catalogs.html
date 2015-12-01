@@ -2,6 +2,7 @@
   <h1 class="header-with-filter">
     <span class="heading-title" ax-translate>features.accounts.title</span>
     <span class="filter">
+      <ax-ftue key="filter-account" text="features.accounts.ftue.filter-account" position="bottom left" class="filter-ftue"></ax-ftue>
       <span>{{catalogs.selectedFilterName}}</span>
       <select class="catalog-filter" ng-model="catalogs.selectedFilter" ng-change="setSelectedFilter();">
         <option value="all" ax-translate>features.accounts.all.title</option>

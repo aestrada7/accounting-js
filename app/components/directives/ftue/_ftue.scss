@@ -139,6 +139,31 @@
     }
   }
 
+  &.small-right {
+    @media #{$small-only} {
+      #{$default-float}: rem-calc(-200) !important;
+
+      &:before {
+        #{$default-float}: initial !important;
+        #{$opposite-direction}: rem-calc(10) !important;
+      }
+
+      &:after {
+        #{$default-float}: initial !important;
+        #{$opposite-direction}: rem-calc(9) !important;
+      }
+
+      .highlight, .highlight-2 {
+        #{$default-float}: rem-calc(217) !important;
+      }
+
+      .dismiss {
+        #{$default-float}: rem-calc(10) !important;
+        #{$opposite-direction}: initial !important;
+      }
+    }
+  }
+
   .icon {
     font-size: $font-size-xxlarge;
     text-align: center;
