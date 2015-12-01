@@ -79,14 +79,15 @@ app.controller('GeneralBalanceController',
         }).then(function(results) {
           $scope.earnedCapitalAccounts = results;
 
-          $scope.generalBalance.stockholdersAssetsTotal = $scope.generalBalance.contributedCapitalTotal +
-                                                          $scope.generalBalance.earnedCapitalTotal;
+          $timeout(function() {
+            $scope.generalBalance.stockholdersAssetsTotal = $scope.generalBalance.contributedCapitalTotal +
+                                                            $scope.generalBalance.earnedCapitalTotal;
+            $scope.generalBalance.passivePlusCapitalAssetsTotal = $scope.generalBalance.passiveAssetsTotal +
+                                                                  $scope.generalBalance.stockholdersAssetsTotal;
 
-          $scope.generalBalance.passivePlusCapitalAssetsTotal = $scope.generalBalance.passiveAssetsTotal +
-                                                                $scope.generalBalance.stockholdersAssetsTotal;
-
-          $scope.generalBalance.reportCreated = true;
-          $('.loading').fadeOut(200);
+            $scope.generalBalance.reportCreated = true;
+            $('.loading').fadeOut(200);
+          }, 200);
         });
       } else {
         $scope.noStartMonth = true;
@@ -117,7 +118,7 @@ app.controller('GeneralBalanceController',
               var hasStartingBalance;
               try {
                 hasStartingBalance = parseFloat(accounts[key].balance);
-                accountTotal = !isNaN(hasStartingBalance) ? hasStartingBalance : 0;
+                accountTotal += !isNaN(hasStartingBalance) ? hasStartingBalance : 0;
               } catch(e) {}
             });
 
