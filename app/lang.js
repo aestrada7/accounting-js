@@ -62,7 +62,7 @@ lang = {
           "title": "Dashboard",
           "ftue": {
             "menu-shortcuts": "Access to any system option from this menu, or press ALT+M for quicker access.",
-            "dashboard-items": "A quick glance will show you information about your data. Click on any card for more information!"
+            "dashboard-items": "A quick glance will show you information about your data. Click on any card for more details!"
           }
         },
         "playground": {
@@ -91,7 +91,11 @@ lang = {
           "address": "Address",
           "exercise-year": "Exercise Year",
           "start-month": "Start Month",
-          "logo": "Logo"
+          "logo": "Logo",
+          "ftue": {
+            "enter-information": "Enter the following information of your organization.",
+            "click-to-save-org": "Click here to save your changes."
+          }
         },
         "accounts": {
           "title": "Account Catalog",
@@ -435,7 +439,11 @@ lang = {
           "address": "Dirección",
           "exercise-year": "Año de Ejercicio",
           "start-month": "Mes de Inicio",
-          "logo": "Logotipo"
+          "logo": "Logotipo",
+          "ftue": {
+            "enter-information": "Ingresa la siguiente información sobre tu empresa y el ejercicio.",
+            "click-to-save-org": "Cuando termines, haz click aquí para guardar los cambios."
+          }
         },
         "accounts": {
           "title": "Cuentas",

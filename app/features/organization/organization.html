@@ -2,6 +2,7 @@
   <h1 ax-translate>features.organization.title</h1>
   <span ax-translate>features.organization.pageText</span>
   <form name="orgForm" class="panel">
+    <ax-ftue key="enter-information" text="features.organization.ftue.enter-information" position="top center" class="main-ftue"></ax-ftue>
     <div class="row">
       <div class="columns small-12">
         <ax-validate kind="text">
@@ -57,6 +58,8 @@
       </div>
       <div class="columns small-6">
         <div class="right">
+          <ax-ftue key="click-to-save-org" text="features.organization.ftue.click-to-save-org" position="top right"
+                   class="save-ftue"></ax-ftue>
           <button class="save-button" ng-click="saveOrganization();" ng-disabled="orgForm.$invalid"
                   ax-translate-attrs="{'aria-label': 'global.save'}">
             <i class="fi-check"></i>

@@ -1,6 +1,12 @@
 .base-organization {
   .panel {
     margin-top: rem-calc(10);
+
+    .main-ftue {
+      position: absolute;
+      top: rem-calc(50);
+      #{$default-float}: calc(50% #{'-'} #{rem-calc(40)});
+    }
   }
 
   .logo-upload {

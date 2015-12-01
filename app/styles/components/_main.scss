@@ -154,3 +154,7 @@ button {
     background-color: transparent;
   }
 }
+
+::-webkit-input-placeholder {
+  color: lighten($text-color-xlight, 15%);
+}

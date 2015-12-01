@@ -182,7 +182,9 @@ var preloaded = {
     { '_id': 1, 'key': 'voucher-order', 'displayed': false },
     { '_id': 2, 'key': 'voucher-click-to-edit', 'displayed': false },
     { '_id': 3, 'key': 'menu-shortcuts', 'displayed': false },
-    { '_id': 4, 'key': 'dashboard-items', 'displayed': false }
+    { '_id': 4, 'key': 'dashboard-items', 'displayed': false },
+    { '_id': 5, 'key': 'enter-information', 'displayed': false },
+    { '_id': 6, 'key': 'click-to-save-org', 'displayed': false }
   ]
 };
 
