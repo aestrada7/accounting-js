@@ -324,6 +324,9 @@ lang = {
             "stockholders-total": "Stockholders Total",
             "passive-plus-capital": "Passive Plus Capital"
           }
+        },
+        "income-statement": {
+          "title": "Income Statement"
         }
       },
       "components": {
@@ -665,8 +668,11 @@ lang = {
             "stockholders-total": "Total de Capital",
             "passive-plus-capital": "Pasivo Mas Capital"
           }
+        },
+        "income-statement": {
+          "title": "Estado de Resultados"
         }
-      },
+     },
       "components": {
         "import-export": {
           "export-success": "La base de datos fue exportada correctamente.",

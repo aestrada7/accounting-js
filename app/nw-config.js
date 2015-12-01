@@ -153,6 +153,15 @@ nwStartUp = function(translateService) {
     modifiers: 'ctrl+alt'
   }));
 
+  reportMenu.append(new gui.MenuItem({
+    label: translateService.translate($('#income-statement-link').html()),
+    click: function() {
+      if(this.enabled) $('#income-statement-link').click();
+    },
+    key: 'e',
+    modifiers: 'ctrl+alt'
+  }));
+
   menu.append(new gui.MenuItem({
     label: translateService.translate('global.reports'),
     submenu: reportMenu
