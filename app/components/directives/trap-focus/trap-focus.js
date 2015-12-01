@@ -3,10 +3,6 @@ app.directive('axTrapFocus',
     return {
       restrict: 'A',
       link: function(scope, element, attrs) {
-        element.on('$destroy', function() {
-          element.off('keydown');
-        });
-
         element.on('keydown', function(event) {
           if(event.keyCode === 9) { //tab
             var dispatcher = $(event.target)[0];
@@ -23,6 +19,10 @@ app.directive('axTrapFocus',
               lastElement.focus();
             }
           }
+        });
+
+        scope.$on('$destroy', function() {
+          element.off('keydown');
         });
       }
     }

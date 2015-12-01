@@ -30,6 +30,10 @@ app.directive('axKeyHandler',
             }
           });
         }
+
+        scope.$on('$destroy', function() {
+          element.off('keyup');
+        });
       }
     }
   }]

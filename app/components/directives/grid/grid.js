@@ -37,6 +37,11 @@ app.directive('axGrid',
               break;
           }
         });
+
+        scope.$on('$destroy', function() {
+          element.off('keydown');
+          element.off('keyup');
+        });
       }
     }
   }

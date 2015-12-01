@@ -2,7 +2,7 @@
   <form name="accBalForm">
     <h1 ax-translate>features.balance.account-balance.title</h1>
     <div class="button-container">
-      <button class="save-button" ng-click="getAccountMovements()" ng-disabled="accBalForm.$invalid || !accountBalance.isValid" 
+      <button class="generate-button" ng-click="getAccountMovements()" ng-disabled="accBalForm.$invalid || !accountBalance.isValid" 
               ax-translate-attrs="{'aria-label': 'global.generate'}">
         <span ax-translate>global.generate</span>
       </button>
@@ -13,14 +13,16 @@
         <ax-autocomplete db="accounts" field="key">
           <label for="accb-key" ax-translate>features.accounts.account-key</label>
           <input id="accb-key" type="text" required ng-change="onChangeKey()" ng-model="accountBalance.accountKey"
-                 ax-translate-attrs="{'aria-label': 'features.accounts.account-key', 'placeholder': 'features.accounts.key'}">
+                 ax-translate-attrs="{'aria-label': 'features.accounts.account-key', 'placeholder': 'features.accounts.key'}"
+                 ax-key-handler="{'enter': '.generate-button'}">
         </ax-autocomplete>
       </div>
       <div class="columns small-6 large-4 end">
         <ax-autocomplete db="accounts" field="name">
           <label for="accb-name" ax-translate>features.accounts.account-name</label>
           <input id="accb-name" type="text" required ng-change="onChangeName()" ng-model="accountBalance.accountName"
-                 ax-translate-attrs="{'aria-label': 'features.accounts.account-name', 'placeholder': 'features.accounts.name'}">
+                 ax-translate-attrs="{'aria-label': 'features.accounts.account-name', 'placeholder': 'features.accounts.name'}"
+                 ax-key-handler="{'enter': '.generate-button'}">
         </ax-autocomplete>
       </div>
     </div>

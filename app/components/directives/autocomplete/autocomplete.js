@@ -89,6 +89,12 @@ app.directive('axAutocomplete',
           scope.showAutocomplete = false;
         }
 
+        scope.$on('$destroy', function() {
+          element.off('keydown');
+          searchField.off('keyup');
+          searchField.off('blur');
+        });
+
         fetchData({db: scope.db, field: scope.field, filter: scope.filter}).then(function(results) {
           angular.forEach(results, function(value, key) {
             results[key].name = translateService.translate(results[key].name);
