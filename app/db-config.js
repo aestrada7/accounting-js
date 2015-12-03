@@ -186,7 +186,10 @@ var preloaded = {
     { '_id': 5, 'key': 'enter-information', 'displayed': false },
     { '_id': 6, 'key': 'click-to-save-org', 'displayed': false },
     { '_id': 7, 'key': 'filter-account', 'displayed': false },
-    { '_id': 8, 'key': 'add-sub-account', 'displayed': false }
+    { '_id': 8, 'key': 'add-sub-account', 'displayed': false },
+    { '_id': 9, 'key': 'starting-balance', 'displayed': false },
+    { '_id': 10, 'key': 'voucher-search', 'displayed': false },
+    { '_id': 11, 'key': 'grid-movement', 'displayed': false }
   ]
 };
 

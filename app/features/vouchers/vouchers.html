@@ -36,6 +36,7 @@
     </div>
   </div>
 
+  <div><ax-ftue key="voucher-search" text="features.vouchers.ftue.search" position="bottom center" class="search-ftue"></ax-ftue></div>
   <div class="search-field">
     <input type="text" ng-model="vouchers.textFilter" ax-translate-attrs="{'aria-label': 'global.search', 'placeholder': 'global.search'}">
     <i class="fi-magnifying-glass"></i>
@@ -54,7 +55,7 @@
 
   <div class="panel voucher-list grid">
     <div class="row title">
-      <ax-ftue key="voucher-order" text="features.vouchers.ftue.order" position="top left"></ax-ftue>
+      <ax-ftue key="voucher-order" text="features.vouchers.ftue.order" position="top left" ng-if="items.length > 1"></ax-ftue>
       <div class="columns small-2">
         <div ng-class="{'selected': vouchers.orderColumn === 'date', 'reverse': vouchers.isReverse}" 
              ng-click="setOrderColumn('date')">

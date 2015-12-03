@@ -73,4 +73,10 @@
       font-size: $font-size-normal;
     }
   }
+
+  .search-ftue {
+    position: absolute;
+    top: rem-calc(5);
+    #{$default-float}: calc(50% #{'-'} #{rem-calc(30)});
+  }
 }

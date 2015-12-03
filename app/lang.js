@@ -272,7 +272,8 @@ lang = {
           },
           "ftue": {
             "filter-account": "Click here to filter the shown accounts or to change to tree view.",
-            "add-sub-account": "Click here to add a new sub-account of this account."
+            "add-sub-account": "Click here to add a new sub-account of this account.",
+            "starting-balance": "Sub-Accounts need to have a starting balance."
           }
         },
         "vouchers": {
@@ -317,8 +318,10 @@ lang = {
             "description": ""
           },
           "ftue": {
-            "order": "You can order the grid by clicking on the title of the column!",
-            "grid": "You can click on each row to open a window with the voucher's details."
+            "order": "You can order the grid by clicking on the title of the column.",
+            "grid": "You can click on each row to open a window with the voucher's details.",
+            "search": "This field allows to search by description or voucher key.",
+            "grid-movement": "You can use the arrow keys on your keyboard to move through the fields."
           }
         },
         "balance": {
@@ -624,7 +627,8 @@ lang = {
           },
           "ftue": {
             "filter-account": "Haz click aqui para filtrar las cuentas que se muestran o para ir a la vista de árbol.",
-            "add-sub-account": "Haz click en este botón para agregar una subcuenta de esta cuenta."
+            "add-sub-account": "Haz click en este botón para agregar una subcuenta de esta cuenta.",
+            "starting-balance": "Todas las subcuentas necesitan un saldo inicial."
           }
         },
         "vouchers": {
@@ -669,8 +673,10 @@ lang = {
             "description": ""
           },
           "ftue": {
-            "order": "Puedes ordenar los datos haciendo click en el título de cada columna!",
-            "grid": "Puedes hacer click en cada renglón para abrir una ventana con los detalles de la póliza."
+            "order": "Puedes ordenar los datos haciendo click en el título de cada columna.",
+            "grid": "Puedes hacer click en cada renglón para abrir una ventana con los detalles de la póliza.",
+            "search": "Este buscador permite filtrar por concepto o clave de la póliza.",
+            "grid-movement": "Puedes utilizar las teclas de dirección para moverte por los campos de la cuadrícula."
           }
         },
         "balance": {

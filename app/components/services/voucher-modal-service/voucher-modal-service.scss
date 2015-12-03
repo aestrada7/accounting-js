@@ -38,4 +38,10 @@
       }
     }
   }
+
+  .grid-ftue {
+    position: absolute;
+    top: rem-calc(25);
+    #{$default-float}: calc(50% #{'-'} #{rem-calc(30)});
+  }
 }
