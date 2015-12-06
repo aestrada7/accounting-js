@@ -1,3 +1,81 @@
 <div class="income-statement">
   <h1 ax-translate>features.income-statement.title</h1>
+
+  <div class="panel grid">
+    <div class="row">
+      <div class="columns small-8">
+        <span ax-translate>features.income-statement.sales</span>
+      </div>
+      <div class="columns small-4 currency">
+        <span>{{incomeStatement.netSales | currency}}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="columns small-8">
+        - <span ax-translate>features.accounts.cost-of-sales.name</span>
+      </div>
+      <div class="columns small-4 currency">
+        <span>{{0 | currency}}</span>
+      </div>
+    </div>
+    <div class="row total">
+      <div class="columns small-8">
+        = <span ax-translate>features.income-statement.gross-income</span>
+      </div>
+      <div class="columns small-4 currency">
+        <span>{{0 | currency}}</span>
+      </div>
+    </div>
+    <div class="row"><div class="columns small-12"><span>&nbsp;</span></div></div>
+    <div class="row">
+      <div class="columns small-8">
+        - <span ax-translate>features.income-statement.operation-expenses</span>
+      </div>
+      <div class="columns small-4 currency">
+        <span>{{0 | currency}}</span>
+      </div>
+    </div>
+    <div class="row total">
+      <div class="columns small-8">
+        = <span ax-translate>features.income-statement.operative-income</span>
+      </div>
+      <div class="columns small-4 currency">
+        <span>{{0 | currency}}</span>
+      </div>
+    </div>
+    <div class="row"><div class="columns small-12"><span>&nbsp;</span></div></div>
+    <div class="row">
+      <div class="columns small-8">
+        - <span ax-translate>features.accounts.comprehensive-financing-cost.name</span>
+      </div>
+      <div class="columns small-4 currency">
+        <span>{{0 | currency}}</span>
+      </div>
+    </div>
+    <div class="row total">
+      <div class="columns small-8">
+        = <span ax-translate>features.income-statement.income-before-taxes</span>
+      </div>
+      <div class="columns small-4 currency">
+        <span>{{0 | currency}}</span>
+      </div>
+    </div>
+    <div class="row"><div class="columns small-12"><span>&nbsp;</span></div></div>
+    <div class="row">
+      <div class="columns small-8">
+        - <span ax-translate>features.income-statement.taxes</span>
+      </div>
+      <div class="columns small-4 currency">
+        <span>{{0 | currency}}</span>
+      </div>
+    </div>
+    <div class="row total final">
+      <div class="columns small-8">
+        = <span ax-translate>features.income-statement.net-income</span>
+      </div>
+      <div class="columns small-4 currency">
+        <span>{{0 | currency}}</span>
+      </div>
+    </div>
+  </div>
 </div>

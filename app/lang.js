@@ -337,7 +337,15 @@ lang = {
           }
         },
         "income-statement": {
-          "title": "Income Statement"
+          "title": "Income Statement",
+          "sales": "Sales",
+          "net-sales": "Net Sales",
+          "gross-income": "Gross Income",
+          "operative-income": "Operative Income",
+          "income-before-taxes": "Income Before Taxes",
+          "net-income": "Net Income",
+          "operation-expenses": "Operation Expenses",
+          "taxes": "Taxes"
         }
       },
       "components": {
@@ -692,7 +700,15 @@ lang = {
           }
         },
         "income-statement": {
-          "title": "Estado de Resultados"
+          "title": "Estado de Resultados",
+          "sales": "Ventas",
+          "net-sales": "Ventas Netas",
+          "gross-income": "Utilidad Bruta",
+          "operative-income": "Utilidad Operativa",
+          "income-before-taxes": "Utilidad Antes de Impuestos",
+          "net-income": "Utilidad Neta",
+          "operation-expenses": "Gastos de Operación",
+          "taxes": "Impuestos Por Pagar"
         }
      },
       "components": {

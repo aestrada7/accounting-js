@@ -42,6 +42,12 @@
       font-weight: $weight-bold;
     }
 
+    &.final {
+      .columns {
+        background-color: lighten($success-color, 30%);
+      }
+    }
+
     &.wrap {
       .columns {
         border: none;
