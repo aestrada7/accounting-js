@@ -1,5 +1,5 @@
 app.provider('utilService', function() {
-  this.$get = ['$q', 'translateService', function($q, translateService) {
+  this.$get = ['$q', '$timeout', 'translateService', function($q, $timeout, translateService) {
 
     var getParentAccount = function(args) {
       var defer = $q.defer();
@@ -111,12 +111,82 @@ app.provider('utilService', function() {
       return monthName;
     }
 
+    var getChildAccountsValue = function(accountId, isActiveAssetsAccount, scopeInstance, totalVariable, voucherList) {
+      var defer = $q.defer();
+      var accountList = [];
+      scopeInstance[totalVariable] = 0;
+      getAccountData({ parentId: accountId }).then(function(results) {
+        if(results.length === 0) defer.resolve(accountList);
+        angular.forEach(results, function(value, key) {
+          var account = { name: translateService.translate(results[key].name), key: results[key].key, total: 0 };
+          accountList.push(account);
+          var isLastItem = key == results.length - 1;
+
+          getAccountData({ parentId: results[key]._id }, { key: results[key].key, isLast: isLastItem }).then(function(accounts) {
+            var accountTotal = 0;
+            angular.forEach(accounts, function(value, key) {
+              var hasStartingBalance;
+              try {
+                hasStartingBalance = parseFloat(accounts[key].balance);
+                accountTotal += !isNaN(hasStartingBalance) ? hasStartingBalance : 0;
+              } catch(e) {}
+            });
+
+            angular.forEach(accounts, function(value, key) {
+              var isLastItem = (key == accounts.length - 1) && accounts.extra.isLast;
+
+              getVoucherEntries({ key: accounts[key].key, voucherId: { $in: voucherList } }, 
+                                            { key: accounts.extra.key, isLast: isLastItem }).then(function(movements) {
+                angular.forEach(movements, function(value, key) {
+                  movements[key].debits = parseFloat(movements[key].debits);
+                  movements[key].credits = parseFloat(movements[key].credits);
+                  if(isActiveAssetsAccount) {
+                    accountTotal += !isNaN(movements[key].debits) ? movements[key].debits : 0;
+                    accountTotal -= !isNaN(movements[key].credits) ? movements[key].credits : 0;
+                  } else {
+                    accountTotal -= !isNaN(movements[key].debits) ? movements[key].debits : 0;
+                    accountTotal += !isNaN(movements[key].credits) ? movements[key].credits : 0;
+                  }
+                });
+
+                angular.forEach(accountList, function(value, key) {
+                  if(movements.extra.key === accountList[key].key) {
+                    accountList[key].total = accountTotal;
+                  }
+                });
+
+                if(movements.extra.isLast) {
+                  angular.forEach(accountList, function(value, key) {
+                    $timeout(function() {
+                      scopeInstance[totalVariable] += parseFloat(accountList[key].total);
+                    }, 0);
+                  });
+                  defer.resolve(accountList);
+                }
+              });
+            });
+
+            if(accounts.length === 0 && accounts.extra.isLast) {
+              angular.forEach(accountList, function(value, key) {
+                $timeout(function() {
+                  scopeInstance[totalVariable] += parseFloat(accountList[key].total);
+                }, 0);
+              });
+              defer.resolve(accountList);
+            }
+          });
+        });
+      });
+      return defer.promise;
+    }
+
     return {
       getParentAccount: getParentAccount,
       getAccountData: getAccountData,
       getVouchers: getVouchers,
       getVoucherEntries: getVoucherEntries,
-      getMonthName: getMonthName
+      getMonthName: getMonthName,
+      getChildAccountsValue: getChildAccountsValue
     };
   }]
 });

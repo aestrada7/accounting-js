@@ -40,17 +40,17 @@ app.controller('GeneralBalanceController',
           });
 
           //Floating Assets
-          return getChildAccountsValue(3, true, 'floatingAssetsTotal');
+          return utilService.getChildAccountsValue(3, true, $scope.generalBalance, 'floatingAssetsTotal', voucherList);
         }).then(function(results) {
           $scope.floatingAssetsAccounts = results;
 
           //Properties Assets
-          return getChildAccountsValue(9, true, 'propertiesTotal');
+          return utilService.getChildAccountsValue(9, true, $scope.generalBalance, 'propertiesTotal', voucherList);
         }).then(function(results) {
           $scope.propertiesAccounts = results;
 
           //Deferred Assets
-          return getChildAccountsValue(14, true, 'deferredAssetsTotal');
+          return utilService.getChildAccountsValue(14, true, $scope.generalBalance, 'deferredAssetsTotal', voucherList);
         }).then(function(results) {
           $scope.deferredAssetsAccounts = results;
           $scope.generalBalance.activeAssetsTotal = $scope.generalBalance.floatingAssetsTotal +
@@ -58,24 +58,24 @@ app.controller('GeneralBalanceController',
                                                     $scope.generalBalance.deferredAssetsTotal;
 
           //Short Term Passive Assets
-          return getChildAccountsValue(15, false, 'shortTermTotal');
+          return utilService.getChildAccountsValue(15, false, $scope.generalBalance, 'shortTermTotal', voucherList);
         }).then(function(results) {
           $scope.shortTermAccounts = results;
 
           //Long Term Passive Assets
-          return getChildAccountsValue(16, false, 'longTermTotal');
+          return utilService.getChildAccountsValue(16, false, $scope.generalBalance, 'longTermTotal', voucherList);
         }).then(function(results) {
           $scope.longTermAccounts = results;
 
           $scope.generalBalance.passiveAssetsTotal = $scope.generalBalance.shortTermTotal + $scope.generalBalance.longTermTotal;
 
           //Contributed Capital
-          return getChildAccountsValue(38, false, 'contributedCapitalTotal');
+          return utilService.getChildAccountsValue(38, false, $scope.generalBalance, 'contributedCapitalTotal', voucherList);
         }).then(function(results) {
           $scope.contributedCapitalAccounts = results;
 
           //Earned Capital
-          return getChildAccountsValue(41, false, 'earnedCapitalTotal');        
+          return utilService.getChildAccountsValue(41, false, $scope.generalBalance, 'earnedCapitalTotal', voucherList);        
         }).then(function(results) {
           $scope.earnedCapitalAccounts = results;
 
@@ -99,75 +99,6 @@ app.controller('GeneralBalanceController',
       var start = utilService.getMonthName(startDate.getMonth() + 1) + ' ' + startDate.getFullYear();
       var end = utilService.getMonthName(endDate.getMonth() + 1) + ' ' + endDate.getFullYear();
       return start + ' - ' + end;
-    }
-
-    getChildAccountsValue = function(accountId, isActiveAssetsAccount, totalVariable) {
-      var defer = $q.defer();
-      var accountList = [];
-      $scope.generalBalance[totalVariable] = 0;
-      utilService.getAccountData({ parentId: accountId }).then(function(results) {
-        if(results.length === 0) defer.resolve(accountList);
-        angular.forEach(results, function(value, key) {
-          var account = { name: translateService.translate(results[key].name), key: results[key].key, total: 0 };
-          accountList.push(account);
-          var isLastItem = key == results.length - 1;
-
-          utilService.getAccountData({ parentId: results[key]._id }, { key: results[key].key, isLast: isLastItem }).then(function(accounts) {
-            var accountTotal = 0;
-            angular.forEach(accounts, function(value, key) {
-              var hasStartingBalance;
-              try {
-                hasStartingBalance = parseFloat(accounts[key].balance);
-                accountTotal += !isNaN(hasStartingBalance) ? hasStartingBalance : 0;
-              } catch(e) {}
-            });
-
-            angular.forEach(accounts, function(value, key) {
-              var isLastItem = (key == accounts.length - 1) && accounts.extra.isLast;
-
-              utilService.getVoucherEntries({ key: accounts[key].key, voucherId: { $in: voucherList } }, 
-                                            { key: accounts.extra.key, isLast: isLastItem }).then(function(movements) {
-                angular.forEach(movements, function(value, key) {
-                  movements[key].debits = parseFloat(movements[key].debits);
-                  movements[key].credits = parseFloat(movements[key].credits);
-                  if(isActiveAssetsAccount) {
-                    accountTotal += !isNaN(movements[key].debits) ? movements[key].debits : 0;
-                    accountTotal -= !isNaN(movements[key].credits) ? movements[key].credits : 0;
-                  } else {
-                    accountTotal -= !isNaN(movements[key].debits) ? movements[key].debits : 0;
-                    accountTotal += !isNaN(movements[key].credits) ? movements[key].credits : 0;
-                  }
-                });
-
-                angular.forEach(accountList, function(value, key) {
-                  if(movements.extra.key === accountList[key].key) {
-                    accountList[key].total = accountTotal;
-                  }
-                });
-
-                if(movements.extra.isLast) {
-                  angular.forEach(accountList, function(value, key) {
-                    $timeout(function() {
-                      $scope.generalBalance[totalVariable] += parseFloat(accountList[key].total);
-                    }, 0);
-                  });
-                  defer.resolve(accountList);
-                }
-              });
-            });
-
-            if(accounts.length === 0 && accounts.extra.isLast) {
-              angular.forEach(accountList, function(value, key) {
-                $timeout(function() {
-                  $scope.generalBalance[totalVariable] += parseFloat(accountList[key].total);
-                }, 0);
-              });
-              defer.resolve(accountList);
-            }
-          });
-        });
-      });
-      return defer.promise;
     }
 
     scopeStart = function() {
