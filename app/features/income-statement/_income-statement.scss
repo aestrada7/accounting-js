@@ -4,4 +4,13 @@
     top: rem-calc(10);
     #{$opposite-direction}: rem-calc(20);
   }
+
+  .no-start-month {
+    text-align: center;
+
+    i {
+      color: $alert-color;
+      font-size: $font-size-xxlarge;
+    }
+  }
 }

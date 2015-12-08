@@ -6,80 +6,99 @@
     </button>
   </div>
 
-  <div class="panel grid">
+  <div class="no-start-month" ng-if="noStartMonth">
     <div class="row">
-      <div class="columns small-8">
-        <span ax-translate>features.income-statement.sales</span>
-      </div>
-      <div class="columns small-4 currency">
-        <span>{{incomeStatement.netSales | currency}}</span>
-      </div>
-    </div>
-    <div class="row">
-      <div class="columns small-8">
-        - <span ax-translate>features.accounts.cost-of-sales.name</span>
-      </div>
-      <div class="columns small-4 currency">
-        <span>{{0 | currency}}</span>
+      <div class="small-8 columns small-centered panel">
+        <i class="fi-x"></i><br />
+        <span ax-translate>global.errors.no-start-month</span><br />
+        <a ui-sref="organization" ax-translate>global.messages.click-to-select</a>
       </div>
     </div>
-    <div class="row total">
-      <div class="columns small-8">
-        = <span ax-translate>features.income-statement.gross-income</span>
-      </div>
-      <div class="columns small-4 currency">
-        <span>{{0 | currency}}</span>
-      </div>
-    </div>
-    <div class="row"><div class="columns small-12"><span>&nbsp;</span></div></div>
-    <div class="row">
-      <div class="columns small-8">
-        - <span ax-translate>features.income-statement.operation-expenses</span>
-      </div>
-      <div class="columns small-4 currency">
-        <span>{{0 | currency}}</span>
+  </div>
+
+  <div ng-if="statementGenerated">
+    <div class="row full collapse">
+      <div class="columns small-12">
+        <h4>{{businessName}}</h4>
+        <h5>{{getExerciseDate()}}</h5>
       </div>
     </div>
-    <div class="row total">
-      <div class="columns small-8">
-        = <span ax-translate>features.income-statement.operative-income</span>
+
+    <div class="panel grid">
+      <div class="row">
+        <div class="columns small-8">
+          <span ax-translate>features.income-statement.sales</span>
+        </div>
+        <div class="columns small-4 currency">
+          <span>{{incomeStatement.netSales | currency}}</span>
+        </div>
       </div>
-      <div class="columns small-4 currency">
-        <span>{{0 | currency}}</span>
+      <div class="row">
+        <div class="columns small-8">
+          - <span ax-translate>features.accounts.cost-of-sales.name</span>
+        </div>
+        <div class="columns small-4 currency">
+          <span>{{incomeStatement.costOfSale | currency}}</span>
+        </div>
       </div>
-    </div>
-    <div class="row"><div class="columns small-12"><span>&nbsp;</span></div></div>
-    <div class="row">
-      <div class="columns small-8">
-        - <span ax-translate>features.accounts.comprehensive-financing-cost.name</span>
+      <div class="row total">
+        <div class="columns small-8">
+          = <span ax-translate>features.income-statement.gross-income</span>
+        </div>
+        <div class="columns small-4 currency">
+          <span>{{incomeStatement.grossIncome | currency}}</span>
+        </div>
       </div>
-      <div class="columns small-4 currency">
-        <span>{{0 | currency}}</span>
+      <div class="row"><div class="columns small-12"><span>&nbsp;</span></div></div>
+      <div class="row">
+        <div class="columns small-8">
+          - <span ax-translate>features.income-statement.operation-expenses</span>
+        </div>
+        <div class="columns small-4 currency">
+          <span>{{incomeStatement.operativeExpenses | currency}}</span>
+        </div>
       </div>
-    </div>
-    <div class="row total">
-      <div class="columns small-8">
-        = <span ax-translate>features.income-statement.income-before-taxes</span>
+      <div class="row total">
+        <div class="columns small-8">
+          = <span ax-translate>features.income-statement.operative-income</span>
+        </div>
+        <div class="columns small-4 currency">
+          <span>{{incomeStatement.operativeIncome | currency}}</span>
+        </div>
       </div>
-      <div class="columns small-4 currency">
-        <span>{{0 | currency}}</span>
+      <div class="row"><div class="columns small-12"><span>&nbsp;</span></div></div>
+      <div class="row">
+        <div class="columns small-8">
+          - <span ax-translate>features.accounts.comprehensive-financing-cost.name</span>
+        </div>
+        <div class="columns small-4 currency">
+          <span>{{incomeStatement.financingCost | currency}}</span>
+        </div>
       </div>
-    </div>
-    <div class="row"><div class="columns small-12"><span>&nbsp;</span></div></div>
-    <div class="row">
-      <div class="columns small-8">
-        - <span ax-translate>features.income-statement.taxes</span>
+      <div class="row total">
+        <div class="columns small-8">
+          = <span ax-translate>features.income-statement.income-before-taxes</span>
+        </div>
+        <div class="columns small-4 currency">
+          <span>{{incomeStatement.incomeBeforeTaxes | currency}}</span>
+        </div>
       </div>
-      <div class="columns small-4 currency">
-        <span>{{0 | currency}}</span>
+      <div class="row"><div class="columns small-12"><span>&nbsp;</span></div></div>
+      <div class="row">
+        <div class="columns small-8">
+          - <span ax-translate>features.income-statement.taxes</span>
+        </div>
+        <div class="columns small-4 currency">
+          <span>{{incomeStatement.taxes | currency}}</span>
+        </div>
       </div>
-    </div>
-    <div class="row total final">
-      <div class="columns small-8">
-        = <span ax-translate>features.income-statement.net-income</span>
-      </div>
-      <div class="columns small-4 currency">
-        <span>{{0 | currency}}</span>
+      <div class="row total final">
+        <div class="columns small-8">
+          = <span ax-translate>features.income-statement.net-income</span>
+        </div>
+        <div class="columns small-4 currency">
+          <span>{{incomeStatement.netIncome | currency}}</span>
+        </div>
       </div>
     </div>
   </div>

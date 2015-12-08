@@ -111,11 +111,13 @@ app.provider('utilService', function() {
       return monthName;
     }
 
-    var getChildAccountsValue = function(accountId, isActiveAssetsAccount, scopeInstance, totalVariable, voucherList) {
+    var getChildAccountsValue = function(accountId, isActiveAssetsAccount, scopeInstance, totalVariable, voucherList, withTimeout) {
       var defer = $q.defer();
       var accountList = [];
+      var timeoutInterval = withTimeout ? 200 : 0;
       scopeInstance[totalVariable] = 0;
-      getAccountData({ parentId: accountId }).then(function(results) {
+      if(!isNaN(accountId)) accountId = [accountId];
+      getAccountData({ parentId: { $in: accountId } }).then(function(results) {
         if(results.length === 0) defer.resolve(accountList);
         angular.forEach(results, function(value, key) {
           var account = { name: translateService.translate(results[key].name), key: results[key].key, total: 0 };
@@ -136,7 +138,7 @@ app.provider('utilService', function() {
               var isLastItem = (key == accounts.length - 1) && accounts.extra.isLast;
 
               getVoucherEntries({ key: accounts[key].key, voucherId: { $in: voucherList } }, 
-                                            { key: accounts.extra.key, isLast: isLastItem }).then(function(movements) {
+                                { key: accounts.extra.key, isLast: isLastItem }).then(function(movements) {
                 angular.forEach(movements, function(value, key) {
                   movements[key].debits = parseFloat(movements[key].debits);
                   movements[key].credits = parseFloat(movements[key].credits);
@@ -159,7 +161,7 @@ app.provider('utilService', function() {
                   angular.forEach(accountList, function(value, key) {
                     $timeout(function() {
                       scopeInstance[totalVariable] += parseFloat(accountList[key].total);
-                    }, 0);
+                    }, timeoutInterval);
                   });
                   defer.resolve(accountList);
                 }
@@ -170,7 +172,7 @@ app.provider('utilService', function() {
               angular.forEach(accountList, function(value, key) {
                 $timeout(function() {
                   scopeInstance[totalVariable] += parseFloat(accountList[key].total);
-                }, 0);
+                }, timeoutInterval);
               });
               defer.resolve(accountList);
             }
