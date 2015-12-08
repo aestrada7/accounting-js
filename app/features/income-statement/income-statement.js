@@ -25,6 +25,7 @@ app.controller('IncomeStatementController',
     var costOfSalesAccounts = [];
     var expensesAccounts = [];
     var financingCostAccounts = [];
+    var taxesAccounts = [];
 
     $scope.getStatement = function() {
       $('.loading').show();
@@ -62,6 +63,9 @@ app.controller('IncomeStatementController',
           angular.forEach(results, function(value, key) {
             expensesAccounts.push(results[key]._id);
           });
+
+          //Taxes???
+          //Find out where to get these from
 
         }).then(function(results) {
           //Income
