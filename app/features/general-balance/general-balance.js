@@ -122,6 +122,14 @@ app.controller('GeneralBalanceController',
         endDate.setMonth(endDate.getMonth() + 12);
         $('.loading').fadeOut(200);
       });
+
+      incomeDB.find({ _id: 1 }, function(err, results) {
+        if(results.length > 0) {
+          $scope.noIncomeStatement = results[0].dirty;
+        } else {
+          $scope.noIncomeStatement = true;
+        }
+      });
     }
 
     scopeStart();

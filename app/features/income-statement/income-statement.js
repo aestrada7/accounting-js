@@ -90,11 +90,18 @@ app.controller('IncomeStatementController',
               if(err && err.errorType === 'uniqueViolated') {
                 saveFailure(err.key);
               } else {
-                saveSuccess();
+                var incomeData = { '_id': 1, 'dirty': false, 'timestamp': new Date() };
+                incomeDB.insert(incomeData, function(err, newItem) {
+                  if(err) {
+                    incomeDB.update({ _id: 1 }, { $set: incomeData }, { multi: false }, function (err, numReplaced) {
+                      saveSuccess();
+                    });
+                  } else {
+                    saveSuccess();
+                  }
+                });
               }
             });
-
-            //ToDo: Save to incomeDB the income statement status, and reset after any change on accounts or vouchers
 
             $scope.statementGenerated = true;
             $('.loading').fadeOut(200);
