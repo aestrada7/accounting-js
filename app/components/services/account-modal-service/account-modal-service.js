@@ -81,6 +81,7 @@ app.provider('accountModalService', function() {
       }
 
       saveSuccess = function() {
+        incomeDB.update({ _id: 1 }, { $set: { dirty: true } }, { multi: false }, function (err, numReplaced) {});
         scope.dirty = false;
         notificationService.show('global.notifications.saved-successfully', 'success', 'top right', '', false);
         defer.resolve();

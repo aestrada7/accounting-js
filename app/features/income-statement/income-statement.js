@@ -1,7 +1,7 @@
 app.controller('IncomeStatementController', 
-  ['$scope', '$q', '$controller', '$timeout', 'utilService',
+  ['$scope', '$q', '$controller', '$timeout', 'notificationService', 'utilService',
 
-  function($scope, $q, $controller, $timeout, utilService) {
+  function($scope, $q, $controller, $timeout, notificationService, utilService) {
     $scope.incomeStatement = {
       netSales: 0,
       costOfSale: 0,
@@ -94,10 +94,10 @@ app.controller('IncomeStatementController',
                 incomeDB.insert(incomeData, function(err, newItem) {
                   if(err) {
                     incomeDB.update({ _id: 1 }, { $set: incomeData }, { multi: false }, function (err, numReplaced) {
-                      saveSuccess();
+                      saveSuccessIncome();
                     });
                   } else {
-                    saveSuccess();
+                    saveSuccessIncome();
                   }
                 });
               }
@@ -117,6 +117,10 @@ app.controller('IncomeStatementController',
       var start = utilService.getMonthName(startDate.getMonth() + 1) + ' ' + startDate.getFullYear();
       var end = utilService.getMonthName(endDate.getMonth() + 1) + ' ' + endDate.getFullYear();
       return start + ' - ' + end;
+    }
+
+    saveSuccessIncome = function() {
+      notificationService.show('global.notifications.saved-successfully', 'success', 'top right', '', false);
     }
 
     scopeStart = function() {

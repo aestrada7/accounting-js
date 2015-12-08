@@ -18,6 +18,7 @@ var incomeDB = new Datastore({ filename: path.join(gui.App.dataPath, 'data/incom
 //Unique fields
 accountsDB.ensureIndex({ fieldName: 'key', unique: true });
 vouchersDB.ensureIndex({ fieldName: 'key', unique: true });
+incomeDB.ensureIndex({ fieldName: '_id', unique: true });
 
 //Preloaded records
 var preloaded = {

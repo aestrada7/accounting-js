@@ -45,6 +45,7 @@ app.controller('OrganizationController',
     }
 
     saveSuccess = function() {
+      incomeDB.update({ _id: 1 }, { $set: { dirty: true } }, { multi: false }, function (err, numReplaced) {});
       notificationService.show('global.notifications.saved-successfully', 'success', 'top right', '', false);
     }
 
