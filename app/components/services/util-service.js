@@ -180,13 +180,20 @@ app.provider('utilService', function() {
       return defer.promise;
     }
 
+    var incomeStatementGenerated = function() {
+      //account id 157
+      //income.db
+      return true;
+    }
+
     return {
       getParentAccount: getParentAccount,
       getAccountData: getAccountData,
       getVouchers: getVouchers,
       getVoucherEntries: getVoucherEntries,
       getMonthName: getMonthName,
-      getChildAccountsValue: getChildAccountsValue
+      getChildAccountsValue: getChildAccountsValue,
+      incomeStatementGenerated: incomeStatementGenerated
     };
   }]
 });

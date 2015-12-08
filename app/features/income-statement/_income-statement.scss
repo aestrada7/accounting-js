@@ -1,3 +1,7 @@
 .income-statement {
-  
+  .button-container {
+    position: absolute;
+    top: rem-calc(10);
+    #{$opposite-direction}: rem-calc(20);
+  }
 }

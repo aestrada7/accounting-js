@@ -16,6 +16,16 @@
     </div>
   </div>
 
+  <div class="no-start-month" ng-if="noIncomeStatement">
+    <div class="row">
+      <div class="small-8 columns small-centered panel">
+        <i class="fi-x"></i><br />
+        <span ax-translate>global.errors.no-income-statement</span><br />
+        <a ui-sref="income-statement" ax-translate>global.messages.click-to-generate</a>
+      </div>
+    </div>
+  </div>
+
   <div ng-if="generalBalance.reportCreated">
     <div class="row full collapse">
       <div class="columns small-12">

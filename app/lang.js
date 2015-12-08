@@ -32,7 +32,8 @@ lang = {
         "errors": {
           "invalid-value": "Invalid value",
           "missing-value": "Missing value",
-          "no-start-month": "No start month selected."
+          "no-start-month": "No start month selected.",
+          "no-income-statement": "No Income Statement has been created, or there was a change in a voucher and it needs to be generated again."
         },
         "months": {
           "january": "January",
@@ -54,7 +55,8 @@ lang = {
           "duplicate-values": "Couldn't save, the value '{{key}}' already exists."
         },
         "messages": {
-          "click-to-select": "Click here to select."
+          "click-to-select": "Click here to select.",
+          "click-to-generate": "Click here to generate it."
         }
       },
       "features": {
@@ -395,7 +397,8 @@ lang = {
         "errors": {
           "invalid-value": "Dato inválido",
           "missing-value": "Dato requerido",
-          "no-start-month": "No se ha seleccionado mes de inicio del ejercicio."
+          "no-start-month": "No se ha seleccionado mes de inicio del ejercicio.",
+          "no-income-statement": "No se ha generado el estado de resultados, o ha habido un cambio en una póliza y necesita generarse de nuevo."
         },
         "months": {
           "january": "Enero",
@@ -417,7 +420,8 @@ lang = {
           "duplicate-values": "No se pudo completar la operación, el valor '{{key}}' ya existe."
         },
         "messages": {
-          "click-to-select": "Haz click aqui para seleccionar."
+          "click-to-select": "Haz click aqui para seleccionar.",
+          "click-to-generate": "Haz click aqui para ir al reporte y generarlo."
         }
       },
       "features": {

@@ -13,6 +13,7 @@ var accountsDB = new Datastore({ filename: path.join(gui.App.dataPath, 'data/acc
 var vouchersDB = new Datastore({ filename: path.join(gui.App.dataPath, 'data/vouchers.db'), autoload: true });
 var voucherEntriesDB = new Datastore({ filename: path.join(gui.App.dataPath, 'data/voucherEntries.db'), autoload: true });
 var ftuesDB = new Datastore({ filename: path.join(gui.App.dataPath, 'data/ftues.db'), autoload: true });
+var incomeDB = new Datastore({ filename: path.join(gui.App.dataPath, 'data/income.db'), autoload: true });
 
 //Unique fields
 accountsDB.ensureIndex({ fieldName: 'key', unique: true });
@@ -176,7 +177,8 @@ var preloaded = {
     { '_id': 153, 'parentId': 14, 'key': '1306', 'level': 3, 'name': 'features.accounts.active-assets.interest-advance-payments', 'inverted': false },
     { '_id': 154, 'parentId': 14, 'key': '1307', 'level': 3, 'name': 'features.accounts.active-assets.office-supplies', 'inverted': false },
     { '_id': 155, 'parentId': 14, 'key': '1308', 'level': 3, 'name': 'features.accounts.active-assets.advertisement', 'inverted': false },
-    { '_id': 156, 'parentId': 14, 'key': '1309', 'level': 3, 'name': 'features.accounts.active-assets.safety-deposits', 'inverted': false }
+    { '_id': 156, 'parentId': 14, 'key': '1309', 'level': 3, 'name': 'features.accounts.active-assets.safety-deposits', 'inverted': false },
+    { '_id': 157, 'parentId': 43, 'key': '3202-1', 'level': 4, 'name': 'features.income-statement.net-income', 'inverted': false, 'blocked': true }
   ],
   ftues: [
     { '_id': 1, 'key': 'voucher-order', 'displayed': false },
