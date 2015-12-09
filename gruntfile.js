@@ -62,13 +62,13 @@ module.exports = function(grunt) {
       'deploy-nw-win': {
         command: [
           'cd release',
-          'copy /b nw.exe+app.nw accountingjs.exe',
+          'copy /b nw.exe+app.nw acctjs.exe',
           'del nw.exe',
           'del app.nw',
           'del credits.html',
           'del ffmpegsumo.dll',
           'del nwjc.exe',
-          'echo start accountingjs.exe --lang=es >> run.bat'
+          'echo start acctjs.exe --lang=es >> run.bat'
         ].join('&&')
       }
     },
