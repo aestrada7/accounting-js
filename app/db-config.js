@@ -179,7 +179,16 @@ var preloaded = {
     { '_id': 154, 'parentId': 14, 'key': '1307', 'level': 3, 'name': 'features.accounts.active-assets.office-supplies', 'inverted': false },
     { '_id': 155, 'parentId': 14, 'key': '1308', 'level': 3, 'name': 'features.accounts.active-assets.advertisement', 'inverted': false },
     { '_id': 156, 'parentId': 14, 'key': '1309', 'level': 3, 'name': 'features.accounts.active-assets.safety-deposits', 'inverted': false },
-    { '_id': 157, 'parentId': 43, 'key': '3202-1', 'level': 4, 'name': 'features.income-statement.net-income', 'inverted': false, 'blocked': true }
+    { '_id': 157, 'parentId': 43, 'key': '3202-1', 'level': 4, 'name': 'features.income-statement.net-income', 'inverted': false, 'blocked': true },
+    { '_id': 158, 'parentId': 33, 'key': '2104-1', 'level': 4, 'name': 'features.accounts.passive-assets.taxes.income-tax', 'inverted': false, 'blocked': true },
+    { '_id': 159, 'parentId': 33, 'key': '2104-2', 'level': 4, 'name': 'features.accounts.passive-assets.taxes.aggregate-tax', 'inverted': false },
+    { '_id': 160, 'parentId': 33, 'key': '2104-3', 'level': 4, 'name': 'features.accounts.passive-assets.taxes.social-security', 'inverted': false },
+    { '_id': 161, 'parentId': 33, 'key': '2104-4', 'level': 4, 'name': 'features.accounts.passive-assets.taxes.retained-income-tax', 'inverted': false },
+    { '_id': 162, 'parentId': 33, 'key': '2104-5', 'level': 4, 'name': 'features.accounts.passive-assets.taxes.retained-social-security', 'inverted': false },
+    { '_id': 163, 'parentId': 33, 'key': '2104-6', 'level': 4, 'name': 'features.accounts.passive-assets.taxes.retained-aggregate-tax', 'inverted': false },
+    { '_id': 164, 'parentId': 33, 'key': '2104-7', 'level': 4, 'name': 'features.accounts.passive-assets.taxes.retirement', 'inverted': false },
+    { '_id': 165, 'parentId': 35, 'key': '2106-1', 'level': 4, 'name': 'features.accounts.passive-assets.exercise-profit-share', 'inverted': false, 'blocked': true },
+    { '_id': 166, 'parentId': 35, 'key': '2106-2', 'level': 4, 'name': 'features.accounts.passive-assets.uncollected-profit-share', 'inverted': false }
   ],
   ftues: [
     { '_id': 1, 'key': 'voucher-order', 'displayed': false },

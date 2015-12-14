@@ -191,7 +191,18 @@ lang = {
             "taxes-to-pay": "Taxes To Pay",
             "salaries-to-pay": "Salaries To Pay",
             "profit-sharing-to-pay": "Profit Sharing To Pay",
-            "transferred-taxes": "Transferred Taxes"
+            "exercise-profit-share": "Exercise Profit Share",
+            "uncollected-profit-share": "Uncollected Profit Share",
+            "transferred-taxes": "Transferred Taxes",
+            "taxes": {
+              "income-tax": "Income Tax",
+              "aggregate-tax": "Aggregate Tax",
+              "social-security": "Social Security",
+              "retained-income-tax": "Retained Income Tax",
+              "retained-aggregate-tax": "Retained Aggregate Tax",
+              "retained-social-security": "Retained Social Security",
+              "retirement": "Retirement"
+            }
           },
           "stockholders-equity": {
             "name": "Stockholders Equity",
@@ -556,7 +567,18 @@ lang = {
             "taxes-to-pay": "Impuestos por Pagar",
             "salaries-to-pay": "Salarios por Pagar",
             "profit-sharing-to-pay": "PTU por Pagar",
-            "transferred-taxes": "Impuestos Trasladados"
+            "exercise-profit-share": "PTU del Ejercicio",
+            "uncollected-profit-share": "PTU no Cobrada",
+            "transferred-taxes": "Impuestos Trasladados",
+            "taxes": {
+              "income-tax": "ISR por Pagar",
+              "aggregate-tax": "IVA por Pagar",
+              "social-security": "Seguro Social",
+              "retained-income-tax": "ISR Retenido",
+              "retained-aggregate-tax": "IVA Retenido",
+              "retained-social-security": "Seguro Social Retenido",
+              "retirement": "Afores"
+            }
           },
           "stockholders-equity": {
             "name": "Capital Contable",
