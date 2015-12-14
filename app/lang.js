@@ -29,6 +29,7 @@ lang = {
         "generate": "Generate",
         "select": "Select",
         "print": "Print",
+        "for": "For",
         "errors": {
           "invalid-value": "Invalid value",
           "missing-value": "Missing value",
@@ -405,6 +406,7 @@ lang = {
         "generate": "Generar",
         "select": "Seleccionar",
         "print": "Imprimir",
+        "for": "Para",
         "errors": {
           "invalid-value": "Dato inválido",
           "missing-value": "Dato requerido",
