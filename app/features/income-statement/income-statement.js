@@ -7,10 +7,12 @@ app.controller('IncomeStatementController',
       costOfSale: 0,
       operativeExpenses: 0,
       financingCost: 0,
-      taxes: 0,
       grossIncome: 0,
       operativeIncome: 0,
       incomeBeforeTaxes: 0,
+      incomeTaxes: 0,
+      profitShare: 0,
+      taxes: 0,
       netIncome: 0
     }
     $scope.hasOrganization = false;
@@ -64,9 +66,6 @@ app.controller('IncomeStatementController',
             expensesAccounts.push(results[key]._id);
           });
 
-          //Taxes???
-          //Find out where to get these from
-
         }).then(function(results) {
           //Income
           return utilService.getChildAccountsValue(incomeChildAccounts, false, $scope.incomeStatement, 'netSales', voucherList, true);
@@ -84,6 +83,27 @@ app.controller('IncomeStatementController',
             $scope.incomeStatement.grossIncome = $scope.incomeStatement.netSales - $scope.incomeStatement.costOfSale;
             $scope.incomeStatement.operativeIncome = $scope.incomeStatement.grossIncome - $scope.incomeStatement.operativeExpenses;
             $scope.incomeStatement.incomeBeforeTaxes = $scope.incomeStatement.operativeIncome - $scope.incomeStatement.financingCost;
+
+            //Taxes
+            if($scope.incomeStatement.incomeBeforeTaxes > 0) {
+              $scope.incomeStatement.incomeTaxes = $scope.incomeStatement.incomeBeforeTaxes * .3;
+              $scope.incomeStatement.profitShare = $scope.incomeStatement.incomeBeforeTaxes * .1;
+
+              accountsDB.update({ _id: 158 }, { $set: { balance: $scope.incomeStatement.incomeTaxes } }, { multi: false }, function (err, numReplaced) {
+                if(err && err.errorType === 'uniqueViolated') {
+                  saveFailure(err.key);
+                }
+              });
+
+              accountsDB.update({ _id: 165 }, { $set: { balance: $scope.incomeStatement.profitShare } }, { multi: false }, function (err, numReplaced) {
+                if(err && err.errorType === 'uniqueViolated') {
+                  saveFailure(err.key);
+                }
+              });
+            }
+
+            $scope.incomeStatement.taxes = $scope.incomeStatement.incomeTaxes + $scope.incomeStatement.profitShare;
+
             $scope.incomeStatement.netIncome = $scope.incomeStatement.incomeBeforeTaxes - $scope.incomeStatement.taxes;
 
             accountsDB.update({ _id: 157 }, { $set: { balance: $scope.incomeStatement.netIncome } }, { multi: false }, function (err, numReplaced) {

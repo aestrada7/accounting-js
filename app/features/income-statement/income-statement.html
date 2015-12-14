@@ -86,10 +86,18 @@
       <div class="row"><div class="columns small-12"><span>&nbsp;</span></div></div>
       <div class="row">
         <div class="columns small-8">
-          - <span ax-translate>features.income-statement.taxes</span>
+          - <span ax-translate>features.accounts.passive-assets.taxes.income-tax</span>
         </div>
         <div class="columns small-4 currency">
-          <span>{{incomeStatement.taxes | currency}}</span>
+          <span>{{incomeStatement.incomeTaxes | currency}}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns small-8">
+          - <span ax-translate>features.accounts.passive-assets.exercise-profit-share</span>
+        </div>
+        <div class="columns small-4 currency">
+          <span>{{incomeStatement.profitShare | currency}}</span>
         </div>
       </div>
       <div class="row total final">
