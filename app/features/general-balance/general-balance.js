@@ -32,6 +32,7 @@ app.controller('GeneralBalanceController',
     var voucherList = [];
 
     $scope.getBalance = function() {
+      $scope.generalBalance.reportCreated = false;
       $('.loading').show();
       if($scope.hasOrganization) {
         if(utilService.incomeStatementGenerated()) {
@@ -42,43 +43,43 @@ app.controller('GeneralBalanceController',
             });
 
             //Floating Assets
-            return utilService.getChildAccountsValue(3, true, $scope.generalBalance, 'floatingAssetsTotal', voucherList);
+            return utilService.getChildAccountsValue(3, true, $scope.generalBalance, 'floatingAssetsTotal', voucherList, true);
           }).then(function(results) {
             $scope.floatingAssetsAccounts = results;
 
             //Properties Assets
-            return utilService.getChildAccountsValue(9, true, $scope.generalBalance, 'propertiesTotal', voucherList);
+            return utilService.getChildAccountsValue(9, true, $scope.generalBalance, 'propertiesTotal', voucherList, true);
           }).then(function(results) {
             $scope.propertiesAccounts = results;
 
             //Deferred Assets
-            return utilService.getChildAccountsValue(14, true, $scope.generalBalance, 'deferredAssetsTotal', voucherList);
+            return utilService.getChildAccountsValue(14, true, $scope.generalBalance, 'deferredAssetsTotal', voucherList, true);
           }).then(function(results) {
             $scope.deferredAssetsAccounts = results;
 
             //Short Term Passive Assets
-            return utilService.getChildAccountsValue(15, false, $scope.generalBalance, 'shortTermTotal', voucherList);
+            return utilService.getChildAccountsValue(15, false, $scope.generalBalance, 'shortTermTotal', voucherList, true);
           }).then(function(results) {
             $scope.shortTermAccounts = results;
 
             //Long Term Passive Assets
-            return utilService.getChildAccountsValue(16, false, $scope.generalBalance, 'longTermTotal', voucherList);
+            return utilService.getChildAccountsValue(16, false, $scope.generalBalance, 'longTermTotal', voucherList, true);
           }).then(function(results) {
             $scope.longTermAccounts = results;
 
-            $scope.generalBalance.passiveAssetsTotal = $scope.generalBalance.shortTermTotal + $scope.generalBalance.longTermTotal;
-
             //Contributed Capital
-            return utilService.getChildAccountsValue(38, false, $scope.generalBalance, 'contributedCapitalTotal', voucherList);
+            return utilService.getChildAccountsValue(38, false, $scope.generalBalance, 'contributedCapitalTotal', voucherList, true);
           }).then(function(results) {
             $scope.contributedCapitalAccounts = results;
 
             //Earned Capital
-            return utilService.getChildAccountsValue(41, false, $scope.generalBalance, 'earnedCapitalTotal', voucherList);        
+            return utilService.getChildAccountsValue(41, false, $scope.generalBalance, 'earnedCapitalTotal', voucherList, true);        
           }).then(function(results) {
             $scope.earnedCapitalAccounts = results;
 
             $timeout(function() {
+              $scope.generalBalance.passiveAssetsTotal = $scope.generalBalance.shortTermTotal + 
+                                                         $scope.generalBalance.longTermTotal;
               $scope.generalBalance.activeAssetsTotal = $scope.generalBalance.floatingAssetsTotal +
                                                         $scope.generalBalance.propertiesTotal +
                                                         $scope.generalBalance.deferredAssetsTotal;
@@ -89,7 +90,7 @@ app.controller('GeneralBalanceController',
 
               $scope.generalBalance.reportCreated = true;
               $('.loading').fadeOut(200);
-            }, 400);
+            }, 2400);
           });
         } else {
           $scope.noIncomeStatement = true;
