@@ -70,6 +70,43 @@ module.exports = function(grunt) {
           'del nwjc.exe',
           'echo start acctjs.exe --lang=es >> run.bat'
         ].join('&&')
+      },
+      'installer-win': {
+        command: [
+          'cd release',
+          'del script.nsi',
+          'echo !include MUI.nsh >> script.nsi',
+          'echo Name "AccountingJS <%= pkg.version %>" >> script.nsi',
+          'echo OutFile "acctjs-<%= pkg.version %>.exe" >> script.nsi',
+          'echo !insertmacro MUI_PAGE_WELCOME >> script.nsi',
+          'echo !insertmacro MUI_PAGE_DIRECTORY >> script.nsi',
+          'echo !insertmacro MUI_PAGE_INSTFILES >> script.nsi',
+          'echo !insertmacro MUI_PAGE_FINISH >> script.nsi',
+          'echo !insertmacro MUI_LANGUAGE "Spanish" >> script.nsi',
+          'echo !insertmacro MUI_LANGUAGE "English" >> script.nsi',
+          'echo InstallDir "$PROGRAMFILES\\AccountingJS" >> script.nsi',
+          'echo InstallDirRegKey HKLM "SOFTWARE\\AccountingJS" "installdir" >> script.nsi',
+          'echo Section >> script.nsi',
+          'echo   SetShellVarContext all >> script.nsi',
+          'echo   WriteRegStr HKLM "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\AccountingJS" "AccountingJS" "AccountingJS" >> script.nsi',
+          'echo   WriteRegStr HKLM "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\AccountingJS" "UninstallString" "$INSTDIR\\uninstall.exe" >> script.nsi',
+          'echo   SetOutPath $INSTDIR >> script.nsi',
+          'echo   File /r "*.*" >> script.nsi',
+          'echo   CreateShortCut "$DESKTOP\\AccountingJS.lnk" "$OUTDIR\\acctjs.exe" "--lang=es" >> script.nsi',
+          'echo   WriteUninstaller "$INSTDIR\\uninstall.exe" >> script.nsi',
+          'echo SectionEnd >> script.nsi',
+          'echo Section "Uninstall" >> script.nsi',
+          'echo   SetShellVarContext all >> script.nsi',
+          'echo   Delete "$DESKTOP\\AccountingJS.lnk" >> script.nsi',
+          'echo   RMDir /r "$PROGRAMFILES\\AccountingJS" >> script.nsi',
+          'echo   RMDir /r "$INSTDIR" >> script.nsi',
+          'echo   Delete $INSTDIR\\uninstall.exe >> script.nsi',
+          'echo   DeleteRegKey HKLM "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\AccountingJS" >> script.nsi',
+          'echo SectionEnd >> script.nsi',
+          'echo Function .onInit >> script.nsi',
+          'echo   !insertmacro MUI_LANGDLL_DISPLAY >> script.nsi',
+          'echo FunctionEnd >> script.nsi'
+        ].join('&&')
       }
     },
 
@@ -155,6 +192,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-rename');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-makensis');
   grunt.loadNpmTasks('grunt-parallel');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-shell');
@@ -165,5 +203,6 @@ module.exports = function(grunt) {
   grunt.registerTask('develop-es', ['sass', 'parallel:watchers-es']);
   grunt.registerTask('develop', ['sass', 'parallel:watchers']);
   grunt.registerTask('deploy-win', ['sass', 'compress', 'rename', 'copy:nw', 'winresourcer:set-icon', 'shell:deploy-nw-win']);
+  grunt.registerTask('installer-win', ['shell:installer-win']);
   grunt.registerTask('deploy-linux', ['sass', 'compress', 'rename', 'copy:nw']);
 };
