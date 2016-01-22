@@ -46,10 +46,10 @@ app.controller('IncomeStatementController',
           });
 
           //Cost of Sales
-          return utilService.getAccountData({ parentId: 45 });
+          return utilService.getAccountData({ parentId: 51 });
         }).then(function(results) {
           angular.forEach(results, function(value, key) {
-            incomeChildAccounts.push(results[key]._id);
+            costOfSalesAccounts.push(results[key]._id);
           });
 
           //Expenses
@@ -63,7 +63,7 @@ app.controller('IncomeStatementController',
           return utilService.getAccountData({ parentId: 129 });
         }).then(function(results) {
           angular.forEach(results, function(value, key) {
-            expensesAccounts.push(results[key]._id);
+            financingCostAccounts.push(results[key]._id);
           });
 
         }).then(function(results) {
