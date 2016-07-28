@@ -9,6 +9,13 @@ module.exports = function(grunt) {
         options: {
           spawn: false
         }
+      },
+      js: {
+        files: ['app/*.js', 'app/features/**/*.js', 'app/styles/components/*.js', 'app/components/**/**/*.js', 'test/**/*.js'],
+        tasks: ['jasmine'],
+        options: {
+          spawn: false
+        }
       }
     },
 
@@ -174,6 +181,22 @@ module.exports = function(grunt) {
       }
     },
 
+    jasmine: {
+      test: {
+        src: ['app/*.js', 'app/features/**/*.js', 'app/styles/components/*.js', 'app/components/**/**/*.js'],
+        options: {
+          specs: 'test/**/*.js',
+          vendor: ['app/vendor/jquery/jquery.js',
+                   'app/vendor/modernizr/modernizr.js',
+                   'app/vendor/foundation/js/foundation.js',
+                   'app/vendor/angular/angular.js',
+                   'app/vendor/angular-ui-router/angular-ui-router.js',
+                   'app/app.js',
+                   'node_modules/angular-mocks/angular-mocks.js']
+        }
+      }
+    },
+
     'winresourcer': {
       'set-icon': {
         operation: 'Update',
@@ -190,6 +213,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-rename');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-makensis');
@@ -202,6 +226,6 @@ module.exports = function(grunt) {
   grunt.registerTask('update', ['shell:git-pull', 'shell:npm', 'clean-instance', 'bower', 'copy:vendor']);
   grunt.registerTask('develop-es', ['sass', 'parallel:watchers-es']);
   grunt.registerTask('develop', ['sass', 'parallel:watchers']);
-  grunt.registerTask('deploy-win', ['sass', 'compress', 'rename', 'copy:nw', 'winresourcer:set-icon', 'shell:deploy-nw-win', 'shell:installer-win']);
-  grunt.registerTask('deploy-linux', ['sass', 'compress', 'rename', 'copy:nw']);
+  grunt.registerTask('deploy-win', ['sass', 'jasmine', 'compress', 'rename', 'copy:nw', 'winresourcer:set-icon', 'shell:deploy-nw-win', 'shell:installer-win']);
+  grunt.registerTask('deploy-linux', ['sass', 'jasmine', 'compress', 'rename', 'copy:nw']);
 };
