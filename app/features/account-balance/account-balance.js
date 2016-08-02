@@ -135,7 +135,7 @@ app.controller('AccountBalanceController',
                 });
 
                 if(results.extra.index === 11) {
-                  $('.loading').fadeOut(200);
+                  $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
                   $scope.accountBalance.ready = true;
                 }
               });
@@ -143,7 +143,7 @@ app.controller('AccountBalanceController',
           }
         } else {
           $scope.noStartMonth = true;
-          $('.loading').fadeOut(200);
+          $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
         }
       });
     }
@@ -170,6 +170,6 @@ app.controller('AccountBalanceController',
       return defer.promise;
     }
 
-    $('.loading').fadeOut(200);
+    $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
   }]
 );

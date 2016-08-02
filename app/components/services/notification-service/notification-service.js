@@ -4,6 +4,7 @@ app.provider('notificationService', function() {
   function(translateService, $compile, $rootScope, $timeout, $http) {
     var MAX_MILLISECONDS = 4000;
     var REMOVE_MILLISECONDS = 1000;
+    var SLIDE_IN_MILLISECONDS = 100;
 
     var show = function(key, kind, position, icon, autoDisabled) {
       var notificationTemplate = '';
@@ -41,7 +42,7 @@ app.provider('notificationService', function() {
 
         $timeout(function() {
           angular.element('.notification-service').addClass('slide-in');
-        }, 100);
+        }, SLIDE_IN_MILLISECONDS);
 
         if(!scope.autoDisabled) {
           $timeout(function() {

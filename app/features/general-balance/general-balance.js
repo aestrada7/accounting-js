@@ -89,16 +89,16 @@ app.controller('GeneralBalanceController',
                                                                     $scope.generalBalance.stockholdersAssetsTotal;
 
               $scope.generalBalance.reportCreated = true;
-              $('.loading').fadeOut(200);
+              $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
             }, 2400);
           });
         } else {
           $scope.noIncomeStatement = true;
-          $('.loading').fadeOut(200);
+          $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
         }
       } else {
         $scope.noStartMonth = true;
-        $('.loading').fadeOut(200);
+        $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
       }
     }
 
@@ -121,7 +121,7 @@ app.controller('GeneralBalanceController',
         startDate = new Date(startYear, startMonth - 1, 1);
         endDate = new Date(startYear, startMonth - 1, 1);
         endDate.setMonth(endDate.getMonth() + 12);
-        $('.loading').fadeOut(200);
+        $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
       });
 
       incomeDB.find({ _id: 1 }, function(err, results) {

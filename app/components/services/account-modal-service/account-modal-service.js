@@ -16,7 +16,9 @@ app.provider('accountModalService', function() {
         balance: account.balance || 0
       }
       scope.parentAccounts = items;
-      if(account) scope.account = account;
+      if(account) {
+        scope.account = account;
+      }
 
       $http.get('components/services/account-modal-service/account-modal-service.html').success(function(data) {
         accountModalTemplate = $compile(data)(scope);

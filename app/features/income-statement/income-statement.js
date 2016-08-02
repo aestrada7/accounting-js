@@ -29,6 +29,9 @@ app.controller('IncomeStatementController',
     var financingCostAccounts = [];
     var taxesAccounts = [];
 
+    var INCOME_TAXES_PERCENTAGE = 0.3;
+    var PROFIT_SHARE_PERCENTAGE = 0.1;
+
     $scope.getStatement = function() {
       $('.loading').show();
       if($scope.hasOrganization) {
@@ -86,8 +89,8 @@ app.controller('IncomeStatementController',
 
             //Taxes
             if($scope.incomeStatement.incomeBeforeTaxes > 0) {
-              $scope.incomeStatement.incomeTaxes = $scope.incomeStatement.incomeBeforeTaxes * .3;
-              $scope.incomeStatement.profitShare = $scope.incomeStatement.incomeBeforeTaxes * .1;
+              $scope.incomeStatement.incomeTaxes = $scope.incomeStatement.incomeBeforeTaxes * INCOME_TAXES_PERCENTAGE;
+              $scope.incomeStatement.profitShare = $scope.incomeStatement.incomeBeforeTaxes * PROFIT_SHARE_PERCENTAGE;
 
               accountsDB.update({ _id: 158 }, { $set: { balance: $scope.incomeStatement.incomeTaxes } }, { multi: false }, function (err, numReplaced) {
                 if(err && err.errorType === 'uniqueViolated') {
@@ -124,12 +127,12 @@ app.controller('IncomeStatementController',
             });
 
             $scope.statementGenerated = true;
-            $('.loading').fadeOut(200);
-          }, 400);
+            $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
+          }, GLOBAL_TIMEOUT);
         });
       } else {
         $scope.noStartMonth = true;
-        $('.loading').fadeOut(200);
+        $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
       }
     }
 
@@ -147,7 +150,10 @@ app.controller('IncomeStatementController',
       var organizationScope = $scope.$new();
       var startYear = 0;
       var startMonth = 0;
-      $controller('OrganizationController', {$scope: organizationScope});
+      var YEAR_MONTHS = 12;
+
+      $controller('OrganizationController', { $scope: organizationScope });
+
       $(window).on('organization.loaded', function() {
         startMonth = organizationScope.organization.startMonth;
         startYear = organizationScope.organization.exerciseYear;
@@ -155,8 +161,8 @@ app.controller('IncomeStatementController',
         $scope.businessName = organizationScope.organization.businessName;
         startDate = new Date(startYear, startMonth - 1, 1);
         endDate = new Date(startYear, startMonth - 1, 1);
-        endDate.setMonth(endDate.getMonth() + 12);
-        $('.loading').fadeOut(200);
+        endDate.setMonth(endDate.getMonth() + YEAR_MONTHS);
+        $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
       });
     }
 

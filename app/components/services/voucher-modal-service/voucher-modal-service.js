@@ -100,12 +100,14 @@ app.provider('voucherModalService', function() {
                                          'credits': scope.voucherEntries[key].credits };
                 voucherEntriesDB.insert(voucherEntryData, function(err, newItem) {
                   scope.voucherEntries[key]._id = newItem._id;
-                  if(scope.voucherEntries[scope.voucherEntries.length - 1] == scope.voucherEntries[key]) {
+                  if(scope.voucherEntries[scope.voucherEntries.length - 1] === scope.voucherEntries[key]) {
                     saveSuccess();
                   }
                 });
               });
-              if(scope.voucherEntries.length === 0) saveSuccess();
+              if(scope.voucherEntries.length === 0) {
+                saveSuccess();
+              }
             }
           });
         }
@@ -217,7 +219,9 @@ app.provider('voucherModalService', function() {
         $('#voucher-modal').focus();
       });
 
-      if(voucher) scope.voucher = voucher;
+      if(voucher) {
+        scope.voucher = voucher;
+      }
       if(voucherEntries) {
         scope.voucherEntries = voucherEntries;
         angular.forEach(scope.voucherEntries, function(value, key) {

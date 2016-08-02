@@ -4,7 +4,7 @@ app.directive('axTrapFocus',
       restrict: 'A',
       link: function(scope, element, attrs) {
         element.on('keydown', function(event) {
-          if(event.keyCode === 9) { //tab
+          if(event.keyCode === TAB_KEY) {
             var dispatcher = $(event.target)[0];
             var firstElement = element.find('input, textarea, button, select').filter(':enabled:first')[0];
             var lastElement = element.find('input, textarea, button, select').filter(':enabled:last')[0];

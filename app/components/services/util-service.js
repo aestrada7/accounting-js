@@ -114,7 +114,7 @@ app.provider('utilService', function() {
     var getChildAccountsValue = function(accountId, isActiveAssetsAccount, scopeInstance, totalVariable, voucherList, withTimeout) {
       var defer = $q.defer();
       var accountList = [];
-      var timeoutInterval = withTimeout ? 200 : 0;
+      var timeoutInterval = withTimeout ? FADE_OUT_MILLISECONDS : 0;
       scopeInstance[totalVariable] = 0;
       if(!isNaN(accountId)) accountId = [accountId];
       getAccountData({ parentId: { $in: accountId } }).then(function(results) {
@@ -122,7 +122,7 @@ app.provider('utilService', function() {
         angular.forEach(results, function(value, key) {
           var account = { name: translateService.translate(results[key].name), key: results[key].key, total: 0 };
           accountList.push(account);
-          var isLastItem = key == results.length - 1;
+          var isLastItem = key === results.length - 1;
 
           getAccountData({ parentId: results[key]._id }, { key: results[key].key, isLast: isLastItem }).then(function(accounts) {
             var accountTotal = 0;
@@ -135,7 +135,7 @@ app.provider('utilService', function() {
             });
 
             angular.forEach(accounts, function(value, key) {
-              var isLastItem = (key == accounts.length - 1) && accounts.extra.isLast;
+              var isLastItem = (key === accounts.length - 1) && accounts.extra.isLast;
 
               getVoucherEntries({ key: accounts[key].key, voucherId: { $in: voucherList } }, 
                                 { key: accounts.extra.key, isLast: isLastItem }).then(function(movements) {

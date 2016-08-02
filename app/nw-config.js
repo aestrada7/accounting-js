@@ -17,7 +17,9 @@ nwStartUp = function(translateService) {
   fileMenu.append(new gui.MenuItem({
     label: translateService.translate('global.new'),
     click: function() {
-      if(this.enabled) $('body').trigger('new-clicked');
+      if(this.enabled) {
+        $('body').trigger('new-clicked');
+      }
     },
     key: 'n',
     modifiers: 'ctrl'
@@ -26,7 +28,9 @@ nwStartUp = function(translateService) {
   fileMenu.append(new gui.MenuItem({
     label: translateService.translate('global.export'),
     click: function() {
-      if(this.enabled) $('#file-export-dialog').click();
+      if(this.enabled) {
+        $('#file-export-dialog').click();
+      }
     },
     key: 's',
     modifiers: 'ctrl'
@@ -35,7 +39,9 @@ nwStartUp = function(translateService) {
   fileMenu.append(new gui.MenuItem({
     label: translateService.translate('global.import'),
     click: function() {
-      if(this.enabled) $('#file-import-dialog').click();
+      if(this.enabled) {
+        $('#file-import-dialog').click();
+      }
     },
     key: 'o',
     modifiers: 'ctrl'
@@ -74,7 +80,9 @@ nwStartUp = function(translateService) {
   toolMenu.append(new gui.MenuItem({
     label: translateService.translate($('#home-link').html()),
     click: function() {
-      if(this.enabled) $('#home-link').click();
+      if(this.enabled) {
+        $('#home-link').click();
+      }
     },
     key: 'h',
     modifiers: 'ctrl+alt'
@@ -83,7 +91,9 @@ nwStartUp = function(translateService) {
   toolMenu.append(new gui.MenuItem({
     label: translateService.translate('features.organization.title'),
     click: function() {
-      if(this.enabled) $('#organization-link').click();
+      if(this.enabled) {
+        $('#organization-link').click();
+      }
     },
     key: 'd',
     modifiers: 'ctrl+alt'
@@ -92,7 +102,9 @@ nwStartUp = function(translateService) {
   toolMenu.append(new gui.MenuItem({
     label: translateService.translate($('#catalogs-link').html()),
     click: function() {
-      if(this.enabled) $('#catalogs-link').click();
+      if(this.enabled) {
+        $('#catalogs-link').click();
+      }
     },
     key: 'c',
     modifiers: 'ctrl+alt'
@@ -101,7 +113,9 @@ nwStartUp = function(translateService) {
   toolMenu.append(new gui.MenuItem({
     label: translateService.translate($('#vouchers-link').html()),
     click: function() {
-      if(this.enabled) $('#vouchers-link').click();
+      if(this.enabled) {
+        $('#vouchers-link').click();
+      }
     },
     key: 'p',
     modifiers: 'ctrl+alt'
@@ -110,7 +124,9 @@ nwStartUp = function(translateService) {
   toolMenu.append(new gui.MenuItem({
     label: translateService.translate($('#about-link').html()),
     click: function() {
-      if(this.enabled) $('#about-link').click();
+      if(this.enabled) {
+        $('#about-link').click();
+      }
     },
     key: 'a',
     modifiers: 'ctrl+alt'
@@ -120,7 +136,9 @@ nwStartUp = function(translateService) {
     toolMenu.append(new gui.MenuItem({
       label: translateService.translate($('#playground-link').html()),
       click: function() {
-        if(this.enabled) $('#playground-link').click();
+        if(this.enabled) {
+          $('#playground-link').click();
+        }
       },
       key: 'p',
       modifiers: 'ctrl+alt'
@@ -138,7 +156,9 @@ nwStartUp = function(translateService) {
   reportMenu.append(new gui.MenuItem({
     label: translateService.translate($('#general-balance-link').html()),
     click: function() {
-      if(this.enabled) $('#general-balance-link').click();
+      if(this.enabled) {
+        $('#general-balance-link').click();
+      }
     },
     key: 'g',
     modifiers: 'ctrl+alt'
@@ -147,7 +167,9 @@ nwStartUp = function(translateService) {
   reportMenu.append(new gui.MenuItem({
     label: translateService.translate($('#account-balance-link').html()),
     click: function() {
-      if(this.enabled) $('#account-balance-link').click();
+      if(this.enabled) {
+        $('#account-balance-link').click();
+      }
     },
     key: 'r',
     modifiers: 'ctrl+alt'
@@ -156,7 +178,9 @@ nwStartUp = function(translateService) {
   reportMenu.append(new gui.MenuItem({
     label: translateService.translate($('#income-statement-link').html()),
     click: function() {
-      if(this.enabled) $('#income-statement-link').click();
+      if(this.enabled) {
+        $('#income-statement-link').click();
+      }
     },
     key: 'e',
     modifiers: 'ctrl+alt'
@@ -191,7 +215,9 @@ nwStartUp = function(translateService) {
     devMenu.append(new gui.MenuItem({
       label: 'Dev Guide',
       click: function() {
-        if(this.enabled) $('#dev-link').click();
+        if(this.enabled) {
+          $('#dev-link').click();
+        }
       },
       key: 'i',
       modifiers: 'ctrl+alt'
@@ -205,13 +231,13 @@ nwStartUp = function(translateService) {
   }
 
   win.menu = menu;
-  $('.loading').fadeOut(200);
+  $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
 
   //alt menus
   var localeValue = 'en';
   var navigatorLanguage = window.navigator.language;
 
-  if(navigatorLanguage != 'en' && navigatorLanguage != 'en-us') {
+  if(navigatorLanguage !== 'en' && navigatorLanguage !== 'en-us') {
     localeValue = navigatorLanguage;
   }
 
@@ -228,20 +254,20 @@ nwStartUp = function(translateService) {
   }
 
   $(document).on('keydown', function(event) {
-    if(event.altKey && event.keyCode == menuKey) {
+    if(event.altKey && event.keyCode === menuKey) {
       win.menu.popup(0, 0);
     }
-    if(event.altKey && event.keyCode == fileMenuKey) {
+    if(event.altKey && event.keyCode === fileMenuKey) {
       win.menu.items[0].submenu.popup(0, 0);
     }
-    if(event.altKey && event.keyCode == toolsMenuKey) {
+    if(event.altKey && event.keyCode === toolsMenuKey) {
       win.menu.items[1].submenu.popup(0, 0);
     }
-    if(event.altKey && event.keyCode == reportsMenuKey) {
+    if(event.altKey && event.keyCode === reportsMenuKey) {
       win.menu.items[2].submenu.popup(0, 0);
     }
     if(devMode) {
-      if(event.altKey && event.keyCode == devMenuKey) {
+      if(event.altKey && event.keyCode === devMenuKey) {
         win.menu.items[3].submenu.popup(0, 0);
       }
     }
@@ -252,10 +278,15 @@ setMenuBarEnabled = function(isEnabled) {
   var menuItems = win.menu.items;
   var subMenuItems = [];
   for(var i in menuItems) {
-    if(!menuItems[i].icon) menuItems[i].enabled = isEnabled;
+    if(!menuItems[i].icon) {
+      menuItems[i].enabled = isEnabled;
+    }
     subMenuItems = menuItems[i].submenu.items;
+
     for(var k in subMenuItems) {
-      if(!subMenuItems[k].icon) subMenuItems[k].enabled = isEnabled;
+      if(!subMenuItems[k].icon) {
+        subMenuItems[k].enabled = isEnabled;
+      }
     }
   }
 }

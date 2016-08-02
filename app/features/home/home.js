@@ -11,7 +11,7 @@ app.controller('HomeController',
     }
 
     var organizationScope = $scope.$new();
-    $controller('OrganizationController', {$scope: organizationScope});
+    $controller('OrganizationController', { $scope: organizationScope });
     $(window).on('organization.loaded', function() {
       $scope.home.logo = organizationScope.organization.logo;
       $scope.home.organizationName = organizationScope.organization.businessName;
@@ -19,17 +19,17 @@ app.controller('HomeController',
     });
 
     var catalogsScope = $scope.$new();
-    $controller('CatalogsController', {$scope: catalogsScope});
+    $controller('CatalogsController', { $scope: catalogsScope });
     $(window).on('catalogs.loaded', function() {
       $scope.home.totalAccounts = catalogsScope.items.length;
     });
 
     var vouchersScope = $scope.$new();
-    $controller('VouchersController', {$scope: vouchersScope});
+    $controller('VouchersController', { $scope: vouchersScope });
     $(window).on('vouchers.loaded', function() {
       $scope.home.totalVouchers = vouchersScope.items.length;
     });
     
-    $('.loading').fadeOut(200);
+    $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
   }]
 );
