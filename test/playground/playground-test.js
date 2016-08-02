@@ -1,5 +1,4 @@
 describe('PlaygroundController', function() {
-  /*
   beforeEach(module('accountingJS'));
 
   var $controller;
@@ -15,5 +14,5 @@ describe('PlaygroundController', function() {
 
       expect($scope.addingItem).toEqual(false);
     });
-  });*/
+  });
 });
