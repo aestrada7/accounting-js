@@ -314,12 +314,16 @@ dbStartUp = function(notificationService, translateService, confirmService) {
 
   $('#file-export-dialog').on('change', function() {
     var exportPath = $('#file-export-dialog').val();
-    if(exportPath) exportDB(exportPath);
+    if(exportPath) {
+      exportDB(exportPath);
+    }
   });
 
   $('#file-import-dialog').on('change', function() {
     var importPath = $('#file-import-dialog').val();
-    if(importPath) importDB(importPath);
+    if(importPath) {
+      importDB(importPath);
+    }
   });
 
   $('body').on('new-clicked', function() {

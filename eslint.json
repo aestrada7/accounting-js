@@ -1,0 +1,26 @@
+{
+  "rules": {
+    "no-dupe-args": "error",
+    "no-dupe-keys": "error",
+    "no-empty": "warn",
+    "no-unreachable": "error",
+    "use-isnan": "error",
+    "eqeqeq": "error",
+    "curly": "error",
+    "no-eval": "error",
+    "no-magic-numbers": ["warn", { "ignore": [0, 1, -1], "ignoreArrayIndexes": true }],
+    "no-multi-spaces": "error",
+    "no-new-wrappers": "error",
+    "no-redeclare": "error",
+    "no-self-assign": "error",
+    "no-useless-concat": "error",
+    "no-useless-escape": "error",
+    "yoda": "warn",
+    "no-delete-var": "error",
+    "brace-style": "error",
+    "camelcase": ["error", { "properties": "never" }],
+    "comma-spacing": ["error", { "before": false, "after": true }],
+    "indent": ["warn", 2, { "SwitchCase": 1, "VariableDeclarator": 2 }]
+
+  }
+}

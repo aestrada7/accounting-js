@@ -183,6 +183,13 @@ module.exports = function(grunt) {
         lang: 1033,
         resourceFile: 'static/icon/icon.ico'
       }
+    },
+
+    eslint: {
+      options: {
+        configFile: 'eslint.json',
+      },
+      target: ['app/*.js', 'app/components/**/*.js', 'app/features/**/*.js']
     }
   });
 
@@ -192,6 +199,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-rename');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-makensis');
   grunt.loadNpmTasks('grunt-parallel');
   grunt.loadNpmTasks('grunt-sass');
@@ -204,4 +212,5 @@ module.exports = function(grunt) {
   grunt.registerTask('develop', ['sass', 'parallel:watchers']);
   grunt.registerTask('deploy-win', ['sass', 'compress', 'rename', 'copy:nw', 'winresourcer:set-icon', 'shell:deploy-nw-win', 'shell:installer-win']);
   grunt.registerTask('deploy-linux', ['sass', 'compress', 'rename', 'copy:nw']);
+  grunt.registerTask('pre-commit', ['eslint'])
 };
