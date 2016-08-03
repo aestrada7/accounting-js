@@ -31,21 +31,21 @@ body {
 
     .squares-left {
       &:before {
-        top: calc(50% #{"-"} #{rem-calc(20)});
-        #{$default-float}: calc(50% #{"-"} #{rem-calc(20)});
+        top: calc(50% #{'-'} #{rem-calc(20)});
+        #{$default-float}: calc(50% #{'-'} #{rem-calc(20)});
         -webkit-animation: dot-pulse $anim-duration infinite;
       }
 
       &:after {
         top: 50%;
-        #{$default-float}: calc(50% #{"-"} #{rem-calc(20)});
+        #{$default-float}: calc(50% #{'-'} #{rem-calc(20)});
         -webkit-animation: dot-pulse-2 $anim-duration infinite;
       }
     }
 
     .squares-right {
       &:before {
-        top: calc(50% #{"-"} #{rem-calc(20)});
+        top: calc(50% #{'-'} #{rem-calc(20)});
         #{$default-float}: 50%;
         -webkit-animation: dot-pulse-4 $anim-duration infinite;
       }

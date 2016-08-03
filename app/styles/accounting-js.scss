@@ -1,48 +1,48 @@
-@import "variables";  // App defined variables
-@import "mixins";     // App defined mixins
-@import "open-sans";  // Open Sans font
-@import "../vendor/foundation/scss/foundation"; // Foundation
-@import "../vendor/foundation-icon-fonts/foundation-icons"; //Foundation Icons
-@import "foundation-variables"; // App defined variables that need foundation
+@import 'variables';  // App defined variables
+@import 'mixins';     // App defined mixins
+@import 'open-sans';  // Open Sans font
+@import '../vendor/foundation/scss/foundation'; // Foundation
+@import '../vendor/foundation-icon-fonts/foundation-icons'; //Foundation Icons
+@import 'foundation-variables'; // App defined variables that need foundation
 
 // Main definitions
-@import "components/main";
-@import "components/icons";
-@import "components/grid";
-@import "components/header";
+@import 'components/main';
+@import 'components/icons';
+@import 'components/grid';
+@import 'components/header';
 
 /* -- Features -- */
 // Home page
-@import "../features/home/home";
+@import '../features/home/home';
 // About page
-@import "../features/about/about";
+@import '../features/about/about';
 // Catalogs page
-@import "../features/catalogs/catalogs";
+@import '../features/catalogs/catalogs';
 // Vouchers page
-@import "../features/vouchers/vouchers";
+@import '../features/vouchers/vouchers';
 // Organization page
-@import "../features/organization/organization";
+@import '../features/organization/organization';
 // Account Balance page
-@import "../features/account-balance/account-balance";
+@import '../features/account-balance/account-balance';
 // General Balance page
-@import "../features/general-balance/general-balance";
+@import '../features/general-balance/general-balance';
 // Income Statement page
-@import "../features/income-statement/income-statement";
+@import '../features/income-statement/income-statement';
 // Playground page
-@import "../features/playground/playground";
+@import '../features/playground/playground';
 
 /* -- Directives/Services -- */
 // Validation Directive
-@import "../components/directives/validate/validate";
+@import '../components/directives/validate/validate';
 // Autocomplete Directive
-@import "../components/directives/autocomplete/autocomplete";
+@import '../components/directives/autocomplete/autocomplete';
 // Notification Service
-@import "../components/services/notification-service/notification-service";
+@import '../components/services/notification-service/notification-service';
 // Confirm Service
-@import "../components/services/confirm-service/confirm-service";
+@import '../components/services/confirm-service/confirm-service';
 // Account Modal Service
-@import "../components/services/account-modal-service/account-modal-service";
+@import '../components/services/account-modal-service/account-modal-service';
 // Voucher Modal Service
-@import "../components/services/voucher-modal-service/voucher-modal-service";
+@import '../components/services/voucher-modal-service/voucher-modal-service';
 // First Time User Experience (Ftue) Directive
-@import "../components/directives/ftue/ftue";
+@import '../components/directives/ftue/ftue';

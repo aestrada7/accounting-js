@@ -10,11 +10,11 @@
       color: $text-color-medium;
 
       &:before {
-        content: "(";
+        content: '(';
       }
 
       &:after {
-        content: ")";
+        content: ')';
       }
     }
   }

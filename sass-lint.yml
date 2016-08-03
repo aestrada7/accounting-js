@@ -1,3 +1,4 @@
+#Tailored to fit AccountingJS
 options:
   merge-default-rules: false
 files:
@@ -31,15 +32,18 @@ rules:
   leading-zero:
     - 1
     - include: true
-  no-duplicate-properties: 2
+  no-color-keywords: 2
+  #no-duplicate-properties: 2 #Can be turned back on if not using $default-float and $opposite-direction, otherwise it gets many false positives
   no-empty-rulesets: 1
+  no-invalid-hex: 2
   no-misspelled-properties:
     - 2
     - extra-properties: []
+  one-declaration-per-line: 2
   quotes:
     - 2
     - style: single
-  single-line-per-selector: 2
+  #single-line-per-selector: 2 #Would be better to have a limit of 2, but since that's not possible, removing altogether for now
   space-after-colon:
     - 2
     - include: true
@@ -56,4 +60,5 @@ rules:
     - 0
     - include: true
   trailing-semicolon: 2
+  variable-name-format: 2
   zero-unit: 2

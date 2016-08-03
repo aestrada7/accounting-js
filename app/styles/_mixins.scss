@@ -8,7 +8,7 @@
 }
 
 @mixin translate2D($x, $y) {
-  -ms-tranform: translate($x, $y);
+  -ms-transform: translate($x, $y);
   -webkit-transform: translate($x, $y);
   transform: translate($x, $y);
 }
