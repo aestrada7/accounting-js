@@ -53,6 +53,9 @@ module.exports = function(grunt) {
           failOnError: false
         }
       },
+      'sass-lint': {
+        command: 'sass-lint -c sass-lint.yml -v -q'
+      },
       'nw-es': {
         command: '"node_modules/.bin/nw" accounting-js --lang=es --dev'
       },
@@ -201,5 +204,5 @@ module.exports = function(grunt) {
   grunt.registerTask('develop', ['sass', 'parallel:watchers']);
   grunt.registerTask('deploy-win', ['pre-commit', 'sass', 'compress', 'rename', 'copy:nw', 'winresourcer:set-icon', 'shell:deploy-nw-win', 'shell:installer-win']);
   grunt.registerTask('deploy-linux', ['pre-commit', 'sass', 'compress', 'rename', 'copy:nw']);
-  grunt.registerTask('pre-commit', ['eslint'])
+  grunt.registerTask('pre-commit', ['eslint', 'shell:sass-lint'])
 };
