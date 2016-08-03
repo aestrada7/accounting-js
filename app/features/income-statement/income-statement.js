@@ -56,7 +56,9 @@ app.controller('IncomeStatementController',
           });
 
           //Expenses
-          return utilService.getAccountData({ parentId: { $in: [57, 93] } });
+          var EXPENSES_ADMINISTRATION_ID = 57;
+          var EXPENSES_SALES_ID = 93
+          return utilService.getAccountData({ parentId: { $in: [EXPENSES_ADMINISTRATION_ID, EXPENSES_SALES_ID] } });
         }).then(function(results) {
           angular.forEach(results, function(value, key) {
             expensesAccounts.push(results[key]._id);
@@ -150,7 +152,6 @@ app.controller('IncomeStatementController',
       var organizationScope = $scope.$new();
       var startYear = 0;
       var startMonth = 0;
-      var YEAR_MONTHS = 12;
 
       $controller('OrganizationController', { $scope: organizationScope });
 
@@ -161,7 +162,7 @@ app.controller('IncomeStatementController',
         $scope.businessName = organizationScope.organization.businessName;
         startDate = new Date(startYear, startMonth - 1, 1);
         endDate = new Date(startYear, startMonth - 1, 1);
-        endDate.setMonth(endDate.getMonth() + YEAR_MONTHS);
+        endDate.setMonth(endDate.getMonth() + MONTHS_IN_A_YEAR);
         $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
       });
     }

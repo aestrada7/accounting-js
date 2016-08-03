@@ -1,3 +1,4 @@
+//Tailored for AccountingJS.
 {
   "rules": {
     "no-dupe-args": "error",
@@ -20,10 +21,10 @@
     "brace-style": "error",
     "camelcase": ["error", { "properties": "never" }],
     "comma-spacing": ["error", { "before": false, "after": true }],
-    "indent": ["off", 2, { "SwitchCase": 1, "VariableDeclarator": 2 }],
+    "indent": ["off", 2, { "SwitchCase": 1, "VariableDeclarator": 2 }], //will be turned on if no more false positives are found
     "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
     "no-mixed-spaces-and-tabs": "error",
     "no-const-assign": "error"
-    //eslint.org for more rules
+    //eslint.org/docs/rules for more rules
   }
 }

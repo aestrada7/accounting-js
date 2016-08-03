@@ -38,7 +38,9 @@ app.provider('utilService', function() {
         if(err) {
           defer.reject();
         }
-        if(extraArguments) results.extra = extraArguments;
+        if(extraArguments) {
+          results.extra = extraArguments;
+        }
         defer.resolve(results);
       });
       return defer.promise;
@@ -50,7 +52,9 @@ app.provider('utilService', function() {
         if(err) {
           defer.reject();
         }
-        if(extraArguments) results.extra = extraArguments;
+        if(extraArguments) {
+          results.extra = extraArguments;
+        }
         defer.resolve(results);
       });
       return defer.promise;
@@ -62,7 +66,9 @@ app.provider('utilService', function() {
         if(err) {
           defer.reject();
         }
-        if(extraArguments) results.extra = extraArguments;
+        if(extraArguments) {
+          results.extra = extraArguments;
+        }
         defer.resolve(results);
       });
       return defer.promise;
@@ -71,40 +77,40 @@ app.provider('utilService', function() {
     var getMonthName = function(currentMonth) {
       var monthName = '';
       switch(currentMonth) {
-        case 1:
+        case MONTH_JANUARY:
           monthName = translateService.translate('global.months.january');
           break;
-        case 2:
+        case MONTH_FEBRUARY:
           monthName = translateService.translate('global.months.february');
           break;
-        case 3:
+        case MONTH_MARCH:
           monthName = translateService.translate('global.months.march');
           break;
-        case 4:
+        case MONTH_APRIL:
           monthName = translateService.translate('global.months.april');
           break;
-        case 5:
+        case MONTH_MAY:
           monthName = translateService.translate('global.months.may');
           break;
-        case 6:
+        case MONTH_JUNE:
           monthName = translateService.translate('global.months.june');
           break;
-        case 7:
+        case MONTH_JULY:
           monthName = translateService.translate('global.months.july');
           break;
-        case 8:
+        case MONTH_AUGUST:
           monthName = translateService.translate('global.months.august');
           break;
-        case 9:
+        case MONTH_SEPTEMBER:
           monthName = translateService.translate('global.months.september');
           break;
-        case 10:
+        case MONTH_OCTOBER:
           monthName = translateService.translate('global.months.october');
           break;
-        case 11:
+        case MONTH_NOVEMBER:
           monthName = translateService.translate('global.months.november');
           break;
-        case 12:
+        case MONTH_DECEMBER:
           monthName = translateService.translate('global.months.december');
           break;
       }
@@ -116,9 +122,13 @@ app.provider('utilService', function() {
       var accountList = [];
       var timeoutInterval = withTimeout ? FADE_OUT_MILLISECONDS : 0;
       scopeInstance[totalVariable] = 0;
-      if(!isNaN(accountId)) accountId = [accountId];
+      if(!isNaN(accountId)) {
+        accountId = [accountId];
+      }
       getAccountData({ parentId: { $in: accountId } }).then(function(results) {
-        if(results.length === 0) defer.resolve(accountList);
+        if(results.length === 0) {
+          defer.resolve(accountList);
+        }
         angular.forEach(results, function(value, key) {
           var account = { name: translateService.translate(results[key].name), key: results[key].key, total: 0 };
           accountList.push(account);
@@ -131,7 +141,9 @@ app.provider('utilService', function() {
               try {
                 hasStartingBalance = parseFloat(accounts[key].balance);
                 accountTotal += !isNaN(hasStartingBalance) ? hasStartingBalance : 0;
-              } catch(e) {}
+              } catch(e) {
+                //do nothing
+              }
             });
 
             angular.forEach(accounts, function(value, key) {

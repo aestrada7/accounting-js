@@ -1,18 +1,6 @@
 var os = require('os');
 var app = angular.module('accountingJS', ['ui.router']);
 
-var FADE_OUT_MILLISECONDS = 200;
-var GLOBAL_TIMEOUT = 400;
-
-var BACKSPACE_KEY = 8;
-var TAB_KEY = 9;
-var ENTER_KEY = 13;
-var ESCAPE_KEY = 27;
-var LEFT_KEY = 37;
-var UP_KEY = 38;
-var RIGHT_KEY = 39;
-var DOWN_KEY = 40;
-
 //Routing
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 
   function($stateProvider, $urlRouterProvider, $locationProvider) {

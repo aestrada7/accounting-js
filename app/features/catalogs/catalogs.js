@@ -21,7 +21,9 @@ app.controller('CatalogsController',
       $scope.menuVisible = false;
       var item = {};
       item.level = $scope.catalogs.level;
-      if(level) item.level = level;
+      if(level) {
+        item.level = level;
+      }
       accountModalService.show(item, $scope.items).then(function(result) {
         invalidateList();
       }, function(reject) {
@@ -123,6 +125,9 @@ app.controller('CatalogsController',
     }
 
     addZero = function(text, zeroCount) {
+      if(!zeroCount) {
+        zeroCount = 3;
+      }
       text = text.toString();
       while(text.length < zeroCount) {
         text = '0' + text;
@@ -133,16 +138,15 @@ app.controller('CatalogsController',
     getFullTree = function(catalog, rootCatalog, fullTree) {
       var parentCatalog;
       for(var i = 0; i < $scope.items.length; i++) {
-        if(catalog.parentId == $scope.items[i]._id) {
+        if(catalog.parentId === $scope.items[i]._id) {
           $scope.items[i].hasChildren = true;
           parentCatalog = $scope.items[i];
-          var currentTree = fullTree ? addZero(parentCatalog._id, 3) + '-' + fullTree : addZero(parentCatalog._id, 3);
+          var currentTree = fullTree ? addZero(parentCatalog._id) + '-' + fullTree : addZero(parentCatalog._id);
           return getFullTree(parentCatalog, rootCatalog, currentTree);
-          break;
         }
       }
       fullTree = !fullTree ? '' : fullTree + '-';
-      return fullTree + addZero(rootCatalog._id, 3);
+      return fullTree + addZero(rootCatalog._id);
     }
 
     getColor = function(_id) {
@@ -150,9 +154,13 @@ app.controller('CatalogsController',
       var itemColor = 1;
       try {
         var parsedId = parseInt(_id.replace(/\D/g, ''));
-        if(isNaN(parsedId)) parsedId = 0;
+        if(isNaN(parsedId)) {
+          parsedId = 0;
+        }
         itemColor = (parsedId % totalColors) + 1;
-      } catch(e) {}
+      } catch(e) {
+        //do nothing
+      }
       return itemColor;
     }
 
@@ -167,7 +175,7 @@ app.controller('CatalogsController',
           results[key].fullTree = getFullTree(results[key], results[key]);
         });
         $(window).trigger('catalogs.loaded');
-        $('.loading').fadeOut(200);
+        $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
       });
     }
 

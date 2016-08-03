@@ -210,7 +210,7 @@ module.exports = function(grunt) {
   grunt.registerTask('update', ['shell:git-pull', 'shell:npm', 'clean-instance', 'bower', 'copy:vendor']);
   grunt.registerTask('develop-es', ['sass', 'parallel:watchers-es']);
   grunt.registerTask('develop', ['sass', 'parallel:watchers']);
-  grunt.registerTask('deploy-win', ['sass', 'compress', 'rename', 'copy:nw', 'winresourcer:set-icon', 'shell:deploy-nw-win', 'shell:installer-win']);
-  grunt.registerTask('deploy-linux', ['sass', 'compress', 'rename', 'copy:nw']);
+  grunt.registerTask('deploy-win', ['pre-commit', 'sass', 'compress', 'rename', 'copy:nw', 'winresourcer:set-icon', 'shell:deploy-nw-win', 'shell:installer-win']);
+  grunt.registerTask('deploy-linux', ['pre-commit', 'sass', 'compress', 'rename', 'copy:nw']);
   grunt.registerTask('pre-commit', ['eslint'])
 };

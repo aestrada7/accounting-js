@@ -72,6 +72,7 @@ app.controller('AccountBalanceController',
       var startMonth = null;
       var startYear = null;
       var organizationScope = $scope.$new();
+      
       utilService.getParentAccount({ key: $scope.accountBalance.accountKey }).then(function(result) {
         isPassiveAccount = (result.key === '2000' || result.key === '3000');
       });
@@ -82,11 +83,11 @@ app.controller('AccountBalanceController',
         startYear = organizationScope.organization.exerciseYear;
 
         if(organizationScope.organization.businessName && startMonth && startYear) {
-          for(var i = 0; i < 12; i++) {
+          for(var i = 0; i < MONTHS_IN_A_YEAR; i++) {
             var currentMonth = parseInt(startMonth) + i;
             var currentYear = startYear;
-            if(currentMonth > 12) {
-              currentMonth -= 12;
+            if(currentMonth > MONTHS_IN_A_YEAR) {
+              currentMonth -= MONTHS_IN_A_YEAR;
               currentYear++;
             }
             var start = new Date(currentYear, currentMonth - 1, 1);
@@ -134,7 +135,7 @@ app.controller('AccountBalanceController',
                   endBalance: $scope.balanceEnd
                 });
 
-                if(results.extra.index === 11) {
+                if(results.extra.index === (MONTHS_IN_A_YEAR - 1)) {
                   $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
                   $scope.accountBalance.ready = true;
                 }

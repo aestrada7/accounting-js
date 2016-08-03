@@ -31,7 +31,17 @@ app.controller('GeneralBalanceController',
     var endDate = new Date();
     var voucherList = [];
 
+    var FLOATING_ASSETS_ID = 3;
+    var PROPERTIES_ASSETS_ID = 9;
+    var DEFERRED_ASSETS_ID = 14;
+    var SHORT_TERM_PASSIVE_ASSETS_ID = 15;
+    var LONG_TERM_PASSIVE_ASSETS_ID = 16;
+    var CONTRIBUTED_CAPITAL_ID = 38;
+    var EARNED_CAPITAL_ID = 41;
+
     $scope.getBalance = function() {
+      var GENERATE_BALANCE_TIMEOUT = 2400;
+
       $scope.generalBalance.reportCreated = false;
       $('.loading').show();
       if($scope.hasOrganization) {
@@ -43,37 +53,37 @@ app.controller('GeneralBalanceController',
             });
 
             //Floating Assets
-            return utilService.getChildAccountsValue(3, true, $scope.generalBalance, 'floatingAssetsTotal', voucherList, true);
+            return utilService.getChildAccountsValue(FLOATING_ASSETS_ID, true, $scope.generalBalance, 'floatingAssetsTotal', voucherList, true);
           }).then(function(results) {
             $scope.floatingAssetsAccounts = results;
 
             //Properties Assets
-            return utilService.getChildAccountsValue(9, true, $scope.generalBalance, 'propertiesTotal', voucherList, true);
+            return utilService.getChildAccountsValue(PROPERTIES_ASSETS_ID, true, $scope.generalBalance, 'propertiesTotal', voucherList, true);
           }).then(function(results) {
             $scope.propertiesAccounts = results;
 
             //Deferred Assets
-            return utilService.getChildAccountsValue(14, true, $scope.generalBalance, 'deferredAssetsTotal', voucherList, true);
+            return utilService.getChildAccountsValue(DEFERRED_ASSETS_ID, true, $scope.generalBalance, 'deferredAssetsTotal', voucherList, true);
           }).then(function(results) {
             $scope.deferredAssetsAccounts = results;
 
             //Short Term Passive Assets
-            return utilService.getChildAccountsValue(15, false, $scope.generalBalance, 'shortTermTotal', voucherList, true);
+            return utilService.getChildAccountsValue(SHORT_TERM_PASSIVE_ASSETS_ID, false, $scope.generalBalance, 'shortTermTotal', voucherList, true);
           }).then(function(results) {
             $scope.shortTermAccounts = results;
 
             //Long Term Passive Assets
-            return utilService.getChildAccountsValue(16, false, $scope.generalBalance, 'longTermTotal', voucherList, true);
+            return utilService.getChildAccountsValue(LONG_TERM_PASSIVE_ASSETS_ID, false, $scope.generalBalance, 'longTermTotal', voucherList, true);
           }).then(function(results) {
             $scope.longTermAccounts = results;
 
             //Contributed Capital
-            return utilService.getChildAccountsValue(38, false, $scope.generalBalance, 'contributedCapitalTotal', voucherList, true);
+            return utilService.getChildAccountsValue(CONTRIBUTED_CAPITAL_ID, false, $scope.generalBalance, 'contributedCapitalTotal', voucherList, true);
           }).then(function(results) {
             $scope.contributedCapitalAccounts = results;
 
             //Earned Capital
-            return utilService.getChildAccountsValue(41, false, $scope.generalBalance, 'earnedCapitalTotal', voucherList, true);        
+            return utilService.getChildAccountsValue(EARNED_CAPITAL_ID, false, $scope.generalBalance, 'earnedCapitalTotal', voucherList, true);        
           }).then(function(results) {
             $scope.earnedCapitalAccounts = results;
 
@@ -90,7 +100,7 @@ app.controller('GeneralBalanceController',
 
               $scope.generalBalance.reportCreated = true;
               $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
-            }, 2400);
+            }, GENERATE_BALANCE_TIMEOUT);
           });
         } else {
           $scope.noIncomeStatement = true;
@@ -112,6 +122,7 @@ app.controller('GeneralBalanceController',
       var organizationScope = $scope.$new();
       var startYear = 0;
       var startMonth = 0;
+      
       $controller('OrganizationController', {$scope: organizationScope});
       $(window).on('organization.loaded', function() {
         startMonth = organizationScope.organization.startMonth;
@@ -120,7 +131,7 @@ app.controller('GeneralBalanceController',
         $scope.businessName = organizationScope.organization.businessName;
         startDate = new Date(startYear, startMonth - 1, 1);
         endDate = new Date(startYear, startMonth - 1, 1);
-        endDate.setMonth(endDate.getMonth() + 12);
+        endDate.setMonth(endDate.getMonth() + MONTHS_IN_A_YEAR);
         $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
       });
 

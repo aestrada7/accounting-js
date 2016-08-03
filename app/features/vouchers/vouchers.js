@@ -58,20 +58,23 @@ app.controller('VouchersController',
     }
 
     getKindText = function(kind) {
+      var textKind = '';
       switch(kind) {
         case $scope.JRN:
-          return translateService.translate('features.vouchers.journal.short-title');
+          textKind = translateService.translate('features.vouchers.journal.short-title');
           break;
         case $scope.CHQ:
-          return translateService.translate('features.vouchers.cheques.short-title');
+          textKind = translateService.translate('features.vouchers.cheques.short-title');
           break;
         case $scope.DIS:
-          return translateService.translate('features.vouchers.disimbursement.short-title');
+          textKind = translateService.translate('features.vouchers.disimbursement.short-title');
           break;
         case $scope.CSH:
-          return translateService.translate('features.vouchers.cash-receipt.short-title');
+          textKind = translateService.translate('features.vouchers.cash-receipt.short-title');
           break;
       }
+
+      return textKind;
     }
 
     $scope.onEditVoucherClicked = function(item) {
