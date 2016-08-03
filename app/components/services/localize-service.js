@@ -3,7 +3,7 @@ app.provider('localizeService', function() {
     var localeValue = 'en';
     var navigatorLanguage = window.navigator.language;
 
-    if(navigatorLanguage != 'en' && navigatorLanguage != 'en-us') {
+    if(navigatorLanguage !== 'en' && navigatorLanguage !== 'en-us') {
       localeValue = navigatorLanguage;
     }
 

@@ -19,7 +19,7 @@ app.directive('axAutocomplete',
         selectedFieldIndex = 0;
 
         element.on('keydown', function(event) {
-          if(event.keyCode === 38) { //up arrow
+          if(event.keyCode === UP_KEY) {
             event.preventDefault();
             if(selectedFieldIndex === 1) {
               selectedFieldIndex = element.find('.entry').length;
@@ -28,7 +28,7 @@ app.directive('axAutocomplete',
             }
             element.find('.entry:nth-child(' + selectedFieldIndex + ')').focus();
           }
-          if(event.keyCode === 40) { //down arrow
+          if(event.keyCode === DOWN_KEY) {
             event.preventDefault();
             if(selectedFieldIndex === element.find('.entry').length) {
               selectedFieldIndex = 1;
@@ -37,25 +37,25 @@ app.directive('axAutocomplete',
             }
             element.find('.entry:nth-child(' + selectedFieldIndex + ')').focus();
           }
-          if(event.keyCode === 13) { //enter
+          if(event.keyCode === ENTER_KEY) {
             event.preventDefault();
             element.find('.entry:nth-child(' + selectedFieldIndex + ')').click();
             searchField.focus();
             selectedFieldIndex = 0;
             scope.$apply();
           }
-          if(event.keyCode === 8) { //backspace
+          if(event.keyCode === BACKSPACE_KEY) {
             if($(event.target).hasClass('entry')) {
               event.preventDefault();
               searchField.focus();
             }
           }
-          if(event.keyCode === 27) { //escape
+          if(event.keyCode === ESCAPE_KEY) {
             searchField.focus();
             scope.showAutocomplete = false;
             scope.$apply();
           }
-          if(event.keyCode === 9) { //tab
+          if(event.keyCode === TAB_KEY) {
             element.find('.entry:nth-child(' + selectedFieldIndex + ')').click();
             searchField.focus();
             scope.showAutocomplete = false;
@@ -64,23 +64,24 @@ app.directive('axAutocomplete',
         });
 
         searchField.on('keyup', function(event) {
-          if(event.keyCode !== 13 && event.keyCode !== 27) { //enter, esc
+          if(event.keyCode !== ENTER_KEY && event.keyCode !== ESCAPE_KEY) {
             scope.showAutocomplete = searchField.val().length > 1;
             scope.$apply();
           }
         });
 
         searchField.on('blur', function(event) {
+          var BLUR_TIMEOUT = 100;
           $timeout(function() {
-            if(element.find( ':focus' ).length === 0) {
+            if(element.find(':focus').length === 0) {
               scope.showAutocomplete = false;
               scope.$apply();
             }
-          }, 100);
+          }, BLUR_TIMEOUT);
         });
 
         scope.textFilter = function(item) {
-          return item[scope.field].toLowerCase().search(searchField.val().toLowerCase()) != -1;
+          return item[scope.field].toLowerCase().search(searchField.val().toLowerCase()) !== -1;
         }
 
         scope.selectItem = function(item) {
@@ -105,7 +106,9 @@ app.directive('axAutocomplete',
         function fetchData(args) {
           var defer = $q.defer();
           var filter = {};
-          if(args.filter) filter = args.filter;
+          if(args.filter) {
+            filter = args.filter;
+          }
           if(args.db === 'accounts') {
             accountsDB.find(filter, function(err, results) {
               defer.resolve(results);

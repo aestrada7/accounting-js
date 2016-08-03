@@ -5,9 +5,11 @@ app.directive('axFocus',
     return {
       restrict: 'A',
       link: function(scope, element, attrs) {
+        var FOCUS_TIMEOUT = 500;
+        
         $timeout(function() {
           element.focus();
-        }, 500);
+        }, FOCUS_TIMEOUT);
       }
     }
   }]

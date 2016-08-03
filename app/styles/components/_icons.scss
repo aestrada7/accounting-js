@@ -1,39 +1,46 @@
-[class*="fi-"], img {
+[class*='fi-'], img {
   &.size-12 {
     font-size: $font-size-small;
     width: rem-calc(12);
     height: rem-calc(12);
   }
+
   &.size-18 {
     font-size: $font-size-large;
     width: rem-calc(24);
     height: rem-calc(24);
   }
+
   &.size-24 {
     font-size: $font-size-xlarge;
     width: rem-calc(24);
     height: rem-calc(24);
   }
+
   &.size-36 {
     font-size: $font-size-xxlarge;
     width: rem-calc(36);
     height: rem-calc(36);
   }
+
   &.size-48 {
     font-size: rem-calc(48);
     width: rem-calc(48);
     height: rem-calc(48);
   }
+
   &.size-72 {
     font-size: rem-calc(72);
     width: rem-calc(72);
     height: rem-calc(72);
   }
+
   &.size-96 {
     font-size: rem-calc(96);
     width: rem-calc(96);
     height: rem-calc(96);
   }
+
   &.size-240 {
     font-size: rem-calc(240);
     width: rem-calc(240);

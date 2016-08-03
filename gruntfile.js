@@ -60,6 +60,9 @@ module.exports = function(grunt) {
           failOnError: false
         }
       },
+      'sass-lint': {
+        command: 'sass-lint -c sass-lint.yml -v -q'
+      },
       'nw-es': {
         command: '"node_modules/.bin/nw" accounting-js --lang=es --dev'
       },
@@ -206,26 +209,23 @@ module.exports = function(grunt) {
         lang: 1033,
         resourceFile: 'static/icon/icon.ico'
       }
+    },
+
+    eslint: {
+      options: {
+        configFile: 'eslint.json',
+      },
+      target: ['app/*.js', 'app/components/**/*.js', 'app/features/**/*.js']
     }
   });
 
-  grunt.loadNpmTasks('grunt-bower-task');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-compress');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-jasmine');
-  grunt.loadNpmTasks('grunt-contrib-rename');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-makensis');
-  grunt.loadNpmTasks('grunt-parallel');
-  grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-shell');
-  grunt.loadNpmTasks('winresourcer');
+  require('load-grunt-tasks')(grunt);
 
   grunt.registerTask('clean-instance', ['clean:bower', 'clean:vendor', 'clean:develop']);
   grunt.registerTask('update', ['shell:git-pull', 'shell:npm', 'clean-instance', 'bower', 'copy:vendor']);
   grunt.registerTask('develop-es', ['sass', 'parallel:watchers-es']);
   grunt.registerTask('develop', ['sass', 'parallel:watchers']);
-  grunt.registerTask('deploy-win', ['sass', 'jasmine', 'compress', 'rename', 'copy:nw', 'winresourcer:set-icon', 'shell:deploy-nw-win', 'shell:installer-win']);
-  grunt.registerTask('deploy-linux', ['sass', 'jasmine', 'compress', 'rename', 'copy:nw']);
+  grunt.registerTask('deploy-win', ['pre-commit', 'sass', 'compress', 'rename', 'copy:nw', 'winresourcer:set-icon', 'shell:deploy-nw-win', 'shell:installer-win']);
+  grunt.registerTask('deploy-linux', ['pre-commit', 'sass', 'compress', 'rename', 'copy:nw']);
+  grunt.registerTask('pre-commit', ['eslint', 'shell:sass-lint', 'jasmine'])
 };

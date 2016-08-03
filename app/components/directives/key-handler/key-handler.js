@@ -9,11 +9,21 @@ app.directive('axKeyHandler',
         var transitionObj = {};
 
         angular.forEach(keyHandlerAttrs, function(value, key) {
-          if(key === 'enter') key = 13;
-          if(key === 'space') key = 32;
-          if(key === 'backspace') key = 8;
-          if(key === 'tab') key = 9;
-          if(key === 'esc') key = 27;
+          if(key === 'enter') {
+            key = 13;
+          }
+          if(key === 'space') {
+            key = 32;
+          }
+          if(key === 'backspace') {
+            key = 8;
+          }
+          if(key === 'tab') {
+            key = 9;
+          }
+          if(key === 'esc') {
+            key = 27;
+          }
           transitionObj[key] = value; //must be a selector
         });
 

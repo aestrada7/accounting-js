@@ -10,7 +10,9 @@ app.provider('translateService', function() {
         for(var i = 0; i < arr.length; i++) {
           obj = obj[arr[i]];
         }
-      } catch(err) {}
+      } catch(err) {
+        //do nothing
+      }
       return obj || key;
     }
 

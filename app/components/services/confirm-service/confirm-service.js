@@ -38,12 +38,13 @@ app.provider('confirmService', function() {
       }
 
       closeConfirmation = function() {
+        var CONFIRMATION_CLOSE_TIMEOUT = 350;
         $('#confirm-modal').removeClass('shown');
         $('.confirm-modal-bg').removeClass('shown');
         $timeout(function() {
           $('#confirm-modal').trigger('modalClosed');
           $(document).off('click');
-        }, 350);
+        }, CONFIRMATION_CLOSE_TIMEOUT);
         setMenuBarEnabled(true);
       }
 

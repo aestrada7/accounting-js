@@ -64,7 +64,7 @@ app.controller('PlaygroundController',
     invalidateList = function() {
       fetchData({}).then(function(results) {
         $scope.items = results;
-        $('.loading').fadeOut(200);
+        $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
       });
     }
 

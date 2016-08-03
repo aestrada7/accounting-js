@@ -25,7 +25,9 @@ app.controller('VouchersController',
       $scope.menuVisible = false;
       var item = {};
       item.kind = $scope.vouchers.kind;
-      if(kind) item.kind = kind;
+      if(kind) {
+        item.kind = kind;
+      }
       voucherModalService.show(item).then(function(result) {
         invalidateList();
       }, function(reject) {
@@ -56,20 +58,23 @@ app.controller('VouchersController',
     }
 
     getKindText = function(kind) {
+      var textKind = '';
       switch(kind) {
         case $scope.JRN:
-          return translateService.translate('features.vouchers.journal.short-title');
+          textKind = translateService.translate('features.vouchers.journal.short-title');
           break;
         case $scope.CHQ:
-          return translateService.translate('features.vouchers.cheques.short-title');
+          textKind = translateService.translate('features.vouchers.cheques.short-title');
           break;
         case $scope.DIS:
-          return translateService.translate('features.vouchers.disimbursement.short-title');
+          textKind = translateService.translate('features.vouchers.disimbursement.short-title');
           break;
         case $scope.CSH:
-          return translateService.translate('features.vouchers.cash-receipt.short-title');
+          textKind = translateService.translate('features.vouchers.cash-receipt.short-title');
           break;
       }
+
+      return textKind;
     }
 
     $scope.onEditVoucherClicked = function(item) {
@@ -95,7 +100,10 @@ app.controller('VouchersController',
           results[key].kindText = getKindText(results[key].kind);
           results[key].credits = 0;
           results[key].debits = 0;
-          if(!results[key].description) results[key].description = '-';
+          if(!results[key].description) {
+            results[key].description = '-';
+          }
+
           utilService.getVoucherEntries({voucherId: results[key]._id}).then(function(itemList) {
             angular.forEach(itemList, function(itemValue, itemKey) {
               if(itemList[itemKey].credits) {
@@ -109,7 +117,7 @@ app.controller('VouchersController',
         });
         $scope.items = results;
         $(window).trigger('vouchers.loaded');
-        $('.loading').fadeOut(200);
+        $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
       });
     }
 

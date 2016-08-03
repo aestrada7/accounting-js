@@ -68,7 +68,7 @@ app.controller('OrganizationController',
           $scope.organization.logo = results[0].logo;
         }
         $(window).trigger('organization.loaded');
-        $('.loading').fadeOut(200);
+        $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
       });
     }
 

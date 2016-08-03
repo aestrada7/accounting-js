@@ -1,0 +1,64 @@
+#Tailored to fit AccountingJS
+options:
+  merge-default-rules: false
+files:
+  include:
+    - 'app/components/**/*.scss'
+    - 'app/features/**/*.scss'
+    - 'app/styles/**/*.scss'
+  ignore:
+    - 'sass/vendor/**/*.*'
+rules:
+  class-name-format:
+    - 2
+    - convention: hyphenatedlowercase
+  clean-import-paths:
+    - 2
+    - filename-extension: false
+      leading-underscore: false
+  empty-line-between-blocks:
+    - 2
+    - ignore-single-line-rulesets: true
+  final-new-line: 0
+  hex-notation:
+    - 1
+    - style: lowercase
+  id-name-format:
+    - 2
+    - convention: hyphenatedlowercase
+  indentation:
+    - 2
+    - size: 2
+  leading-zero:
+    - 1
+    - include: true
+  no-color-keywords: 2
+  #no-duplicate-properties: 2 #Can be turned back on if not using $default-float and $opposite-direction, otherwise it gets many false positives
+  no-empty-rulesets: 1
+  no-invalid-hex: 2
+  no-misspelled-properties:
+    - 2
+    - extra-properties: []
+  one-declaration-per-line: 2
+  quotes:
+    - 2
+    - style: single
+  #single-line-per-selector: 2 #Would be better to have a limit of 2, but since that's not possible, removing altogether for now
+  space-after-colon:
+    - 2
+    - include: true
+  space-after-comma:
+    - 2
+    - include: true
+  space-before-bang:
+    - 2
+    - include: true
+  space-before-brace:
+    - 2
+    - include: true
+  space-between-parens:
+    - 0
+    - include: true
+  trailing-semicolon: 2
+  variable-name-format: 2
+  zero-unit: 2

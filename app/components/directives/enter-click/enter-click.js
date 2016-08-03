@@ -4,7 +4,7 @@ app.directive('axEnterClick',
       restrict: 'A',
       link: function(scope, element, attrs) {
         element.on('keydown', function(event) {
-          if(event.keyCode === 13) { //enter
+          if(event.keyCode === ENTER_KEY) {
             element.click();
           }
         });
