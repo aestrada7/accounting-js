@@ -193,18 +193,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-bower-task');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-compress');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-rename');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-eslint');
-  grunt.loadNpmTasks('grunt-makensis');
-  grunt.loadNpmTasks('grunt-parallel');
-  grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-shell');
-  grunt.loadNpmTasks('winresourcer');
+  require('load-grunt-tasks')(grunt);
 
   grunt.registerTask('clean-instance', ['clean:bower', 'clean:vendor', 'clean:develop']);
   grunt.registerTask('update', ['shell:git-pull', 'shell:npm', 'clean-instance', 'bower', 'copy:vendor']);

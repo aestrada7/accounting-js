@@ -23,6 +23,7 @@
     "grunt-parallel": "^0.4.1",
     "grunt-sass": "1.0.0",
     "grunt-shell": "0.7.0",
+    "load-grunt-tasks": "^3.5.0",
     "winresourcer": "^0.9.0"
   },
   "dependencies": {
