@@ -12,9 +12,16 @@ app.controller('AboutController',
                          { name: 'Foundation 4', kind: 'JS' },
                          { name: 'Bower', kind: 'node' },
                          { name: 'Grunt', kind: 'node' },
-                         { name: 'Git', kind: 'other'}];
+                         { name: 'Git', kind: 'other' },
+                         { name: 'ESLint', kind: 'other'},
+                         { name: 'Jasmine', kind: 'JS' }];
     $('.loading').fadeOut(FADE_OUT_MILLISECONDS);
 
     $scope.version = require('nw.gui').App.manifest.version;
+
+    $('a[target=_blank]').on('click', function() {
+      require('nw.gui').Shell.openExteral(this.href);
+      return false;
+    });
   }]
 );
