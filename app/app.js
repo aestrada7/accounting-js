@@ -1,10 +1,14 @@
 var os = require('os');
 var app = angular.module('accountingJS', ['ui.router']);
+window.os = os;
+window.app = app;
 
 //Routing
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 
   function($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/404');
+    var homeURL = '/';
+    var emptyURL = '';
 
     //Linux/Mac
     if(os.platform() === 'linux' || os.platform() === 'darwin') {

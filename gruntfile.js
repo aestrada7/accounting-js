@@ -9,6 +9,13 @@ module.exports = function(grunt) {
         options: {
           spawn: false
         }
+      },
+      js: {
+        files: ['app/*.js', 'app/features/**/*.js', 'app/styles/components/*.js', 'app/components/**/**/*.js', 'test/**/*.js'],
+        tasks: ['jasmine'],
+        options: {
+          spawn: false
+        }
       }
     },
 
@@ -55,6 +62,9 @@ module.exports = function(grunt) {
       },
       'sass-lint': {
         command: 'sass-lint -c sass-lint.yml -v -q'
+      },
+      'karma': {
+        command: 'karma start'
       },
       'nw-es': {
         command: '"node_modules/.bin/nw" accounting-js --lang=es --dev'
@@ -177,6 +187,22 @@ module.exports = function(grunt) {
       }
     },
 
+    jasmine: {
+      test: {
+        src: ['app/*.js', 'app/features/**/*.js', 'app/styles/components/*.js', 'app/components/**/**/*.js'],
+        options: {
+          specs: 'test/**/*.js',
+          vendor: ['app/vendor/jquery/jquery.js',
+                   'app/vendor/modernizr/modernizr.js',
+                   'app/vendor/foundation/js/foundation.js',
+                   'app/vendor/angular/angular.js',
+                   'app/vendor/angular-ui-router/angular-ui-router.js',
+                   'app/app.js',
+                   'node_modules/angular-mocks/angular-mocks.js']
+        }
+      }
+    },
+
     'winresourcer': {
       'set-icon': {
         operation: 'Update',
@@ -204,5 +230,5 @@ module.exports = function(grunt) {
   grunt.registerTask('develop', ['sass', 'parallel:watchers']);
   grunt.registerTask('deploy-win', ['pre-commit', 'sass', 'compress', 'rename', 'copy:nw', 'winresourcer:set-icon', 'shell:deploy-nw-win', 'shell:installer-win']);
   grunt.registerTask('deploy-linux', ['pre-commit', 'sass', 'compress', 'rename', 'copy:nw']);
-  grunt.registerTask('pre-commit', ['eslint', 'shell:sass-lint'])
+  grunt.registerTask('pre-commit', ['eslint', 'shell:sass-lint', 'shell:karma'])
 };
