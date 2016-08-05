@@ -7,7 +7,7 @@ describe('PlaygroundController', function() {
     $controller = _$controller_;
   }));
 
-  describe('test', function() {
+  describe('$scope', function() {
     it('Should not be adding any item by default', function() {
       var $scope = {};
       var controller = $controller('PlaygroundController', { $scope: $scope });
