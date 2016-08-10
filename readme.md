@@ -12,7 +12,7 @@
 * `grunt update`
 * `grunt develop` for English or `grunt develop-es` for the Spanish version
 * nw.exe will load automatically
-* Prior to committing any changes run `grunt pre-commit`, this will run `ESLint` and `SCSS Lint` to make sure there are no issues with the code, it will also run `Jasmine` to make sure the tests pass.
+* Prior to committing any changes run `grunt pre-commit`, this will run `ESLint`, `HTML Hint` and `SCSS Lint` to make sure there are no issues with the code, it will also run `Jasmine` to make sure the tests pass.
 
 This app uses nw.js, grunt update fetches the branches from git, installs all bower components, installs npm packages.
 
