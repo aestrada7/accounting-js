@@ -15,7 +15,7 @@
         <ax-validate kind="text">
           <label for="vch-key" ax-translate>features.vouchers.key</label>
           <input id="vch-key" type="text" ng-model="voucher.key" ng-change="setDirty()" required ax-focus
-                 ax-translate-attrs="{'placeholder': 'features.vouchers.key', 'aria-label': 'features.vouchers.key'}">
+                 ax-translate-attrs="{'placeholder': 'features.vouchers.key', 'aria-label': 'features.vouchers.key'}" />
         </ax-validate>
       </div>
     </div>
@@ -24,7 +24,7 @@
         <ax-validate kind="date">
           <label for="vch-date" ax-translate>global.date</label>
           <input id="vch-date" type="date" ng-model="voucher.date" ng-change="setDirty()" required
-                 ax-translate-attrs="{'placeholder': 'global.date', 'aria-label': 'global.date'}">
+                 ax-translate-attrs="{'placeholder': 'global.date', 'aria-label': 'global.date'}" />
         </ax-validate>
       </div>
     </div>
@@ -33,7 +33,7 @@
         <ax-validate kind="text">
           <label for="vch-description" ax-translate>features.vouchers.description</label>
           <input id="vch-description" type="text" ng-model="voucher.description" ng-change="setDirty()" required
-                 ax-translate-attrs="{'placeholder': 'features.vouchers.description', 'aria-label': 'features.vouchers.description'}">
+                 ax-translate-attrs="{'placeholder': 'features.vouchers.description', 'aria-label': 'features.vouchers.description'}" />
         </ax-validate>
       </div>
     </div>
@@ -59,27 +59,27 @@
         </div>
         <div ng-repeat="voucherEntry in voucherEntries | orderBy: 'item'" class="row">
           <div class="columns small-1">
-            <input type="text" ng-model="voucherEntry.item" disabled="disabled">
+            <input type="text" ng-model="voucherEntry.item" disabled="disabled" />
           </div>
           <div class="columns small-3">
             <ax-autocomplete db="accounts" field="key" filter="{'level': 4}">
               <input type="text" ng-class="{'invalid': voucherEntry.invalid}" ng-model="voucherEntry.key" required
-                     ng-change="onChangeKey(voucherEntry);setDirty()" ax-translate-attrs="{'aria-label': 'features.accounts.account-key'}">
+                     ng-change="onChangeKey(voucherEntry);setDirty()" ax-translate-attrs="{'aria-label': 'features.accounts.account-key'}" />
             </ax-autocomplete>
           </div>
           <div class="columns small-4">
             <ax-autocomplete db="accounts" field="name" filter="{'level': 4}">
               <input type="text" ng-model="voucherEntry.name" required ng-change="onChangeName(voucherEntry);setDirty()"
-                     ax-translate-attrs="{'aria-label': 'features.accounts.account-name'}">
+                     ax-translate-attrs="{'aria-label': 'features.accounts.account-name'}" />
             </ax-autocomplete>
           </div>
           <div class="columns small-2 currency">
             <input type="text" ng-model="voucherEntry.debits" ng-change="setDirty()"
-                   ax-translate-attrs="{'aria-label': 'features.vouchers.debits'}">
+                   ax-translate-attrs="{'aria-label': 'features.vouchers.debits'}" />
           </div>
           <div class="columns small-2 currency">
             <input type="text" ng-model="voucherEntry.credits" ng-change="setDirty()"
-                   ax-translate-attrs="{'aria-label': 'features.vouchers.credits'}">
+                   ax-translate-attrs="{'aria-label': 'features.vouchers.credits'}" />
           </div>
         </div>
       </div>

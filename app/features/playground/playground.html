@@ -7,7 +7,7 @@
         <li ng-repeat="item in items">
           <div ng-if="item._id !== editingItem">
             <span class="identifier">{{item._id}}</span>
-            <span>{{item.name}}</span><br>
+            <span>{{item.name}}</span><br />
             <button class="tiny" ng-click="onDeleteItemClicked(item._id)" ax-translate-attrs="{'aria-label': 'global.delete'}">
               <i class="fi-trash"></i>
               <span ax-translate>global.delete</span>
@@ -20,7 +20,7 @@
           <div ng-if="item._id === editingItem">
             <input id="edit-item-{{item._id}}" type="text" value="{{item.name}}" 
                    ax-translate-attrs="{'placeholder': 'features.playground.newPlaceholder', 'aria-label': 'features.playground.newPlaceholder'}"
-                   ax-key-handler="{'enter': '.edit-pg-save-button', 'esc': '.edit-pg-cancel-button'}"></input>
+                   ax-key-handler="{'enter': '.edit-pg-save-button', 'esc': '.edit-pg-cancel-button'}" />
             <div class="edit-item-controls">
               <button class="edit-pg-cancel-button tiny" ng-click="onCancelEditItemClicked()" ax-translate-attrs="{'aria-label': 'global.cancel'}">
                 <i class="fi-x"></i>
@@ -36,7 +36,7 @@
       </ul>
       <div class="new-item" ng-if="addingItem">
         <input id="new-item" type="text" ax-translate-attrs="{'placeholder': 'features.playground.newPlaceholder', 'aria-label': 'features.playground.newPlaceholder'}"
-               ax-key-handler="{'enter': '.new-pg-save-button', 'esc': '.new-pg-cancel-button'}"></input>
+               ax-key-handler="{'enter': '.new-pg-save-button', 'esc': '.new-pg-cancel-button'}" />
         <div class="new-item-controls">
           <button class="new-pg-cancel-button tiny" ng-click="onCancelAddItemClicked()" ax-translate-attrs="{'aria-label': 'global.cancel'}">
             <i class="fi-x"></i>
@@ -65,44 +65,44 @@
       <div class="columns editable small-12">
         <div class="row">
           <div class="columns small-1">
-            <input type="text">
+            <input type="text" />
           </div>
           <div class="columns small-3">
             <ax-autocomplete db="accounts" field="key">
-              <input type="text" class="wadup">
+              <input type="text" class="wadup" />
             </ax-autocomplete>
           </div>
           <div class="columns small-4">
             <ax-autocomplete db="accounts" field="name">
-              <input type="text">
+              <input type="text" />
             </ax-autocomplete>
           </div>
           <div class="columns small-2">
-            <input type="text">
+            <input type="text" />
           </div>
           <div class="columns small-2">
-            <input type="text">
+            <input type="text" />
           </div>
         </div>
         <div class="row">
           <div class="columns small-1">
-            <input type="text">
+            <input type="text" />
           </div>
           <div class="columns small-3">
             <ax-autocomplete db="accounts" field="key">
-              <input type="text">
+              <input type="text" />
             </ax-autocomplete>
           </div>
           <div class="columns small-4">
             <ax-autocomplete db="accounts" field="name">
-              <input type="text">
+              <input type="text" />
             </ax-autocomplete>
           </div>
           <div class="columns small-2">
-            <input type="text">
+            <input type="text" />
           </div>
           <div class="columns small-2">
-            <input type="text">
+            <input type="text" />
           </div>
         </div>
       </div>

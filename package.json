@@ -23,6 +23,7 @@
     "grunt-contrib-rename": "0.0.3",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-eslint": "^19.0.0",
+    "grunt-htmlhint": "^0.9.13",
     "grunt-parallel": "^0.4.1",
     "grunt-sass": "1.0.0",
     "grunt-shell": "0.7.0",

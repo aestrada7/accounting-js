@@ -219,6 +219,15 @@ module.exports = function(grunt) {
         configFile: 'eslint.json',
       },
       target: ['app/*.js', 'app/components/**/*.js', 'app/features/**/*.js']
+    },
+
+    htmlhint: {
+      options: {
+        htmlhintrc: 'htmlhint.json'
+      },
+      html: {
+        src: ['app/*.html', 'app/components/**/*.html', 'app/features/**/*.html']
+      }
     }
   });
 
@@ -230,5 +239,5 @@ module.exports = function(grunt) {
   grunt.registerTask('develop', ['sass', 'parallel:watchers']);
   grunt.registerTask('deploy-win', ['pre-commit', 'sass', 'compress', 'rename', 'copy:nw', 'winresourcer:set-icon', 'shell:deploy-nw-win', 'shell:installer-win']);
   grunt.registerTask('deploy-linux', ['pre-commit', 'sass', 'compress', 'rename', 'copy:nw']);
-  grunt.registerTask('pre-commit', ['eslint', 'shell:sass-lint', 'shell:karma'])
+  grunt.registerTask('pre-commit', ['eslint', 'htmlhint', 'shell:sass-lint', 'shell:karma'])
 };

@@ -8,7 +8,7 @@
         <ax-validate kind="text">
           <label for="org-business-name" ax-translate>features.organization.business-name</label>
           <input id="org-business-name" type="text" ng-model="organization.businessName" required
-                 ax-translate-attrs="{'placeholder': 'features.organization.business-name'}">
+                 ax-translate-attrs="{'placeholder': 'features.organization.business-name'}" />
         </ax-validate>
       </div>
     </div>
@@ -17,7 +17,7 @@
         <ax-validate kind="text">
           <label for="org-tin" ax-translate>features.organization.tin</label>
           <input id="org-tin" type="text" ng-model="organization.tin" required
-                 ax-translate-attrs="{'placeholder': 'features.organization.tin-full'}">
+                 ax-translate-attrs="{'placeholder': 'features.organization.tin-full'}" />
         </ax-validate>
       </div>
     </div>
@@ -36,7 +36,7 @@
           <label for="org-ex-year" ax-translate>features.organization.exercise-year</label>
           <input id="org-ex-year" type="number" ng-model="organization.exerciseYear"
                  ng-minlength="4" ng-maxlength="4" min="1900" max="2300" required
-                 ax-translate-attrs="{'placeholder': 'features.organization.exercise-year'}">
+                 ax-translate-attrs="{'placeholder': 'features.organization.exercise-year'}" />
         </ax-validate>
       </div>
       <div class="columns small-6">
@@ -47,8 +47,8 @@
     <div class="row">
       <div class="columns small-6 logo-upload">
         <label for="org-logo" ax-translate>features.organization.logo</label>
-        <input id="org-logo" type="file" accept="image/*" ax-on-change="logoChanged">
-        <img ng-if="organization.logo" ng-src="{{organization.logo}}" ng-click="onLogoChangeClick()">
+        <input id="org-logo" type="file" accept="image/*" ax-on-change="logoChanged" />
+        <img ng-if="organization.logo" ng-src="{{organization.logo}}" ng-click="onLogoChangeClick()" alt="" />
         <div>
           <button class="secondary tiny" ax-translate-attrs="{'aria-label': 'global.edit'}" ng-click="onLogoChangeClick()">
             <i class="fi-pencil"></i>
